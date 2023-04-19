@@ -1,3 +1,9 @@
+body {
+    font-family: 'Inter' ;
+    
+    margin: 0;
+}
+
 .sidebar {
     position: fixed;
     top: 0px;
@@ -16,6 +22,10 @@
     margin-top: 66px;
     margin-bottom: 66px;
     cursor: pointer;
+}
+
+.menu {
+    width: 100%;
 }
 
 .menu-icon-text {
@@ -67,7 +77,5 @@
     padding-bottom: 120px;
 }
 
-.legal-notice-icon {
-    margin-left: 44px !important;
-}
+
 

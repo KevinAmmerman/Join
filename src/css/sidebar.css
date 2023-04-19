@@ -1,0 +1,73 @@
+.sidebar {
+    position: fixed;
+    top: 0px;
+    width: 232px;
+    height: 100%;
+    background: rgb(42, 54, 71);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.join-logo-menu {
+    width: 100.3px;
+    height: 121.97px;
+    margin-top: 66px;
+    margin-bottom: 66px;
+    cursor: pointer;
+}
+
+.menu-icon-text {
+    font-family: 'Inter' !important;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+    height: 46px;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.menu-icon-text:hover {
+    background-color: rgb(9, 25, 49);
+}
+
+
+.icon {
+    width: 37px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 55px;
+    margin-right: 20px;
+}
+
+.icon img {
+    width: 25px;
+}
+
+.text {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+.legal-notice {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 120px;
+}
+
+.legal-notice-icon {
+    margin-left: 44px !important;
+}
+

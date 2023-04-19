@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/login.css">
+    <link rel="stylesheet" href="./src/css/fonts.css">
     <link rel="shortcut icon" href="./src/favicon/logo_blue_join.png" type="image/x-icon">
     <title>Login</title>
 </head>
@@ -20,7 +21,7 @@
 
         <div class="login-password-content">
             <div class="login-head">
-                <h1>Log In</h1>
+                <h1>Log in</h1>
                 <div class="blue-line"></div>
             </div>
             <form onsubmit="login(); return false;">
@@ -30,12 +31,12 @@
                         <input class="password-input" type="password" name="password" placeholder="Password" id="password">
                     </div>
                     <div class="checkbox-container">
-                        <div class="checkbox"><input type="checkbox" name="" id="">Rembember me</div>
+                        <div class="checkbox"><input class="checkbox-input" type="checkbox" name="" id="loginCheckbox"><label for="remember-me"> Remember me</label></div>
                         <div class="forgetPassword"><a href="forgetPassword.html">Forget my password</a></div>
                     </div>
 
                     <div class="login-guest-button-container">
-                        <button class="sign-in-button">Sign in</button>
+                        <button class="sign-in-button">Log in</button>
                         <button class="guest-login-button">Guest Log in</button>
                     </div>
 

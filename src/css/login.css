@@ -1,13 +1,16 @@
 body{
     margin: 0;
-    font-family: 'Inter', 'sans-serif';;
+    font-family: 'Inter', 'sans-serif';
+    font-size: normal;
 }
 
 .join-Logo-Container{
     display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
+    justify-content: space-between;
+    margin-top: 80px;
     align-items: center;
+    margin-left: 80px;
+    margin-right: 120px;
 }
 
 .join-Logo-Container img{
@@ -20,7 +23,7 @@ body{
 
 @keyframes go_small {
     0% {
-        transform: translateX(700px) translateY(500px) scale(3);    
+        transform: translateX(1200px) translateY(450px) scale(3);    
     }
 
     35% {
@@ -85,7 +88,7 @@ body{
 }
 
 .login-head h1{
-    font-size: 50px;
+    font-size: 70px;
     margin: 0;
     margin-bottom: 15px;
 }
@@ -93,7 +96,7 @@ body{
 .blue-line{
     display: flex;
     margin: 0;
-    width: 120px;
+    width: 175px;
     height: 3px;
     background-color: rgba(11, 173, 221, 1);
     
@@ -106,24 +109,24 @@ body{
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: white;
-    border-radius: 15px;
+    border-radius: 20px;
     width: 500px;
     padding: 30px 60px 30px 60px;
-    
     animation: fade_in 1.5s;
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
 }
 
 .login-password-input-area{
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+    width: 400px;
 }
 
 .email-input{
     background-image: url('/src/img/email.png');
     background-repeat: no-repeat;
-    background-position: 190px;
+    background-position: 360px;
     background-size: 20px;
     margin-bottom: 15px;
     padding: 8px;
@@ -141,7 +144,7 @@ body{
 .password-input{
     background-image: url('/src/img/password.png');
     background-repeat: no-repeat;
-    background-position: 190px;
+    background-position: 360px;
     background-size: 20px;
     padding: 8px;
     font-size: 20px;
@@ -159,6 +162,8 @@ body{
 
 .checkbox-container {
     display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
     padding-bottom: 10px;
     padding-top: 20px;
 
@@ -166,8 +171,17 @@ body{
 
 .checkbox {
     padding-right: 23px;
+    
 
 }
+
+
+.checkbox-input{
+    content: '\2714';
+    border: 1px solid black;
+     
+}
+    
 
 .login-guest-button-container{
     padding-bottom: 25px;
@@ -180,8 +194,8 @@ body{
     background-color: #2A3647;
     padding: 9px;
     color: white;
-    border-radius: 5px;
-    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    padding: 15px 30px 15px 30px;
     font-size: 20px;
     border: none;
     margin-right: 25px;
@@ -194,7 +208,7 @@ body{
 .guest-login-button{
     padding: 9px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 5px 20px 5px 20px;
     font-size: 20px;
     border: black 1px solid;

@@ -1,0 +1,129 @@
+/* === GLOBAL === */
+
+html {
+    font-size: 16px;
+    font-family: 'Inter';
+}
+
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+/* === GENERAL === */
+
+
+/* === BOARD-TOP === */
+
+#boardTopContainer {
+    position: absolute;
+    width: auto;
+    height: 327px;
+    left: 267px;
+    right: 28px;
+    top: 57px;
+    display: flex;
+    align-items: center;
+}
+
+#boardInnerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 73px;
+    width: 100%;
+    padding: 0 35px 0 35px;
+}
+
+.boardHeadline {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 120%;
+    margin: 0;
+}
+
+#searchContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+    height: 55px;
+}
+
+.searchField {
+    background: #FFFFFF;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.devider {
+    background-color: #A8A8A8;
+    width: 1px;
+    height: 26px;
+}
+
+.searchFieldImage {
+    height: 15px;
+    padding: 0 12px 0 12px;
+}
+
+#inputSearch {
+    padding: 13px 21px;
+    border: none;
+    border-radius: 10px;
+}
+
+#inputSearch:focus {
+    outline: none;
+}
+
+#addTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 13px;
+    height: 42px;
+    background: #2A3647;
+    color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#addTask:hover {
+    background-color: #28ABE2;
+}
+
+/* === BOARD-BOTTOM === */
+
+#boardBottomContainer {
+    position: absolute;
+    width: auto;
+    height: 327px;
+    left: 267px;
+    right: 28px;
+    top: 300px;
+    background-color: #A8A8A8;
+    display: flex;
+    justify-content: space-between;
+}
+
+.col {
+    width: 22%;
+}
+
+.boardList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.boardList > h2 {
+    font-size: 1.2rem;
+}

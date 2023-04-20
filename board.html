@@ -9,11 +9,51 @@
     <link rel="stylesheet" href="src/css/fonts.css">
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/sidebar.css">
+    <link rel="stylesheet" href="src/css/board.css">
     <!-- Scripts -->
     <script src="src/scripts/includeHTML.js"></script>
 </head>
 <body onload="includeHTML()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
+    <div id="boardTopContainer">
+        <div id="boardInnerContainer">
+            <h1 class="boardHeadline">Board</h1>
+            <div id="searchContainer">
+                <div class="searchField">
+                    <input type="text" id="inputSearch" placeholder="Find Task">
+                    <div class="devider"></div>
+                    <img src="src/img/img_board/magnifyingGlass.png" alt="" class="searchFieldImage">
+                </div>
+                <div id="addTask">Add Task +</div>
+            </div>
+        </div>
+    </div>
+    <div id="boardBottomContainer">
+        <div class="col">
+            <div class="boardList">
+                <h2>To do</h2>
+                <img src="src/img/img_board/plus button v1.png" alt="plus symbol">
+            </div>
+        </div>
+        <div class="col">
+            <div class="boardList">
+                <h2>In progress</h2>
+                <img src="src/img/img_board/plus button v1.png" alt="plus symbol">
+            </div>
+        </div>
+        <div class="col">
+            <div class="boardList">
+                <h2>Awaiting Feedback</h2>
+                <img src="src/img/img_board/plus button v1.png" alt="plus symbol">
+            </div>
+        </div>
+        <div class="col">
+            <div class="boardList">
+                <h2>Done</h2>
+                <img src="src/img/img_board/plus button v1.png" alt="plus symbol">
+            </div>
+        </div>
+    </div>
 </body>
 </html>

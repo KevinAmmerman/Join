@@ -31,9 +31,9 @@ body {
     display: none !important;
 }
 
-/* === BOARD-TOP === */
+/* === BOARD-HEADER === */
 
-#BoardHeader {
+#boardHeader {
     position: fixed;
     width: auto;
     height: 327px;
@@ -119,7 +119,7 @@ body {
     background-color: #28ABE2;
 }
 
-/* === BOARD-BOTTOM === */
+/* === BOARD-MAIN === */
 
 #boardMainContainer {
     position: absolute;
@@ -169,6 +169,7 @@ body {
 .taskContainer {
     overflow-x: hidden;
     overflow-y: auto;
+    padding-right: 10px;
 }
 
 /* TASK-FIELD */
@@ -249,7 +250,6 @@ body {
     align-items: flex-start;
     padding: 50px;
     gap: 25px;
-    /* isolation: isolate; */
     position: relative;
     width: 385px;
     height: 550px;
@@ -271,6 +271,15 @@ body {
         min-width: 0;
     }
 
+    #boardInnerContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #boardHeader {
+        height: 245px;
+    }
+
     .col {
         width: 100%;
         min-height: 320px;
@@ -282,7 +291,7 @@ body {
         overflow-y: hidden;
     }
 
-    .taskContainer::-webkit-scrollbar:horizontal{
+    .taskContainer::-webkit-scrollbar:horizontal {
         height: 4px;
     }
 

@@ -135,9 +135,9 @@ body {
     padding-right: 28px;
     top: 300px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     overflow-x: hidden;
-
+    gap: 90px;
 }
 
 .col {
@@ -237,11 +237,13 @@ body {
 /* === TASK-WINDOW === */
 
 #taskInfoContainer {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
+    height: 100vh;
+    width: 100vw;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
     display: flex;
@@ -340,6 +342,8 @@ body {
     #boardMainContainer {
         flex-direction: column;
         min-width: 0;
+        gap: 0;
+        justify-content: space-between;
     }
 
     #boardInnerContainer {
@@ -370,5 +374,20 @@ body {
         min-width: 250px;
         height: max-content;
         margin-right: 32px;
+    }
+}
+
+@media (max-width: 725px) {
+
+    #searchContainer {
+        flex-direction: column;
+    }
+
+    #addTask {
+        min-height: 42px;
+    }
+
+    #boardHeader {
+        height: 200px;
     }
 }

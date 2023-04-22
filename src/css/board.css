@@ -2,7 +2,6 @@
 
 html {
     font-size: 16px;
-    font-family: 'Inter';
 }
 
 body {
@@ -12,10 +11,25 @@ body {
 
 /* === GENERAL === */
 
+.taskContainer::-webkit-scrollbar {
+    width: 5px;
+    margin-left: 5px;
+}
+
+/* Track */
+.taskContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.taskContainer::-webkit-scrollbar-thumb {
+    background: #28ABE2;
+    border-radius: 10px;
+}
 
 /* === BOARD-TOP === */
 
-#boardTopContainer {
+#BoardHeader {
     position: fixed;
     width: auto;
     height: 327px;
@@ -60,6 +74,7 @@ body {
     height: 42px;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .devider {
@@ -74,7 +89,7 @@ body {
 }
 
 #inputSearch {
-    padding: 13px 21px;
+    padding: 12px 21px;
     border: none;
     border-radius: 10px;
 }
@@ -102,32 +117,43 @@ body {
 
 /* === BOARD-BOTTOM === */
 
-#boardBottomContainer {
+#boardMainContainer {
     position: absolute;
     min-width: 1200px;
-    height: 327px;
+    height: calc(100vh - 320px);
     left: 267px;
     right: 0;
     padding-right: 28px;
     top: 300px;
     display: flex;
     justify-content: space-between;
-    overflow-x: scroll;
-    column-gap: 25px;
+    overflow-x: hidden;
+
 }
 
 .col {
     width: 250px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
-.boardList {
+.boardControlElements {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
 
-.boardList>h2 {
+.boardControlElements>h2 {
     font-size: 1.2rem;
+    color: #2A3647;
+}
+
+.boardControlElements img {
+    cursor: pointer;
 }
 
 .addBtn:hover {
@@ -136,7 +162,10 @@ body {
 
 /* TASK-CONTAINER  */
 
-.taskContainer {}
+.taskContainer {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 
 /* TASK-FIELD */
 
@@ -144,10 +173,53 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 18px 19px;
     gap: 10px;
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
+    margin-bottom: 32px;
+}
+
+.category {
+    background: #FF7A00;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 4px 25px;
+}
+
+.title {
+    font-size: 1rem;
+    color: #2A3647;
+    margin: 0;
+}
+
+.description {
+    color: #A8A8A8;
+}
+
+.subtaskBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.progressBar {
+    height: 8px;
+    width: 138px;
+    background-color: #A8A8A8;
+    border-radius: 5px;
+}
+
+.progress {
+    height: 8px;
+    width: 50px;
+    background-color: #28ABE2;
+    border-radius: 5px;
+}
+
+.progressInNumbers {
+    font-size: .8rem;
 }

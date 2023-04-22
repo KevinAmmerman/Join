@@ -12,7 +12,7 @@ body {
 /* === GENERAL === */
 
 .taskContainer::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
     margin-left: 5px;
 }
 
@@ -25,6 +25,10 @@ body {
 .taskContainer::-webkit-scrollbar-thumb {
     background: #28ABE2;
     border-radius: 10px;
+}
+
+.dNone {
+    display: none !important;
 }
 
 /* === BOARD-TOP === */
@@ -222,4 +226,69 @@ body {
 
 .progressInNumbers {
     font-size: .8rem;
+}
+
+/* === TASK-WINDOW === */
+
+#taskInfoContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskEditContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 25px;
+    /* isolation: isolate; */
+    position: relative;
+    width: 385px;
+    height: 550px;
+    background: #FFFFFF;
+    border-radius: 30px;
+}
+
+.titleEditWindow {
+    font-size: 2.5rem;
+}
+
+
+/* === MEDIA-QUERIES === */
+
+@media (max-width: 868px) {
+
+    #boardMainContainer {
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .col {
+        width: 100%;
+        min-height: 320px;
+    }
+
+    .taskContainer {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .taskContainer::-webkit-scrollbar:horizontal{
+        height: 4px;
+    }
+
+    .task {
+        min-width: 250px;
+        height: max-content;
+        margin-right: 32px;
+    }
 }

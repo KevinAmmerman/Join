@@ -38,10 +38,25 @@
 
 
 .task-Container{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 80px;
     position: fixed;
     left: 257px;
     right: 28px;
-    top: 57px;
+    top: 457px;
     display: flex;
 
 }
+
+.task-board{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
+    padding: 60px 60px 60px 60px;
+    font-size: 40px;
+}
+

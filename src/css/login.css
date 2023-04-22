@@ -41,7 +41,7 @@ body {
 
 }
 
-@keyframes fade_in {
+@keyframes fade_in{
     0% {
         opacity: 0;
         transform: scale(0.5);

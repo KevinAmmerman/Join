@@ -31,6 +31,11 @@ body {
     display: none !important;
 }
 
+.subheadlineStyle {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
 /* === BOARD-HEADER === */
 
 #boardHeader {
@@ -257,8 +262,74 @@ body {
     border-radius: 30px;
 }
 
+.closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    transform: scale(1.2);
+}
+
 .titleEditWindow {
     font-size: 2.5rem;
+}
+
+.dateContainer {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.priorityContainer {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.editDeleteContainer {
+    position: absolute;
+    right: 35px;
+    bottom: 35px;
+    display: flex;
+    border-radius: 10px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.right {
+    padding: 4px 10px 4px 10px;
+    background-color: #2A3647;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right:hover {
+    background-color: #28ABE2;
+}
+
+.right > img {
+    height: 23px;
+}
+
+.left {
+    background-image: url(../img/img_board/delete.svg);
+    background-size: 23px 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 4px 26px 4px 10px;
+    border: 2px solid #2A3647;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.left:hover {
+    filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
 }
 
 

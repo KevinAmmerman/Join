@@ -1,0 +1,47 @@
+    body {
+        margin: 0;
+        font-family: 'Inter', 'sans-serif';
+        font-size: normal;
+    }
+
+    .summary-container{
+    position: fixed;
+    width: auto;
+    height: 327px;
+    left: 267px;
+    right: 28px;
+    top: 57px;
+    display: flex;
+    align-items: center;
+    margin-left: 90px;
+}
+
+.summary-header{
+    font-size: 30px;
+}
+
+.blue-line{
+    height: 70px;
+    width: 3px;
+    margin: 0;
+    margin-left: 80px;
+    background-color: rgba(11, 173, 221, 1);
+
+}
+
+.text-header h2{
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: 40px;
+
+}
+
+
+.task-Container{
+    position: fixed;
+    left: 257px;
+    right: 28px;
+    top: 57px;
+    display: flex;
+
+}

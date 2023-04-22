@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
+    <script src="./src/scripts/includeHTML.js"></script>
+    <link rel="stylesheet" href="./src/css/header.css">
+    <link rel="stylesheet" href="./src/css/sidebar.css">
+    <link rel="stylesheet" href="./src/css/summary.css">
+    <link rel="stylesheet" href="./src/css/fonts.css">
+    <link rel="shortcut icon" href="./src/favicon/logo_blue_join.png" type="image/x-icon">
+    <title>Summary</title>
 </head>
 <body>
-    
+    <body onload="includeHTML()">
+        <div w3-include-html="src/templates/header.html"></div>
+        <div w3-include-html="src/templates/sidebar.html"></div>
+
+        <div class="summary-container">
+            <div class="summary-header">
+                <h1>Summary</h1>
+           </div>
+
+            <div class="blue-line"></div>
+            <div class="text-header"><h2>Everything in a nutshell</h2></div>
+
+        </div>
+
+        <div class="task-Container">
+            <div>5 Task in Board</div>
+            <div>2 Task in Progress</div>
+            <div>2 Awaiting Feedback</div>
+            
+        </div>
+
 </body>
 </html>

@@ -34,9 +34,11 @@ function generateSummaryTemplate(){
                  
         </div>      
         <div class="to-do-done-container">
+            <div class="to-do-done-container2">
         <div class="to-do-done">  <img src="./src/img/to-do.png" alt=""><span class="to-do-done-text"><p>1</p>To-do</span></div>
        
-        <div class="to-do-done margin "> <img src="./src/img/done.png" alt=""><span class="to-do-done-text"><p>1</p>Done</span></div>
+        <div class="to-do-done"> <img src="./src/img/done.png" alt=""><span class="to-do-done-text"><p>1</p>Done</span></div>
+        </div>
         </div>
     </div>
 

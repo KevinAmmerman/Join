@@ -51,7 +51,7 @@
 .task-container{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     
     
     
@@ -59,7 +59,7 @@
 
 .task-container-2{
     display: flex;
-    justify-content: space-evenly;
+    
     width: 100%;
     
 }
@@ -75,6 +75,7 @@
     text-align: center;
     height: 80px;
     width: 90px;
+    margin-right: 100px;
     
     
     
@@ -112,11 +113,10 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
     height: 200px;
-    width: 580px;
+    width: 710px;
     border-radius: 20px;
     margin-top: 50px;
-    margin-left: 30px;
-
+    
 }
 
 .task-Deadline-Container:hover{
@@ -155,9 +155,13 @@
 }
 
 .to-do-done-container{
-    display: flex;
-    justify-content: space-evenly;
+    width: 81%;
     
+}
+
+.to-do-done-container2{
+    display: flex;
+    justify-content: space-between;
 }
 
 .date{
@@ -186,7 +190,6 @@
 
 .to-do-done{
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -198,9 +201,7 @@
     margin-top: 50px;
 }
 
-.margin{
-    margin-left: 100px;
-}
+
 
 .to-do-done img{
     margin-right: 20px;

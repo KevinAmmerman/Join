@@ -44,7 +44,7 @@ body {
     height: 327px;
     left: 267px;
     right: 28px;
-    top: 57px;
+    top: 30px;
     display: flex;
     align-items: center;
 }
@@ -129,13 +129,13 @@ body {
 #boardMainContainer {
     position: absolute;
     min-width: 1200px;
-    height: calc(100vh - 320px);
+    height: calc(100vh - 278px);
     left: 267px;
     right: 0;
-    padding-right: 28px;
-    top: 300px;
+    padding: 0 63px 0 35px;
+    top: 278px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     overflow-x: hidden;
     gap: 90px;
 }
@@ -343,7 +343,9 @@ body {
         flex-direction: column;
         min-width: 0;
         gap: 0;
-        justify-content: space-between;
+        top: 300px;
+        height: calc(100vh - 320px);
+        padding: 0 28px 0 0;
     }
 
     #boardInnerContainer {
@@ -353,6 +355,7 @@ body {
 
     #boardHeader {
         height: 245px;
+        top: 57px;
     }
 
     .col {

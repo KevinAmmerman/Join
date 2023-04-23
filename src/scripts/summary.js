@@ -29,16 +29,22 @@ function generateSummaryTemplate(){
                 <div> 
                     <span class="date"> April 16, 2023</span> <p> Upcoming Deadline</p>
                </div>
-               
+
+              
                  
         </div>      
-        
-        <div class="times-Container">
-    <div class="times">
-    Good Morning, <p>Sofia Müller</p>
-    </div>   
+        <div class="to-do-done-container">
+        <div class="to-do-done">  <img src="./src/img/to-do.png" alt=""><span class="to-do-done-text"><p>1</p>To-do</span></div>
+       
+        <div class="to-do-done margin "> <img src="./src/img/done.png" alt=""><span class="to-do-done-text"><p>1</p>Done</span></div>
+        </div>
     </div>
 
+
+    <div class="times-Container">
+    <div class="times">
+    <span class="time-name">Good Morning, <p>Sofia Müller</p> </span>
+    </div> 
 
 </div> 
 

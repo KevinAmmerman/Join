@@ -1,0 +1,234 @@
+/* === GLOBAL === */
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+/* === GENERAL === */
+
+.circalInitialsBig {
+    border-radius: 100%;
+    background-color: red;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 3rem;
+    border: 3px solid white;
+}
+
+.circalInitials {
+    border-radius: 100%;
+    background-color: red;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.emailStyle {
+    color: #28ABE2;
+}
+
+.FontWeightBold {
+    font-weight: bold;
+}
+
+/* === MAIN-CONTAINER === */
+
+#contactsMainContainer {
+    position: absolute;
+    display: flex;
+    background-color: #F6F7F8;
+    top: 89px;
+    left: 232px;
+    right: 0;
+    height: calc(100vh - 89px);
+}
+
+#contactList {
+    background-color: #FFFFFF;
+    min-width: 453px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    gap: 20px;
+}
+
+#contactView {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* === CONTACT-HEADER === */
+
+#contactHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 170px;
+    gap: 30px;
+    padding-left: 70px;
+}
+
+#contactHeader h1 {
+    margin: 0;
+    font-size: 3rem;
+}
+
+#contactHeader span {
+    font-size: 1.2rem;
+    color: #2A3647;
+}
+
+.devider {
+    width: 3px;
+    height: 59px;
+    background-color: #28ABE2;
+}
+
+/* === CONTACT-LIST === */
+
+.contactOrder {
+    height: 80px;
+    border-bottom: 2px solid #D1D1D1;
+    border-radius: 3px;
+    width: 310px;
+    display: flex;
+    align-items: center;
+}
+
+.contactOrder > span {
+    font-size: 1.5rem;
+    margin-left: 24px;
+}
+
+.contactCard {
+    height: 80px;
+    width: 340px;
+    display: flex;
+    border-radius: 15px;
+    cursor: pointer;
+    gap: 35px;
+}
+
+.contactCard:hover {
+    background-color: #F6F7F8;
+}
+
+.leftPart {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.rightPart {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.rightPart span:first-of-type {
+    font-size: 1.2rem;
+}
+
+/* === FULL-CONTACT-CARD === */
+
+#fullContactCard {
+    margin-left: 50px;
+}
+
+.cardContainer {
+    height: 330px;
+}
+
+.contactName {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+}
+
+.contactName span {
+    font-size: 3rem;
+}
+
+.cardTopPart {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.contactAddTask {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 25px;
+    color: #28ABE2;
+    cursor: pointer;
+}
+
+.contactAddTask:hover {
+    font-weight: bold;
+}
+
+.contactAddTask > div {
+    font-size: 1.8rem;
+    position: absolute;
+    top: -9px;
+    left: 0px;
+}
+
+.cardMidPart {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    height: 80px;
+}
+
+.cardMidPart > span {
+    display: flex;
+    align-items: baseline;
+    color: #2A3647;
+    cursor: pointer;
+}
+
+.cardMidPart > span:hover {
+    filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
+    font-weight: bold;
+}
+
+.contactInformation {
+    font-size: 1.35rem;
+    font-weight: 400;
+}
+
+.cardMidPart > span > div {
+    background-image: url(../img/img_contacts/pencil_dark.svg);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    width: 25px;
+    height: 24px;
+}
+
+.cardBottomPart {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

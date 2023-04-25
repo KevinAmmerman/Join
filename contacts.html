@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/css/fonts.css">
+    <link rel="stylesheet" href="src/css/header.css">
+    <link rel="stylesheet" href="src/css/sidebar.css">
+    <link rel="stylesheet" href="src/css/contacts.css">
+    <!-- Scripts -->
+    <script src="src/scripts/includeHTML.js"></script>
+</head>
+<body onload="includeHTML()">
+    <div w3-include-html="src/templates/header.html"></div>
+    <div w3-include-html="src/templates/sidebar.html"></div>
+    <div id="contactsMainContainer">
+        <div id="contactList">
+            <div class="contactOrder">
+                <span>A</span>
+            </div>
+            <div class="contactCard">
+                <div class="leftPart"><div class="circalInitials">KA</div></div>
+                <div class="rightPart">
+                    <span>Hans Wurst</span>
+                    <span class="emailStyle">hans.wurst@web.de</span>
+                </div>
+            </div>
+        </div>
+        <div id="contactView">
+            <div id="contactHeader">
+                <h1>Contacts</h1>
+                <div class="devider"></div>
+                <span>Better with a team</span>
+            </div>
+            <div id="fullContactCard">
+                <div class="cardContainer">
+                    <div class="cardTopPart">
+                        <div class="circalInitialsBig">KA</div>
+                        <div class="contactName">
+                            <span>Hans Wurst</span>
+                            <div class="contactAddTask"><div>+</div>Add Task</div>
+                        </div>
+                    </div>
+                    <div class="cardMidPart">
+                        <div class="contactInformation">Contact Information</div>
+                        <span><div></div>Edit Contact</span>
+                    </div>
+                    <div class="cardBottomPart">
+                        <span class="FontWeightBold">Email</span>
+                        <span class="emailStyle">hans.wurst@web.de</span>
+                        <span class="FontWeightBold">Phone</span>
+                        <span>+49 89 4726984</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

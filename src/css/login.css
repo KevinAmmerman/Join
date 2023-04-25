@@ -36,6 +36,7 @@ body {
 }
 
 .signIn-Container {
+    
     font-size: 30px;
     animation: fade_in 1.5s;
 
@@ -246,3 +247,15 @@ body {
     text-decoration: none;
 }
 
+@media(max-width:850px){
+    .signIn-Container{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 850px;
+        left: 50px;
+        font-size: 20px;
+
+    }
+
+}

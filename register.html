@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="./src/css/register.css">
     <link rel="stylesheet" href="./src/css/fonts.css">
     <link rel="shortcut icon" href="./src/favicon/logo_blue_join.png" type="image/x-icon">
+    <script src="./src/scripts/storage.js"></script>
+    <script src="./src/scripts/register.js"></script>
     <title>Register</title>
 </head>
 
-<body>
+<body onload="init()">
     <div class="register-logo-container">
         <img class="blue-logo" src="./src/img/logo_blue_join.png">
     </div>
@@ -24,16 +26,16 @@
             <div class="blue-line"></div>
 
 
-            <Form onsubmit="addUser(); return false;">
+            <Form onsubmit="register(); return false;">
                 <div>
                     <div class="input-register-password">
 
-                        <input class="name-input" type="text" name="name" placeholder="Name" id="name" required>
-                        <input class="email-input" type="email" name="email" placeholder="Email" id="eMail" required>
-                        <input class="password-input" type="password" name="password" placeholder="Password" id="password" required>
+                        <input class="name-input" type="text" name="name" placeholder="Name" id="names"  required>
+                        <input class="email-input" type="email" name="email" placeholder="Email" id="email" required>
+                        <input class="password-input" type="password" name="password" placeholder="Password" id="password" autocomplete="on" required>
                     </div>
                     <div class="SignUp-button-container">
-                        <button class="SignUp-button">Sign up</button>
+                        <button id="registerBtn" class="SignUp-button">Sign up</button>
 
                     </div>
                 </div>

@@ -44,6 +44,40 @@ body {
     font-weight: bold;
 }
 
+.coloredBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 15px;
+    gap: 10px;
+    background: #2A3647;
+    border: none;
+    border-radius: 10px;
+    line-height: 120%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.transparentBtn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 10px;
+    gap: 10px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    color: #2A3647;
+    font-size: 1.3rem;
+    background-color: transparent;
+    line-height: 120%;
+    cursor: pointer;
+}
+
 /* === MAIN-CONTAINER === */
 
 #contactsMainContainer {
@@ -318,6 +352,19 @@ body {
     transform: translateX(-50%);
 }
 
+.closeCross {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 20px;
+    filter: invert(16%) sepia(45%) saturate(441%) hue-rotate(174deg) brightness(93%) contrast(88%);
+    cursor: pointer;
+}
+
+.closeCross:hover {
+    transform: scale(1.1);
+}
+
 /* INPUT-FORM */
 
 .contactInputForm {
@@ -362,25 +409,6 @@ body {
     gap: 20px;
 }
 
-.cancelBtn {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 136px;
-    height: 55px;
-    border: 1px solid #2A3647;
-    border-radius: 10px;
-    color: #2A3647;
-    font-size: 1.3rem;
-    background-color: transparent;
-    line-height: 120%;
-    cursor: pointer;
-}
-
 .cancelBtn>span {
     font-size: 1.6rem;
     line-height: 120%;
@@ -396,31 +424,12 @@ body {
     filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
 }
 
-.submitBtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 15px;
-    gap: 10px;
-    width: 218px;
-    height: 55px;
-    background: #2A3647;
-    border: none;
-    border-radius: 10px;
-    line-height: 120%;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
 .submitBtn:hover {
     background-color: #29ABE2;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.test {
+.addContactRight {
     width: 775px;
 }
 
@@ -437,7 +446,7 @@ body {
         flex-direction: column;
     }
 
-    .test {
+    .addContactRight {
         width: 593px;
         height: 430px;
         position: relative;
@@ -468,5 +477,9 @@ body {
         width: 422px;
         display: flex;
         justify-content: center;
+    }
+
+    .closeCross {
+        filter: invert(100%) sepia(2%) saturate(0%) hue-rotate(17deg) brightness(115%) contrast(100%);
     }
 }

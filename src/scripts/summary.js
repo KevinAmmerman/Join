@@ -48,7 +48,4 @@ function generateSummaryTemplate(){
     <span class="time-name">Good Morning, <p>Sofia Müller</p> </span>
     </div> 
 
-</div> 
-
-        
-    `;
+</div> `;}

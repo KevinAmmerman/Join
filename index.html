@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./src/css/login.css">
     <link rel="stylesheet" href="./src/css/fonts.css">
     <link rel="shortcut icon" href="./src/favicon/logo_blue_join.png" type="image/x-icon">
+    <script src="./src/scripts/storage.js"></script>
+    <script src="./src/scripts/login.js"></script>
     <title>Login</title>
 </head>
 
@@ -37,7 +39,7 @@
 
                     <div class="login-guest-button-container">
                         <button class="sign-in-button">Log in</button>
-                        <button class="guest-login-button">Guest Log in</button>
+                        <button onclick="guestLogin()" class="guest-login-button">Guest Log in</button>
                     </div>
 
                 </div>

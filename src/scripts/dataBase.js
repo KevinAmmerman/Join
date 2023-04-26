@@ -3,6 +3,16 @@ let contacts = [
         'name': 'Hans',
         'email': 'hans.mueller@web.de',
         'phone': '+49 89 7865975'
+    },
+    {
+        'name': 'Thomas',
+        'email': 'thomas.mueller@web.de',
+        'phone': '+49 89 7865975'
+    },
+    {
+        'name': 'Ben',
+        'email': 'ben.mueller@web.de',
+        'phone': '+49 89 7865975'
     }
 ];
 

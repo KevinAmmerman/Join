@@ -78,6 +78,10 @@ body {
     cursor: pointer;
 }
 
+.dNone {
+    display: none !important;
+}
+
 /* === MAIN-CONTAINER === */
 
 #contactsMainContainer {

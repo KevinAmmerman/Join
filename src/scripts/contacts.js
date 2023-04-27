@@ -68,5 +68,10 @@ function createHtmlForContact(contact) {
 
 function openNewContactWindow() {
     let contactContainer = document.getElementById('addContactMainContainer');
-    contactContainer.classList.toggle('dNone');
+    let addContactContainer = document.getElementById('addContactContainer');
+    contactContainer.classList.remove('dNone');
+    contactContainer.classList.add('fadeInMainContainer');
+    setTimeout(function() {
+        addContactContainer.classList.add('fadeInContainer');
+    }), 500;
 }

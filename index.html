@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="./src/css/fonts.css">
     <link rel="shortcut icon" href="./src/favicon/logo_blue_join.png" type="image/x-icon">
     <script src="./src/scripts/storage.js"></script>
+    <script src="./src/scripts/register.js"></script>
     <script src="./src/scripts/login.js"></script>
     <title>Login</title>
 </head>
 
-<body>
+<body onload="init()">
     <div class="join-Logo-Container">
         <img src="./src/img/logo_blue_join.png" alt="Join-Blue-Logo">
         <div class="signIn-Container">Not a Join User? <a class="sign-Up-Button" href="register.html">Sign up</a></div>
@@ -41,11 +42,12 @@
                         <button class="sign-in-button">Log in</button>
                         <button onclick="guestLogin()" class="guest-login-button">Guest Log in</button>
                     </div>
-
+                    <div class="message d-none" id="msgBox"></div>
                 </div>
+                
             </form>
         </div>
-
+            
     </div>
 
 </body>

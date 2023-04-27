@@ -16,10 +16,11 @@
     <!-- Scripts -->
     <script src="src/scripts/includeHTML.js"></script>
     <script src="src/scripts/dataBase.js"></script>
+    <script src="src/scripts/contacts_html_templates.js"></script>
     <script src="src/scripts/contacts.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), init()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
     <div id="addContactMainContainer" class="dNone">
@@ -57,7 +58,7 @@
     </div>
     <div id="contactsMainContainer">
         <div id="contactList">
-            <div class="contactOrder">
+            <!-- <div class="contactOrder">
                 <span>A</span>
             </div>
             <div class="contactCard" id="contactCard">
@@ -68,7 +69,7 @@
                     <span>Hans Wurst</span>
                     <span class="emailStyle">hans.wurst@web.de</span>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div id="contactView">
             <div id="contactHeader">
@@ -101,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <div class="addContactBtn">New contact<img src="src/img/img_contacts/addContact_img.png"
+            <div onclick="openNewContactWindow()" class="addContactBtn">New contact<img src="src/img/img_contacts/addContact_img.png"
                     alt="logo of small person"></div>
         </div>
     </div>

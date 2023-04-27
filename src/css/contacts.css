@@ -14,7 +14,7 @@ body {
 
 .circalInitialsBig {
     border-radius: 100%;
-    background-color: red;
+    /* background-color: red; */
     min-width: 120px;
     height: 120px;
     display: flex;
@@ -27,7 +27,7 @@ body {
 
 .circalInitials {
     border-radius: 100%;
-    background-color: red;
+    /* background-color: red; */
     width: 42px;
     height: 42px;
     display: flex;

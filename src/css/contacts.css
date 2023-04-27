@@ -14,7 +14,7 @@ body {
 
 .circalInitialsBig {
     border-radius: 100%;
-    background-color: red;
+    /* background-color: red; */
     min-width: 120px;
     height: 120px;
     display: flex;
@@ -27,7 +27,7 @@ body {
 
 .circalInitials {
     border-radius: 100%;
-    background-color: red;
+    /* background-color: red; */
     width: 42px;
     height: 42px;
     display: flex;
@@ -307,8 +307,21 @@ body {
     left: 0;
     right: 0;
     z-index: 12;
-    background-color: rgba(0, 0, 0, 0.5);
+    /* background-color: rgba(0, 0, 0, 0);
+    transition: background-color 400ms ease-in-out; */
+    animation: fadeIn 500ms ease-in-out forwards;
 }
+
+@keyframes fadeIn {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
 
 .addContactContainer {
     display: flex;
@@ -317,6 +330,12 @@ body {
     height: 594px;
     border-radius: 30px;
     background-color: #FFFFFF;
+    transform: translateX(3000px);
+    transition: transform 500ms ease-in-out;
+}
+
+.fadeInContainer {
+    transform: translateX(0px) !important;
 }
 
 .addContactLeft {

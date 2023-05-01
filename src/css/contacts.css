@@ -67,7 +67,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 14px 10px;
+    padding: 13px 10px;
     gap: 10px;
     border: 1px solid #2A3647;
     border-radius: 10px;
@@ -80,6 +80,10 @@ body {
 
 .dNone {
     display: none !important;
+}
+
+.active {
+    background-color: #2A3647;
 }
 
 /* === MAIN-CONTAINER === */
@@ -167,6 +171,10 @@ body {
 
 .contactCard:hover {
     background-color: #F6F7F8;
+}
+
+.noHover:hover {
+    background-color: #2A3647;
 }
 
 .leftPart {
@@ -435,6 +443,12 @@ body {
     gap: 20px;
 }
 
+.cancelBtn {
+    position: absolute;
+    right: 132px;
+    bottom: 126px;
+}
+
 .cancelBtn>span {
     font-size: 1.6rem;
     line-height: 120%;
@@ -502,10 +516,17 @@ body {
     .btnSection {
         width: 422px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-left: 40px;
     }
 
     .closeCross {
         filter: invert(100%) sepia(2%) saturate(0%) hue-rotate(17deg) brightness(115%) contrast(100%);
+    }
+
+    .cancelBtn {
+        position: absolute;
+        right: 134px;
+        bottom: 39px;
     }
 }

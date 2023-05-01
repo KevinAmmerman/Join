@@ -6,7 +6,7 @@ async function init() {
 // CONTACT-LIST FUNCTIONS
 
 async function orderContacts() {
-
+    groups = [];
     contacts.forEach(function (contact) {
         let firstLetter = contact.name.charAt(0).toLowerCase();
         let index = firstLetter.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -22,6 +22,7 @@ async function orderContacts() {
 
 function renderContacts() {
     let contactList = document.getElementById('contactList');
+    contactList.innerHTML = '';
     for (let i = 0; i < groups.length; i++) {
         if (!groups[i]) continue;
         if (groups[i].length > 0) {
@@ -29,7 +30,7 @@ function renderContacts() {
             contactList.innerHTML += createHtmlForOrder(firstLetter);
             for (let j = 0; j < groups[i].length; j++) {
                 const contact = groups[i][j];
-                contactList.innerHTML += createHtmlForContact(contact);
+                contactList.innerHTML += createHtmlForContact(contact, i, j);
             }
         }
     }
@@ -56,12 +57,53 @@ function deUmlaut(value){
 // CREATE-CONTACT FUNCTIONS
 
 
-function openNewContactWindow() {
+function openAndCloseNewContactWindow() {
     let contactContainer = document.getElementById('addContactMainContainer');
     let addContactContainer = document.getElementById('addContactContainer');
-    contactContainer.classList.remove('dNone');
-    contactContainer.classList.add('fadeInMainContainer');
+    contactContainer.classList.toggle('dNone');
+    contactContainer.classList.toggle('fadeInMainContainer');
     setTimeout(function () {
-        addContactContainer.classList.add('fadeInContainer');
+        addContactContainer.classList.toggle('fadeInContainer');
     }), 500;
+}
+
+
+function addContact() {
+    let name = document.getElementById('inputName');
+    let email = document.getElementById('inputEmail');
+    let phone = document.getElementById('inputPhone');
+    let contact = {
+        'name': name.value,
+        'email': email.value,
+        'phone': phone.value
+    };
+    contacts.push(contact);
+    emptyInputFields(name, email, phone);
+    init();
+    openAndCloseNewContactWindow();
+}
+
+function emptyInputFields(name, email, phone) {
+    name.value = '';
+    email.value = '';
+    phone.value = '';
+}
+
+// OPEN-CONTACT FUNCTIONS 
+
+function openContact(i, j) {
+    let fullContactCard = document.getElementById('fullContactCard');
+    let contact = groups[i][j];
+    fullContactCard.innerHTML = createHtmlForContactCard(contact);
+    addActiveClass(i, j);
+}
+
+
+function addActiveClass(i, j) {
+    const elements = document.querySelectorAll('.active');
+    elements.forEach((element) => {
+        element.classList.remove('active');
+    });
+    let active = document.getElementById(`contactCard${i}${j}`);
+    active.classList.add('active');
 }

@@ -32,9 +32,9 @@
                 <img class="blueLineContact" src="src/img/img_contacts/login-blue-line.png" alt="blue line">
             </div>
             <img class="defaultUserImg" src="src/img/img_contacts/defaultUser_img.png" alt="default user image">
-            <img class="closeCross" src="src/img/img_contacts/cross.svg">
+            <img class="closeCross" src="src/img/img_contacts/cross.svg" onclick="openAndCloseNewContactWindow()">
             <div class="addContactRight">
-                <form class="contactInputForm" onsubmit="">
+                <form class="contactInputForm" onsubmit="addContact(); return false">
                     <div class="inputSection">
                         <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="\w+\s\w+" required>
                         <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
@@ -48,11 +48,11 @@
                         <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                     </div>
                     <div class="btnSection">
-                        <button class="cancelBtn transparentBtn">Cancel<img src="src/img/img_contacts/cross.svg"></button>
                         <button class="submitBtn coloredBtn">Create contact<img src="src/img/img_contacts/ok_chop.png"
                                 alt="image of a chop"></button>
                     </div>
                 </form>
+                <button onclick="openAndCloseNewContactWindow()" class="cancelBtn transparentBtn">Cancel<img src="src/img/img_contacts/cross.svg"></button>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                 <span>Better with a team</span>
             </div>
             <div id="fullContactCard">
-                <div class="cardContainer">
+                <!-- <div class="cardContainer">
                     <div class="cardTopPart">
                         <div class="circalInitialsBig">KA</div>
                         <div class="contactName">
@@ -89,10 +89,10 @@
                         <span class="FontWeightBold">Phone</span>
                         <span>+49 89 4726984</span>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div onclick="openNewContactWindow()" class="addContactBtn">New contact<img src="src/img/img_contacts/addContact_img.png"
-                    alt="logo of small person"></div>
+            <div onclick="openAndCloseNewContactWindow()" class="addContactBtn">New contact<img src="src/img/img_contacts/addContact_img.png"
+                alt="logo of small person"></div>
         </div>
     </div>
 </body>

@@ -198,12 +198,14 @@
     height: 150px;
     padding: 20px;
     margin-top: 50px;
+    background-color: white
 }
 
 
 
 .to-do-done img{
     margin-right: 20px;
+    
 }
 
 .to-do-done-text{
@@ -218,10 +220,16 @@
 }
 
 .to-do-done:hover{
-    scale: 1.1;
     background-color: #2A3647;
     color: white;
-    
+    scale: 1.1;
+}
+
+.to-do-done:hover img{
+    scale: 1.1;
+    filter: brightness(101%) contrast(200%) grayscale(52%) hue-rotate(-7deg)
+    invert(100%) saturate(0%);
+        
     
 }
 

@@ -1,7 +1,34 @@
+
 function getSummary(){
     generateSummaryTemplate();
-
+    greet();
 }
+
+
+
+function greetings(){
+    const currentHour = new Date().getHours();
+    let greeting;
+
+    if(currentHour >= 4 && currentHour < 12){
+        greeting = 'Good morning';
+    }
+     else if(currentHour >= 12 && currentHour < 18){
+        greeting = 'Good afternoon';
+    }
+    else if(currentHour >= 18 && currentHour < 23){
+        greeting = 'Good evening';
+    }
+
+    return greeting;
+}
+
+function greet(){
+    let greetinghtml = document.getElementById('greetings');
+    greetinghtml.innerHTML = greetings();
+}
+
+
 
 
 function generateSummaryTemplate(){
@@ -37,7 +64,7 @@ function generateSummaryTemplate(){
             <div class="to-do-done-container2">
         <div class="to-do-done">  <img src="./src/img/to-do.png" alt=""><span class="to-do-done-text"><p>1</p>To-do</span></div>
        
-        <div class="to-do-done"> <img src="./src/img/done.png" alt=""><span class="to-do-done-text"><p>1</p>Done</span></div>
+        <div class="to-do-done"><img src="./src/img/done.png" alt=""><span class="to-do-done-text"><p>1</p>Done</span></div>
         </div>
         </div>
     </div>
@@ -45,7 +72,7 @@ function generateSummaryTemplate(){
 
     <div class="times-Container">
     <div class="times">
-    <span class="time-name">Good Morning, <p>Sofia Müller</p> </span>
+    <span class="time-name"><h2 id="greetings"></h2> <p id="user"></p> </span>
     </div> 
 
 </div> `;}

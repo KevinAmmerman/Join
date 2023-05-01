@@ -36,31 +36,21 @@ function renderContacts() {
 }
 
 
-function createHtmlForOrder(letter) {
-    return `
-        <div class="contactOrder">
-            <span>${letter}</span>
-        </div>
-    `;
-}
-
-
-function createHtmlForContact(contact) {
-    let initials = contact.name.match(/\b\w/g).join('').toUpperCase();
+function getColorForInitials(contact) {
     let name = contact.name;
-    let email = contact.email;
-    return `
-        <div class="contactCard" id="contactCard">
-            <div class="leftPart">
-                <div class="circalInitials">${initials}</div>
-            </div>
-            <div class="rightPart">
-                <span>${name}</span>
-                <span class="emailStyle">${email}</span>
-            </div>
-        </div>
-    `;
+    let firstLetter = name.split(' ')[1][0].toLowerCase();
+    let index = firstLetter.charCodeAt(0) - 'a'.charCodeAt(0);
+    return index;
 }
+
+
+function deUmlaut(value){
+    value = value.toLowerCase();
+    value = value.replace(/ä/g, 'ae');
+    value = value.replace(/ö/g, 'oe');
+    value = value.replace(/ü/g, 'ue');
+    return value;
+  }
 
 
 // CREATE-CONTACT FUNCTIONS
@@ -71,7 +61,7 @@ function openNewContactWindow() {
     let addContactContainer = document.getElementById('addContactContainer');
     contactContainer.classList.remove('dNone');
     contactContainer.classList.add('fadeInMainContainer');
-    setTimeout(function() {
+    setTimeout(function () {
         addContactContainer.classList.add('fadeInContainer');
     }), 500;
 }

@@ -36,15 +36,15 @@
             <div class="addContactRight">
                 <form class="contactInputForm" onsubmit="">
                     <div class="inputSection">
-                        <input class="contactInput" id="inputName" type="text" placeholder="Name">
+                        <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="\w+\s\w+" required>
                         <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
                     </div>
                     <div class="inputSection">
-                        <input class="contactInput" id="inputEmail" type="email" placeholder="Email">
+                        <input class="contactInput" id="inputEmail" type="email" placeholder="Email" required>
                         <img class="inputImg" src="src/img/img_contacts/mail.png" alt="logo of a mail">
                     </div>
                     <div class="inputSection">
-                        <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone">
+                        <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" required>
                         <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                     </div>
                     <div class="btnSection">
@@ -58,18 +58,7 @@
     </div>
     <div id="contactsMainContainer">
         <div id="contactList">
-            <!-- <div class="contactOrder">
-                <span>A</span>
-            </div>
-            <div class="contactCard" id="contactCard">
-                <div class="leftPart">
-                    <div class="circalInitials">KA</div>
-                </div>
-                <div class="rightPart">
-                    <span>Hans Wurst</span>
-                    <span class="emailStyle">hans.wurst@web.de</span>
-                </div>
-            </div> -->
+           
         </div>
         <div id="contactView">
             <div id="contactHeader">

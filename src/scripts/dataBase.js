@@ -15,17 +15,37 @@ let contacts = [
         'phone': '+49 89 7865975'
     },
     {
-        'name': 'Bruce',
+        'name': 'Bruce Windo',
         'email': 'ben.mueller@web.de',
         'phone': '+49 89 7865975'
     },
     {
-        'name': 'Bennded',
+        'name': 'Bennded Gammel',
         'email': 'ben.mueller@web.de',
         'phone': '+49 89 7865975'
     },
     {
-        'name': 'Anton',
+        'name': 'Anton Hund',
+        'email': 'anton.mueller@web.de',
+        'phone': '+49 89 7865975'
+    },
+    {
+        'name': 'Bennded Himmel',
+        'email': 'ben.mueller@web.de',
+        'phone': '+49 89 7865975'
+    },
+    {
+        'name': 'Anton Petes',
+        'email': 'anton.mueller@web.de',
+        'phone': '+49 89 7865975'
+    },
+    {
+        'name': 'Bennded Wurst',
+        'email': 'ben.mueller@web.de',
+        'phone': '+49 89 7865975'
+    },
+    {
+        'name': 'Anton Müller',
         'email': 'anton.mueller@web.de',
         'phone': '+49 89 7865975'
     }

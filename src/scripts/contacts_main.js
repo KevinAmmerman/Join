@@ -40,6 +40,13 @@ function renderContacts() {
 // CREATE-CONTACT FUNCTIONS
 
 
+function renderCreateContactWindow() {
+    let addContactContainer = document.getElementById('addContactContainer');
+    addContactContainer.innerHTML = createHtmlForCreateContact();
+    setTimeout(openAndCloseNewContactWindow(), 200);
+}
+
+
 function addContact() {
     let name = document.getElementById('inputName');
     let email = document.getElementById('inputEmail');
@@ -56,12 +63,21 @@ function addContact() {
     successMessage();
 }
 
+
+// EDIT-CONTACT FUNCTIONS
+
+function renderEditContactWindow(i, j) {
+    let addContactContainer = document.getElementById('addContactContainer');
+    let contact = groups[i][j];
+    addContactContainer.innerHTML = createHtmlForEditContact(contact);
+}
+
 // OPEN-CONTACT FUNCTIONS 
 
 function openContact(i, j) {
     let fullContactCard = document.getElementById('fullContactCard');
     let contact = groups[i][j];
-    fullContactCard.innerHTML = createHtmlForContactCard(contact);
+    fullContactCard.innerHTML = createHtmlForContactCard(contact, i, j);
     addActiveClass(i, j);
     fadeInCard();
 }

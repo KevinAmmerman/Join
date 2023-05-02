@@ -8,13 +8,27 @@ html {
 body {
     margin: 0;
     background-color: #F6F7F8;
+    overflow: hidden;
 }
 
 /* === GENERAL === */
 
+#contactList::-webkit-scrollbar {
+    width: 4px;
+    margin-left: 5px;
+}
+
+#contactList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#contactList::-webkit-scrollbar-thumb {
+    background: #28ABE2;
+    border-radius: 10px;
+}
+
 .circalInitialsBig {
     border-radius: 100%;
-    /* background-color: red; */
     min-width: 120px;
     height: 120px;
     display: flex;
@@ -23,17 +37,19 @@ body {
     color: #ffffff;
     font-size: 3rem;
     border: 3px solid white;
+    box-sizing: border-box;
 }
 
 .circalInitials {
     border-radius: 100%;
-    /* background-color: red; */
+    border: 1px solid #ffffff;
     width: 42px;
     height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
+    box-sizing: border-box;
 }
 
 .emailStyle {
@@ -86,6 +102,14 @@ body {
     background-color: #2A3647;
 }
 
+.active:hover {
+    background-color: #2A3647 !important;
+}
+
+.active .rightPart > span:first-of-type {
+    color: #ffffff;
+}
+
 /* === MAIN-CONTAINER === */
 
 #contactsMainContainer {
@@ -96,6 +120,7 @@ body {
     left: 232px;
     right: 0;
     height: calc(100vh - 89px);
+    overflow: hidden;
 }
 
 #contactList {
@@ -199,11 +224,21 @@ body {
 /* === FULL-CONTACT-CARD === */
 
 #fullContactCard {
-    margin-left: 50px;
+    margin-left: 70px;
+    transform: translateX(100%);
+    transition: all 500ms ease-in-out
+}
+
+#contactView {
+    overflow: hidden;
 }
 
 .cardContainer {
     height: 330px;
+}
+
+.fadeInCard {
+    transform: translateX(0) !important;
 }
 
 .contactName {
@@ -318,8 +353,6 @@ body {
     left: 0;
     right: 0;
     z-index: 12;
-    /* background-color: rgba(0, 0, 0, 0);
-    transition: background-color 400ms ease-in-out; */
     animation: fadeIn 500ms ease-in-out forwards;
 }
 
@@ -397,6 +430,41 @@ body {
 
 .closeCross:hover {
     transform: scale(1.1);
+}
+
+#contactCreatedAlert {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
+    z-index: 20;
+    animation: createdAnimation 3000ms ease-in-out forwards;
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 326px;
+}
+
+@keyframes createdAnimation {
+
+    0% {
+        transform: translateY(500%);
+    }
+
+    30% {
+        transform: translateY(0);
+    }
+    
+    50%{
+        transform: translateY(0);
+    }
+
+    70% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(500%);
+    }
 }
 
 /* INPUT-FORM */

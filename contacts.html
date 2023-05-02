@@ -17,7 +17,8 @@
     <script src="src/scripts/includeHTML.js"></script>
     <script src="src/scripts/dataBase.js"></script>
     <script src="src/scripts/contacts_html_templates.js"></script>
-    <script src="src/scripts/contacts.js"></script>
+    <script src="src/scripts/contacts_utilities.js"></script>
+    <script src="src/scripts/contacts_main.js"></script>
 </head>
 
 <body onload="includeHTML(), init()">
@@ -36,7 +37,7 @@
             <div class="addContactRight">
                 <form class="contactInputForm" onsubmit="addContact(); return false">
                     <div class="inputSection">
-                        <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="\w+\s\w+" required>
+                        <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="[a-zA-ZäöüÄÖÜ]+\s[a-zA-ZäöüÄÖÜ]+" required>
                         <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
                     </div>
                     <div class="inputSection">
@@ -57,44 +58,19 @@
         </div>
     </div>
     <div id="contactsMainContainer">
-        <div id="contactList">
-           
-        </div>
+        <div id="contactList"></div>
         <div id="contactView">
             <div id="contactHeader">
                 <h1>Contacts</h1>
                 <div class="devider"></div>
                 <span>Better with a team</span>
             </div>
-            <div id="fullContactCard">
-                <!-- <div class="cardContainer">
-                    <div class="cardTopPart">
-                        <div class="circalInitialsBig">KA</div>
-                        <div class="contactName">
-                            <span>Hans Wurst</span>
-                            <div class="contactAddTask">
-                                <div>+</div>Add Task
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cardMidPart">
-                        <div class="contactInformation">Contact Information</div>
-                        <span>
-                            <div></div>Edit Contact
-                        </span>
-                    </div>
-                    <div class="cardBottomPart">
-                        <span class="FontWeightBold">Email</span>
-                        <span class="emailStyle">hans.wurst@web.de</span>
-                        <span class="FontWeightBold">Phone</span>
-                        <span>+49 89 4726984</span>
-                    </div>
-                </div> -->
-            </div>
+            <div id="fullContactCard"></div>
             <div onclick="openAndCloseNewContactWindow()" class="addContactBtn">New contact<img src="src/img/img_contacts/addContact_img.png"
                 alt="logo of small person"></div>
         </div>
     </div>
+    <div id="contactCreatedAlert" class="coloredBtn dNone">Contact succesfully created</div>
 </body>
 
 </html>

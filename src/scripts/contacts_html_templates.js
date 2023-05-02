@@ -34,7 +34,7 @@ function createHtmlForContactCard(contact) {
     let phone = contact.phone;
     let contactColor = initialsColors[getColorForInitials(contact)];
     return `
-        <div class="cardContainer">
+        <div class="cardContainer" id="cardContainer">
             <div class="cardTopPart">
                 <div class="circalInitialsBig" style="background-color: ${contactColor}">${initials}</div>
                 <div class="contactName">

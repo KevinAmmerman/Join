@@ -1,10 +1,13 @@
 let user = [];
 
 
+
 function init(){
     messageSignIn();
     loadUsers();
     loadEmailPassword();
+    signUp();
+    
 }
 
 function loadEmailPassword(){
@@ -23,7 +26,7 @@ function loadEmailPassword(){
             password.value = '';
 
         }
-
+users =[];
 }
 
 async function login(){
@@ -36,11 +39,13 @@ async function login(){
         rememberLogin(email.value, password.value);
         email.value = '';
         password.value = '';
-        window.location.href = `summary.html?users=${user.name}`;
+        window.location.href = `summary.html?user=${users.name}`;
     }else{
-        alert('try again');
+        alert('try again pls');
     }
-    user = [];}
+    
+    
+}
 
 function rememberLogin(email, password) {
     let checkbox = document.getElementById("loginCheckbox");
@@ -63,20 +68,18 @@ async function guestLogin(){
    email.value = 'guest@guest.com';
    password.value = '123456';
 
-   let users = user.find(u => u.email == email.value && u.password == password.value);
-    currentUser = user.name;
-    if(user){
+   let user = users.find(u => u.email == email.value && u.password == password.value);
+     if(users){
         email.value = '';
         password.value = '';
-        window.location.href = `summary.html?user=${currentUser}`;
+        window.location.href = `summary.html?user=${users}`;
     }
     
-user = [];
 
 }
 
 async function loadUsers(){
-    users = JSON.parse(await getItem('users'))
+    users = JSON.parse(await getItem('users'));
     
 }
 
@@ -89,5 +92,42 @@ function messageSignIn(){
         msgBox.innerHTML = msg;
         
     }
+
+}
+
+
+
+
+async function register() {
+    registerBtn.disabled = true;
+    users.push({
+        names: names.value,
+        email: email.value,
+        password: password.value,
+    });
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
+    await setItem('users', JSON.stringify(users));
+
+    
+    resetForm();
+}
+
+function resetForm() {
+    names.value = '';
+    email.value = '';
+    password.value = '';
+    registerBtn.disabled = false;
+}
+
+function signUp(){
+  let registerBtn = document.getElementById('registerBtn');
+
+  if(registerBtn = true){
+    document.getElementById('msgBox').classList.remove('d-none');
+
+  }else{
+    document.getElementById('msgBox').classList.add('d-none');
+  }
+
 
 }

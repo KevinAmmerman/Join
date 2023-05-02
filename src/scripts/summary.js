@@ -25,7 +25,10 @@ function greetings(){
 
 function greet(){
     let greetinghtml = document.getElementById('greetings');
-    greetinghtml.innerHTML = greetings();
+        greetinghtml.innerHTML = greetings();
+        let users = decodeURIComponent(window.location.search.split('=')[1]);
+    let greetUser = document.getElementById('Users');
+    greetUser.innerHTML = users;
 }
 
 
@@ -72,7 +75,13 @@ function generateSummaryTemplate(){
 
     <div class="times-Container">
     <div class="times">
-    <span class="time-name"><h2 id="greetings"></h2> <p id="user"></p> </span>
+    <span class="time-name"><h2 id="greetings"></h2> <p id="Users"></p> </span>
     </div> 
 
 </div> `;}
+
+
+function deadlineTime(){
+    const time = new Date().getHours();
+
+}

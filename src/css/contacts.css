@@ -52,6 +52,15 @@ body {
     box-sizing: border-box;
 }
 
+.editInitials {
+    position: absolute;
+    top: 204px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 134px;
+}
+
 .emailStyle {
     color: #28ABE2;
 }
@@ -106,7 +115,7 @@ body {
     background-color: #2A3647 !important;
 }
 
-.active .rightPart > span:first-of-type {
+.active .rightPart>span:first-of-type {
     color: #ffffff;
 }
 
@@ -453,8 +462,8 @@ body {
     30% {
         transform: translateY(0);
     }
-    
-    50%{
+
+    50% {
         transform: translateY(0);
     }
 
@@ -507,13 +516,48 @@ body {
 }
 
 .btnSection {
+    width: 400px;
     display: flex;
-    gap: 20px;
+    justify-content: flex-end;
+}
+
+.editBtnSection {
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 414px;
+    right: 245px;
+    width: 122px;
+    height: 55px;
+}
+
+.deleteBtn:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.deleteBtn:hover>img {
+    filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
+}
+
+.saveBtn {
+    width: 153px;
+    height: 55px;
+}
+
+.saveBtn:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .cancelBtn {
     position: absolute;
-    right: 132px;
+    right: 295px;
     bottom: 126px;
 }
 
@@ -596,5 +640,10 @@ body {
         position: absolute;
         right: 134px;
         bottom: 39px;
+    }
+
+    .deleteBtn {
+        top: 338px;
+        right: 290px;
     }
 }

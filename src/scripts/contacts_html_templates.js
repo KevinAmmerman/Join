@@ -100,13 +100,10 @@ function createHtmlForEditContact(contact) {
     let nameWithoutUmlauts = deUmlaut(contact.name);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
     let contactColor = initialsColors[getColorForInitials(contact)];
-    document.getElementById('inputName').value = contact.name;
-    document.getElementById('inputEmail').value = contact.email;
-    document.getElementById('inputPhone').value = contact.phone;
     return `
         <div class="addContactLeft">
             <img class="joinLogoContact" src="src/img/img_contacts/logo_join_white.png" alt="join logo">
-            <h1 class="addContactHeadline">Add Contact</h1>
+            <h1 class="addContactHeadline">Edit Contact</h1>
             <img class="blueLineContact" src="src/img/img_contacts/login-blue-line.png" alt="blue line">
         </div>
         <div class="circalInitialsBig editInitials" style="background-color: ${contactColor}">${initials}</div>
@@ -125,11 +122,11 @@ function createHtmlForEditContact(contact) {
                     <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" required>
                     <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                 </div>
-                <div class="btnSection">
-                    <button class="submitBtn coloredBtn">Save</button>
+                <div class="editBtnSection">
+                    <button class="saveBtn coloredBtn">Save</button>
                 </div>
             </form>
-            <button onclick="deleteContact()" class="cancelBtn transparentBtn">Delete</button>
+            <button onclick="deleteContact()" class="deleteBtn transparentBtn">Delete</button>
         </div>
     `;
 }

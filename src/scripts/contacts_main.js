@@ -70,6 +70,15 @@ function renderEditContactWindow(i, j) {
     let addContactContainer = document.getElementById('addContactContainer');
     let contact = groups[i][j];
     addContactContainer.innerHTML = createHtmlForEditContact(contact);
+    getValuesForInput(contact);
+    setTimeout(openAndCloseNewContactWindow(), 200);
+}
+
+
+function getValuesForInput(contact) {
+    document.getElementById('inputName').setAttribute('value',contact.name);
+    document.getElementById('inputEmail').setAttribute('value',contact.email);
+    document.getElementById('inputPhone').setAttribute('value',contact.phone);
 }
 
 // OPEN-CONTACT FUNCTIONS 

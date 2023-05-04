@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="src/css/mobile-menu.css">
     <!-- Scripts -->
     <script src="src/scripts/includeHTML.js"></script>
+    <script src="src/scripts/storage.js"></script>
     <script src="src/scripts/dataBase.js"></script>
     <script src="src/scripts/contacts_html_templates.js"></script>
     <script src="src/scripts/contacts_utilities.js"></script>
@@ -25,37 +26,7 @@
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
     <div id="addContactMainContainer" class="dNone">
-        <div id="addContactContainer" class="addContactContainer">
-            <!-- <div class="addContactLeft">
-                <img class="joinLogoContact" src="src/img/img_contacts/logo_join_white.png" alt="join logo">
-                <h1 class="addContactHeadline">Add Contact</h1>
-                <span>Tasks are better with a team!</span>
-                <img class="blueLineContact" src="src/img/img_contacts/login-blue-line.png" alt="blue line">
-            </div>
-            <img class="defaultUserImg" src="src/img/img_contacts/defaultUser_img.png" alt="default user image">
-            <img class="closeCross" src="src/img/img_contacts/cross.svg" onclick="openAndCloseNewContactWindow()">
-            <div class="addContactRight">
-                <form class="contactInputForm" onsubmit="addContact(); return false">
-                    <div class="inputSection">
-                        <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="[a-zA-ZäöüÄÖÜ]+\s[a-zA-ZäöüÄÖÜ]+" required>
-                        <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
-                    </div>
-                    <div class="inputSection">
-                        <input class="contactInput" id="inputEmail" type="email" placeholder="Email" required>
-                        <img class="inputImg" src="src/img/img_contacts/mail.png" alt="logo of a mail">
-                    </div>
-                    <div class="inputSection">
-                        <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" required>
-                        <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
-                    </div>
-                    <div class="btnSection">
-                        <button class="submitBtn coloredBtn">Create contact<img src="src/img/img_contacts/ok_chop.png"
-                                alt="image of a chop"></button>
-                    </div>
-                </form>
-                <button onclick="openAndCloseNewContactWindow()" class="cancelBtn transparentBtn">Cancel<img src="src/img/img_contacts/cross.svg"></button>
-            </div> -->
-        </div>
+        <div id="addContactContainer" class="addContactContainer"></div>
     </div>
     <div id="contactsMainContainer">
         <div id="contactList"></div>

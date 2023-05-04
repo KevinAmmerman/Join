@@ -1,4 +1,8 @@
 async function init() {
+    // let test1 = await getItem('test2');
+    // // let test2 = test1.slice(1, -1);
+    // contacts = JSON.parse(test1);
+    contacts = JSON.parse(await getItem('test4'));
     await orderContacts();
     renderContacts();
 }
@@ -52,9 +56,9 @@ function addContact() {
     let email = document.getElementById('inputEmail');
     let phone = document.getElementById('inputPhone');
     let contact = {
-        'name': name.value,
-        'email': email.value,
-        'phone': phone.value
+        "name": name.value,
+        "email": email.value,
+        "phone": phone.value
     };
     if (checkIfContactsExists(name.value)) return;
     contacts.push(contact);
@@ -62,6 +66,7 @@ function addContact() {
     init();
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully created');
+    setItem('test4', contacts);
 }
 
 

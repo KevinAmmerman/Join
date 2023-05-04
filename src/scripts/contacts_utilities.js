@@ -6,15 +6,6 @@ function getColorForInitials(contact) {
 }
 
 
-function deUmlaut(value) {
-    value = value.toLowerCase();
-    value = value.replace(/ä/g, 'ae');
-    value = value.replace(/ö/g, 'oe');
-    value = value.replace(/ü/g, 'ue');
-    return value;
-}
-
-
 function openAndCloseNewContactWindow() {
     let contactContainer = document.getElementById('addContactMainContainer');
     let addContactContainer = document.getElementById('addContactContainer');
@@ -26,8 +17,9 @@ function openAndCloseNewContactWindow() {
 }
 
 
-function successMessage() {
+function alertMessage(message) {
     let contactCreatedAlert = document.getElementById('contactCreatedAlert');
+    contactCreatedAlert.innerHTML = message;
     contactCreatedAlert.classList.remove('dNone')
     setTimeout(function() {
         contactCreatedAlert.classList.add('dNone')
@@ -39,6 +31,28 @@ function emptyInputFields(name, email, phone) {
     name.value = '';
     email.value = '';
     phone.value = '';
+}
+
+
+function checkIfContactsExists(name) {
+    let checkName = name.toLowerCase();
+    for (let i = 0; i < contacts.length; i++) {
+        const contactName = contacts[i].name.toLowerCase();
+        if (contactName == checkName) {
+            alertMessage('Contact exists already');
+            return true;
+        }
+    }
+}
+
+
+function checkIndexContacts(name) {
+    for (let i = 0; i < contacts.length; i++) {
+        const contactName = contacts[i].name;
+        if (contactName == name) {
+            return i;
+        }
+    }
 }
 
 
@@ -55,4 +69,13 @@ function addActiveClass(i, j) {
 function fadeInCard() {
     let card = document.getElementById('fullContactCard');
     card.classList.add('fadeInCard');
+}
+
+
+function deUmlaut(value) {
+    value = value.toLowerCase();
+    value = value.replace(/ä/g, 'ae');
+    value = value.replace(/ö/g, 'oe');
+    value = value.replace(/ü/g, 'ue');
+    return value;
 }

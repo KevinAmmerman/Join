@@ -447,32 +447,33 @@ body {
     transform: translateX(-50%);
     bottom: 100px;
     z-index: 20;
-    animation: createdAnimation 3000ms ease-in-out forwards;
+    animation: move-up 3000ms ease-in-out forwards;
     font-size: 1rem;
     font-weight: 400;
     max-width: 326px;
 }
 
-@keyframes createdAnimation {
+
+@keyframes move-up {
 
     0% {
-        transform: translateY(500%);
+        bottom: -100%;
     }
 
     30% {
-        transform: translateY(0);
+        bottom: 100px;
     }
 
     50% {
-        transform: translateY(0);
+        bottom: 100px;
     }
 
     70% {
-        transform: translateY(0);
+        bottom: 100px;
     }
 
     100% {
-        transform: translateY(500%);
+        bottom: -100%;
     }
 }
 

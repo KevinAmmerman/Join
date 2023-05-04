@@ -74,7 +74,7 @@ function createHtmlForCreateContact() {
         <div class="addContactRight">
             <form class="contactInputForm" onsubmit="addContact(); return false">
                 <div class="inputSection">
-                    <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="[a-zA-ZäöüÄÖÜ]+\s[a-zA-ZäöüÄÖÜ]+" required>
+                    <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="^[a-zA-ZöüäÖÜÄ]+ [a-zA-ZöüäÖÜÄ]+$" required>
                     <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
                 </div>
                 <div class="inputSection">
@@ -96,7 +96,7 @@ function createHtmlForCreateContact() {
 }
 
 
-function createHtmlForEditContact(contact) {
+function createHtmlForEditContact(contact, i) {
     let nameWithoutUmlauts = deUmlaut(contact.name);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
     let contactColor = initialsColors[getColorForInitials(contact)];
@@ -109,9 +109,9 @@ function createHtmlForEditContact(contact) {
         <div class="circalInitialsBig editInitials" style="background-color: ${contactColor}">${initials}</div>
         <img class="closeCross" src="src/img/img_contacts/cross.svg" onclick="openAndCloseNewContactWindow()">
         <div class="addContactRight">
-            <form class="contactInputForm" onsubmit="editContact(); return false">
+            <form class="contactInputForm" onsubmit="saveContactEdits(${i}); return false">
                 <div class="inputSection">
-                    <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="[a-zA-ZäöüÄÖÜ]+\s[a-zA-ZäöüÄÖÜ]+" required>
+                    <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="^[a-zA-ZöüäÖÜÄ]+ [a-zA-ZöüäÖÜÄ]+$" required>
                     <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
                 </div>
                 <div class="inputSection">
@@ -126,7 +126,7 @@ function createHtmlForEditContact(contact) {
                     <button class="saveBtn coloredBtn">Save</button>
                 </div>
             </form>
-            <button onclick="deleteContact()" class="deleteBtn transparentBtn">Delete</button>
+            <button onclick="deleteContact(${i})" class="deleteBtn transparentBtn">Delete</button>
         </div>
     `;
 }

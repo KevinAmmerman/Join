@@ -56,11 +56,12 @@ function addContact() {
         'email': email.value,
         'phone': phone.value
     };
+    if (checkIfContactsExists(name.value)) return;
     contacts.push(contact);
     emptyInputFields(name, email, phone);
     init();
     openAndCloseNewContactWindow();
-    successMessage();
+    alertMessage('Contact succesfully created');
 }
 
 
@@ -69,7 +70,8 @@ function addContact() {
 function renderEditContactWindow(i, j) {
     let addContactContainer = document.getElementById('addContactContainer');
     let contact = groups[i][j];
-    addContactContainer.innerHTML = createHtmlForEditContact(contact);
+    let contactsIndex = checkIndexContacts(contact.name);
+    addContactContainer.innerHTML = createHtmlForEditContact(contact, contactsIndex);
     getValuesForInput(contact);
     setTimeout(openAndCloseNewContactWindow(), 200);
 }
@@ -80,6 +82,30 @@ function getValuesForInput(contact) {
     document.getElementById('inputEmail').setAttribute('value',contact.email);
     document.getElementById('inputPhone').setAttribute('value',contact.phone);
 }
+
+
+function saveContactEdits(i) {
+    let name = document.getElementById('inputName').value;
+    let email = document.getElementById('inputEmail').value;
+    let phone = document.getElementById('inputPhone').value;
+    contacts[i] = {
+        'name': name,
+        'email': email,
+        'phone': phone
+    };
+    init();
+    openAndCloseNewContactWindow();
+    alertMessage('Contact succesfully changed');
+}
+
+
+function deleteContact(i) {
+    contacts.splice(i, 1);
+    init();
+    openAndCloseNewContactWindow();
+    alertMessage('Contact succesfully deleted');
+}
+
 
 // OPEN-CONTACT FUNCTIONS 
 

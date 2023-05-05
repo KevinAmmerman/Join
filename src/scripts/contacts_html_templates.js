@@ -96,7 +96,7 @@ function createHtmlForCreateContact() {
 }
 
 
-function createHtmlForEditContact(contact, i) {
+function createHtmlForEditContact(contact, contactsIndex, j, i) {
     let nameWithoutUmlauts = deUmlaut(contact.name);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
     let contactColor = initialsColors[getColorForInitials(contact)];
@@ -109,7 +109,7 @@ function createHtmlForEditContact(contact, i) {
         <div class="circalInitialsBig editInitials" style="background-color: ${contactColor}">${initials}</div>
         <img class="closeCross" src="src/img/img_contacts/cross.svg" onclick="openAndCloseNewContactWindow()">
         <div class="addContactRight">
-            <form class="contactInputForm" onsubmit="saveContactEdits(${i}); return false">
+            <form class="contactInputForm" onsubmit="saveContactEdits(${contactsIndex}, ${i}, ${j}); return false">
                 <div class="inputSection">
                     <input class="contactInput" id="inputName" type="text" placeholder="Name" pattern="^[a-zA-ZöüäÖÜÄ]+ [a-zA-ZöüäÖÜÄ]+$" required>
                     <img class="inputImg" src="src/img/img_contacts/small_line_Human.png" alt="small line person">
@@ -119,7 +119,7 @@ function createHtmlForEditContact(contact, i) {
                     <img class="inputImg" src="src/img/img_contacts/mail.png" alt="logo of a mail">
                 </div>
                 <div class="inputSection">
-                    <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" required>
+                    <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" pattern="^(?=.*\+)[\d\s+]+$"> required>
                     <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                 </div>
                 <div class="editBtnSection">

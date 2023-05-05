@@ -1,4 +1,4 @@
-    let contacts;
+    let contacts = [];
 // let contacts = [
 //     {
 //         'name': 'Hans Bauer',

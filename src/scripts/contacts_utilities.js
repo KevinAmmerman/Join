@@ -33,6 +33,17 @@ function emptyInputFields(name, email, phone) {
     phone.value = '';
 }
 
+function emptyContainer() {
+    let fullContactCard = document.getElementById('fullContactCard');
+    fullContactCard.innerHTML = '';
+}
+
+
+function changeContactLocalForCard(i, j, contactsIndex) {
+    groups[i][j] = contacts[contactsIndex];
+    openContact(i, j);
+}
+
 
 function checkIfContactsExists(name) {
     let checkName = name.toLowerCase();

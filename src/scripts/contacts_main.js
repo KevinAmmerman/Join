@@ -1,15 +1,13 @@
 async function init() {
-    // let test1 = await getItem('test2');
-    // // let test2 = test1.slice(1, -1);
-    // contacts = JSON.parse(test1);
-    contacts = JSON.parse(await getItem('test4'));
-    await orderContacts();
+    let contactsSingleQuote = await getItem('contacts');
+    contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
+    orderContacts();
     renderContacts();
 }
 
 // CONTACT-LIST FUNCTIONS
 
-async function orderContacts() {
+function orderContacts() {
     groups = [];
     contacts.forEach(function (contact) {
         let firstLetter = contact.name.charAt(0).toLowerCase();
@@ -51,22 +49,22 @@ function renderCreateContactWindow() {
 }
 
 
-function addContact() {
-    let name = document.getElementById('inputName');
-    let email = document.getElementById('inputEmail');
-    let phone = document.getElementById('inputPhone');
+async function addContact() {
+    let name = document.getElementById('inputName').value;
+    let email = document.getElementById('inputEmail').value;
+    let phone = document.getElementById('inputPhone').value;
     let contact = {
-        "name": name.value,
-        "email": email.value,
-        "phone": phone.value
+        "name": name,
+        "email": email,
+        "phone": phone
     };
-    if (checkIfContactsExists(name.value)) return;
+    if (checkIfContactsExists(name)) return;
     contacts.push(contact);
     emptyInputFields(name, email, phone);
-    init();
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully created');
-    setItem('test4', contacts);
+    await setItem('contacts', contacts);
+    init();
 }
 
 
@@ -76,7 +74,7 @@ function renderEditContactWindow(i, j) {
     let addContactContainer = document.getElementById('addContactContainer');
     let contact = groups[i][j];
     let contactsIndex = checkIndexContacts(contact.name);
-    addContactContainer.innerHTML = createHtmlForEditContact(contact, contactsIndex);
+    addContactContainer.innerHTML = createHtmlForEditContact(contact, contactsIndex, j, i);
     getValuesForInput(contact);
     setTimeout(openAndCloseNewContactWindow(), 200);
 }
@@ -89,26 +87,30 @@ function getValuesForInput(contact) {
 }
 
 
-function saveContactEdits(i) {
+async function saveContactEdits(contactsIndex, i, j) {
     let name = document.getElementById('inputName').value;
     let email = document.getElementById('inputEmail').value;
     let phone = document.getElementById('inputPhone').value;
-    contacts[i] = {
-        'name': name,
-        'email': email,
-        'phone': phone
+    contacts[contactsIndex] = {
+        "name": name,
+        "email": email,
+        "phone": phone
     };
-    init();
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully changed');
+    await setItem('contacts', contacts);
+    changeContactLocalForCard(i, j, contactsIndex);
+    init();
 }
 
 
-function deleteContact(i) {
+async function deleteContact(i) {
     contacts.splice(i, 1);
-    init();
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully deleted');
+    await setItem('contacts', contacts);
+    emptyContainer();
+    init();
 }
 
 

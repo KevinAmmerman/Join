@@ -1,5 +1,5 @@
 let user = [];
-
+let currentUser =['Guest'];
 
 
 function init(){
@@ -45,6 +45,7 @@ async function login(){
     }
     
     
+    
 }
 
 function rememberLogin(email, password) {
@@ -64,16 +65,17 @@ async function guestLogin(){
    await loadUsers();
    let email = document.getElementById('email');
    let password = document.getElementById('password');
-
    email.value = 'guest@guest.com';
    password.value = '123456';
 
-   let user = users.find(u => u.email == email.value && u.password == password.value);
+   let currentUser = users.find(u => u.email == email.value && u.password == password.value);
      if(users){
         email.value = '';
         password.value = '';
-        window.location.href = `summary.html?user=${users}`;
+        window.location.href = `summary.html?user=${currentUser}`;
+        
     }
+    
     
 
 }
@@ -105,29 +107,46 @@ async function register() {
         email: email.value,
         password: password.value,
     });
-    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
+     window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
     await setItem('users', JSON.stringify(users));
-
+   
+    }
     
     resetForm();
-}
+    signUp();
+    
+
+function alertMessage(message){
+    
+    let approvedLogin = document.getElementById('msgBox');
+
+    approvedLogin.innerHTML = message;
+    approvedLogin.classList.remove('dNone')
+    
+    setTimeout(function(){
+        approvedLogin.classList.add('dNone')
+    },2000) 
+} 
+    resetForm();
+
 
 function resetForm() {
     names.value = '';
     email.value = '';
     password.value = '';
     registerBtn.disabled = false;
+    
+    signUp();
 }
 
 function signUp(){
-  let registerBtn = document.getElementById('registerBtn');
+    let registerBtn = document.getElementById('registerBtn');
+    if(registerBtn = true){
+    alertMessage('Du hast dich erfolgreich registriert');
+}   if(registerBtn = false){
+    registerBtn.disabled = false;
+    registerBtn.classList.add('dNone');
+}
 
-  if(registerBtn = true){
-    document.getElementById('msgBox').classList.remove('d-none');
-
-  }else{
-    document.getElementById('msgBox').classList.add('d-none');
-  }
-
-
+    resetForm();
 }

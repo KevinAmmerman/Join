@@ -4,6 +4,10 @@ body {
     font-size: normal;
 }
 
+html {
+    height: 100%;
+}
+
 .join-Logo-Container {
     display: flex;
     justify-content: space-between;
@@ -36,13 +40,13 @@ body {
 }
 
 .signIn-Container {
-    
+
     font-size: 30px;
     animation: fade_in 1.5s;
 
 }
 
-@keyframes fade_in{
+@keyframes fade_in {
     0% {
         opacity: 0;
         transform: scale(0.5);
@@ -71,7 +75,7 @@ body {
 
 }
 
-.sign-Up-Button:hover{
+.sign-Up-Button:hover {
     background-color: #29ABE2;
 }
 
@@ -172,7 +176,7 @@ body {
     margin-bottom: 30px;
     padding-bottom: 10px;
     padding-top: 20px;
-    
+
 
 }
 
@@ -239,7 +243,7 @@ body {
     text-decoration: none;
     color: #29ABE2;
     font-weight: 400;
-    
+
 }
 
 .forge-Password-Container a:visited {
@@ -247,27 +251,105 @@ body {
     text-decoration: none;
 }
 
-.message{
-    position: relative;
-    left: 30px;
-    color: #2A3647;
+.message {
+    position: absolute;
+    left: 300px;
+    transform: translateY(-50px);
+    background-color: #2A3647;
+    color: white;
+    margin: 0 500px;
+    border-radius: 8px;
+    padding: 10px;
     font-weight: bold;
     font-size: 20px;
+    animation: fade_in 1.5;
 }
 
-.d-none{
+
+
+.dNone {
     display: none;
 }
 
-@media(max-width:850px){
-    .signIn-Container{
+@media(max-width:1280px) {
+    .join-Logo-Container img {
+        width: 100px;
+        height: 100px;
+        
+    }
+
+    @keyframes go_small {
+        0% {
+            transform: translateX(600px) translateY(300px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+
+    }
+
+}
+
+@media(max-width:850px) {
+    .signIn-Container {
         position: absolute;
         display: flex;
         align-items: center;
-        top: 850px;
+        top: 740px;
         left: 50px;
         font-size: 20px;
 
     }
 
+    .join-Logo-Container {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(100px) translateY(400px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+
+
+    }
+
+    .login-password-content {
+        padding: 20px 10px 20px 10px;
+        width: 350px;
+    }
+
+    .email-input {
+        width: 320px;
+
+    }
+
+    .password-input {
+        width: 320px;
+
+    }
+
+    .login-password-input-area {
+        width: 350px;
+    }
 }

@@ -272,7 +272,6 @@ body {
 
 #contactView {
     overflow: hidden;
-    /* z-index: 10; */
 }
 
 .cardContainer {
@@ -485,6 +484,15 @@ body {
     100% {
         bottom: -100%;
     }
+}
+
+.addContactBtnContainer {
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1;
+    display: none;
 }
 
 .addContactBtnMobile {
@@ -725,12 +733,12 @@ body {
     #contactHeader {
         gap: 20px;
     }
-    
-    #contactHeader > h1 {
+
+    #contactHeader>h1 {
         font-size: 1.6rem;
     }
 
-    #contactHeader > span {
+    #contactHeader>span {
         font-size: 1.1rem;
     }
 
@@ -738,7 +746,141 @@ body {
         height: 30px;
     }
 
-    .contactName > span {
+    .contactName>span {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 750px) {
+
+    #contactsMainContainer {
+        left: 0;
+    }
+
+    #contactList {
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .contactOrder {
+        margin-left: 0;
+    }
+
+    .addContactBtnContainer {
+        display: block;
+    }
+
+    .addContactBtnMobile {
+        right: 18px;
+    }
+}
+
+@media (max-width: 610px) {
+
+    .addContactContainer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .addContactLeft {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        width: 100%;
+    }
+
+    .addContactRight {
+        width: auto;
+    }
+
+    .inputSection {
+        width: 100%;
+    }
+
+    .contactInputForm {
+        right: 85px;
+    }
+
+    .cancelBtn {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+
+    #contactList {
+        padding-top: 80px;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 440px) {
+
+    .contactInputForm {
+        right: 20px;
+        left: 20px;
+    }
+
+    .addContactHeadline {
+        font-size: 2.5rem;
+        margin-bottom: 0;
+        line-height: .8;
+    }
+
+    .addContactLeft span {
+        display: block;
+        font-size: 1.1rem;
+    }
+
+    .addContactLeft {
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .contactName>span {
+        font-size: 1.5rem;
+    }
+
+    .contactCard {
+        width: 315px;
+    }
+
+    #fullContactCard {
+        margin-left: 16px !important;
+    }
+
+    #contactHeader {
+        padding-left: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    #contactHeader>h1 {
+        font-size: 2.5rem;
+    }
+
+    #contactHeader .devider {
+        height: 3px;
+        width: 50px;
+    }
+
+    .arrowBack {
+        position: absolute;
+        top: 23px;
+        right: 23px;
+    }
+
+    .circalInitialsBig {
+        height: 80px;
+        min-width: 80px;
+        font-size: 2rem;
+    }
+
+    .cardTopPart {
+        height: 100px;
+    }
+
+    .cardMidPart {
+        gap: 50px;
     }
 }

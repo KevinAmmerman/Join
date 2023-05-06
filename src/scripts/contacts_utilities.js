@@ -21,7 +21,7 @@ function alertMessage(message) {
     let contactCreatedAlert = document.getElementById('contactCreatedAlert');
     contactCreatedAlert.innerHTML = message;
     contactCreatedAlert.classList.remove('dNone')
-    setTimeout(function() {
+    setTimeout(function () {
         contactCreatedAlert.classList.add('dNone')
     }, 4000);
 }
@@ -77,9 +77,15 @@ function addActiveClass(i, j) {
 }
 
 
-function fadeInCard() {
-    let card = document.getElementById('fullContactCard');
-    card.classList.add('fadeInCard');
+function fadeInCard(status) {
+    if (status == 'on') {
+        let card = document.getElementById('fullContactCard');
+        card.classList.add('fadeInCard');
+    } else {
+        let card = document.getElementById('fullContactCard');
+        card.classList.remove('fadeInCard');
+    }
+
 }
 
 

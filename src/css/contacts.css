@@ -103,6 +103,27 @@ body {
     cursor: pointer;
 }
 
+.addContactBtnStyle {
+    background-color: #2A3647;
+    border-radius: 10px;
+    padding: 10px 12px 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addContactBtnStyle:hover {
+    background-color: #28ABE2;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
 .dNone {
     display: none !important;
 }
@@ -177,6 +198,17 @@ body {
     background-color: #28ABE2;
 }
 
+.arrowBack {
+    height: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+.arrowBack:hover {
+    filter: invert(68%) sepia(51%) saturate(3698%) hue-rotate(165deg) brightness(94%) contrast(89%);
+    transform: scale(1.1);
+}
+
 /* === CONTACT-LIST === */
 
 .contactOrder {
@@ -240,6 +272,7 @@ body {
 
 #contactView {
     overflow: hidden;
+    /* z-index: 10; */
 }
 
 .cardContainer {
@@ -304,7 +337,7 @@ body {
 }
 
 .cardMidPart>span:hover {
-    filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
+    filter: invert(68%) sepia(51%) saturate(3698%) hue-rotate(165deg) brightness(94%) contrast(89%);
     font-weight: bold;
 }
 
@@ -325,29 +358,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-/* === ADD-CONTACT === */
-
-.addContactBtn {
-    background-color: #2A3647;
-    border-radius: 10px;
-    padding: 10px 12px 10px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: absolute;
-    bottom: 50px;
-    right: 40px;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.addContactBtn:hover {
-    background-color: #28ABE2;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 /* === ADD-CONTACT === */
@@ -433,7 +443,7 @@ body {
     top: 25px;
     right: 25px;
     width: 20px;
-    filter: invert(16%) sepia(45%) saturate(441%) hue-rotate(174deg) brightness(93%) contrast(88%);
+    filter: invert(68%) sepia(51%) saturate(3698%) hue-rotate(165deg) brightness(94%) contrast(89%);
     cursor: pointer;
 }
 
@@ -475,6 +485,29 @@ body {
     100% {
         bottom: -100%;
     }
+}
+
+.addContactBtnMobile {
+    display: none !important;
+    top: 20px;
+    right: 290px;
+    z-index: 1;
+    background-color: #2A3647;
+    border-radius: 10px;
+    padding: 10px 12px 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addContactBtnMobile:hover {
+    background-color: #28ABE2;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 /* INPUT-FORM */
@@ -543,7 +576,7 @@ body {
 }
 
 .deleteBtn:hover>img {
-    filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
+    filter: invert(68%) sepia(51%) saturate(3698%) hue-rotate(165deg) brightness(94%) contrast(89%);
 }
 
 .saveBtn {
@@ -574,7 +607,7 @@ body {
 }
 
 .cancelBtn:hover>img {
-    filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
+    filter: invert(68%) sepia(51%) saturate(3698%) hue-rotate(165deg) brightness(94%) contrast(89%);
 }
 
 .submitBtn:hover {
@@ -634,7 +667,7 @@ body {
     }
 
     .closeCross {
-        filter: invert(100%) sepia(2%) saturate(0%) hue-rotate(17deg) brightness(115%) contrast(100%);
+        filter: invert(68%) sepia(51%) saturate(3698%) hue-rotate(165deg) brightness(94%) contrast(89%);
     }
 
     .cancelBtn {
@@ -646,5 +679,66 @@ body {
     .deleteBtn {
         top: 338px;
         right: 290px;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .arrowBack {
+        display: block;
+    }
+
+    #contactsMainContainer {
+        position: relative;
+    }
+
+    #contactList {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding-left: 60px;
+        align-items: flex-start;
+    }
+
+    #contactView {
+        /* z-index: 4; */
+        background-color: #F6F7F8;
+    }
+
+    .contactOrder {
+        margin-left: 10px;
+    }
+
+    .addContactBtnDesktop {
+        display: none;
+    }
+
+    .addContactBtnMobile {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 900px) {
+
+    #contactHeader {
+        gap: 20px;
+    }
+    
+    #contactHeader > h1 {
+        font-size: 1.6rem;
+    }
+
+    #contactHeader > span {
+        font-size: 1.1rem;
+    }
+
+    .devider {
+        height: 30px;
+    }
+
+    .contactName > span {
+        font-size: 2rem;
     }
 }

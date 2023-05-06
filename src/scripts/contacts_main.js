@@ -118,8 +118,20 @@ async function deleteContact(i) {
 
 function openContact(i, j) {
     let fullContactCard = document.getElementById('fullContactCard');
+    let contactView = document.getElementById('contactView');
+    contactView.style.zIndex = 1;
     let contact = groups[i][j];
     fullContactCard.innerHTML = createHtmlForContactCard(contact, i, j);
     addActiveClass(i, j);
+    fadeInCard('on');
+}
+
+function closeContactCard() {
+    let contactView = document.getElementById('contactView');
+    contactView.style.zIndex = -10;
+    let elements = document.querySelectorAll('.active');
+    elements.forEach((element) => {
+        element.classList.remove('active');
+    });
     fadeInCard();
 }

@@ -82,7 +82,7 @@ a {
     color: white;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 790px) {
 
     .sidebar {
         display: none;

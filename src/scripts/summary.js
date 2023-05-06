@@ -1,3 +1,4 @@
+let currentUser = ['Guest']
 
 function getSummary(){
     generateSummaryTemplate();
@@ -23,12 +24,13 @@ function greetings(){
     return greeting;
 }
 
-function greet(){
+
+
+async function greet(){
     let greetinghtml = document.getElementById('greetings');
         greetinghtml.innerHTML = greetings();
-        let users = decodeURIComponent(window.location.search.split('=')[1]);
-    let greetUser = document.getElementById('Users');
-    greetUser.innerHTML = users;
+    let greetUser = document.getElementById('user');
+    greetUser.innerHTML = `<span>${currentUser}</span>`;
 }
 
 
@@ -38,7 +40,7 @@ function generateSummaryTemplate(){
     let content = document.getElementById('summaryContent');
 
     content.innerHTML = /*html*/`
-        <div class="task-container">
+        <div class="task-container" onclick="goToBoard()">
             <div class="task-container-2">
             <div class="task-progress"><span class="task-number-container"> <p>5</p></span> <span class="task-text-container"> Task in Board</span></div>
             <div class="task-progress"><span class="task-number-container"> <p>2</p></span> <span class="task-text-container"> Tasks in Progress</span></div>
@@ -75,7 +77,7 @@ function generateSummaryTemplate(){
 
     <div class="times-Container">
     <div class="times">
-    <span class="time-name"><h2 id="greetings"></h2> <p id="Users"></p> </span>
+    <span class="time-name"><h2 id="greetings"></h2> <p id="user"></p> </span>
     </div> 
 
 </div> `;}
@@ -84,4 +86,9 @@ function generateSummaryTemplate(){
 function deadlineTime(){
     const time = new Date().getHours();
 
+}
+
+
+function goToBoard(){
+    window.location.href = 'board.html';
 }

@@ -1,304 +1,365 @@
-let currentColor;
-let selectedCategoryColor;
-let selectedCategoryName = '';
-let pointColor = ['#8AA4FF', '#FB0101', '#43D300', '#FD8A01', '#E224BE', '#013DFF', '#33D7C1',];
-let subtasks = [];
-let prio = 0;
-let selectedContacts = [];
-let subtaskValue = [];
+let prio = null;
+let subTasks = [];
+// let tasks = [];
 
+let selectedCategoryName = null;
+let selectedCatColor = null;
+const prios = ['Urgent', 'Medium', 'Low'];
 
-/**
- * This function loads all Data for Add_Tasks from Backend and render the Data in the Corresponding fields
- */
-async function loadAndRenderData() {
-    await loadContactsfromBackend();
-    await loadTasksfromBackend();
-    await loadCategorysfromBackend();
-    setCurrentDate();
-    renderContacts();
-    renderCategory();
+const CATEGORY_MENU_EL = document.querySelector('.toggle-menu');
+const SELECT_CATEGORY_EL = document.querySelector('#select-task-category');
+const CATEGORY_LIST_EL = document.querySelector('.category-list');
+const SELECTED_CATEGORY_EL = document.querySelector('#selected-category');
+const NEW_CATEGORY_EL = document.querySelector('.new-category');
+const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector(
+	'.new-category__button--check'
+);
+const NEW_CATEGORY_INPUT_EL = document.querySelector('.new-catgory__input');
+
+const COLOR_CONTAINER_EL = document.querySelector('.color-container');
+const ALL_COLORS_INPUTS = document.querySelectorAll(
+	'.color-container input[type="radio"]'
+);
+
+const ASSIGNED_TO_EL = document.querySelector('.assigned-to');
+const ASSIGNED_TO_LIST_EL = document.querySelector('.assigned-to__list');
+const ASSIGNED_TO_ACTION_EL = document.querySelector(
+	'.assigned-to__list-action'
+);
+
+// subtask editors
+const SUBTASK_ACTIONS = document.querySelector('.subtask__actions');
+const SUBTASK_CLOSE_BTN_EL = document.querySelector('.subtask__close');
+const SUBTASK_CHECK_BTN_EL = document.querySelector('.subtask__check');
+const SUBTASK_PLUS_BTN_EL = document.querySelector('.subtask__plus');
+const SUBTASK_INPUT_EL = document.querySelector('.subtask__input');
+const SUBTASK_LIST_EL = document.querySelector('.subtasks-list');
+
+async function createTask() {
+	const title = document.getElementById('title').value;
+	const description = document.getElementById('description').value;
+	// const category = "Marketing";
+	// const contact = "Pascal" ;
+	const dueDate = document.getElementById('due-date').value;
+
+	const selectedCategory = {
+		name: selectedCategoryName,
+		color: selectedCatColor,
+	};
+
+	const assignees = [];
+
+	const contactChecks = document.querySelectorAll('.contact__checkbox');
+
+	for (let i = 0; i < contactChecks.length; i++) {
+		if (contactChecks[i].checked) {
+			assignees.push(contactChecks[i].value);
+		}
+	}	
+
+	const newTask = {
+		category: { ...selectedCategory },
+		assignees: assignees,
+		title: title,
+		description: description,
+		prio: prio,
+		date: dueDate,
+		subtasks: [...subTasks], // spread operator
+	};
+	const key = 'tasks';
+	// tasks.push(newTask)
+
+	const newTasks = [];
+
+	const exisitingTasks = await getItem('tasks');
+
+	// const categories = await getItem('categories');
+
+	// const updatedTasks = exisitingTasks.push(newTask);
+
+	// const response2 = await setItem('tasks', updatedTasks);
+
+	console.log('response2');
+	console.log(response2);
 }
-
-
-/**
- * This function open the toggle Menu for the category
- * @param {string} id of the corresponding toggle menu
- */
-function toggleMenuCategory(id) {
-    document.getElementById(id).classList.toggle('d-none');
-}
-
-
-/**
- * This function open the toggle Menu for the Contact
- * @param {string} id of the corresponding toggle menu
- */
-function toggleMenuContacts(id) {
-    document.getElementById(id).classList.toggle('d-none');
-    renderInicialsCircles();
-}
-
-
-/**
- * This function open the toggle Menu for category input
- * @param {string} id- the id of the corresponding toggle menu
- */
-function openInputfield(id) {
-    document.getElementById('toggle-menu').classList.add('d-none');
-    document.getElementById('category-input').classList.remove('d-none');
-    document.getElementById(id).classList.add('d-none');
-    document.getElementById('color-container').classList.remove('d-none');
-}
-
-/**
- * This function close the toggle Menu for category input
- * @param {string} id - the id of the corresponding toggle menu
- */
-function closeInputfield(id) {
-    document.getElementById('category-input').classList.add('d-none');
-    document.getElementById(id).classList.remove('d-none');
-    document.getElementById('color-container').classList.add('d-none');
-    document.getElementById('category-input-field').value = '';
-}
-
-
-/**
- * This funktion push the category name and the color in the categorys Array
- */
-function addedCategory() {
-    let categoryInput = document.getElementById('category-input-field').value;
-
-    let category = {
-        'name': categoryInput,
-        'color': currentColor
-    }
-    categorys.push(category);
-}
-
-/**
- * This function render the selected category into the input field
- */
-function renderCategory() {
-    let categoryContainer = document.getElementById('category-container');
-    categoryContainer.innerHTML = '';
-
-    for (let i = 0; i < categorys.length; i++) {
-        categoryContainer.innerHTML += greateHtmlRenderCategory(i);
-    }
-}
-
-/**
- * This function render a newly added category in the input field
- */
-function addNewCategorytoInput() {
-    let categoryInput = document.getElementById('category-input-field').value;
-    let selectedCategory = document.getElementById('selected-category');
-    selectedCategory.innerHTML = '';
-
-    selectedCategory.innerHTML += greateHtmlAddNewCategoryToInput(categoryInput);
-}
-
-/**
- * This funktion is used to added a category to input field
- * 
- * @param {number} i - the index of a category
- */
-function addToInput(i) {
-    let selectedCategory = document.getElementById('selected-category');
-    selectedCategoryColor = categorys[i]['color'];
-    selectedCategoryName = categorys[i]['name'];
-    selectedCategory.innerHTML = '';
-    selectedCategory.innerHTML += greateHtmlAddInput(selectedCategoryColor, selectedCategoryName);
-}
-
-/**
- * This function is used to delete a category
- * @param {number} i - the index of a category
- */
-function deleteCategory(i) {
-    categorys.splice(i, 1);
-    renderCategory();
-}
-
-
-/**
- * This function is used to render the color points that can be assigned to a category
- */
-function renderCategoryColors() {
-    let colorContainer = document.getElementById('color-container');
-    colorContainer.innerHTML = '';
-
-    for (let i = 0; i < pointColor.length; i++) {
-        color = pointColor[i];
-        colorContainer.innerHTML += greateHtmlCategorColor(color, i)
-    }
-}
-
-/**
- * This funktion is used to render the selected color point to the input field
- * @param {string} color - the Hex-colorcode of the selected color
- */
-function addColor(color) {
-    document.getElementById('currentColor').innerHTML = '';
-    document.getElementById('currentColor').innerHTML += /*html*/ `<div class="color-circle" style="background-color: ${'' + color}"></div>`
-    currentColor = color;
-}
-
-
-/**
- * This function is used to render the contacts in the toggle Menu
- */
-function renderContacts() {
-    let contactContainer = document.getElementById('contact-container');
-    contactContainer.innerHTML = '';
-
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-
-        contactContainer.innerHTML += /*html*/ `
-        <div class="contact">
-            <span>${contact['name']} ${contact['surname']}</span>
-            <input onclick="addContactsToArray()" id="checkbox${i}" type="checkbox">
-        </div>`
-    }
-}
-
-/**
- * The function adds selected contacts' IDs to an array.
- */
-function addContactsToArray() {
-    selectedContacts = [];
-    let checkbox = document.querySelectorAll("input[type = 'checkbox'");
-
-    for (let i = 0; i < checkbox.length; i++) {
-        if (checkbox[i].checked == true) {
-            selectedContacts.push(contacts[i]['contactid']);
-        }
-    }
-}
-
-
-/**
- * This function is used clear the selected checkboxes
- */
-function resetCheckbox() {
-    selectedContacts = [];
-    let checkbox = document.querySelectorAll("input[type = 'checkbox'");
-
-    for (let i = 0; i < checkbox.length; i++) {
-        checkbox[i].checked = false;
-    }
-}
-
-/**
- * This function is used to render the circle of a contact
- */
-function renderInicialsCircles() {
-    let colorContainer = document.getElementById('inicial-circles');
-    colorContainer.innerHTML = '';
-    for (let y = 0; y < selectedContacts.length; y++) { /* checks if the id still exists */
-        for (let z = 0; z < contacts.length; z++) {
-            let indexOfContact = contacts[z].contactid.indexOf(selectedContacts[y]); /* if the id does not exist then -1 will be return */
-            if (indexOfContact >= 0) {
-                colorContainer.innerHTML += /*html*/`
-                <div class="color-circle-contact" style="background-color: ${'' + contacts[z].profilecolor}">${contacts[z].Initials}</div>`
-            }
-        }
-    }
-}
-
 
 /**
  * this function checks which button is clicked
  * @param {number} prioValue - number of the prio button
  */
 function addPrio(prioValue) {
-    resetPrio();
-    if (prioValue == prio) {
-        prioValue = 0;
-        prio = 0;
-    }
-    if (prioValue == 1) {
-        selectUrgent();
-    }
-    if (prioValue == 2) {
-        selectMedium();
-    }
-    if (prioValue == 3) {
-        selectLow();
-    }
+	resetPrio();	
+	if (prioValue == 0) {
+		selectUrgent();
+	}
+	if (prioValue == 1) {
+		selectMedium();
+	}
+	if (prioValue == 2) {
+		selectLow();
+	}
 }
-
 
 /**
  * This function changes the color of the Urgent button
  */
 function selectUrgent() {
-    document.getElementById('urgent-btn').classList.add('urgent-aktiv');
-    document.getElementById('urgent-image').style.filter = 'brightness(0) invert(1)';
-    prio = 1;
+	document.getElementById('urgent-btn').classList.add('urgent-aktiv');
+	document.getElementById('urgent-image').style.filter =
+		'brightness(0) invert(1)';
+	prio = 1;
 }
-
 
 /**
  * This function changes the color of the Medium button
  */
 function selectMedium() {
-    document.getElementById('medium-btn').classList.add('medium-aktiv');
-    document.getElementById('medium-image').style.filter = 'brightness(0) invert(1)';
-    prio = 2;
+	document.getElementById('medium-btn').classList.add('medium-aktiv');
+	document.getElementById('medium-image').style.filter =
+		'brightness(0) invert(1)';
+	prio = 2;
 }
-
 
 /**
  * This function changes the color of the Low button
  */
 function selectLow() {
-    document.getElementById('low-btn').classList.add('low-aktiv');
-    document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
-    prio = 3;
+	document.getElementById('low-btn').classList.add('low-aktiv');
+	document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
+	prio = 3;
 }
 
 /**
  * This function is used to reset all prio buttons
  */
 function resetPrio() {
-    document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
-    document.getElementById('urgent-image').style.filter = '';
-    document.getElementById('medium-btn').classList.remove('medium-aktiv');
-    document.getElementById('medium-image').style.filter = '';
-    document.getElementById('low-btn').classList.remove('low-aktiv');
-    document.getElementById('low-image').style.filter = '';
+	document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
+	document.getElementById('urgent-image').style.filter = '';
+	document.getElementById('medium-btn').classList.remove('medium-aktiv');
+	document.getElementById('medium-image').style.filter = '';
+	document.getElementById('low-btn').classList.remove('low-aktiv');
+	document.getElementById('low-image').style.filter = '';
 }
-
-
-
 
 /**
  * This function is used to reset the required alert
  */
 function resetRequired() {
-    for (let i = 0; i <= 5; i++) {
-        document.getElementById(`required${i}`).innerText = "";
-
-    }
+	for (let i = 0; i <= 5; i++) {
+		document.getElementById(`required${i}`).innerText = '';
+	}
 }
 
 /**
  * this function reset the complete form
  */
 function resetForm() {
-    resetRequired();
-    document.getElementById('title').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('selected-category').innerHTML = 'Select task category';
-    document.getElementById('inicial-circles').innerHTML = '';
-    resetCheckbox();
-    document.getElementById('due-date').value = '';
-    addPrio(0);
-    document.getElementById('subtasks-container').innerHTML = '';
+	resetRequired();
+	document.getElementById('title').value = '';
+	document.getElementById('description').value = '';
+	document.getElementById('selected-category').innerHTML =
+		'Select task category';
+	document.getElementById('inicial-circles').innerHTML = '';
+	document.getElementById('due-date').value = '';
+	addPrio(0);
+	document.getElementById('subtasks-container').innerHTML = '';
 }
 
+// load categories in dropdown
+async function loadCategories() {
+	// const cats = await getItem('categories');
 
+	// console.log(cats);
 
+	// return
+	let list = CATEGORY_LIST_EL;
+	list.innerHTML = '';
+
+	list.innerHTML += addCategoryHTML();
+	for (let i = 0; i < categories.length; i++) {
+		let category = categories[i]['name'];
+		let color = categories[i]['color'];
+		list.innerHTML += categoryHTML(category, color);
+	}
+}
+
+// load contacts
+
+function loadContacts() {}
+
+function categoryToggler() {	
+	const computedStyle = getComputedStyle(CATEGORY_LIST_EL);
+	if (computedStyle.display === 'none') {
+		CATEGORY_LIST_EL.style.display = 'block';
+	} else {
+		CATEGORY_LIST_EL.style.display = 'none';
+	}
+}
+
+(() => {
+	loadCategories();
+	loadContacts();
+})();
+
+// EVENT LISTENERS
+SELECT_CATEGORY_EL.addEventListener('click', categoryToggler);
+BTN_CHECK_NEW_CATEGORY_EL.addEventListener('click', addNewCategory);
+ASSIGNED_TO_EL.addEventListener('click', assignToHandler);
+
+// ASSIGNED_TO_ACTION_EL.addEventListener('click', assignToHandlerInList);
+
+// UTILITIE FUNCTION FOR ADD TASK HTML VIEW
+
+function categoryHTML(category, color) {
+	return /*html*/ `
+        <li class='category-task' onclick="selectCategory('${category}', '${color}')">
+            <div>${category}</div>
+            <div class="color-dot ${color}" style="background-color: ${color}"></div>
+        </li>`;
+}
+
+function addCategoryHTML() {
+	return /*html*/ `
+        <li class='category-task' onclick="newCategoryHandler()">
+            <div>New Category</div>
+        </li>`;
+}
+
+function newCategoryHandler() {
+	CATEGORY_LIST_EL.style.display = 'none';
+	SELECT_CATEGORY_EL.style.display = 'none';
+	NEW_CATEGORY_EL.style.display = 'flex';
+	COLOR_CONTAINER_EL.style.display = 'flex';
+}
+
+function cancelNewCategory() {
+	NEW_CATEGORY_EL.style.display = 'none';
+	SELECT_CATEGORY_EL.style.display = 'flex';
+}
+
+async function addNewCategory() {
+	NEW_CATEGORY_EL.style.display = 'none';
+	COLOR_CONTAINER_EL.style.display = 'none';
+	SELECT_CATEGORY_EL.style.display = 'flex';
+	let selectedColor = null;
+	let categoryName = '';
+	categoryName = NEW_CATEGORY_INPUT_EL.value;
+	for (let i = 0; i < ALL_COLORS_INPUTS.length; i++) {
+		if (ALL_COLORS_INPUTS[i].checked) {
+			selectedColor = ALL_COLORS_INPUTS[i].value;
+		}
+	}
+
+	// compose new cateogry
+
+	const newCategory = {
+		name: categoryName,
+		color: selectedColor,
+	};
+
+	categories.push(newCategory);
+
+	// code to be uncommented
+	// const existingCats = await getItem('categories');
+
+	// console.log(existingCats);
+
+	// const response = await setItem('categories', categories);
+	// console.log(response);
+
+	loadCategories();
+
+	// clear inputs
+	NEW_CATEGORY_INPUT_EL.value = '';
+	for (let i = 0; i < ALL_COLORS_INPUTS.length; i++) {
+		ALL_COLORS_INPUTS[i].checked = false;
+	}
+}
+
+function selectCategory(category, color) {
+	SELECTED_CATEGORY_EL.innerHTML = `<span class='selected-category-heading'>${category} <span class='color-dot' style="background-color: ${color}"></span></span>`;
+	CATEGORY_LIST_EL.style.display = 'none';
+
+	selectedCatColor = color;
+	selectedCategoryName = category;
+}
+
+// assigned to
+
+function loadContacts() {
+	ASSIGNED_TO_LIST_EL.innerHTML = '';
+	ASSIGNED_TO_LIST_EL.innerHTML += `<li onclick="assignToHandlerInList()" class="assigned-to__list-action">
+	<div class="assigned-to__in-list">
+			<span>Select contact to assign</span>
+			<img src="/src/img/img_add_task/triangle.svg">
+	</div>
+</li>`;
+
+	for (let i = 0; i < contacts.length; i++) {
+		ASSIGNED_TO_LIST_EL.innerHTML += `<li class="contact"><label>${contacts[i].name}</label> <input value="${contacts[i].email}" type='checkbox' class='contact__checkbox' /></li>`;
+	}
+}
+function assignToHandler() {
+	ASSIGNED_TO_LIST_EL.style.display = 'flex';
+
+	ASSIGNED_TO_EL.style.display = 'none';
+}
+function assignToHandlerInList() {
+	ASSIGNED_TO_LIST_EL.style.display = 'none';
+
+	ASSIGNED_TO_EL.style.display = 'flex';
+}
+
+// sub tasks
+function addSubtask() {
+	const subTaskId = generateRandomId();
+	const value = SUBTASK_INPUT_EL.value;
+	const subTask = {
+		id: subTaskId,
+		title: value,
+		status: true,
+	};
+	subTasks.push(subTask);
+	composeSubTasks(subTasks);
+
+	SUBTASK_INPUT_EL.style.display = 'none';
+	SUBTASK_ACTIONS.style.display = 'none';
+	SUBTASK_PLUS_BTN_EL.style.display = 'block';
+}
+
+function openSubtaskEditor() {
+	SUBTASK_INPUT_EL.value = '';
+	SUBTASK_INPUT_EL.style.display = 'inline';
+	SUBTASK_ACTIONS.style.display = 'flex';
+	SUBTASK_PLUS_BTN_EL.style.display = 'none';
+}
+
+function closeSubtaskEditor() {
+	SUBTASK_INPUT_EL.style.display = 'none';
+	SUBTASK_ACTIONS.style.display = 'none';
+	SUBTASK_PLUS_BTN_EL.style.display = 'block';
+}
+
+function composeSubTasks(subTasks) {
+	SUBTASK_LIST_EL.style.display = 'block';
+	SUBTASK_LIST_EL.innerHTML = '';
+
+	for (let i = 0; i < subTasks.length; i++) {
+		SUBTASK_LIST_EL.innerHTML += `
+		<li class='subtask'> <div class='subtask__title-box'><span class='subtask__square'></span>${subTasks[i].title}</div> <span class='subtask__remove' onclick='removeSubtask(${subTasks[i].id})'>X</span></li>
+		`;
+	}
+}
+
+function removeSubtask(id) {
+	const filteredSubtasks = subTasks.filter((sub) => sub.id !== id.toString());
+	composeSubTasks(filteredSubtasks);
+}
+
+// utlity functions
+
+// function to create randomid for task so that we can remove the same subtask based on it's id. Id needs to be unique
+function generateRandomId() {
+	const random = Math.floor(Math.random() * 1000000);
+	return random.toString();
+}

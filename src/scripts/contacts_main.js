@@ -126,6 +126,7 @@ function openContact(i, j) {
     fadeInCard('on');
 }
 
+
 function closeContactCard() {
     let contactView = document.getElementById('contactView');
     contactView.style.zIndex = -10;

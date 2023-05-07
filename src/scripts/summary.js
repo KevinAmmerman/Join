@@ -17,7 +17,7 @@ function greetings(){
      else if(currentHour >= 12 && currentHour < 18){
         greeting = 'Good afternoon';
     }
-    else if(currentHour >= 18 && currentHour < 23){
+    else if(currentHour >= 18 && currentHour < 4){
         greeting = 'Good evening';
     }
 

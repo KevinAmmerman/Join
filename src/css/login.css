@@ -252,23 +252,23 @@ html {
 }
 
 .message {
-    position: absolute;
-    left: 300px;
+    display: flex;
+    justify-content: center;
     transform: translateY(-50px);
     background-color: #2A3647;
     color: white;
-    margin: 0 500px;
+    margin: 0 1050px;
     border-radius: 8px;
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
-    animation: fade_in 1.5;
+    
 }
 
 
-
 .dNone {
-    display: none;
+   display: none;
+    
 }
 
 @media(max-width:1280px) {

@@ -1,12 +1,11 @@
 let user = [];
-let currentUser =['Guest'];
+
 
 
 function init(){
-    messageSignIn();
     loadUsers();
     loadEmailPassword();
-    signUp();
+    messageSignIn();
     
 }
 
@@ -31,6 +30,7 @@ users =[];
 
 async function login(){
     await loadUsers();
+    
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let user = users.find( u => u.email == email.value && u.password == password.value);
@@ -88,46 +88,47 @@ async function loadUsers(){
 
 
 function messageSignIn(){
+    loadUsers();
+    
     const urlParams = new URLSearchParams(window.location.search);
     const msg = urlParams.get('msg');
-    if(msg) {
-        msgBox.innerHTML = msg;
-        
+    msgBox.innerHTML = msg;
+    if(user.length === 0){
+        msgBox.classList.add('dNone');
     }
-
+           
+    if(user.length === 1){
+         
+        setTimeout(function(){
+        msgBox.classList.remove('dNone');
+    },3000)
+} 
 }
 
 
 
 
+
+
 async function register() {
+    const registerBtn = document.getElementById('registerBtn');
     registerBtn.disabled = true;
+
     users.push({
         names: names.value,
         email: email.value,
         password: password.value,
     });
-     window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
     await setItem('users', JSON.stringify(users));
-   
-    }
     
-    resetForm();
-    signUp();
+    const registerForm = document.getElementById('register-form');
+        registerForm.addEventListener('submit'), function(event) {
+        event.preventDefault();}
+    messageSignIn();
+       
+}
     
-
-function alertMessage(message){
-    
-    let approvedLogin = document.getElementById('msgBox');
-
-    approvedLogin.innerHTML = message;
-    approvedLogin.classList.remove('dNone')
-    
-    setTimeout(function(){
-        approvedLogin.classList.add('dNone')
-    },2000) 
-} 
-    resetForm();
 
 
 function resetForm() {
@@ -136,17 +137,6 @@ function resetForm() {
     password.value = '';
     registerBtn.disabled = false;
     
-    signUp();
+    
 }
 
-function signUp(){
-    let registerBtn = document.getElementById('registerBtn');
-    if(registerBtn = true){
-    alertMessage('Du hast dich erfolgreich registriert');
-}   if(registerBtn = false){
-    registerBtn.disabled = false;
-    registerBtn.classList.add('dNone');
-}
-
-    resetForm();
-}

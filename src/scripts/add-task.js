@@ -4,28 +4,23 @@ let subTasks = [];
 
 let selectedCategoryName = null;
 let selectedCatColor = null;
-const prios = ['Urgent', 'Medium', 'Low'];
 
+const prios = ['Urgent', 'Medium', 'Low'];
 const CATEGORY_MENU_EL = document.querySelector('.toggle-menu');
 const SELECT_CATEGORY_EL = document.querySelector('#select-task-category');
 const CATEGORY_LIST_EL = document.querySelector('.category-list');
 const SELECTED_CATEGORY_EL = document.querySelector('#selected-category');
 const NEW_CATEGORY_EL = document.querySelector('.new-category');
-const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector(
-	'.new-category__button--check'
+const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector('.new-category__button--check'
 );
 const NEW_CATEGORY_INPUT_EL = document.querySelector('.new-catgory__input');
 
 const COLOR_CONTAINER_EL = document.querySelector('.color-container');
-const ALL_COLORS_INPUTS = document.querySelectorAll(
-	'.color-container input[type="radio"]'
-);
+const ALL_COLORS_INPUTS = document.querySelectorAll('.color-container input[type="radio"]');
 
 const ASSIGNED_TO_EL = document.querySelector('.assigned-to');
 const ASSIGNED_TO_LIST_EL = document.querySelector('.assigned-to__list');
-const ASSIGNED_TO_ACTION_EL = document.querySelector(
-	'.assigned-to__list-action'
-);
+const ASSIGNED_TO_ACTION_EL = document.querySelector('.assigned-to__list-action');
 
 // subtask editors
 const SUBTASK_ACTIONS = document.querySelector('.subtask__actions');
@@ -78,9 +73,6 @@ async function createTask() {
 	// const updatedTasks = exisitingTasks.push(newTask);
 
 	// const response2 = await setItem('tasks', updatedTasks);
-
-	console.log('response2');
-	console.log(response2);
 }
 
 /**
@@ -88,7 +80,7 @@ async function createTask() {
  * @param {number} prioValue - number of the prio button
  */
 function addPrio(prioValue) {
-	resetPrio();	
+	resetPrio();		
 	if (prioValue == 0) {
 		selectUrgent();
 	}
@@ -185,7 +177,7 @@ async function loadCategories() {
 
 // load contacts
 
-function loadContacts() {}
+
 
 function categoryToggler() {	
 	const computedStyle = getComputedStyle(CATEGORY_LIST_EL);
@@ -286,7 +278,10 @@ function selectCategory(category, color) {
 
 // assigned to
 
-function loadContacts() {
+async function loadContacts() {
+	let contactsSingleQuote = await getItem('contacts');
+    contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
+
 	ASSIGNED_TO_LIST_EL.innerHTML = '';
 	ASSIGNED_TO_LIST_EL.innerHTML += `<li onclick="assignToHandlerInList()" class="assigned-to__list-action">
 	<div class="assigned-to__in-list">

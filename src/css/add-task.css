@@ -211,13 +211,13 @@ textarea:focus {
 	background: url('../img/img_add_task/close.svg');
 
 	background-repeat: no-repeat;
-	background-size: cover;
+	
 }
 
 .new-category__button--check {
 	background: url('../img/img_add_task/check.svg');
 	background-repeat: no-repeat;
-	background-size: cover;
+	
 }
 
 .color-container {
@@ -401,9 +401,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	align-items: center;
 	gap: 10px;
 	display: none;
+	
 }
 .subtask__actions img {
 	cursor: pointer;
+	margin-right: 5px;
 }
 .subtask__close {
 	display: block;

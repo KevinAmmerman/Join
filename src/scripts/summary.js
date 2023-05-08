@@ -51,6 +51,7 @@ function generateSummaryTemplate(){
             
 
         <div class="task-Deadline-Container">
+            
                 <div class="task-Deadline-Info">
                 <img src="./src/img/redCircle.png" alt="redCirlce">
                <div class="deadline-text"><p>1</p> Urgent</div>

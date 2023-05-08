@@ -87,22 +87,28 @@ async function loadUsers(){
 
 
 
-function messageSignIn(){
-    loadUsers();
+async function messageSignIn(){
+     await loadUsers();
     
     const urlParams = new URLSearchParams(window.location.search);
     const msg = urlParams.get('msg');
+   
+    if(msgBox){
     msgBox.innerHTML = msg;
-    if(user.length === 0){
-        msgBox.classList.add('dNone');
-    }
-           
-    if(user.length === 1){
-         
-        setTimeout(function(){
+}        
+    const alreadyShown = await getItem('users', JSON.stringify(users));  
+    if(!alreadyShown && !user.length){
+        await setItem('alreadyShown', true)
+        setTimeout ( () => {
         msgBox.classList.remove('dNone');
-    },3000)
-} 
+    }, 2000);
+    
+}  
+
+setTimeout(() => {
+    msgBox.classList.add('dNone');
+}, 5000); 
+
 }
 
 

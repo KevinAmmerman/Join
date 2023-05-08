@@ -251,18 +251,23 @@ html {
     text-decoration: none;
 }
 
-.message {
+.message-container {
+    width: 100%;
+    transform: translateY(-50px);
     display: flex;
     justify-content: center;
-    transform: translateY(-50px);
-    background-color: #2A3647;
-    color: white;
-    margin: 0 1050px;
+}
+
+.message{
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    
+    color:#2A3647;
     border-radius: 8px;
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
-    
 }
 
 

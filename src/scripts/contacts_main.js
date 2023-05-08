@@ -53,13 +53,13 @@ async function addContact() {
     let name = document.getElementById('inputName').value;
     let email = document.getElementById('inputEmail').value;
     let phone = document.getElementById('inputPhone').value;
-    let contact = {
+    let newContact = {
         "name": name,
         "email": email,
         "phone": phone
     };
     if (checkIfContactsExists(name)) return;
-    contacts.push(contact);
+    contacts.push(newContact);
     emptyInputFields(name, email, phone);
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully created');

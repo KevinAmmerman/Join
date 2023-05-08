@@ -104,12 +104,14 @@ async function saveContactEdits(contactsIndex, i, j) {
 }
 
 
-async function deleteContact(i) {
-    contacts.splice(i, 1);
-    openAndCloseNewContactWindow();
+async function deleteContact(contactsIndex, i, j, mobil) {
+    contacts.splice(contactsIndex, 1);
+    groups[i].splice(j, 1);
+    if(!mobil) openAndCloseNewContactWindow();
     alertMessage('Contact succesfully deleted');
     await setItem('contacts', contacts);
     emptyContainer();
+    closeContactCard();
     init();
 }
 

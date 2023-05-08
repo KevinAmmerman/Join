@@ -33,6 +33,7 @@ function createHtmlForContactCard(contact, i, j) {
     let email = contact.email;
     let phone = contact.phone;
     let contactColor = initialsColors[getColorForInitials(contact)];
+    let contactsIndex = checkIndexContacts(contact.name);
     return `
         <div class="cardContainer" id="cardContainer">
             <div class="cardTopPart">
@@ -46,7 +47,7 @@ function createHtmlForContactCard(contact, i, j) {
             </div>
             <div class="cardMidPart">
                 <div class="contactInformation">Contact Information</div>
-                <span onclick="renderEditContactWindow(${i}, ${j})">
+                <span class="editBtn" onclick="renderEditContactWindow(${i}, ${j})">
                     <div></div>Edit contact
                 </span>
             </div>
@@ -55,6 +56,10 @@ function createHtmlForContactCard(contact, i, j) {
                 <span class="emailStyle">${email}</span>
                 <span class="FontWeightBold">Phone</span>
                 <span>${phone}</span>
+            </div>
+            <div class="mobileBtnSection">
+                <button onclick="deleteContact(${contactsIndex}, ${i}, ${j}, 'mobil')" class="mobileDeleteBtn"></button>
+                <button onclick="renderEditContactWindow(${i}, ${j})" class="mobileEditBtn"></button>
             </div>
         </div>
     `;
@@ -82,7 +87,7 @@ function createHtmlForCreateContact() {
                     <img class="inputImg" src="src/img/img_contacts/mail.png" alt="logo of a mail">
                 </div>
                 <div class="inputSection">
-                    <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" required>
+                    <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" pattern="^(?=.*\+)[\d\s+]+$" required>
                     <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                 </div>
                 <div class="btnSection">
@@ -106,7 +111,7 @@ function createHtmlForEditContact(contact, contactsIndex, j, i) {
             <h1 class="addContactHeadline">Edit Contact</h1>
             <img class="blueLineContact" src="src/img/img_contacts/login-blue-line.png" alt="blue line">
         </div>
-        <div class="circalInitialsBig editInitials" style="background-color: ${contactColor}">${initials}</div>
+        <div class="editInitials" style="background-color: ${contactColor}">${initials}</div>
         <img class="closeCross" src="src/img/img_contacts/cross.svg" onclick="openAndCloseNewContactWindow()">
         <div class="addContactRight">
             <form class="contactInputForm" onsubmit="saveContactEdits(${contactsIndex}, ${i}, ${j}); return false">
@@ -123,10 +128,11 @@ function createHtmlForEditContact(contact, contactsIndex, j, i) {
                     <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                 </div>
                 <div class="editBtnSection">
+                    <div onclick="deleteContact(${contactsIndex}, ${i}, ${j})" class="deleteBtn transparentBtn">Delete</div>
                     <button class="saveBtn coloredBtn">Save</button>
                 </div>
             </form>
-            <button onclick="deleteContact(${i})" class="deleteBtn transparentBtn">Delete</button>
+            
         </div>
     `;
 }

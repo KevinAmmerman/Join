@@ -9,6 +9,7 @@ body {
     margin: 0;
     background-color: #F6F7F8;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 /* === GENERAL === */
@@ -57,8 +58,16 @@ body {
     top: 204px;
     left: 50%;
     transform: translateX(-50%);
-    width: 134px;
-    height: 134px;
+    width: 125px;
+    height: 125px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 3rem;
+    border: 3px solid white;
+    box-sizing: border-box;
 }
 
 .emailStyle {
@@ -267,7 +276,8 @@ body {
 #fullContactCard {
     margin-left: 70px;
     transform: translateX(100%);
-    transition: all 500ms ease-in-out
+    transition: all 500ms ease-in-out;
+    height: 100%;
 }
 
 #contactView {
@@ -275,7 +285,7 @@ body {
 }
 
 .cardContainer {
-    height: 330px;
+    height: 100%;
 }
 
 .fadeInCard {
@@ -357,6 +367,49 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.mobileBtnSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 15px;
+    right: 16px;
+    display: none !important;
+}
+
+.mobileDeleteBtn {
+    background-image: url(../img/img_contacts/delete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px 25px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+}
+
+.mobileDeleteBtn:hover {
+    transform: scale(1.05);
+}
+
+.mobileEditBtn {
+    background: url(../img/img_contacts/pencil_white.png) #2A3647;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px 28px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+}
+
+.mobileEditBtn:hover {
+    transform: scale(1.05);
 }
 
 /* === ADD-CONTACT === */
@@ -460,6 +513,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     max-width: 326px;
+    text-align: center;
 }
 
 
@@ -498,7 +552,7 @@ body {
 .addContactBtnMobile {
     display: none !important;
     top: 20px;
-    right: 290px;
+    right: 250px;
     z-index: 1;
     background-color: #2A3647;
     border-radius: 10px;
@@ -566,13 +620,11 @@ body {
 .editBtnSection {
     width: 400px;
     display: flex;
-    justify-content: flex-end;
+    gap: 20px;
+    justify-content: center;
 }
 
 .deleteBtn {
-    position: absolute;
-    top: 414px;
-    right: 245px;
     width: 122px;
     height: 55px;
 }
@@ -656,8 +708,11 @@ body {
         border-top-right-radius: 27px;
     }
 
-    .joinLogoContact,
-    .addContactLeft span {
+    .addContactHeadline {
+        margin: 0;
+    }
+
+    .joinLogoContact {
         display: none;
     }
 
@@ -683,11 +738,6 @@ body {
         right: 134px;
         bottom: 39px;
     }
-
-    .deleteBtn {
-        top: 338px;
-        right: 290px;
-    }
 }
 
 @media (max-width: 1200px) {
@@ -707,6 +757,7 @@ body {
         top: 0;
         bottom: 0;
         padding-left: 60px;
+        padding-top: 80px;
         align-items: flex-start;
     }
 
@@ -717,6 +768,10 @@ body {
 
     .contactOrder {
         margin-left: 10px;
+    }
+
+    .addContactBtnContainer {
+        display: block;
     }
 
     .addContactBtnDesktop {
@@ -755,6 +810,7 @@ body {
 
     #contactsMainContainer {
         left: 0;
+        height: calc(100vh - 184px);
     }
 
     #contactList {
@@ -766,14 +822,59 @@ body {
         margin-left: 0;
     }
 
-    .addContactBtnContainer {
-        display: block;
-    }
-
     .addContactBtnMobile {
         right: 18px;
     }
+
+    .mobileBtnSection {
+        display: flex !important;
+    }
+
+    .editBtn {
+        display: none !important;
+    }
 }
+
+@media (max-height: 820px) {
+
+    .editInitials {
+        width: 100px;
+        height: 100px;
+    }
+
+    .defaultUserImg {
+        width: 110px;
+        height: 110px;
+    }
+
+    .contactInputForm {
+        gap: 15px;
+    }
+
+    .inputSection {
+        height: 40px;
+        padding: 8px 21px;
+    }
+
+    .contactInputForm {
+        bottom: -65px;
+    }
+
+    .contactInput {
+        border: none;
+        width: 100%;
+        height: 100%;
+        font-size: 1.1rem;
+        padding-top: 4px;
+    }
+}
+
+@media (min-height: 820px) and (max-height: 880px) {
+    .contactInputForm {
+        bottom: -65px;
+    }
+}
+
 
 @media (max-width: 610px) {
 
@@ -786,6 +887,21 @@ body {
         border-top-right-radius: 0;
         border-top-left-radius: 0;
         width: 100%;
+        height: 40%;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .addContactRight {
+        height: 60%;
+    }
+
+    .editInitials {
+        top: 31%;
+    }
+
+    .defaultUserImg {
+        top: 31%;
     }
 
     .addContactRight {
@@ -802,6 +918,17 @@ body {
 
     .cancelBtn {
         display: none;
+    }
+
+    .btnSection {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .editBtnSection {
+        width: 100%;
     }
 }
 
@@ -832,8 +959,7 @@ body {
     }
 
     .addContactLeft {
-        gap: 10px;
-        align-items: flex-start;
+        justify-content: center;
     }
 
     .contactName>span {

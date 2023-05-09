@@ -80,7 +80,6 @@ textarea:focus {
 	font-size: 20px;
 	font-family: 'Inter';
 	cursor: pointer;
-	
 }
 
 .category-list {
@@ -211,18 +210,16 @@ textarea:focus {
 	background: url('../img/img_add_task/close.svg');
 
 	background-repeat: no-repeat;
-	
 }
 
 .new-category__button--check {
 	background: url('../img/img_add_task/check.svg');
 	background-repeat: no-repeat;
-	
 }
 
 .color-container {
 	display: flex;
-	align-items: center;	
+	align-items: center;
 	display: none;
 	gap: 8px;
 	margin-left: 15px;
@@ -281,12 +278,12 @@ textarea:focus {
 	background-color: #fff;
 	border: 1px solid #a8a8a8;
 	border-radius: 10px;
-	height: 200px;
+	height: auto;
 	padding: 0px 6px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	justify-content: space-between;
+	gap: 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	display: none;
@@ -402,7 +399,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	align-items: center;
 	gap: 10px;
 	display: none;
-	
 }
 .subtask__actions img {
 	cursor: pointer;
@@ -624,4 +620,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	color: rgb(41, 171, 226);
 	-webkit-box-shadow: 0px 10px 9px -3px #979797;
 	box-shadow: 0px 5px 9px -3px #979797;
+}
+
+.mt-lg {
+	margin-top: 100px;
 }

@@ -1,4 +1,4 @@
-let prio = null;
+let prio = null; //initial state
 let subTasks = [];
 // let tasks = [];
 
@@ -11,16 +11,21 @@ const SELECT_CATEGORY_EL = document.querySelector('#select-task-category');
 const CATEGORY_LIST_EL = document.querySelector('.category-list');
 const SELECTED_CATEGORY_EL = document.querySelector('#selected-category');
 const NEW_CATEGORY_EL = document.querySelector('.new-category');
-const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector('.new-category__button--check'
+const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector(
+	'.new-category__button--check'
 );
 const NEW_CATEGORY_INPUT_EL = document.querySelector('.new-catgory__input');
 
 const COLOR_CONTAINER_EL = document.querySelector('.color-container');
-const ALL_COLORS_INPUTS = document.querySelectorAll('.color-container input[type="radio"]');
+const ALL_COLORS_INPUTS = document.querySelectorAll(
+	'.color-container input[type="radio"]'
+);
 
 const ASSIGNED_TO_EL = document.querySelector('.assigned-to');
 const ASSIGNED_TO_LIST_EL = document.querySelector('.assigned-to__list');
-const ASSIGNED_TO_ACTION_EL = document.querySelector('.assigned-to__list-action');
+const ASSIGNED_TO_ACTION_EL = document.querySelector(
+	'.assigned-to__list-action'
+);
 
 // subtask editors
 const SUBTASK_ACTIONS = document.querySelector('.subtask__actions');
@@ -32,47 +37,36 @@ const SUBTASK_LIST_EL = document.querySelector('.subtasks-list');
 
 async function createTask() {
 	const title = document.getElementById('title').value;
-	const description = document.getElementById('description').value;
-	// const category = "Marketing";
-	// const contact = "Pascal" ;
+	const description = document.getElementById('description').value;	
 	const dueDate = document.getElementById('due-date').value;
-
 	const selectedCategory = {
 		name: selectedCategoryName,
 		color: selectedCatColor,
 	};
-
 	const assignees = [];
-
 	const contactChecks = document.querySelectorAll('.contact__checkbox');
 
 	for (let i = 0; i < contactChecks.length; i++) {
 		if (contactChecks[i].checked) {
 			assignees.push(contactChecks[i].value);
 		}
-	}	
+	}
 
 	const newTask = {
-		category: { ...selectedCategory },
-		assignees: assignees,
-		title: title,
-		description: description,
-		prio: prio,
-		date: dueDate,
-		subtasks: [...subTasks], // spread operator
+		'category': { ...selectedCategory },
+		'assignedTo': [assignees],
+		'title': title,
+		'description': description,
+		'prio': prio,
+		'date': dueDate,
+		'subtask': [subTasks] // spread operator
 	};
-	const key = 'tasks';
-	// tasks.push(newTask)
+	console.log(newTask);
 
-	const newTasks = [];
+	tasks.toDo.push(newTask);
 
-	const exisitingTasks = await getItem('tasks');
-
-	// const categories = await getItem('categories');
-
-	// const updatedTasks = exisitingTasks.push(newTask);
-
-	// const response2 = await setItem('tasks', updatedTasks);
+	setItem('tasks', tasks);	
+	
 }
 
 /**
@@ -80,7 +74,7 @@ async function createTask() {
  * @param {number} prioValue - number of the prio button
  */
 function addPrio(prioValue) {
-	resetPrio();		
+	resetPrio();
 	if (prioValue == 0) {
 		selectUrgent();
 	}
@@ -153,17 +147,13 @@ function resetForm() {
 		'Select task category';
 	document.getElementById('inicial-circles').innerHTML = '';
 	document.getElementById('due-date').value = '';
-	addPrio(0);
+	addPrio(null);
 	document.getElementById('subtasks-container').innerHTML = '';
 }
 
 // load categories in dropdown
 async function loadCategories() {
-	// const cats = await getItem('categories');
-
-	// console.log(cats);
-
-	// return
+	
 	let list = CATEGORY_LIST_EL;
 	list.innerHTML = '';
 
@@ -177,9 +167,7 @@ async function loadCategories() {
 
 // load contacts
 
-
-
-function categoryToggler() {	
+function categoryToggler() {
 	const computedStyle = getComputedStyle(CATEGORY_LIST_EL);
 	if (computedStyle.display === 'none') {
 		CATEGORY_LIST_EL.style.display = 'block';
@@ -226,6 +214,7 @@ function newCategoryHandler() {
 
 function cancelNewCategory() {
 	NEW_CATEGORY_EL.style.display = 'none';
+	COLOR_CONTAINER_EL.style.display = 'none';
 	SELECT_CATEGORY_EL.style.display = 'flex';
 }
 
@@ -248,17 +237,7 @@ async function addNewCategory() {
 		name: categoryName,
 		color: selectedColor,
 	};
-
 	categories.push(newCategory);
-
-	// code to be uncommented
-	// const existingCats = await getItem('categories');
-
-	// console.log(existingCats);
-
-	// const response = await setItem('categories', categories);
-	// console.log(response);
-
 	loadCategories();
 
 	// clear inputs
@@ -280,7 +259,8 @@ function selectCategory(category, color) {
 
 async function loadContacts() {
 	let contactsSingleQuote = await getItem('contacts');
-    contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
+	let tasks = await getItem('tasks');
+	contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
 
 	ASSIGNED_TO_LIST_EL.innerHTML = '';
 	ASSIGNED_TO_LIST_EL.innerHTML += `<li onclick="assignToHandlerInList()" class="assigned-to__list-action">
@@ -291,7 +271,7 @@ async function loadContacts() {
 </li>`;
 
 	for (let i = 0; i < contacts.length; i++) {
-		ASSIGNED_TO_LIST_EL.innerHTML += `<li class="contact"><label>${contacts[i].name}</label> <input value="${contacts[i].email}" type='checkbox' class='contact__checkbox' /></li>`;
+		ASSIGNED_TO_LIST_EL.innerHTML += `<li class="contact"><label>${contacts[i].name}</label> <input value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
 	}
 }
 function assignToHandler() {

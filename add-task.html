@@ -64,16 +64,17 @@
                             <div class="new-category">
                                 <input type="text" autofocus placeholder="new category" class="new-catgory__input">
                                 <div class="new-category__actions">
-                                    <button class="new-category__button new-category__button--close"></button>
+                                    <button class="new-category__button new-category__button--close"
+                                        onclick="cancelNewCategory()"></button>
                                     <hr class="vertical" />
                                     <button class="new-category__button new-category__button--check"></button>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div id="color-container" class="color-container">
                             <div class="color__input">
-                                <input type="radio" id="color--sky-blue" name="category-color" value="sky-blue" />
+                                <input type="radio" id="color--sky-blue" name="category-color" value="#3F51B5" />
                                 <label class="color color--sky-blue" for="color--sky-blue"></label>
                             </div>
                             <div class="color__input">
@@ -100,7 +101,7 @@
                         <p class="required" id="required2"></p>
                     </div>
                     <!-- contact input -->
-                    <div class="input-container">
+                    <div class="input-container mt-lg">
                         <label>Assigned to</label>
                         <div class="toggle-menu" id="assigned-to-dropdown">
                             <div class="assigned-to">

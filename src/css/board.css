@@ -229,7 +229,6 @@ body {
 
 .progress {
     height: 8px;
-    width: 50px;
     background-color: #28ABE2;
     border-radius: 5px;
 }
@@ -319,7 +318,7 @@ body {
     background-color: #28ABE2;
 }
 
-.right > img {
+.right>img {
     height: 23px;
 }
 
@@ -336,6 +335,35 @@ body {
 
 .left:hover {
     filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(120%) contrast(100%);
+}
+
+.assignedToMainContainer {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#assignedToContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.assignedPerson {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.initials {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 0.7rem;
 }
 
 
@@ -381,6 +409,26 @@ body {
         min-width: 250px;
         height: max-content;
         margin-right: 32px;
+    }
+}
+
+@media (max-width: 750px) {
+
+    #boardMainContainer {
+        height: calc(100vh - 360px);
+        left: 28px;
+        padding: 0 28px 0 0;
+    }
+
+    #boardHeader {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+
+    #addTask {
+        width: 100px;
     }
 }
 

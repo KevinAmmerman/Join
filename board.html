@@ -14,13 +14,17 @@
     <link rel="stylesheet" href="src/css/mobile-menu.css">
     <!-- Scripts -->
     <script src="src/scripts/includeHTML.js"></script>
+    <script src="src/scripts/dataBase.js"></script>
+    <script src="src/scripts/board_utilities.js"></script>
+    <script src="src/scripts/board_html_templates.js"></script>
+    <script src="src/scripts/board.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), init()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
     <div id="taskInfoContainer" class="dNone">
-        <div class="taskEditContainer">
+        <!-- <div class="taskEditContainer">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn">
             <div class="category">Marketing</div>
             <h3 class="title titleEditWindow">Social media strategy</h3>
@@ -45,7 +49,7 @@
                     <img src="src/img/img_board/pencil.png" alt="image of a pencil">
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div id="boardHeader">
         <div id="boardInnerContainer">
@@ -66,164 +70,28 @@
                 <h2>To do</h2>
                 <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
             </div>
-            <div id="toDo" class="taskContainer" ondragover="allowDrop(event)">
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-            </div>
+            <div id="toDo" class="taskContainer" ondragover="allowDrop(event)"></div>
         </div>
         <div class="col">
             <div class="boardControlElements">
                 <h2>In progress</h2>
                 <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
             </div>
-            <div id="inProgress" class="taskContainer" ondragover="allowDrop(event)">
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers">1/2 done</div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-            </div>
+            <div id="inProgress" class="taskContainer" ondragover="allowDrop(event)"></div>
         </div>
         <div class="col">
             <div class="boardControlElements">
                 <h2>Awaiting Feedback</h2>
                 <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
             </div>
-            <div id="feedback" class="taskContainer" ondragover="allowDrop(event)">
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers">1/2 done</div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-            </div>
+            <div id="feedback" class="taskContainer" ondragover="allowDrop(event)"></div>
         </div>
         <div class="col">
             <div class="boardControlElements">
                 <h2>Done</h2>
                 <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
             </div>
-            <div id="done" class="taskContainer" ondragover="allowDrop(event)">
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers">1/2 done</div>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="category">Marketing</div>
-                    <h3 class="title">Social media strategy</h3>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus
-                        corrupti vero! Harum.</div>
-                    <div class="subtaskBar">
-                        <div class="progressBar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="progressInNumbers"></div>
-                    </div>
-                </div>
-            </div>
+            <div id="done" class="taskContainer" ondragover="allowDrop(event)"></div>
         </div>
     </div>
 </body>

@@ -1,4 +1,6 @@
-function init() {
+async function init() {
+    let contactsSingleQuote = await getItem('tasks');
+    tasks = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
     renderTasks('toDo', 'toDo');
     renderTasks('inProgress', 'inProgress');
     renderTasks('feedback', 'feedback');

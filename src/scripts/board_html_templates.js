@@ -1,16 +1,15 @@
 function createHtmlForTasks(task, column, i) {
     let title = task.title;
     let description = truncateText(task.description);
-    let category = task.category;
-    // let assignedTo = task.assignedTo;
-    // let date = task.date;
+    let category = task.category.name;
+    let categoryColor = task.category.color;
     let prio = checkPrioStatus(task.prio);
     let subtasklength = task.subtask.length;
     let finishedSubtasks = checkIfSubtaskIsDone(task.subtask); 
     let progress = calculateProgress(subtasklength, finishedSubtasks);
     return `
         <div class="task" onclick="openTask('${column}', ${i})">
-            <div class="category">${category}</div>
+            <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title">${title}</h3>
             <div class="description">${description}</div>
             <div class="subtaskBar">
@@ -31,13 +30,14 @@ function createHtmlForTasks(task, column, i) {
 function createHtmlForTaskInfo(column, i) {
     let title = tasks[column][i].title;
     let description = tasks[column][i].description;
-    let category = tasks[column][i].category;
+    let category = tasks[column][i].category.name;
+    let categoryColor = tasks[column][i].category.color;
     let date = tasks[column][i].date;
     // let prio = tasks[column][i].prio;
     return `
         <div class="taskEditContainer">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
-            <div class="category">${category}</div>
+            <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title titleEditWindow">${title}</h3>
             <div class="description">${description}</div>
             <div class="dateContainer">

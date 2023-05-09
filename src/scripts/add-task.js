@@ -54,18 +54,18 @@ async function createTask() {
 
 	const newTask = {
 		'category': { ...selectedCategory },
-		'assignedTo': [assignees],
+		'assignedTo': assignees,
 		'title': title,
 		'description': description,
 		'prio': prio,
 		'date': dueDate,
-		'subtask': [subTasks] // spread operator
+		'subtask': subTasks // spread operator
 	};
 	console.log(newTask);
 
 	tasks.toDo.push(newTask);
 
-	setItem('tasks', tasks);	
+	setItem('tasks', JSON.stringify(tasks));	
 	
 }
 

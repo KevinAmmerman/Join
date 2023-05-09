@@ -1,6 +1,7 @@
 async function init() {
-    let contactsSingleQuote = await getItem('contacts');
-    contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
+    // let contactsSingleQuote = await getItem('contacts');
+    // contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
+    contacts = JSON.parse(await getItem('contacts'));
     orderContacts();
     renderContacts();
 }
@@ -63,7 +64,7 @@ async function addContact() {
     emptyInputFields(name, email, phone);
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully created');
-    await setItem('contacts', contacts);
+    await setItem('contacts', JSON.stringify(contacts));
     init();
 }
 
@@ -98,7 +99,7 @@ async function saveContactEdits(contactsIndex, i, j) {
     };
     openAndCloseNewContactWindow();
     alertMessage('Contact succesfully changed');
-    await setItem('contacts', contacts);
+    await setItem('contacts', JSON.stringify(contacts));
     changeContactLocalForCard(i, j, contactsIndex);
     init();
 }
@@ -109,7 +110,7 @@ async function deleteContact(contactsIndex, i, j, mobil) {
     groups[i].splice(j, 1);
     if(!mobil) openAndCloseNewContactWindow();
     alertMessage('Contact succesfully deleted');
-    await setItem('contacts', contacts);
+    await setItem('contacts', JSON.stringify(contacts));
     emptyContainer();
     closeContactCard();
     init();

@@ -31,11 +31,6 @@ let categories = [
     },
 ];
 
-
-
-
-
-
 let tasks = {
     toDo: [],
     inProgress: [],

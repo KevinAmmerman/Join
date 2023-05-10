@@ -39,6 +39,23 @@ body {
     cursor: pointer;
 }
 
+.guestLogin{
+    cursor: pointer;
+}
+.logout{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 20px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.dNone{
+    display: none;
+}
+
+
 .headline-logo {
     height: 39px;
     padding-left: 25px;

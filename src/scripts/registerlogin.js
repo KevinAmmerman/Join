@@ -101,6 +101,7 @@ async function messageSignIn(){
         await setItem('alreadyShown', true)
         setTimeout ( () => {
         msgBox.classList.remove('dNone');
+        
     }, 2000);
     
 }  
@@ -145,4 +146,7 @@ function resetForm() {
     
     
 }
+
+
+
 

@@ -3,6 +3,7 @@ let currentUser = ['Guest']
 function getSummary(){
     generateSummaryTemplate();
     greet();
+    greetings();
 }
 
 
@@ -31,6 +32,7 @@ async function greet(){
         greetinghtml.innerHTML = greetings();
     let greetUser = document.getElementById('user');
     greetUser.innerHTML = `<span>${currentUser}</span>`;
+    
 }
 
 
@@ -92,4 +94,29 @@ function deadlineTime(){
 
 function goToBoard(){
     window.location.href = 'board.html';
+}
+
+
+function openLogout(){
+    document.getElementById('logout').classList.remove('dNone');
+    setTimeout(() => {
+        document.addEventListener('click', checkLogout);
+    },0)
+
+
+}
+
+function closeLogout(){
+    document.getElementById('logout').classList.add('dNone');
+    document.removeEventListener('click', checkLogout);
+}
+
+function checkLogout(event){
+    if(event.target.id !== 'logout'){
+        closeLogout();
+}
+}
+
+function logout(){
+    window.location.href = 'index.html';
 }

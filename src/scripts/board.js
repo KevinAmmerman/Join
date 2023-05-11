@@ -1,8 +1,5 @@
 async function init() {
-    // let contactsSingleQuote = await getItem('tasks');
-    // tasks = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
-    let tasksAsString = await getItem('tasks')
-    tasks = JSON.parse(tasksAsString);
+    tasks = JSON.parse(await getItem('tasks'));
     renderTasks('toDo', 'toDo');
     renderTasks('inProgress', 'inProgress');
     renderTasks('feedback', 'feedback');
@@ -16,6 +13,22 @@ function renderTasks(column, id) {
     for (let i = 0; i < tasks[column].length; i++) {
         const task = tasks[column][i];
         columnId.innerHTML += createHtmlForTasks(task, column, i);
+        renderInitinalsForAssingetPeople(column, i);
+    }
+}
+
+function renderInitinalsForAssingetPeople(column, i) {
+    let assignedTo = document.getElementById(`assignedTo${column}${i}`);
+    if (tasks[column][i].assignedTo && tasks[column][i].assignedTo.length > 0) {
+        for (let p = 0; p < tasks[column][i].assignedTo.length; p++) {
+            const person = tasks[column][i].assignedTo[p];
+            if (p < 3) {
+                assignedTo.innerHTML += createHtmlForAssignedPeopleTask(person);
+            } else {
+                assignedTo.innerHTML += createHtmlForAdditional(tasks[column][i].assignedTo.length - 3);
+                return;
+            }
+        }
     }
 }
 
@@ -33,7 +46,7 @@ function renderAssignetPeople(column, i) {
     if (tasks[column][i].assignedTo && tasks[column][i].assignedTo.length > 0) {
         for (let p = 0; p < tasks[column][i].assignedTo.length; p++) {
             const person = tasks[column][i].assignedTo[p];
-            assignedToContainer.innerHTML += createHtmlForAssignedPeople(person);
+            assignedToContainer.innerHTML += createHtmlForAssignedPeople(person, p);
         }
     } else {
         return;
@@ -41,7 +54,7 @@ function renderAssignetPeople(column, i) {
 }
 
 
-function closeTaskInfo() {
+function editTask() {
     let taskInfoContainer = document.getElementById('taskInfoContainer');
-    taskInfoContainer.classList.add('dNone');
+    taskInfoContainer.innerHTML = ''
 }

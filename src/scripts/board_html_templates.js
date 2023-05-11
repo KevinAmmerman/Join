@@ -3,7 +3,7 @@ function createHtmlForTasks(task, column, i) {
     let description = truncateText(task.description);
     let category = task.category.name;
     let categoryColor = task.category.color;
-    let prio = checkPrioStatus(task.prio);
+    let prio = checkPrioStatus(task.prio, 'path');
     let subtasklength = task.subtask.length;
     let finishedSubtasks = checkIfSubtaskIsDone(task.subtask); 
     let progress = calculateProgress(subtasklength, finishedSubtasks);
@@ -33,7 +33,9 @@ function createHtmlForTaskInfo(column, i) {
     let category = tasks[column][i].category.name;
     let categoryColor = tasks[column][i].category.color;
     let date = tasks[column][i].date;
-    // let prio = tasks[column][i].prio;
+    let prioImage = checkPrioStatus(tasks[column][i].prio, 'path');
+    let prio =  checkPrioStatus(tasks[column][i].prio, 'word');
+    let prioColor = getPrioColor(tasks[column][i].prio);
     return `
         <div class="taskEditContainer">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
@@ -46,7 +48,7 @@ function createHtmlForTaskInfo(column, i) {
             </div>
             <div class="priorityContainer">
                 <div class="subheadlineStyle">Priority:</div>
-                <div class="priorityValue"></div>
+                <div class="priorityValue" style="background-color: ${prioColor}">${prio}<img src="${prioImage}"></div>
             </div>
             <div class="assignedToMainContainer">
                 <div class="subheadlineStyle">Assigned to:</div>
@@ -70,6 +72,26 @@ function createHtmlForAssignedPeople(person) {
         <div class="assignedPerson">
             <div class="initials" style="background-color: ${initialsColor}">${initials}</div>
             <span>${person}</span>
+        </div>
+    `;
+}
+
+function createHtmlForAssignedPeopleTask(person, p) {
+    let initialsColor = getColorForInitials(person)
+    let nameWithoutUmlauts = deUmlaut(person);
+    let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
+    return `
+        <div class="assignedPersonInitials">
+            <div class="initials" style="background-color: ${initialsColor}">${initials}</div>
+        </div>
+    `;
+}
+
+
+function createHtmlForAdditional(amount) {
+    return `
+        <div class="assignedPersonInitials">
+            <div class="initials" style="background-color: #2A3647">+${amount}</div>
         </div>
     `;
 }

@@ -1,6 +1,4 @@
 async function init() {
-    // let contactsSingleQuote = await getItem('contacts');
-    // contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
     contacts = JSON.parse(await getItem('contacts'));
     orderContacts();
     renderContacts();

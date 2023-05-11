@@ -210,7 +210,7 @@ body {
 }
 
 .description {
-    color: #A8A8A8;
+    color: #000000;
 }
 
 .subtaskBar {
@@ -235,6 +235,25 @@ body {
 
 .progressInNumbers {
     font-size: .8rem;
+}
+
+.statusContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.assignedToContainer {
+    display: flex;
+    padding-left: 6px;
+}
+
+.assignedPersonInitials {
+    margin-left: -6px;
+}
+
+.prioImage {
+    object-fit: contain;
 }
 
 /* === TASK-WINDOW === */
@@ -262,7 +281,7 @@ body {
     gap: 25px;
     position: relative;
     width: 385px;
-    height: 550px;
+    min-height: 550px;
     background: #FFFFFF;
     border-radius: 30px;
 }
@@ -364,6 +383,23 @@ body {
     align-items: center;
     color: #ffffff;
     font-size: 0.7rem;
+}
+
+.priorityValue {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 18px;
+    border-radius: 10px;
+    min-height: 20px;
+}
+
+.priorityValue > img {
+    filter: brightness(0) invert(1);
+    width: 20px;
+    height: 18px;
+    object-fit: contain;
 }
 
 

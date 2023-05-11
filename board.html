@@ -24,33 +24,19 @@
 <body onload="includeHTML(), init()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
-    <div id="taskInfoContainer" class="dNone">
-        <!-- <div class="taskEditContainer">
+    <div id="taskInfoContainer" class="">
+        <div class="taskEditContainer">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn">
-            <div class="category">Marketing</div>
-            <h3 class="title titleEditWindow">Social media strategy</h3>
-            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus corrupti vero!
-                Harum.</div>
-            <div class="dateContainer">
-                <div class="subheadlineStyle">Due date:</div>
-                <div class="dateValue">08-05-2023</div>
-            </div>
-            <div class="priorityContainer">
-                <div class="subheadlineStyle">Priority:</div>
-                <div class="priorityValue"></div>
-            </div>
-            <div class="subheadlineStyle">Assigned to:</div>
-            <div class="assignedToContainer">
-                <div class="assignedImg"></div>
-                <div class="assigendPerson"></div>
-            </div>
-            <div class="editDeleteContainer">
-                <div class="left"></div>
-                <div class="right">
-                    <img src="src/img/img_board/pencil.png" alt="image of a pencil">
-                </div>
-            </div>
-        </div> -->
+            <div class="editTitle">Title</div>
+            <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
+            <div class="editDescription">Description</div>
+            <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
+            <div class="editDate">Due date</div>
+            <input type="date" id="editDate" required>
+            <div class="editPrio">Prio</div>
+            
+
+        </div>
     </div>
     <div id="boardHeader">
         <div id="boardInnerContainer">

@@ -30,14 +30,37 @@ function calculateProgress(subtasklength, finishedSubtasks) {
 }
 
 
-function checkPrioStatus(prio) {
-    if(prio == 'urgent') {
-        return 'src/img/img_board/urgent_prio.png'
+function checkPrioStatus(prio, returnTyp) {
+    if(prio == 1) {
+        if (returnTyp == 'path') {
+            return 'src/img/img_board/urgent_prio.png';
+        } else if (returnTyp == 'word') {
+            return 'Urgent';
+        } 
     }
-    if (prio == 'medium') {
-        return 'src/img/img_board/medium_prio.png'
-    } else {
+    if (prio == 2) {
+        if (returnTyp == 'path') {
+            return 'src/img/img_board/medium_prio.png'
+        } else if (returnTyp == 'word') {
+            return 'Medium';
+        }    
+    } 
+    if (returnTyp == 'path') {
         return 'src/img/img_board/low_prio.png'
+    } else if (returnTyp == 'word') {
+        return 'Low';
+    }
+}
+
+
+function getPrioColor(prio) {
+    if (prio == 1) {
+        return '#FB3D01';
+    }
+    if (prio == 2) {
+        return '#FFA800';
+    } else {
+        return '#7AE22A';
     }
 }
 
@@ -55,4 +78,10 @@ function deUmlaut(value) {
     value = value.replace(/ö/g, 'oe');
     value = value.replace(/ü/g, 'ue');
     return value;
+}
+
+
+function closeTaskInfo() {
+    let taskInfoContainer = document.getElementById('taskInfoContainer');
+    taskInfoContainer.classList.add('dNone');
 }

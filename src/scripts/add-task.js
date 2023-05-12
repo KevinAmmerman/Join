@@ -1,33 +1,30 @@
 // global variables
 
-let prio = null; 
+let prio = null;
 let subTasks = [];
 let selectedCategoryName = null;
 let selectedCatColor = null;
-
 const prios = ['Urgent', 'Medium', 'Low'];
+
+// CSS selector for the "category" part
 const CATEGORY_MENU_EL = document.querySelector('.toggle-menu');
 const SELECT_CATEGORY_EL = document.querySelector('#select-task-category');
 const CATEGORY_LIST_EL = document.querySelector('.category-list');
 const SELECTED_CATEGORY_EL = document.querySelector('#selected-category');
 const NEW_CATEGORY_EL = document.querySelector('.new-category');
-const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector(
-	'.new-category__button--check'
-);
+const BTN_CHECK_NEW_CATEGORY_EL = document.querySelector('.new-category__button--check');
 const NEW_CATEGORY_INPUT_EL = document.querySelector('.new-catgory__input');
-
 const COLOR_CONTAINER_EL = document.querySelector('.color-container');
-const ALL_COLORS_INPUTS = document.querySelectorAll(
-	'.color-container input[type="radio"]'
-);
+const ALL_COLORS_INPUTS = document.querySelectorAll('.color-container input[type="radio"]');
+
+// CSS selcetor for the "assigned to" part
 
 const ASSIGNED_TO_EL = document.querySelector('.assigned-to');
 const ASSIGNED_TO_LIST_EL = document.querySelector('.assigned-to__list');
-const ASSIGNED_TO_ACTION_EL = document.querySelector(
-	'.assigned-to__list-action'
-);
+const ASSIGNED_TO_ACTION_EL = document.querySelector('.assigned-to__list-action');
 
-// subtask editors
+// CSS selector for the "subtask" part
+
 const SUBTASK_ACTIONS = document.querySelector('.subtask__actions');
 const SUBTASK_CLOSE_BTN_EL = document.querySelector('.subtask__close');
 const SUBTASK_CHECK_BTN_EL = document.querySelector('.subtask__check');
@@ -35,54 +32,43 @@ const SUBTASK_PLUS_BTN_EL = document.querySelector('.subtask__plus');
 const SUBTASK_INPUT_EL = document.querySelector('.subtask__input');
 const SUBTASK_LIST_EL = document.querySelector('.subtasks-list');
 
+// this function loads the user when the page gets loaded
 
-async function init(){
+async function init() {
 	loadUsers();
 }
-
-async function loadUsers(){
-	tasks = JSON.parse( await getItem('tasks'));
+async function loadUsers() {
+	tasks = JSON.parse(await getItem('tasks'));
 }
+
+// this function gets all values, creates the task and saves it in the backend
 
 async function createTask() {
-
-	const title = document.getElementById('title').value;
-	const description = document.getElementById('description').value;
-	const dueDate = document.getElementById('due-date').value;
-	const selectedCategory = {
-		name: selectedCategoryName,
-		color: selectedCatColor,
-	};
-	const assignees = [];
-	const contactChecks = document.querySelectorAll('.contact__checkbox');
-
-	for (let i = 0; i < contactChecks.length; i++) {
-		if (contactChecks[i].checked) {
-			assignees.push(contactChecks[i].value);
-		}
-	}
-
-	const newTask = {
-		'category': { ...selectedCategory },
-		'assignedTo': assignees,
-		'title': title,
-		'description': description,
-		'prio': prio,
-		'date': dueDate,
-		'subtask': subTasks // spread operator
-	};
-	console.log(newTask);
-
-	tasks.toDo.push(newTask);
-
-	await setItem('tasks', JSON.stringify(tasks));
-
+    const { value: title } = document.getElementById('title');
+    const { value: description } = document.getElementById('description');
+    const { value: dueDate } = document.getElementById('due-date');
+  
+    const selectedCategory = { name: selectedCategoryName, color: selectedCatColor };
+  
+    const assignees = Array.from(document.querySelectorAll('.contact__checkbox:checked')).map(input => input.value);
+  
+    const newTask = {
+        category: { ...selectedCategory },
+        assignedTo: assignees,
+        title,
+        description,
+        prio,
+        date: dueDate,
+        subtask: subTasks
+    };
+  
+    tasks.toDo.push(newTask);
+    await setItem('tasks', JSON.stringify(tasks));
 }
 
-/**
- * this function checks which button is clicked
- * @param {number} prioValue - number of the prio button
- */
+
+// this function checks which button is clicked
+
 function addPrio(prioValue) {
 	resetPrio();
 	if (prioValue == 0) {
@@ -96,9 +82,9 @@ function addPrio(prioValue) {
 	}
 }
 
-/**
- * This function changes the color of the Urgent button
- */
+
+// This function changes the color of the Urgent button
+
 function selectUrgent() {
 	document.getElementById('urgent-btn').classList.add('urgent-aktiv');
 	document.getElementById('urgent-image').style.filter =
@@ -106,9 +92,8 @@ function selectUrgent() {
 	prio = 1;
 }
 
-/**
- * This function changes the color of the Medium button
- */
+// This function changes the color of the Medium button
+
 function selectMedium() {
 	document.getElementById('medium-btn').classList.add('medium-aktiv');
 	document.getElementById('medium-image').style.filter =
@@ -116,18 +101,18 @@ function selectMedium() {
 	prio = 2;
 }
 
-/**
- * This function changes the color of the Low button
- */
+
+// This function changes the color of the Low button
+
 function selectLow() {
 	document.getElementById('low-btn').classList.add('low-aktiv');
 	document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
 	prio = 3;
 }
 
-/**
- * This function is used to reset all prio buttons
- */
+
+// This function is used to reset all prio buttons
+
 function resetPrio() {
 	document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
 	document.getElementById('urgent-image').style.filter = '';
@@ -137,18 +122,18 @@ function resetPrio() {
 	document.getElementById('low-image').style.filter = '';
 }
 
-/**
- * This function is used to reset the required alert
- */
+
+// This function is used to reset the required alert
+ 
 function resetRequired() {
 	for (let i = 0; i <= 5; i++) {
 		document.getElementById(`required${i}`).innerText = '';
 	}
 }
 
-/**
- * this function reset the complete form
- */
+
+// This function reset the complete form
+ 
 function resetForm() {
 	resetRequired();
 	document.getElementById('title').value = '';
@@ -161,7 +146,8 @@ function resetForm() {
 	document.getElementById('subtasks-container').innerHTML = '';
 }
 
-// load categories in dropdown
+// This function load the categories in the drop down menu
+
 async function loadCategories() {
 
 	let list = CATEGORY_LIST_EL;
@@ -175,7 +161,7 @@ async function loadCategories() {
 	}
 }
 
-// load contacts
+// This function loads the contacts 
 
 function categoryToggler() {
 	const computedStyle = getComputedStyle(CATEGORY_LIST_EL);
@@ -196,7 +182,7 @@ SELECT_CATEGORY_EL.addEventListener('click', categoryToggler);
 BTN_CHECK_NEW_CATEGORY_EL.addEventListener('click', addNewCategory);
 ASSIGNED_TO_EL.addEventListener('click', assignToHandler);
 
-// UTILITIE FUNCTION FOR ADD TASK HTML VIEW
+// utility funtion for add task html view
 
 function categoryHTML(category, color) {
 	return /*html*/ `
@@ -205,6 +191,8 @@ function categoryHTML(category, color) {
             <div class="color-dot ${color}" style="background-color: ${color}"></div>
         </li>`;
 }
+
+// This function adds a new field for adding a new category
 
 function addCategoryHTML() {
 	return /*html*/ `
@@ -220,11 +208,15 @@ function newCategoryHandler() {
 	COLOR_CONTAINER_EL.style.display = 'flex';
 }
 
+// This function is to cancel the new category
+
 function cancelNewCategory() {
 	NEW_CATEGORY_EL.style.display = 'none';
 	COLOR_CONTAINER_EL.style.display = 'none';
 	SELECT_CATEGORY_EL.style.display = 'flex';
 }
+
+// This functions adds the new category
 
 async function addNewCategory() {
 	NEW_CATEGORY_EL.style.display = 'none';
@@ -238,21 +230,25 @@ async function addNewCategory() {
 			selectedColor = ALL_COLORS_INPUTS[i].value;
 		}
 	}
-
 	const newCategory = {
 		name: categoryName,
 		color: selectedColor,
 	};
 	categories.push(newCategory);
 	loadCategories();
+	clearInputs();
+}
 
-	// clear inputs
+// This function clears the inputs if a new category is created
+function clearInputs(){
 	NEW_CATEGORY_INPUT_EL.value = '';
 	for (let i = 0; i < ALL_COLORS_INPUTS.length; i++) {
 		ALL_COLORS_INPUTS[i].checked = false;
 	}
 }
 
+
+// This function is for selecting a category and to display the selected category
 function selectCategory(category, color) {
 	SELECTED_CATEGORY_EL.innerHTML = `<span class='selected-category-heading'>${category} <span class='color-dot' style="background-color: ${color}"></span></span>`;
 	CATEGORY_LIST_EL.style.display = 'none';
@@ -261,11 +257,10 @@ function selectCategory(category, color) {
 	selectedCategoryName = category;
 }
 
-// assigned to
+// this function loads the contacts from the backend and displays it in a li element
 
 async function loadContacts() {
-	let contactsSingleQuote = await getItem('contacts');
-	let tasks = await getItem('tasks');
+	let contactsSingleQuote = await getItem('contacts');	
 	contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
 
 	ASSIGNED_TO_LIST_EL.innerHTML = '';
@@ -280,18 +275,25 @@ async function loadContacts() {
 		ASSIGNED_TO_LIST_EL.innerHTML += `<li class="contact"><label>${contacts[i].name}</label> <input value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
 	}
 }
+
+// This function open the toggle menu for the contacts
+
 function assignToHandler() {
 	ASSIGNED_TO_LIST_EL.style.display = 'flex';
 
 	ASSIGNED_TO_EL.style.display = 'none';
 }
+
+
+// This function is used to select a contact
 function assignToHandlerInList() {
 	ASSIGNED_TO_LIST_EL.style.display = 'none';
 
 	ASSIGNED_TO_EL.style.display = 'flex';
 }
 
-// sub tasks
+// This function adds a new subtask
+
 function addSubtask() {
 	const subTaskId = generateRandomId();
 	const value = SUBTASK_INPUT_EL.value;
@@ -308,18 +310,23 @@ function addSubtask() {
 	SUBTASK_PLUS_BTN_EL.style.display = 'block';
 }
 
+// This function opens the Subtask editor
+
 function openSubtaskEditor() {
 	SUBTASK_INPUT_EL.value = '';
 	SUBTASK_INPUT_EL.style.display = 'inline';
 	SUBTASK_ACTIONS.style.display = 'flex';
 	SUBTASK_PLUS_BTN_EL.style.display = 'none';
 }
+// This function closess the Subtask editor
 
 function closeSubtaskEditor() {
 	SUBTASK_INPUT_EL.style.display = 'none';
 	SUBTASK_ACTIONS.style.display = 'none';
 	SUBTASK_PLUS_BTN_EL.style.display = 'block';
 }
+
+// This functions displays the added subtask
 
 function composeSubTasks(subTasks) {
 	SUBTASK_LIST_EL.style.display = 'block';
@@ -332,14 +339,16 @@ function composeSubTasks(subTasks) {
 	}
 }
 
+// This function is for removing the added subtasks
+
 function removeSubtask(id) {
 	const filteredSubtasks = subTasks.filter((sub) => sub.id !== id.toString());
 	composeSubTasks(filteredSubtasks);
 }
 
-// utlity functions
 
-// function to create randomid for task so that we can remove the same subtask based on it's id. Id needs to be unique
+
+// This function creates a random id for the added subtask to remove it later on
 function generateRandomId() {
 	const random = Math.floor(Math.random() * 1000000);
 	return random.toString();

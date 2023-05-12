@@ -1,3 +1,9 @@
+function init(){
+    loadUsers();
+    
+}
+
+
 async function loadUsers(){
     users = JSON.parse(await getItem('users'));
 }
@@ -5,31 +11,46 @@ async function loadUsers(){
 
 async function forgetPassword(){
     loadUsers();
-    const email = document.getElementById('eMail');
-    const forgotpassword = document.getElementById('sendButton')
-    if(email && forgotpassword === true){
-        window.location.href = 'resetpassword.html';
-    }
-}
+    document.getElementById('sendMail').classList.remove('dNone')
+
+    setTimeout(()=>{
+        document.getElementById('sendMail').classList.add('dNone')
+    },2500)
+     setTimeout(() =>{
+    window.location.href = 'resetpassword.html';
+    
+    },4000)
+      }
+
 
 
 function resetPassword() {
-    const newPassword = document.getElementById("newPassword").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+    const continuePassword = document.getElementById('confirmPasswordReset');
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if(newPassword === confirmPassword){
 
 
-    alert("Das Passwort wurde erfolgreich zurückgesetzt.");
-  }
+        continuePassword.classList.remove('dNone');
+        setTimeout(() =>{
+            continuePassword.classList.add('dNone');
+        },2500)
+         setTimeout(() =>{
+        window.location.href = 'index.html';
+        
+        },4000)
+    } else{
+        alert('Password is not identic')
+    }        
+}
+
+    
+
+    
+
+  
 
 
-  function sendEmail(){
-    document.getElementById('sendMail').classList.remove('dNone')
-
-setTimeout(()=>{
-    document.getElementById('sendMail').classList.add('dNone')
-},2500)
- setTimeout(() =>{
-window.location.href = 'resetpassword.html';
-
-},4000)
-  }
+  
+    

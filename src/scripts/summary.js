@@ -1,37 +1,44 @@
-let currentUser = ['Guest']
+
 
 function getSummary(){
     generateSummaryTemplate();
     greet();
-    greetings();
+    loadUsers();
+    
 }
 
 
 
 function greetings(){
     const currentHour = new Date().getHours();
-    let greeting;
+    let greetings = {
+    morning: 'Good morning,',
+    afternoon: 'Good afternoon,',
+    evening: 'Good evening,'
+  };
+
 
     if(currentHour >= 4 && currentHour < 12){
-        greeting = 'Good morning';
+        return greetings.morning;
     }
      else if(currentHour >= 12 && currentHour < 18){
-        greeting = 'Good afternoon';
+        return greetings.afternoon;
     }
-    else if(currentHour >= 18 && currentHour < 4){
-        greeting = 'Good evening';
+    else {
+        return greetings.evening;
     }
-
-    return greeting;
-}
+    };
 
 
 
-async function greet(){
+function greet(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get('users');
+    let greetUser = document.getElementById('userName');
     let greetinghtml = document.getElementById('greetings');
-        greetinghtml.innerHTML = greetings();
-    let greetUser = document.getElementById('user');
-    greetUser.innerHTML = `<span>${currentUser}</span>`;
+        
+    greetinghtml.innerHTML = greetings();
+    greetUser.innerHTML = `<span>${userName}</span>`;
     
 }
 
@@ -80,10 +87,14 @@ function generateSummaryTemplate(){
 
     <div class="times-Container">
     <div class="times">
-    <span class="time-name"><h2 id="greetings"></h2> <p id="user"></p> </span>
+    <span class="time-name"><h2 id="greetings"></h2> <p id="userName"></p> </span>
     </div> 
 
-</div> `;}
+</div> `;
+
+}
+
+
 
 
 function deadlineTime(){
@@ -97,26 +108,3 @@ function goToBoard(){
 }
 
 
-function openLogout(){
-    document.getElementById('logout').classList.remove('dNone');
-    setTimeout(() => {
-        document.addEventListener('click', checkLogout);
-    },0)
-
-
-}
-
-function closeLogout(){
-    document.getElementById('logout').classList.add('dNone');
-    document.removeEventListener('click', checkLogout);
-}
-
-function checkLogout(event){
-    if(event.target.id !== 'logout'){
-        closeLogout();
-}
-}
-
-function logout(){
-    window.location.href = 'index.html';
-}

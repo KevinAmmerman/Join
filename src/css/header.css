@@ -42,12 +42,14 @@ body {
 .guestLogin{
     cursor: pointer;
 }
+
+
+
 .logout{
     position: absolute;
-    width: 150px;
-    height: 150px;
-    top: 20px;
+    top: 60px;
     right: 40px;
+    z-index: 9999;
     cursor: pointer;
 }
 

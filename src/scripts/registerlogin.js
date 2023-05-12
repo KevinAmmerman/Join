@@ -1,19 +1,48 @@
-let user = [];
-
+let users = [];
 
 
 function init(){
     loadUsers();
     loadEmailPassword();
-    messageSignIn();
+    messageSignIn(); 
+}
+
+
+
+
+
+async function loadUsers(){
+    users = JSON.parse(await getItem('users'));
     
 }
+
+
+async function login(){
+    await loadUsers();
+    
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let user = users.find( u => u.email == email.value && u.password == password.value);
+
+    if(user && user.email === email.value && user.password === password.value){
+        rememberLogin(email.value, password.value);
+        email.value = '';
+        password.value = '';
+        window.location.href = `summary.html?users=${user.names}`;
+    }else{
+        alert('Try again, please.');
+    }
+    
+    
+    
+}
+
 
 function loadEmailPassword(){
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let checkbox = document.getElementById('loginCheckbox');
-    let rememberMeChecked = localStorage.getItem('rememberChecked');
+    let rememberMeChecked = localStorage.getItem('rememberMeChecked');
 
     if(rememberMeChecked === 'true'){
         checkbox.checked === true;
@@ -25,28 +54,9 @@ function loadEmailPassword(){
             password.value = '';
 
         }
-users =[];
+
 }
 
-async function login(){
-    await loadUsers();
-    
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let user = users.find( u => u.email == email.value && u.password == password.value);
-
-    if(user){
-        rememberLogin(email.value, password.value);
-        email.value = '';
-        password.value = '';
-        window.location.href = `summary.html?user=${users.name}`;
-    }else{
-        alert('try again pls');
-    }
-    
-    
-    
-}
 
 function rememberLogin(email, password) {
     let checkbox = document.getElementById("loginCheckbox");
@@ -61,18 +71,22 @@ function rememberLogin(email, password) {
     }
   }
 
+
 async function guestLogin(){
-   await loadUsers();
+   
    let email = document.getElementById('email');
    let password = document.getElementById('password');
    email.value = 'guest@guest.com';
    password.value = '123456';
 
-   let currentUser = users.find(u => u.email == email.value && u.password == password.value);
-     if(users){
+   let currentUser = {
+        name:'Guest'
+   };
+
+     if(currentUser){
         email.value = '';
         password.value = '';
-        window.location.href = `summary.html?user=${currentUser}`;
+        window.location.href = `summary.html?users=${currentUser.name}`;
         
     }
     
@@ -80,10 +94,7 @@ async function guestLogin(){
 
 }
 
-async function loadUsers(){
-    users = JSON.parse(await getItem('users'));
-    
-}
+
 
 
 

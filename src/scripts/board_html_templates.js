@@ -106,20 +106,18 @@ function createHtmlForEditTask() {
                 <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
                 <label class="editDescription">Description</label>
                 <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
-                <div class="AssignetToContainer">
+                <div class="assignetToContainer">
                     <label>Assigned to</label>
                     <div id="assignedToInput">
-                        <div>Select Contacts to assign</div>
-                        <ul class="assignedList" id="assignedList">
-                            
-                        </ul>
+                        <div>Select Contacts to assign <img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
+                        <ul class="assignedList" id="assignedList"></ul>
                     </div>
                 </div>
             </div>
             <div class="rightEditContainer">
                 <label class="editDate">Due date</label>
                 <input type="date" id="editDate" required>
-                <div class="inputContainer">
+                <div class="inputPrioContainer">
                     <label>Prio</label>
                     <div class="prioBtn">
                         <button id="urgentBtn" onclick="addPrio(0)"><span>Urgent</span><img class="prioImg"
@@ -131,6 +129,14 @@ function createHtmlForEditTask() {
                     </div>
                     <p class="required" id="required5"></p>
                 </div>
+                <div class="subTaskContainer">
+                    <label>Subtasks</label>
+                    <div class="subtaksInputContainer">
+                        <input type="text" id="inputSubtask" placeholder="Add new subtask">
+                        <button class="subtaskAddBtn"></button>
+                    </div>
+                    <ul id="subtasksList"></ul>
+                </div>
             </div>
             <button class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          
         </div>
@@ -141,5 +147,12 @@ function createHtmlForEditTask() {
 function createHtmlForAssignedList(name, p, checked) {
     return `
         <li>${name}<input type="checkbox" id="${p}" ${checked}></li>
+    `;
+}
+
+
+function createHtmlForSubtask(task, checked) {
+    return `
+        <li><input type="checkbox" id="${task.id}" ${checked}>${task.title}</li>
     `;
 }

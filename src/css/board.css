@@ -440,13 +440,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 #inputEditTitle {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 80%;
+    /* width: 80%; */
     padding: 13px 21px;
     gap: 10px;
     border: 1px solid #D1D1D1;
@@ -458,7 +459,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 80%;
+    /* width: 80%; */
     height: 50px;
     padding: 13px 21px;
     gap: 10px;
@@ -484,11 +485,10 @@ body {
 }
 
 .inputPrioContainer {
-    display: flex;
-	flex-direction: column;
-	gap: 8px;
-	margin-bottom: 6px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .prioBtn {
@@ -531,15 +531,27 @@ body {
     box-shadow: 0px 5px 9px -3px #979797;
 }
 
-.AssignetToContainer {
-    width: 100%;
-    height: 50px;
+.assignetToContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#assignedToInput div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.assignedOpenBtn {
+    cursor: pointer;
 }
 
 #assignedToInput {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    /* width: 80%; */
     /* height: 20px; */
     overflow: hidden;
     padding: 13px 21px;
@@ -564,6 +576,59 @@ body {
     cursor: pointer;
 }
 
+.subTaskContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.subTaskContainer > label {
+    margin-bottom: 20px;
+}
+
+.subtaksInputContainer {
+    position: relative;
+}
+
+#inputSubtask {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 85%;
+    padding: 13px 21px;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 1.1rem;
+}
+
+.subtaskAddBtn {
+    background-image: url(../img/img_board/plus_symbol.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.subtaskAddBtn:hover {
+    transform: scale(1.1);
+}
+
+#subtasksList {
+    list-style: none;
+    padding-left: 0;
+}
+
+#subtasksList li {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
 
 /* === MEDIA-QUERIES === */
 

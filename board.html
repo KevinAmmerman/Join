@@ -35,7 +35,7 @@
                 <div class="AssignetToContainer">
                     <label>Assigned to</label>
                     <div id="assignedToInput">
-                        <div>Select Contacts to assign</div>
+                        <div>Select Contacts to assign <img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
                         <ul class="assignedList" id="assignedList">
                             <li>Thomas Gottschalk<input type="checkbox" name="" id="0" checked></li>
                         </ul>
@@ -45,7 +45,7 @@
             <div class="rightEditContainer">
                 <label class="editDate">Due date</label>
                 <input type="date" id="editDate" required>
-                <div class="inputContainer">
+                <div class="inputPrioContainer">
                     <label>Prio</label>
                     <div class="prioBtn">
                         <button id="urgentBtn" onclick="addPrio(0)"><span>Urgent</span><img class="prioImg"
@@ -56,6 +56,14 @@
                                 id="lowImage" src="/src/img/img_board/low_prio.png"></button>
                     </div>
                     <p class="required" id="required5"></p>
+                </div>
+                <div class="subTaskContainer">
+                    <label>Subtasks</label>
+                    <div class="subtaksInputContainer">
+                        <input type="text" id="inputSubtask" placeholder="Add new subtask">
+                        <button class="subtaskAddBtn"></button>
+                    </div>
+                    <div id="subtasksList"></div>
                 </div>
             </div>
             <button class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          

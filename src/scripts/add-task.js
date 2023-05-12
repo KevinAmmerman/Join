@@ -300,7 +300,7 @@ function addSubtask() {
 	const subTask = {
 		id: subTaskId,
 		title: value,
-		status: true,
+		status: false,
 	};
 	subTasks.push(subTask);
 	composeSubTasks(subTasks);

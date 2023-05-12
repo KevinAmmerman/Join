@@ -65,13 +65,16 @@ function editTask(column, i) {
     getValuesForTask(column, i);
     getPrioStatus(column, i);
     getAssignedTo(column, i);
+    getSubtasks(column, i);
 }
+
 
 function getValuesForTask(column, i) {
     document.getElementById('inputEditTitle').value = tasks[column][i].title;
     document.getElementById('inputEditDescription').value = tasks[column][i].description;
     document.getElementById('editDate').value = tasks[column][i].date;
 }
+
 
 function getPrioStatus(column, i) {
     let prioStatus = tasks[column][i].prio;
@@ -100,8 +103,8 @@ function resetPrioActive(status) {
     }
     document.getElementById(buttonId[status]).style = `background-color: ${color[status]}`;
     document.getElementById(imageId[status]).style = 'filter: brightness(0) invert(1);';
-    document.getElementById(buttonId[status]).classList.add('prioActive') ;
-    prio = status+1;
+    document.getElementById(buttonId[status]).classList.add('prioActive');
+    prio = status + 1;
 }
 
 
@@ -121,4 +124,18 @@ function getAssignedTo(column, i) {
     }
 }
 
-            
+
+function getSubtasks(column, i) {
+    let subtaskList = document.getElementById('subtasksList');
+    subtaskList.innerHTML = '';
+    if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
+        for (let i = 0; i < tasks[column][i].subtask.length; i++) {
+            const task = tasks[column][i].subtask[i];
+            if (task.status == false) {
+                subtaskList.innerHTML += createHtmlForSubtask(task, 'checked');
+            } else {
+                subtaskList.innerHTML += createHtmlForSubtask(task);
+            }
+        }
+    }
+}

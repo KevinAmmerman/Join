@@ -1,7 +1,7 @@
-let prio = null; //initial state
-let subTasks = [];
-// let tasks = [];
+// global variables
 
+let prio = null; 
+let subTasks = [];
 let selectedCategoryName = null;
 let selectedCatColor = null;
 
@@ -35,9 +35,19 @@ const SUBTASK_PLUS_BTN_EL = document.querySelector('.subtask__plus');
 const SUBTASK_INPUT_EL = document.querySelector('.subtask__input');
 const SUBTASK_LIST_EL = document.querySelector('.subtasks-list');
 
+
+async function init(){
+	loadUsers();
+}
+
+async function loadUsers(){
+	tasks = JSON.parse( await getItem('tasks'));
+}
+
 async function createTask() {
+
 	const title = document.getElementById('title').value;
-	const description = document.getElementById('description').value;	
+	const description = document.getElementById('description').value;
 	const dueDate = document.getElementById('due-date').value;
 	const selectedCategory = {
 		name: selectedCategoryName,
@@ -65,8 +75,8 @@ async function createTask() {
 
 	tasks.toDo.push(newTask);
 
-	setItem('tasks', JSON.stringify(tasks));	
-	
+	await setItem('tasks', JSON.stringify(tasks));
+
 }
 
 /**
@@ -153,7 +163,7 @@ function resetForm() {
 
 // load categories in dropdown
 async function loadCategories() {
-	
+
 	let list = CATEGORY_LIST_EL;
 	list.innerHTML = '';
 
@@ -185,8 +195,6 @@ function categoryToggler() {
 SELECT_CATEGORY_EL.addEventListener('click', categoryToggler);
 BTN_CHECK_NEW_CATEGORY_EL.addEventListener('click', addNewCategory);
 ASSIGNED_TO_EL.addEventListener('click', assignToHandler);
-
-// ASSIGNED_TO_ACTION_EL.addEventListener('click', assignToHandlerInList);
 
 // UTILITIE FUNCTION FOR ADD TASK HTML VIEW
 
@@ -230,8 +238,6 @@ async function addNewCategory() {
 			selectedColor = ALL_COLORS_INPUTS[i].value;
 		}
 	}
-
-	// compose new cateogry
 
 	const newCategory = {
 		name: categoryName,

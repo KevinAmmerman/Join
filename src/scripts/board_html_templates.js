@@ -56,7 +56,7 @@ function createHtmlForTaskInfo(column, i) {
             </div>
             <div class="editDeleteContainer">
                 <div class="left"></div>
-                <div class="right">
+                <div onclick="editTask('${column}', ${i})" class="right">
                     <img src="src/img/img_board/pencil.png" alt="image of a pencil">
                 </div>
             </div>
@@ -93,5 +93,53 @@ function createHtmlForAdditional(amount) {
         <div class="assignedPersonInitials">
             <div class="initials" style="background-color: #2A3647">+${amount}</div>
         </div>
+    `;
+}
+
+
+function createHtmlForEditTask() {
+    return `
+        <div class="taskEditContainer editTaskGap">
+            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
+            <div class="leftEditContainer">
+                <label class="editTitle">Title</label>
+                <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
+                <label class="editDescription">Description</label>
+                <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
+                <div class="AssignetToContainer">
+                    <label>Assigned to</label>
+                    <div id="assignedToInput">
+                        <div>Select Contacts to assign</div>
+                        <ul class="assignedList" id="assignedList">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="rightEditContainer">
+                <label class="editDate">Due date</label>
+                <input type="date" id="editDate" required>
+                <div class="inputContainer">
+                    <label>Prio</label>
+                    <div class="prioBtn">
+                        <button id="urgentBtn" onclick="addPrio(0)"><span>Urgent</span><img class="prioImg"
+                                id="urgentImage" src="/src/img/img_board/urgent_prio.png"></button>
+                        <button id="mediumBtn" onclick="addPrio(1)"><span>Medium</span><img class="prioImg"
+                                id="mediumImage" src="/src/img/img_board/medium_prio.png"></button>
+                        <button id="lowBtn" onclick="addPrio(2)"><span>Low</span><img class="prioImg"
+                                id="lowImage" src="/src/img/img_board/low_prio.png"></button>
+                    </div>
+                    <p class="required" id="required5"></p>
+                </div>
+            </div>
+            <button class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          
+        </div>
+    `;
+}
+
+
+function createHtmlForAssignedList(name, p, checked) {
+    return `
+        <li>${name}<input type="checkbox" id="${p}" ${checked}></li>
     `;
 }

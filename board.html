@@ -24,19 +24,42 @@
 <body onload="includeHTML(), init()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
-    <div id="taskInfoContainer" class="">
-        <div class="taskEditContainer">
-            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn">
-            <div class="editTitle">Title</div>
-            <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
-            <div class="editDescription">Description</div>
-            <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
-            <div class="editDate">Due date</div>
-            <input type="date" id="editDate" required>
-            <div class="editPrio">Prio</div>
-            
-
-        </div>
+    <div id="taskInfoContainer" class="dNone">
+        <!-- <div class="taskEditContainer editTaskGap">
+            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
+            <div class="leftEditContainer">
+                <label class="editTitle">Title</label>
+                <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
+                <label class="editDescription">Description</label>
+                <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
+                <div class="AssignetToContainer">
+                    <label>Assigned to</label>
+                    <div id="assignedToInput">
+                        <div>Select Contacts to assign</div>
+                        <ul class="assignedList" id="assignedList">
+                            <li>Thomas Gottschalk<input type="checkbox" name="" id="0" checked></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="rightEditContainer">
+                <label class="editDate">Due date</label>
+                <input type="date" id="editDate" required>
+                <div class="inputContainer">
+                    <label>Prio</label>
+                    <div class="prioBtn">
+                        <button id="urgentBtn" onclick="addPrio(0)"><span>Urgent</span><img class="prioImg"
+                                id="urgentImage" src="/src/img/img_board/urgent_prio.png"></button>
+                        <button id="mediumBtn" onclick="addPrio(1)"><span>Medium</span><img class="prioImg"
+                                id="mediumImage" src="/src/img/img_board/medium_prio.png"></button>
+                        <button id="lowBtn" onclick="addPrio(2)"><span>Low</span><img class="prioImg"
+                                id="lowImage" src="/src/img/img_board/low_prio.png"></button>
+                    </div>
+                    <p class="required" id="required5"></p>
+                </div>
+            </div>
+            <button class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          
+        </div> -->
     </div>
     <div id="boardHeader">
         <div id="boardInnerContainer">

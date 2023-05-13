@@ -13,7 +13,7 @@ function checkIfSubtaskIsDone(subtask) {
     let finishedSubtasks = 0;
     for (let i = 0; i < subtask.length; i++) {
         const status = subtask[i].status;
-        if(status == false) {
+        if(status == true) {
             finishedSubtasks++
         } else {
             continue;
@@ -84,4 +84,22 @@ function deUmlaut(value) {
 function closeTaskInfo() {
     let taskInfoContainer = document.getElementById('taskInfoContainer');
     taskInfoContainer.classList.add('dNone');
+}
+
+
+function toggleAssigned() {
+    document.getElementById('assignedToInput').classList.toggle('openAssigned');
+}
+
+function checkBooleanValue(value) {
+    if (value == true) {
+        return 'checked';
+    } else {
+        return;
+    }
+}
+
+function generateRandomId() {
+	const random = Math.floor(Math.random() * 1000000);
+	return random.toString();
 }

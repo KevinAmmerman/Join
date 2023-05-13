@@ -1,4 +1,5 @@
 let prio;
+let assignedPeople = [];
 
 async function init() {
     tasks = JSON.parse(await getItem('tasks'));
@@ -61,10 +62,12 @@ function renderAssignetPeople(column, i) {
 
 function editTask(column, i) {
     let taskInfoContainer = document.getElementById('taskInfoContainer');
-    taskInfoContainer.innerHTML = createHtmlForEditTask();
+    taskInfoContainer.innerHTML = createHtmlForEditTask(column, i);
+    assignedPeople = [];
     getValuesForTask(column, i);
     getPrioStatus(column, i);
     getAssignedTo(column, i);
+    renderAssignetPeopleForEdit();
     getSubtasks(column, i);
 }
 
@@ -109,19 +112,40 @@ function resetPrioActive(status) {
 
 
 function getAssignedTo(column, i) {
-    let assignedList = document.getElementById('assignedList');
-    assignedList.innerHTML = '';
     let assignedNames = tasks[column][i].assignedTo;
     if (contacts && contacts.length > 0) {
         for (let p = 0; p < contacts.length; p++) {
             const contactName = contacts[p].name;
             if (assignedNames.includes(contactName)) {
-                assignedList.innerHTML += createHtmlForAssignedList(contactName, p, 'checked');
+                assignedPeopleForEditTask(contactName, true);
             } else {
-                assignedList.innerHTML += createHtmlForAssignedList(contactName, p);
+                assignedPeopleForEditTask(contactName, false);
             }
         }
     }
+}
+
+function assignedPeopleForEditTask(name, checked) {
+    let assign = {
+        'name': name,
+        'assigned': checked
+    };
+    assignedPeople.push(assign);
+}
+
+
+function renderAssignetPeopleForEdit() {
+    let assignedList = document.getElementById('assignedList');
+    assignedList.innerHTML = '';
+    for (let i = 0; i < assignedPeople.length; i++) {
+        const assign = assignedPeople[i];
+        assignedList.innerHTML += createHtmlForAssignedList(assign, i)
+    }
+}
+
+function changeAssignedStatus(i) {
+    let checked = document.getElementById(`checkbox${i}`).checked;
+    assignedPeople[i].assigned = checked;
 }
 
 
@@ -129,13 +153,63 @@ function getSubtasks(column, i) {
     let subtaskList = document.getElementById('subtasksList');
     subtaskList.innerHTML = '';
     if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
-        for (let i = 0; i < tasks[column][i].subtask.length; i++) {
-            const task = tasks[column][i].subtask[i];
-            if (task.status == false) {
-                subtaskList.innerHTML += createHtmlForSubtask(task, 'checked');
+        for (let s = 0; s < tasks[column][i].subtask.length; s++) {
+            const task = tasks[column][i].subtask[s];
+            if (task.status == true) {
+                subtaskList.innerHTML += createHtmlForSubtask(task, true, column, i, s);
             } else {
-                subtaskList.innerHTML += createHtmlForSubtask(task);
+                subtaskList.innerHTML += createHtmlForSubtask(task, false, column, i, s);
             }
         }
     }
 }
+
+function changeSubtaskStatus(column, i, id, s) {
+    let subtaskStatus = document.getElementById(id).checked;
+    tasks[column][i].subtask[s].status = subtaskStatus;
+}
+
+
+function addSubtask(column, i) {
+    let subtaskInput = document.getElementById('inputSubtask').value;
+    let id = generateRandomId();
+    let newSubtast = {
+		id: id,
+		title: subtaskInput,
+		status: false,
+	};
+    tasks[column][i].subtask.push(newSubtast);
+    getSubtasks(column, i);
+}
+
+
+async function saveChangesForTask(column, i) {
+    let title = document.getElementById('inputEditTitle').value;
+    let description = document.getElementById('inputEditDescription').value;
+    let dueDate = document.getElementById('editDate').value;
+    let prioStatus = prio;
+    tasks[column][i].title = title;
+    tasks[column][i].description = description;
+    tasks[column][i].date = dueDate;
+    tasks[column][i].prio = prioStatus;
+    saveAssignedPeopleList(column, i);
+    await setItem('tasks', JSON.stringify(tasks));
+    init();
+    openTask(column, i);
+}
+
+
+function saveAssignedPeopleList(column, i) {
+    let changes = [];
+    for (let i = 0; i < assignedPeople.length; i++) {
+        const person = assignedPeople[i];
+        if (person.assigned == true) {
+            changes.push(person.name);
+        } else {
+            continue;
+        }
+    }
+    tasks[column][i].assignedTo = changes;
+}
+
+

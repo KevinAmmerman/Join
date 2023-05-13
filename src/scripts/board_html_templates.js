@@ -97,7 +97,7 @@ function createHtmlForAdditional(amount) {
 }
 
 
-function createHtmlForEditTask() {
+function createHtmlForEditTask(column, i) {
     return `
         <div class="taskEditContainer editTaskGap">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
@@ -106,10 +106,10 @@ function createHtmlForEditTask() {
                 <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
                 <label class="editDescription">Description</label>
                 <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
-                <div class="assignetToContainer">
+                <div class="assignedContainer">
                     <label>Assigned to</label>
                     <div id="assignedToInput">
-                        <div>Select Contacts to assign <img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
+                        <div onclick="toggleAssigned()">Select Contacts to assign <img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
                         <ul class="assignedList" id="assignedList"></ul>
                     </div>
                 </div>
@@ -133,26 +133,31 @@ function createHtmlForEditTask() {
                     <label>Subtasks</label>
                     <div class="subtaksInputContainer">
                         <input type="text" id="inputSubtask" placeholder="Add new subtask">
-                        <button class="subtaskAddBtn"></button>
+                        <button onclick="addSubtask('${column}', ${i})" class="subtaskAddBtn"></button>
                     </div>
                     <ul id="subtasksList"></ul>
                 </div>
             </div>
-            <button class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          
+            <button onclick="saveChangesForTask('${column}',${i})" class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          
         </div>
     `;
 }
 
 
-function createHtmlForAssignedList(name, p, checked) {
+function createHtmlForAssignedList(assign, i) {
+    let name = assign.name;
+    let checked = checkBooleanValue(assign.assigned);
     return `
-        <li>${name}<input type="checkbox" id="${p}" ${checked}></li>
+        <li><label for="checkbox${i}">${name}</label><input onclick="changeAssignedStatus(${i})" type="checkbox" id="checkbox${i}" ${checked}></li>
     `;
 }
 
 
-function createHtmlForSubtask(task, checked) {
+function createHtmlForSubtask(task, checked, column, i, s) {
+    let title = task.title;
+    let checkedStatus = checkBooleanValue(checked)
+    let id = task.id;
     return `
-        <li><input type="checkbox" id="${task.id}" ${checked}>${task.title}</li>
+        <li><input onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s} )" type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label></li>
     `;
 }

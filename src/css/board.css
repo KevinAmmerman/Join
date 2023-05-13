@@ -175,6 +175,7 @@ body {
     overflow-y: auto;
     padding-right: 10px;
     padding-top: 2px;
+    min-height: 210px;
 }
 
 /* TASK-FIELD */

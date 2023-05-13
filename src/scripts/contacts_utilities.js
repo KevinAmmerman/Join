@@ -96,3 +96,8 @@ function deUmlaut(value) {
     value = value.replace(/ü/g, 'ue');
     return value;
 }
+
+
+function doNotClose(event) {
+    event.stopPropagation();
+}

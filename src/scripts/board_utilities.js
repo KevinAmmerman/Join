@@ -81,6 +81,11 @@ function deUmlaut(value) {
 }
 
 
+function doNotClose(event) {
+    event.stopPropagation();
+}
+
+
 function closeTaskInfo() {
     let taskInfoContainer = document.getElementById('taskInfoContainer');
     taskInfoContainer.classList.add('dNone');

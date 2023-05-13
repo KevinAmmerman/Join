@@ -1,21 +1,20 @@
-let prio;
-let assignedPeople = [];
+let currentDraggedTask = [];
 
 async function init() {
     tasks = JSON.parse(await getItem('tasks'));
     contacts = JSON.parse(await getItem('contacts'));
-    renderTasks('toDo', 'toDo');
-    renderTasks('inProgress', 'inProgress');
-    renderTasks('feedback', 'feedback');
-    renderTasks('done', 'done');
+    renderTasks(tasks, 'toDo', 'toDo');
+    renderTasks(tasks, 'inProgress', 'inProgress');
+    renderTasks(tasks, 'feedback', 'feedback');
+    renderTasks(tasks, 'done', 'done');
 }
 
 
-function renderTasks(column, id) {
+function renderTasks(array, column, id) {
     let columnId = document.getElementById(id)
     columnId.innerHTML = '';
-    for (let i = 0; i < tasks[column].length; i++) {
-        const task = tasks[column][i];
+    for (let i = 0; i < array[column].length; i++) {
+        const task = array[column][i];
         columnId.innerHTML += createHtmlForTasks(task, column, i);
         renderInitinalsForAssingetPeople(column, i);
     }
@@ -171,15 +170,16 @@ function changeSubtaskStatus(column, i, id, s) {
 
 
 function addSubtask(column, i) {
-    let subtaskInput = document.getElementById('inputSubtask').value;
+    let subtaskInput = document.getElementById('inputSubtask');
     let id = generateRandomId();
     let newSubtast = {
-		id: id,
-		title: subtaskInput,
-		status: false,
-	};
+        id: id,
+        title: subtaskInput.value,
+        status: false,
+    };
     tasks[column][i].subtask.push(newSubtast);
     getSubtasks(column, i);
+    subtaskInput.value = '';
 }
 
 
@@ -213,3 +213,56 @@ function saveAssignedPeopleList(column, i) {
 }
 
 
+async function deleteTask(column, i) {
+    tasks[column].splice(i, 1);
+    await setItem('tasks', JSON.stringify(tasks));
+    init();
+    closeTaskInfo();
+}
+
+
+// FILTER FUNCTIONS
+
+function filterTasks() {
+    let column = ['toDo', 'inProgress', 'feedback', 'done'];
+    let search = document.getElementById('inputSearch').value;
+    search = search.toLowerCase().trim();
+    for (let c = 0; c < column.length; c++) {
+        const space = column[c];
+        if (search.length > 0) {
+            filteredTasks[space] = tasks[space].filter(t => checkIfIncluded(t, search));
+            renderTasks(filteredTasks, space, space);
+        } else {
+            init();
+        }
+    }
+}
+
+
+function checkIfIncluded(t, search) {
+    return t.title.toLowerCase().startsWith(search) ||
+        t.description.toLowerCase().startsWith(search);
+}
+
+
+// DRAG & DROP FUNTIONS
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function startDragging(column, i) {
+    currentDraggedTask = {
+        'column': column,
+        'position': i
+    }
+}
+
+async function moveTo(category) {
+    let column = currentDraggedTask.column;
+    let position = currentDraggedTask.position;
+    let toMoveTask = tasks[column].splice(position, 1)[0];
+    tasks[category].push(toMoveTask);
+    await setItem('tasks', JSON.stringify(tasks));
+    init();
+}

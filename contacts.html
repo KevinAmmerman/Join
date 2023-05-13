@@ -25,8 +25,8 @@
 <body onload="includeHTML(), init()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
-    <div id="addContactMainContainer" class="dNone">
-        <div id="addContactContainer" class="addContactContainer"></div>
+    <div id="addContactMainContainer" class="dNone" onclick="openAndCloseNewContactWindow()">
+        <div id="addContactContainer" class="addContactContainer" onclick="doNotClose(event)"></div>
     </div>
     <div id="contactsMainContainer">
         <div class="addContactBtnContainer">

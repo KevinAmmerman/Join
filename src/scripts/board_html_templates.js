@@ -8,7 +8,7 @@ function createHtmlForTasks(task, column, i) {
     let finishedSubtasks = checkIfSubtaskIsDone(task.subtask); 
     let progress = calculateProgress(subtasklength, finishedSubtasks);
     return `
-        <div class="task" onclick="openTask('${column}', ${i})">
+        <div draggable="true" ondragstart="startDragging('${column}', ${i})" class="task" onclick="openTask('${column}', ${i})">
             <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title">${title}</h3>
             <div class="description">${description}</div>
@@ -37,7 +37,7 @@ function createHtmlForTaskInfo(column, i) {
     let prio =  checkPrioStatus(tasks[column][i].prio, 'word');
     let prioColor = getPrioColor(tasks[column][i].prio);
     return `
-        <div class="taskEditContainer">
+        <div class="taskEditContainer" onclick="doNotClose(event)">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
             <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title titleEditWindow">${title}</h3>
@@ -55,7 +55,7 @@ function createHtmlForTaskInfo(column, i) {
                 <div id="assignedToContainer"></div>
             </div>
             <div class="editDeleteContainer">
-                <div class="left"></div>
+                <div onclick="deleteTask('${column}', ${i})" class="left"></div>
                 <div onclick="editTask('${column}', ${i})" class="right">
                     <img src="src/img/img_board/pencil.png" alt="image of a pencil">
                 </div>
@@ -99,7 +99,7 @@ function createHtmlForAdditional(amount) {
 
 function createHtmlForEditTask(column, i) {
     return `
-        <div class="taskEditContainer editTaskGap">
+        <div class="taskEditContainer editTaskGap" onclick="doNotClose(event)">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
             <div class="leftEditContainer">
                 <label class="editTitle">Title</label>

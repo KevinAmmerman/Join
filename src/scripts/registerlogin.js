@@ -1,6 +1,3 @@
-let users = [];
-
-
 function init(){
     loadUsers();
     loadEmailPassword();
@@ -54,6 +51,7 @@ function loadEmailPassword(){
             password.value = '';
 
         }
+
 
 }
 
@@ -133,7 +131,7 @@ async function register() {
     registerBtn.disabled = true;
 
     users.push({
-        names: names.value,
+        names: name.value,
         email: email.value,
         password: password.value,
     });
@@ -157,7 +155,3 @@ function resetForm() {
     
     
 }
-
-
-
-

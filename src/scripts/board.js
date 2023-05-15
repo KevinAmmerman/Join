@@ -11,15 +11,10 @@ async function init() {
     renderTasks(tasks, 'inProgress', 'inProgress');
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
+    
 }
 
-/**
- * Renders the tasks in a specified column.
- * 
- * @param {Object} array - The array containing the tasks.
- * @param {string} column - The column to render the tasks in.
- * @param {string} id - The ID of the HTML element representing the column.
- */
+
 function renderTasks(array, column, id) {
     let columnId = document.getElementById(id)
     columnId.innerHTML = '';

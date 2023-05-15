@@ -1,3 +1,9 @@
+/**
+ * Initializes the contact list application.
+ * - Parses the contacts from the stored data.
+ * - Orders the contacts alphabetically.
+ * - Renders the contacts in the UI.
+ */
 async function init() {
     contacts = JSON.parse(await getItem('contacts'));
     orderContacts();
@@ -6,6 +12,11 @@ async function init() {
 
 // CONTACT-LIST FUNCTIONS
 
+
+/**
+ * Orders the contacts alphabetically.
+ * @returns {Array} - An array of groups, where each group contains contacts starting with the same letter.
+ */
 function orderContacts() {
     groups = [];
     contacts.forEach(function (contact) {
@@ -20,7 +31,9 @@ function orderContacts() {
     return groups;
 }
 
-
+/**
+ * Renders the contacts in the UI.
+ */
 function renderContacts() {
     let contactList = document.getElementById('contactList');
     contactList.innerHTML = '';
@@ -41,13 +54,23 @@ function renderContacts() {
 // CREATE-CONTACT FUNCTIONS
 
 
+/**
+ * Renders the window for creating a new contact.
+ */
 function renderCreateContactWindow() {
     let addContactContainer = document.getElementById('addContactContainer');
     addContactContainer.innerHTML = createHtmlForCreateContact();
     setTimeout(openAndCloseNewContactWindow(), 200);
 }
 
-
+/**
+ * Adds a new contact to the contact list.
+ * - Retrieves input values for name, email, and phone.
+ * - Creates a new contact object.
+ * - Checks if the contact already exists in the list.
+ * - Adds the new contact to the list, updates the UI, and stores the updated list.
+ * - Initializes the application.
+ */
 async function addContact() {
     let name = document.getElementById('inputName').value;
     let email = document.getElementById('inputEmail').value;
@@ -69,6 +92,12 @@ async function addContact() {
 
 // EDIT-CONTACT FUNCTIONS
 
+
+/**
+ * Renders the window for editing a contact.
+ * @param {number} i - Index of the group.
+ * @param {number} j - Index of the contact within the group.
+ */
 function renderEditContactWindow(i, j) {
     let addContactContainer = document.getElementById('addContactContainer');
     let contact = groups[i][j];
@@ -78,14 +107,22 @@ function renderEditContactWindow(i, j) {
     setTimeout(openAndCloseNewContactWindow(), 200);
 }
 
-
+/**
+ * Retrieves contact values and sets them as input values.
+ * @param {Object} contact - The contact object.
+ */
 function getValuesForInput(contact) {
     document.getElementById('inputName').setAttribute('value',contact.name);
     document.getElementById('inputEmail').setAttribute('value',contact.email);
     document.getElementById('inputPhone').setAttribute('value',contact.phone);
 }
 
-
+/**
+ * Saves the edited contact to the contact list.
+ * @param {number} contactsIndex - Index of the contact in the contacts array.
+ * @param {number} i - Index of the group.
+ * @param {number} j - Index of the contact within the group.
+ */
 async function saveContactEdits(contactsIndex, i, j) {
     let name = document.getElementById('inputName').value;
     let email = document.getElementById('inputEmail').value;
@@ -102,7 +139,13 @@ async function saveContactEdits(contactsIndex, i, j) {
     init();
 }
 
-
+/**
+ * Deletes a contact from the contact list.
+ * @param {number} contactsIndex - Index of the contact in the contacts array.
+ * @param {number} i - Index of the group.
+ * @param {number} j - Index of the contact within the group.
+ * @param {boolean} mobil - Indicates whether the operation is performed on mobile.
+ */
 async function deleteContact(contactsIndex, i, j, mobil) {
     contacts.splice(contactsIndex, 1);
     groups[i].splice(j, 1);
@@ -117,6 +160,12 @@ async function deleteContact(contactsIndex, i, j, mobil) {
 
 // OPEN-CONTACT FUNCTIONS 
 
+
+/**
+ * Opens the full contact card view.
+ * @param {number} i - Index of the group.
+ * @param {number} j - Index of the contact within the group.
+ */
 function openContact(i, j) {
     let fullContactCard = document.getElementById('fullContactCard');
     let contactView = document.getElementById('contactView');
@@ -127,7 +176,9 @@ function openContact(i, j) {
     fadeInCard('on');
 }
 
-
+/**
+ * Closes the full contact card view.
+ */
 function closeContactCard() {
     let contactView = document.getElementById('contactView');
     contactView.style.zIndex = -10;

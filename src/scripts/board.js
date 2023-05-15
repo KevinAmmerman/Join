@@ -7,7 +7,10 @@ async function init() {
     renderTasks(tasks, 'inProgress', 'inProgress');
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
+    
 }
+
+
 
 
 function renderTasks(array, column, id) {

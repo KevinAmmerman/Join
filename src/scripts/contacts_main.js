@@ -2,6 +2,7 @@ async function init() {
     contacts = JSON.parse(await getItem('contacts'));
     orderContacts();
     renderContacts();
+    
 }
 
 // CONTACT-LIST FUNCTIONS

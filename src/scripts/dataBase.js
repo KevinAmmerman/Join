@@ -44,3 +44,13 @@ let filteredTasks = {
     feedback: [],
     done: []
 };
+
+
+let users = []; 
+
+let guestUser = [
+    {
+    email: 'guest@guest.de',
+    password: '12345',
+    }
+];

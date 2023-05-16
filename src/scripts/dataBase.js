@@ -36,7 +36,7 @@ let tasks = {
     done: []
 };
 
-let prio;
+let prioValue;
 let assignedPeople = [];
 let filteredTasks = {
     toDo: [],

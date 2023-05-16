@@ -635,6 +635,11 @@ body {
     cursor: pointer;
 }
 
+/* === Modal for Task creation === */
+.modal {
+    
+}
+
 /* === MEDIA-QUERIES === */
 
 @media (max-width: 868px) {

@@ -44,12 +44,12 @@ function greet(){
 
     if(urlParams.has('users')){
         greetUser.innerHTML = `<span>${userName}</span>`;
-        localStorage.setItem(userName);
+        localStorage.setItem('userName', userName);
     }   else if(userName){
-            localStorage.getItem(userName);
+            localStorage.getItem('userName', userName);
             greetUser.innerHTML = `<span>${userName}</span>`;
         }else{
-              greetUser.innerHTML = `<span>Guest</soan>`;
+              greetUser.innerHTML = `<span>Guest</span>`;
         }
     
 }

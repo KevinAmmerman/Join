@@ -506,7 +506,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	color: rgb(251, 129, 144);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 750px) {
 	.join-menu {
 		visibility: visible;
 		position: fixed;
@@ -518,6 +518,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 	.container {
 		margin-left: calc(232px + 2%);
+		display: flex;
+		justify-items: center;
+		align-items: center;
 	}
 }
 

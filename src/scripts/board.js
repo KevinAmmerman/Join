@@ -391,6 +391,12 @@ async function moveTo(category) {
     init();
 }
 
+function openAddtaskSection() {
+    document.getElementById('modalAddtask').classList.remove('dNone');
+   
+
+}
+
 // function moveToMobil(column, i, Event) {
 //     event.stopPropagation();
 //     renderMoveToMobil(column, i)

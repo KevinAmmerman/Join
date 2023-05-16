@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="src/css/sidebar.css">
     <link rel="stylesheet" href="src/css/board.css">
     <link rel="stylesheet" href="src/css/mobile-menu.css">
+    <link rel="stylesheet" href="src/css/add-task.css">
+
     <!-- Scripts -->
     <script src="src/scripts/includeHTML.js"></script>
     <script src="src/scripts/storage.js"></script>
@@ -19,6 +21,11 @@
     <script src="src/scripts/board_utilities.js"></script>
     <script src="src/scripts/board_html_templates.js"></script>
     <script src="src/scripts/board.js"></script>
+    <script defer src="src/scripts/add-task.js"></script>
+    
+    
+  
+    
 </head>
 
 <body onload="includeHTML(), init()">
@@ -34,7 +41,7 @@
                     <div class="devider"></div>
                     <img src="src/img/img_board/magnifyingGlass.png" alt="" class="searchFieldImage">
                 </div>
-                <div id="addTask">Add Task +</div>
+                <div id="addTask" onclick="openAddtaskSection()">Add Task +</div>
             </div>
         </div>
     </div>
@@ -66,7 +73,10 @@
                 <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
             </div>
             <div id="done" class="taskContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
-        </div>
+        </div>        
+    </div>
+    <div id="modalAddtask" class="modal dNone">
+        <div w3-include-html="src/templates/add_task_template.html"></div>
     </div>
 </body>
 

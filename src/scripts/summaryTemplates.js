@@ -40,7 +40,7 @@ function generateSummaryTemplate(){
 
     <div class="times-Container">
     <div class="times">
-    <span class="time-name"><h2 id="greetings"></h2> <p id="userName"></p> </span>
+    <span class="time-name"><h2 id="greetings"></h2> <p id="userSign"></p> </span>
     </div> 
 
 </div> `;

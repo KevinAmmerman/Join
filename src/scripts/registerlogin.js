@@ -71,22 +71,20 @@ function rememberLogin(email, password) {
 
 
 async function guestLogin(){
-   
+  
    let email = document.getElementById('email');
    let password = document.getElementById('password');
-   email.value = 'guest@guest.com';
-   password.value = '123456';
+       // email.value = 'guest@guest.com';
+        //password.value = '123456';
 
-   let currentUser = {
-        name:'Guest'
-   };
-
-     if(currentUser){
-        email.value = '';
-        password.value = '';
-        window.location.href = `summary.html?users=${currentUser.name}`;
-        
-    }
+     if(guestUser){
+        email.value = guestUser[0]['guestName'];
+        password.value = guestUser[0]['guestPassword'];
+        window.location.href = `summary.html?guestUser=${guestUser.name}`;
+         }else{
+            email.value = '';
+            password.value = '';
+         }
     
     
 
@@ -131,7 +129,7 @@ async function register() {
     registerBtn.disabled = true;
 
     users.push({
-        names: name.value,
+        names: names.value,
         email: email.value,
         password: password.value,
     });

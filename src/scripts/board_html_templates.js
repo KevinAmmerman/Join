@@ -128,7 +128,6 @@ function createHtmlForEditTask(column, i) {
                         <button id="lowBtn" onclick="addPrio(2)"><span>Low</span><img class="prioImg"
                                 id="lowImage" src="/src/img/img_board/low_prio.png"></button>
                     </div>
-                    <p class="required" id="required5"></p>
                 </div>
                 <div class="subTaskContainer">
                     <label>Subtasks</label>

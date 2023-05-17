@@ -726,6 +726,7 @@ body {
         height: calc(100vh - 360px);
         left: 28px;
         padding: 0 28px 0 0;
+        overflow: unset;
     }
 
     #boardHeader {
@@ -737,6 +738,10 @@ body {
 
     #addTask {
         width: 100px;
+    }
+
+    #taskInfoContainer {
+        height: calc(100vh - 95px);
     }
 }
 
@@ -752,5 +757,35 @@ body {
 
     #boardHeader {
         height: 200px;
+    }
+
+    .taskEditContainer {
+        width: 100%;
+        height: calc(100% - 95px);
+        border-radius: 0;
+        flex-direction: column;
+        overflow: scroll;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .taskEditContainer {
+        width: 100%;
+        min-height: calc(100% - 95px);
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .prioBtn {
+        flex-direction: column;
+    }
+
+    #urgentBtn,
+    #mediumBtn,
+    #lowBtn {
+        padding: 7px 75px;
     }
 }

@@ -391,47 +391,23 @@ async function moveTo(category) {
     init();
 }
 
-// function moveToMobil(column, i, Event) {
-//     event.stopPropagation();
-//     renderMoveToMobil(column, i)
-// }
 
-// function renderMoveToMobil(column, i) {
-//     let smallTask = document.getElementById(`moveFrom${column}${i}`);
-//     smallTask.innerHTML = createHtmlMoveTo(column, i);
-// }
+function moveToMobil(column, i) {
+    renderMoveToMobil(column, i)
+}
 
 
-// async function moveToCategory(goal, column, i) {
-//     event.stopPropagation();
-//     let toMoveTask = tasks[column].splice(i, 1)[0];
-//     tasks[goal].push(toMoveTask);
-//     await setItem('tasks', JSON.stringify(tasks));
-//     closeTaskInfo();
-//     init();
-// }
-
-// let mouseDownTime;
-// let longPressDuration = 1000;
-// let parentElement = document.querySelector('.task');
-
-// document.addEventListener('mousedown', function (event) {
-//     mouseDownTime = new Date().getTime();
-//     setTimeout(checkLongPress, longPressDuration);
-// });
+function renderMoveToMobil(column, i) {
+    let smallTask = document.getElementById(`moveFrom${column}${i}`);
+    smallTask.innerHTML = createHtmlMoveTo(column, i);
+}
 
 
-// document.addEventListener('mouseup', function (event) {
-//     clearTimeout(checkLongPress);
-// });
+async function moveToCategory(goal, column, i) {
+    // let toMoveTask = tasks[column].splice(i, 1)[0];
+    // tasks[goal].push(toMoveTask);
+    tasks[goal].push(tasks[column].splice(i, 1)[0]);
+    await setItem('tasks', JSON.stringify(tasks));
+    init();
+}
 
-
-// function checkLongPress() {
-//     var currentTime = new Date().getTime();
-//     if (currentTime - mouseDownTime >= longPressDuration) {
-//         console.log("Langer Druck");
-//     } else {
-        
-
-//     }
-// }

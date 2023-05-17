@@ -8,7 +8,8 @@ function createHtmlForTasks(task, column, i) {
     let finishedSubtasks = checkIfSubtaskIsDone(task.subtask); 
     let progress = calculateProgress(subtasklength, finishedSubtasks);
     return `
-        <div draggable="true" ondragstart="startDragging('${column}', ${i})" class="task" onclick="openTask('${column}', ${i})">
+        <div draggable="true" ondragstart="startDragging('${column}', ${i})" id="moveFrom${column}${i}" class="task" onclick="openTask('${column}', ${i})">
+            <img class="mobileMoveToBtn" onclick="doNotClose(event); moveToMobil('${column}', ${i})" src="src/img/img_board/arrows.png">
             <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title">${title}</h3>
             <div class="description">${description}</div>
@@ -159,5 +160,17 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     let id = task.id;
     return `
         <li><input onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s} )" type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label></li>
+    `;
+}
+
+
+function createHtmlMoveTo(column, i) {
+    return `
+        <div class="mobilMoveToContainer" onclick="doNotClose(event)">
+            <div class="mobileMoveToRow" onclick="moveToCategory('toDo', '${column}', ${i})">To Do</div>
+            <div class="mobileMoveToRow" onclick="moveToCategory('inProgress', '${column}', ${i})">In progress</div>
+            <div class="mobileMoveToRow" onclick="moveToCategory('feedback', '${column}', ${i})">Awaiting feedback</div>
+            <div class="mobileMoveToRow" onclick="moveToCategory('done', '${column}', ${i})">Done</div>
+        </div>
     `;
 }

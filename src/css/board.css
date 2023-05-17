@@ -136,7 +136,7 @@ body {
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
-    gap: 90px;
+    /* gap: 90px; */
 }
 
 .col {
@@ -192,6 +192,7 @@ body {
     border-radius: 30px;
     margin-bottom: 16px;
     cursor: pointer;
+    position: relative;
 }
 
 .task:hover {
@@ -256,6 +257,40 @@ body {
 
 .prioImage {
     object-fit: contain;
+}
+
+.mobileMoveToBtn {
+    width: 25px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.mobileMoveToBtn:hover {
+    filter: invert(52%) sepia(93%) saturate(1021%) hue-rotate(164deg) brightness(98%) contrast(80%);
+    transform: rotateX(180deg);
+}
+
+.mobilMoveToContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.mobileMoveToRow {
+    width: 100%;
+    text-align: center;
+    background-color: #2A3647;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 5px 0;
+}
+
+.mobileMoveToRow:hover {
+    background-color: #28ABE2;
 }
 
 /* === TASK-WINDOW === */

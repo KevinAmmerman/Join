@@ -50,7 +50,7 @@ let users = [];
 
 let guestUser = [
     {
-    email: 'guest@guest.de',
-    password: '12345',
+      guestName: 'Guest',
+      guestPassword: '12345',  
     }
-];
+]

@@ -9,6 +9,16 @@ async function includeHTML() {
         } else {
             element.innerHTML = 'Page not found';
         }
+
+        // Need this to initialize event listeners after addTaskContainer Template was rendered to HTML 
+        if(i === includeElements.length - 1){
+            try {
+                initAddTasks()
+            } catch (error) {
+                
+            }
+            
+        }
     }
 }
 

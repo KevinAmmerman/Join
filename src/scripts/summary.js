@@ -37,19 +37,27 @@ function greetings(){
 function greet(){
     loadUsers();
     const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get('users');
-    let greetUser = document.getElementById('userName');
+    const userNames = urlParams.get('users');
+    const guestNames = guestUser[0]['guestName'];
+    let greetUser = document.getElementById('userSign');
     let greetinghtml = document.getElementById('greetings');
         greetinghtml.innerHTML = greetings();
 
+    if(userNames){
+        
+         greetUser.innerHTML = `<span>${userNames}</span>`;
+        
+    } else { 
+            greetUser.innerHTML = `<span>${guestNames}</span>`;
+    }
     if(urlParams.has('users')){
         greetUser.innerHTML = `<span>${userName}</span>`;
-        localStorage.setItem(userName);
+        localStorage.setItem('userName', userName);
     }   else if(userName){
-            localStorage.getItem(userName);
+            localStorage.getItem('userName', userName);
             greetUser.innerHTML = `<span>${userName}</span>`;
         }else{
-              greetUser.innerHTML = `<span>Guest</soan>`;
+              greetUser.innerHTML = `<span>Guest</span>`;
         }
     
 }

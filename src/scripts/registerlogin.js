@@ -7,6 +7,14 @@ function init(){
 
 
 
+function getCookieExpireTime() {
+    let now = new Date();
+    let time = now.getTime();
+   
+    let expireTime = time + 1 * 60 * 60 * 1000; 
+    now.setTime(expireTime); 
+    return now;
+  }
 
 async function loadUsers(){
     users = JSON.parse(await getItem('users'));
@@ -14,24 +22,49 @@ async function loadUsers(){
 }
 
 
+
+
+
 async function login(){
-    await loadUsers();
     
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    let user = users.find( u => u.email == email.value && u.password == password.value);
+    let user = users.find( (u) => u.email == email.value && u.password == password.value);
 
-    if(user && user.email === email.value && user.password === password.value){
+    if(user){
+        setUserName(user['names']);
         rememberLogin(email.value, password.value);
-        email.value = '';
-        password.value = '';
-        window.location.href = `summary.html?users=${user.names}`;
-    }else{
-        alert('Try again, please.');
+        window.location.replace('summary.html');
+    } else{
+        showError();
     }
+}
+
+
+function guestLogin(){
+    setUserName('Guest');
+       
+    window.location.replace('summary.html');
+       
     
+
+    // email.value = 'guest@guest.com';
+    //password.value = '123456';
+
+    //if(guestUser){
+    // email.value = guestUser[0]['guestName'];
+    //  password.value = guestUser[0]['guestPassword'];
     
-    
+
+}
+
+function showError(){
+    document.getElementById('login-user-error').classList.remove('dNone');
+    setTimeout(hideError, 3000);
+}
+
+function hideError(){
+    document.getElementById('login-user-error').classList.add('dNone');
 }
 
 
@@ -49,10 +82,7 @@ function loadEmailPassword(){
             checkbox.checked = false;
             email.value = '';
             password.value = '';
-
         }
-
-
 }
 
 
@@ -68,30 +98,6 @@ function rememberLogin(email, password) {
       localStorage.setItem("rememberMeChecked", "false");
     }
   }
-
-
-async function guestLogin(){
-  
-   let email = document.getElementById('email');
-   let password = document.getElementById('password');
-       // email.value = 'guest@guest.com';
-        //password.value = '123456';
-
-     if(guestUser){
-        email.value = guestUser[0]['guestName'];
-        password.value = guestUser[0]['guestPassword'];
-        window.location.href = `summary.html?guestUser=${guestUser.name}`;
-         }else{
-            email.value = '';
-            password.value = '';
-         }
-    
-    
-
-}
-
-
-
 
 
 async function messageSignIn(){
@@ -127,9 +133,12 @@ setTimeout(() => {
 async function register() {
     const registerBtn = document.getElementById('registerBtn');
     registerBtn.disabled = true;
-
-    users.push({
-        names: names.value,
+     let name = document.getElementById('name');
+     let email = document.getElementById('email');
+     let password = document.getElementById('password');
+    
+     users.push({
+        names: name.value,
         email: email.value,
         password: password.value,
     });
@@ -144,7 +153,6 @@ async function register() {
 }
     
 
-
 function resetForm() {
     names.value = '';
     email.value = '';
@@ -153,3 +161,4 @@ function resetForm() {
     
     
 }
+

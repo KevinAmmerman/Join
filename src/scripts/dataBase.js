@@ -46,11 +46,6 @@ let filteredTasks = {
 };
 
 
-let users = []; 
+ let users = [];
 
-let guestUser = [
-    {
-      guestName: 'Guest',
-      guestPassword: '12345',  
-    }
-]
+

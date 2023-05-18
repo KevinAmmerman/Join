@@ -64,17 +64,20 @@ body {
     display: none;
 }
 
-@media(max-width: 850px) {
+@media(max-width: 750px) {
     .headline {
         top: 105px;
-        padding-left: 250px;
+       padding-left: 0;
         font-size: 16px;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
-@media(max-width: 600px) {
-    
+
+ /*@media(max-width: 600px) {      
     .headline {
         top:105px;        
         font-size: 14px;

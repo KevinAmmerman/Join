@@ -11,10 +11,16 @@ async function init() {
     renderTasks(tasks, 'inProgress', 'inProgress');
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
-    
+
 }
 
-
+/**
+ * Renders the tasks for a specific column.
+ * 
+ * @param {Object} array - The tasks object.
+ * @param {string} column - The column to render.
+ * @param {string} id - The ID of the HTML element representing the column.
+ */
 function renderTasks(array, column, id) {
     let columnId = document.getElementById(id)
     columnId.innerHTML = '';
@@ -22,6 +28,7 @@ function renderTasks(array, column, id) {
         const task = array[column][i];
         columnId.innerHTML += createHtmlForTasks(task, column, i);
         renderInitinalsForAssingetPeople(column, i);
+        checkIfSubtask(task, column, i);
     }
 }
 
@@ -57,6 +64,7 @@ function openTask(column, i) {
     taskInfoContainer.classList.remove('dNone');
     taskInfoContainer.innerHTML = createHtmlForTaskInfo(column, i);
     renderAssignetPeople(column, i);
+    preventScrollingInBackground();
 }
 
 /**
@@ -70,7 +78,7 @@ function renderAssignetPeople(column, i) {
     if (tasks[column][i].assignedTo && tasks[column][i].assignedTo.length > 0) {
         for (let p = 0; p < tasks[column][i].assignedTo.length; p++) {
             const person = tasks[column][i].assignedTo[p];
-            assignedToContainer.innerHTML += createHtmlForAssignedPeople(person, p);
+            assignedToContainer.innerHTML += createHtmlForAssignedPeople(person);
         }
     } else {
         return;
@@ -94,6 +102,7 @@ function editTask(column, i) {
     getPrioStatus(column, i);
     getAssignedTo(column, i);
     renderAssignetPeopleForEdit();
+    renderAssignetInitials(column, i);
     getSubtasks(column, i);
 }
 
@@ -202,6 +211,20 @@ function renderAssignetPeopleForEdit() {
 }
 
 /**
+ * Renders the initials of assigned people for a task.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ */
+function renderAssignetInitials(column, i) {
+    let selectedAssignments = document.getElementById('selectedAssignments');
+    for (let p = 0; p < tasks[column][i].assignedTo.length; p++) {
+        const person = tasks[column][i].assignedTo[p];
+        selectedAssignments.innerHTML += createHtmlForAssignedPeopleTask(person);
+    }
+}
+
+/**
  * Changes the assigned status of an assigned person in the edit task form.
  * 
  * @param {number} i - The index of the assigned person in the assignedPeople array.
@@ -259,9 +282,26 @@ function addSubtask(column, i) {
         title: subtaskInput.value,
         status: false,
     };
-    tasks[column][i].subtask.push(newSubtast);
+    if (subtaskInput.value.length > 0) {
+        tasks[column][i].subtask.push(newSubtast);
+        getSubtasks(column, i);
+        subtaskInput.value = '';
+    } else {
+        alert('Type in a titel to add a subtask')
+    }
+
+}
+
+/**
+ * Deletes a subtask from a task.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ * @param {number} s - The index of the subtask within the task.
+ */
+function deleteSubtask(column, i, s) {
+    tasks[column][i].subtask.splice(s, 1);
     getSubtasks(column, i);
-    subtaskInput.value = '';
 }
 
 /**
@@ -283,6 +323,7 @@ async function saveChangesForTask(column, i) {
     await setItem('tasks', JSON.stringify(tasks));
     init();
     openTask(column, i);
+    preventScrollingInBackground();
 }
 
 /**
@@ -315,6 +356,7 @@ async function deleteTask(column, i) {
     await setItem('tasks', JSON.stringify(tasks));
     init();
     closeTaskInfo();
+    preventScrollingInBackground();
 }
 
 
@@ -393,29 +435,39 @@ async function moveTo(category) {
 
 function openAddtaskSection() {
     document.getElementById('modalAddtask').classList.remove('dNone');
-   
+
 
 }
 
-// function moveToMobil(column, i, Event) {
-//     event.stopPropagation();
-//     renderMoveToMobil(column, i)
-// }
-
+/**
+ * Moves a task to the "Mobil" column on mobile view.
+ * 
+ * @param {string} column - The column the task currently belongs to.
+ * @param {number} i - The index of the task within the column.
+ */
 function moveToMobil(column, i) {
     renderMoveToMobil(column, i)
 }
 
-
+/**
+ * Renders the "Move to Mobil" option for a task on mobile view.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ */
 function renderMoveToMobil(column, i) {
     let smallTask = document.getElementById(`moveFrom${column}${i}`);
     smallTask.innerHTML = createHtmlMoveTo(column, i);
 }
 
-
+/**
+ * Moves a task to a different category.
+ * 
+ * @param {string} goal - The category to move the task to.
+ * @param {string} column - The column the task currently belongs to.
+ * @param {number} i - The index of the task within the column.
+ */
 async function moveToCategory(goal, column, i) {
-    // let toMoveTask = tasks[column].splice(i, 1)[0];
-    // tasks[goal].push(toMoveTask);
     tasks[goal].push(tasks[column].splice(i, 1)[0]);
     await setItem('tasks', JSON.stringify(tasks));
     init();

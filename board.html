@@ -21,62 +21,62 @@
     <script src="src/scripts/board_utilities.js"></script>
     <script src="src/scripts/board_html_templates.js"></script>
     <script src="src/scripts/board.js"></script>
-    <script defer src="src/scripts/add-task.js"></script>
-    
-    
-  
-    
+    <!-- <script defer src="src/scripts/add-task.js"></script> -->
 </head>
 
 <body onload="includeHTML(), init()">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
     <div id="taskInfoContainer" class="dNone" onclick="closeTaskInfo()"></div>
-    <div id="boardHeader">
-        <div id="boardInnerContainer">
-            <h1 class="boardHeadline">Board</h1>
-            <div id="searchContainer">
-                <div class="searchField">
-                    <input type="text" id="inputSearch" placeholder="Find Task" onkeyup="filterTasks()">
-                    <div class="devider"></div>
-                    <img src="src/img/img_board/magnifyingGlass.png" alt="" class="searchFieldImage">
+    <div class="mainContainer">
+        <div id="boardHeader">
+            <div id="boardInnerContainer">
+                <h1 class="boardHeadline">Board</h1>
+                <div id="searchContainer">
+                    <div class="searchField">
+                        <input type="text" id="inputSearch" placeholder="Find Task" onkeyup="filterTasks()">
+                        <div class="devider"></div>
+                        <img src="src/img/img_board/magnifyingGlass.png" alt="" class="searchFieldImage">
+                    </div>
+                    <div id="addTask" onclick="openAddtaskSection()">Add Task +</div>
                 </div>
-                <div id="addTask" onclick="openAddtaskSection()">Add Task +</div>
             </div>
         </div>
-    </div>
-    <div id="boardMainContainer">
-        <div class="col">
-            <div class="boardControlElements">
-                <h2>To do</h2>
-                <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
+        <div id="boardMainContainer">
+            <div class="col">
+                <div class="boardControlElements">
+                    <h2>To do</h2>
+                    <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
+                </div>
+                <div id="toDo" class="taskContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
             </div>
-            <div id="toDo" class="taskContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
+            <div class="col">
+                <div class="boardControlElements">
+                    <h2>In progress</h2>
+                    <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
+                </div>
+                <div id="inProgress" class="taskContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+                </div>
+            </div>
+            <div class="col">
+                <div class="boardControlElements">
+                    <h2>Awaiting Feedback</h2>
+                    <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
+                </div>
+                <div id="feedback" class="taskContainer" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
+                </div>
+            </div>
+            <div class="col">
+                <div class="boardControlElements">
+                    <h2>Done</h2>
+                    <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
+                </div>
+                <div id="done" class="taskContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
+            </div>
         </div>
-        <div class="col">
-            <div class="boardControlElements">
-                <h2>In progress</h2>
-                <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
-            </div>
-            <div id="inProgress" class="taskContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
+        <div id="modalAddtask" class="modal dNone">
+            <div w3-include-html="src/templates/add_task_template.html"></div>
         </div>
-        <div class="col">
-            <div class="boardControlElements">
-                <h2>Awaiting Feedback</h2>
-                <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
-            </div>
-            <div id="feedback" class="taskContainer" ondrop="moveTo('feedback')" ondragover="allowDrop(event)"></div>
-        </div>
-        <div class="col">
-            <div class="boardControlElements">
-                <h2>Done</h2>
-                <img src="src/img/img_board/plus_button.svg" alt="plus symbol" class="addBtn">
-            </div>
-            <div id="done" class="taskContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
-        </div>        
-    </div>
-    <div id="modalAddtask" class="modal dNone">
-        <div w3-include-html="src/templates/add_task_template.html"></div>
     </div>
 </body>
 

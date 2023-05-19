@@ -134,6 +134,7 @@ function doNotClose(event) {
 function closeTaskInfo() {
     let taskInfoContainer = document.getElementById('taskInfoContainer');
     taskInfoContainer.classList.add('dNone');
+    preventScrollingInBackground();
 }
 
 /**
@@ -165,4 +166,29 @@ function checkBooleanValue(value) {
 function generateRandomId() {
 	const random = Math.floor(Math.random() * 1000000);
 	return random.toString();
+}
+
+/**
+ * Toggles the prevention of background scrolling by adding/removing the CSS class 'preventScrolling' to the main container.
+ */
+function preventScrollingInBackground() {
+    let mainContainer = document.getElementById('boardMainContainer');
+    mainContainer.classList.toggle('preventScrolling');
+}
+
+/**
+ * Checks if a task has subtasks and updates the visibility of the subtask progress bar.
+ * 
+ * @param {Object} task - The task object.
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ */
+function checkIfSubtask(task, column, i) {
+    let progressBar = document.getElementById(`subtaskBar${column}${i}`);
+    let subtask = task.subtask.length;
+    if(subtask == 0) {
+        progressBar.classList.add('dNone');
+    } else {
+        return;
+    }
 }

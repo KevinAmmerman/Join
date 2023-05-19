@@ -76,6 +76,13 @@ body {
     }
 }
 
+@media(max-width: 450px) {
+
+    .headline > p {
+        display: none;
+    }
+}
+
 
  /*@media(max-width: 600px) {      
     .headline {

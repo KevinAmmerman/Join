@@ -12,16 +12,17 @@ body {
 
 /* === GENERAL === */
 
-.taskContainer::-webkit-scrollbar {
+*::-webkit-scrollbar {
+    height: 4px;
     width: 4px;
     margin-left: 5px;
 }
 
-.taskContainer::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-.taskContainer::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background: #28ABE2;
     border-radius: 10px;
 }
@@ -33,6 +34,10 @@ body {
 .subheadlineStyle {
     font-weight: 700;
     font-size: 1.1rem;
+}
+
+.preventScrolling {
+    overflow: hidden !important;
 }
 
 /* === BOARD-HEADER === */
@@ -128,7 +133,7 @@ body {
 #boardMainContainer {
     position: absolute;
     min-width: 1200px;
-    height: calc(100vh - 278px);
+    height: calc(100vh - 282px);
     left: 267px;
     right: 0;
     padding: 0 63px 0 35px;
@@ -136,7 +141,6 @@ body {
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
-    /* gap: 90px; */
 }
 
 .col {
@@ -321,6 +325,7 @@ body {
     min-height: 550px;
     background: #FFFFFF;
     border-radius: 30px;
+    box-sizing: border-box;
 }
 
 .closeBtn {
@@ -420,6 +425,7 @@ body {
     align-items: center;
     color: #ffffff;
     font-size: 0.7rem;
+    border: 2px solid white;
 }
 
 .priorityValue {
@@ -483,7 +489,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* width: 80%; */
     padding: 13px 21px;
     gap: 10px;
     border: 1px solid #D1D1D1;
@@ -495,7 +500,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* width: 80%; */
     height: 50px;
     padding: 13px 21px;
     gap: 10px;
@@ -616,6 +620,11 @@ body {
     height: auto !important;
 }
 
+#selectedAssignments {
+    display: flex;
+    padding-left: 6px;
+}
+
 .subTaskContainer {
     display: flex;
     flex-direction: column;
@@ -633,12 +642,13 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 85%;
+    width: 100%;
     padding: 13px 21px;
     gap: 10px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-size: 1.1rem;
+    box-sizing: border-box;
 }
 
 .subtaskAddBtn {
@@ -707,6 +717,7 @@ body {
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
+        gap: 30px;
     }
 
     .taskContainer::-webkit-scrollbar:horizontal {
@@ -715,8 +726,11 @@ body {
 
     .task {
         min-width: 250px;
-        height: max-content;
-        margin-right: 32px;
+        height: 175px;
+    }
+
+    body {
+        overflow-y: auto;
     }
 }
 
@@ -743,6 +757,15 @@ body {
     #taskInfoContainer {
         height: calc(100vh - 95px);
     }
+
+    .mainContainer {
+        overflow: scroll;
+        height: calc(100% - 78px);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
 }
 
 @media (max-width: 725px) {
@@ -761,19 +784,22 @@ body {
 
     .taskEditContainer {
         width: 100%;
-        height: calc(100% - 95px);
+        height: 100%;
         border-radius: 0;
         flex-direction: column;
-        overflow: scroll;
+        overflow-y: scroll;
+    }
+
+    .applyEditBtn {
+        align-self: flex-end;
+        position: unset;
     }
 }
 
 @media (max-width: 500px) {
 
     .taskEditContainer {
-        width: 100%;
         min-height: calc(100% - 95px);
-        border-radius: 0;
     }
 }
 
@@ -781,6 +807,7 @@ body {
 
     .prioBtn {
         flex-direction: column;
+        height: auto;
     }
 
     #urgentBtn,

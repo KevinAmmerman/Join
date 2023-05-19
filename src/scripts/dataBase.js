@@ -48,4 +48,9 @@ let filteredTasks = {
 
  let users = [];
 
-
+guestUser =[
+    {
+        email: 'guest@guest.com',
+        password: '123456',
+    }
+]

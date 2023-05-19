@@ -4,16 +4,9 @@ async function getSummary(){
     loadUsers();
     generateSummaryTemplate();
     showGreetings();
-    changeGreetingName();
-    
-    
-}
-function setUserName(user){
-    let now = getCookieExpireTime();
-    const lowercaseName = user.toLowerCase().replace(' ', '');
-    document.userName =
-    'user = ' + lowercaseName + '; expires=' + now.toUTCString() + '; path=/';
-}
+    showGreetingName();
+   }
+
 
 
 function greetings(){
@@ -35,26 +28,28 @@ function greetings(){
     }
     };
 
+    
+
     function showGreetings(){
         let greetinghtml = document.getElementById('greetings');
-        greetinghtml.innerHTML = greetings();
+            greetinghtml.innerHTML = greetings();
     }
 
 
-function changeGreetingName(){
-    let nameFromUser = document.userName;
-
-    showGreetingName(nameFromUser);
-}
-
-
-function showGreetingName(nameFromUser){
-    if (nameFromUser === undefined) {
-        document.getElementById('userGreeting').innerHTML = 'Guest';    
-    } else {
-        const selectedUser = users.find(user => user.name.toLowerCase().replace(' ', '') === nameUserFormatted);
-        document.getElementById('userGreeting').innerHTML = selectedUser.users;
+ async function showGreetingName(){
+    const loadingUsers = users;
+    const guestNames = guestUser[0]['guestName'];
+    let greetUser = document.getElementById('userGreeting');
+    
         
+
+      if(loadingUsers) { 
+        
+        greetUser.innerHTML = `<span>${loadingUsers}</span>`;
+            
+    } 
+    else {
+        greetUser.innerHTML = `<span>${guestNames}</span>`;
     }
 }
 

@@ -35,7 +35,10 @@ function createHtmlForTasks(task, column, i) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for displaying an empty category message.
+ * @returns {string} The HTML markup for the empty category message.
+ */
 function createHtmlForEmptyCategory() {
     return `
         <div class="emptyCategory">No tasks here</div>

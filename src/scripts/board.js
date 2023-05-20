@@ -392,8 +392,8 @@ function filterTasks() {
  * @returns {boolean} - True if the task is included in the search results, false otherwise.
  */
 function checkIfIncluded(t, search) {
-    return t.title.toLowerCase().startsWith(search) ||
-        t.description.toLowerCase().startsWith(search);
+    return t.title.toLowerCase().includes(search) ||
+        t.description.toLowerCase().includes(search);
 }
 
 

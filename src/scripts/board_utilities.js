@@ -144,12 +144,18 @@ function toggleAssigned() {
     document.getElementById('assignedToInput').classList.toggle('openAssigned');
 }
 
-
+/**
+ * Closes the assignedToInput dropdown.
+ */
 function closeDropDown() {
     document.getElementById('assignedToInput').classList.remove('openAssigned');
 }
 
-
+/**
+ * Adds an event listener for the Enter key on the input field.
+ * @param {number} column - The column index.
+ * @param {number} i - The task index.
+ */
 function addEnterListener(column, i) {
     let input = document.getElementById('inputSubtask');
     

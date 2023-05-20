@@ -24,6 +24,9 @@ async function init() {
 function renderTasks(array, column, id) {
     let columnId = document.getElementById(id)
     columnId.innerHTML = '';
+    if (array[column].length == 0) {
+        columnId.innerHTML = createHtmlForEmptyCategory();
+    }
     for (let i = 0; i < array[column].length; i++) {
         const task = array[column][i];
         columnId.innerHTML += createHtmlForTasks(task, column, i);

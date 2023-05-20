@@ -35,6 +35,13 @@ function createHtmlForTasks(task, column, i) {
     `;
 }
 
+
+function createHtmlForEmptyCategory() {
+    return `
+        <div class="emptyCategory">No tasks here</div>
+    `;
+}
+
 /**
  * Creates the HTML code for rendering the task information window.
  * 

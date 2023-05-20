@@ -1,4 +1,4 @@
-function init(){
+function logininit(){
     loadUsers();
     loadEmailPassword();
     messageSignIn(); 
@@ -34,7 +34,7 @@ async function login(){
         email.value = '';
         password.value = '';
         rememberLogin(email.value, password.value);
-        window.location.href = `summary.html?user=${user.name}`;
+        window.location.href = `summary.html?user=${user.names}`;
     } else{
         showError();
     }
@@ -45,13 +45,11 @@ function guestLogin(){
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     
-   
-
     if(guestUser){
         email.value = guestUser[0]['email'];
         password.value = guestUser[0]['Password'];
     
-    window.location.href = `summary.html?guestUser=${guestUser.name}`;
+    window.location.href = `summary.html?guestUser=${guestUser.guestName}`;
 }
 }
 

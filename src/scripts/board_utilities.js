@@ -5,7 +5,7 @@
  * @returns {string} - The truncated text.
  */
 function truncateText(text) {
-    let maxLength = 30; 
+    let maxLength = 30;
     if (text.length > maxLength) {
         let abridgedText = text.slice(0, maxLength) + '...';
         return abridgedText;
@@ -24,7 +24,7 @@ function checkIfSubtaskIsDone(subtask) {
     let finishedSubtasks = 0;
     for (let i = 0; i < subtask.length; i++) {
         const status = subtask[i].status;
-        if(status == true) {
+        if (status == true) {
             finishedSubtasks++
         } else {
             continue;
@@ -54,20 +54,20 @@ function calculateProgress(subtasklength, finishedSubtasks) {
  * @returns {string} - The image path or corresponding word based on the priority.
  */
 function checkPrioStatus(prio, returnTyp) {
-    if(prio == 1) {
+    if (prio == 1) {
         if (returnTyp == 'path') {
             return 'src/img/img_board/urgent_prio.png';
         } else if (returnTyp == 'word') {
             return 'Urgent';
-        } 
+        }
     }
     if (prio == 2) {
         if (returnTyp == 'path') {
             return 'src/img/img_board/medium_prio.png'
         } else if (returnTyp == 'word') {
             return 'Medium';
-        }    
-    } 
+        }
+    }
     if (returnTyp == 'path') {
         return 'src/img/img_board/low_prio.png'
     } else if (returnTyp == 'word') {
@@ -144,6 +144,24 @@ function toggleAssigned() {
     document.getElementById('assignedToInput').classList.toggle('openAssigned');
 }
 
+
+function closeDropDown() {
+    document.getElementById('assignedToInput').classList.remove('openAssigned');
+}
+
+
+function addEnterListener(column, i) {
+    let input = document.getElementById('inputSubtask');
+    
+    if (input) {
+      input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          addSubtask(column, i);
+        }
+      });
+    }
+  }
+
 /**
  * Checks the boolean value and returns 'checked' if true, otherwise returns undefined.
  * 
@@ -164,8 +182,8 @@ function checkBooleanValue(value) {
  * @returns {string} - The randomly generated ID.
  */
 function generateRandomId() {
-	const random = Math.floor(Math.random() * 1000000);
-	return random.toString();
+    const random = Math.floor(Math.random() * 1000000);
+    return random.toString();
 }
 
 /**
@@ -186,7 +204,7 @@ function preventScrollingInBackground() {
 function checkIfSubtask(task, column, i) {
     let progressBar = document.getElementById(`subtaskBar${column}${i}`);
     let subtask = task.subtask.length;
-    if(subtask == 0) {
+    if (subtask == 0) {
         progressBar.classList.add('dNone');
     } else {
         return;

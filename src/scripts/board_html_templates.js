@@ -1,3 +1,11 @@
+/**
+ * Creates the HTML code for rendering a task.
+ * 
+ * @param {object} task - The task object.
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ * @returns {string} - The HTML code for rendering the task.
+ */
 function createHtmlForTasks(task, column, i) {
     let title = task.title;
     let description = truncateText(task.description);
@@ -27,7 +35,13 @@ function createHtmlForTasks(task, column, i) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for rendering the task information window.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ * @returns {string} - The HTML code for rendering the task information window.
+ */
 function createHtmlForTaskInfo(column, i) {
     let title = tasks[column][i].title;
     let description = tasks[column][i].description;
@@ -57,7 +71,7 @@ function createHtmlForTaskInfo(column, i) {
             </div>
             <div class="editDeleteContainer">
                 <div onclick="deleteTask('${column}', ${i})" class="left"></div>
-                <div onclick="editTask('${column}', ${i})" class="right">
+                <div onclick="editTask('${column}', ${i}), addEnterListener('${column}', ${i})" class="right">
                     <img src="src/img/img_board/pencil.png" alt="image of a pencil">
                 </div>
             </div>
@@ -65,6 +79,12 @@ function createHtmlForTaskInfo(column, i) {
     `;
 }
 
+/**
+ * Creates the HTML code for rendering an assigned person.
+ * 
+ * @param {string} person - The name of the assigned person.
+ * @returns {string} - The HTML code for rendering the assigned person.
+ */
 function createHtmlForAssignedPeople(person) {
     let initialsColor = getColorForInitials(person)
     let nameWithoutUmlauts = deUmlaut(person);
@@ -77,6 +97,12 @@ function createHtmlForAssignedPeople(person) {
     `;
 }
 
+/**
+ * Creates the HTML code for rendering the initials of an assigned person (used in task view).
+ * 
+ * @param {string} person - The name of the assigned person.
+ * @returns {string} - The HTML code for rendering the assigned person's initials.
+ */
 function createHtmlForAssignedPeopleTask(person) {
     let initialsColor = getColorForInitials(person)
     let nameWithoutUmlauts = deUmlaut(person);
@@ -88,7 +114,12 @@ function createHtmlForAssignedPeopleTask(person) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for rendering additional assigned people (used in task view).
+ * 
+ * @param {number} amount - The number of additional assigned people.
+ * @returns {string} - The HTML code for rendering the additional assigned people.
+ */
 function createHtmlForAdditional(amount) {
     return `
         <div class="assignedPersonInitials">
@@ -97,10 +128,16 @@ function createHtmlForAdditional(amount) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for rendering the edit task window.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ * @returns {string} - The HTML code for rendering the edit task window.
+ */
 function createHtmlForEditTask(column, i) {
     return `
-        <div class="taskEditContainer editTaskGap" onclick="doNotClose(event)">
+        <div id="taskEditContainer" class="taskEditContainer editTaskGap" onclick="doNotClose(event); closeDropDown()">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
             <div class="leftEditContainer">
                 <label class="editTitle">Title</label>
@@ -110,7 +147,7 @@ function createHtmlForEditTask(column, i) {
                 <div class="assignedContainer">
                     <label>Assigned to</label>
                     <div id="assignedToInput">
-                        <div onclick="toggleAssigned()">Select Contacts<img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
+                        <div onclick="doNotClose(event); toggleAssigned()" class="assignedBtn">Select Contacts<img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
                         <ul class="assignedList" id="assignedList"></ul>
                     </div>
                     <div id="selectedAssignments"></div>
@@ -144,26 +181,48 @@ function createHtmlForEditTask(column, i) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for rendering an assigned person in the edit task window.
+ * 
+ * @param {object} assign - The assigned person object.
+ * @param {number} i - The index of the assigned person.
+ * @returns {string} - The HTML code for rendering the assigned person in the edit task window.
+ */
 function createHtmlForAssignedList(assign, i) {
     let name = assign.name;
     let checked = checkBooleanValue(assign.assigned);
     return `
-        <li><label for="checkbox${i}">${name}</label><input onclick="changeAssignedStatus(${i})" type="checkbox" id="checkbox${i}" ${checked}></li>
+        <li onclick="doNotClose(event); changeAssignedStatus(${i})"><label for="checkbox${i}">${name}</label><input type="checkbox" id="checkbox${i}" ${checked}></li>
     `;
 }
 
-
+/**
+ * Creates the HTML code for rendering a subtask.
+ * 
+ * @param {object} task - The subtask object.
+ * @param {boolean} checked - The status of the subtask.
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ * @param {number} s - The index of the subtask within the task.
+ * @returns {string} - The HTML code for rendering the subtask.
+ */
 function createHtmlForSubtask(task, checked, column, i, s) {
     let title = task.title;
     let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
-        <li><input onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})" type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label><div onclick="deleteSubtask('${column}', ${i}, ${s})">X</div></li>
+        <li onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})"><input type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label><div onclick="deleteSubtask('${column}', ${i}, ${s})">X</div></li>
     `;
 }
 
 
+/**
+ * Creates the HTML code for rendering the move to mobile options.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ * @returns {string} - The HTML code for rendering the move to mobile options.
+ */
 function createHtmlMoveTo(column, i) {
     return `
         <div class="mobilMoveToContainer" onclick="doNotClose(event)">

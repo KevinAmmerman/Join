@@ -1,3 +1,8 @@
+/**
+ * Creates the HTML code for an alphabetic order.
+ * @param {string} letter - The letter of the order.
+ * @returns {string} - The HTML markup for the order.
+ */
 function createHtmlForOrder(letter) {
     return `
         <div class="contactOrder">
@@ -6,7 +11,13 @@ function createHtmlForOrder(letter) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for a contact.
+ * @param {Object} contact - The contact object.
+ * @param {number} i - The contact index.
+ * @param {number} j - The subcontact index.
+ * @returns {string} - The HTML markup for the contact card.
+ */
 function createHtmlForContact(contact, i, j) {
     let nameWithoutUmlauts = deUmlaut(contact.name);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
@@ -26,6 +37,13 @@ function createHtmlForContact(contact, i, j) {
     `;
 }
 
+/**
+ * Creates the HTML code for a contact card.
+ * @param {Object} contact - The contact object.
+ * @param {number} i - The contact index.
+ * @param {number} j - The subcontact index.
+ * @returns {string} - The HTML markup for the contact card.
+ */
 function createHtmlForContactCard(contact, i, j) {
     let nameWithoutUmlauts = deUmlaut(contact.name);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
@@ -65,7 +83,10 @@ function createHtmlForContactCard(contact, i, j) {
     `;
 }
 
-
+/**
+ * Creates the HTML code for the window - creating a new contact.
+ * @returns {string} - The HTML markup for creating a new contact.
+ */
 function createHtmlForCreateContact() {
     return `
         <div class="addContactLeft">
@@ -100,7 +121,14 @@ function createHtmlForCreateContact() {
     `;
 }
 
-
+/**
+ * Creates the HTML code for the window - editing a contact.
+ * @param {Object} contact - The contact object.
+ * @param {number} contactsIndex - The index of the contact in the contacts array.
+ * @param {number} j - The subcontact index.
+ * @param {number} i - The contact index.
+ * @returns {string} - The HTML markup for editing a contact.
+ */
 function createHtmlForEditContact(contact, contactsIndex, j, i) {
     let nameWithoutUmlauts = deUmlaut(contact.name);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();

@@ -46,11 +46,12 @@ let filteredTasks = {
 };
 
 
-let users = []; 
+ let users = [];
 
-let guestUser = [
+guestUser =[
     {
-      guestName: 'Guest',
-      guestPassword: '12345',  
+        guestName:'Guest',
+        email: 'guest@guest.com',
+        password: '123456',
     }
 ]

@@ -87,7 +87,7 @@ function createHtmlForCreateContact() {
                     <img class="inputImg" src="src/img/img_contacts/mail.png" alt="logo of a mail">
                 </div>
                 <div class="inputSection">
-                    <input class="contactInput" id="inputPhone" type="tel" placeholder="Phone" pattern="^(?=.*\+)[\d\s+]+$" required>
+                    <input class="contactInput" id="inputPhone" type="number" placeholder="Phone" required>
                     <img class="inputImg" src="src/img/img_contacts/phone.png" alt="logo of a phone">
                 </div>
                 <div class="btnSection">

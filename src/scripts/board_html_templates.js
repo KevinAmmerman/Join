@@ -8,11 +8,12 @@ function createHtmlForTasks(task, column, i) {
     let finishedSubtasks = checkIfSubtaskIsDone(task.subtask); 
     let progress = calculateProgress(subtasklength, finishedSubtasks);
     return `
-        <div draggable="true" ondragstart="startDragging('${column}', ${i})" class="task" onclick="openTask('${column}', ${i})">
+        <div draggable="true" ondragstart="startDragging('${column}', ${i})" id="moveFrom${column}${i}" class="task" onclick="openTask('${column}', ${i})">
+            <img class="mobileMoveToBtn" onclick="doNotClose(event); moveToMobil('${column}', ${i})" src="src/img/img_board/arrows.png">
             <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title">${title}</h3>
             <div class="description">${description}</div>
-            <div class="subtaskBar">
+            <div class="subtaskBar" id="subtaskBar${column}${i}">
                 <div class="progressBar">
                     <div class="progress" style="width: ${progress}%"></div>
                 </div>
@@ -76,7 +77,7 @@ function createHtmlForAssignedPeople(person) {
     `;
 }
 
-function createHtmlForAssignedPeopleTask(person, p) {
+function createHtmlForAssignedPeopleTask(person) {
     let initialsColor = getColorForInitials(person)
     let nameWithoutUmlauts = deUmlaut(person);
     let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
@@ -109,9 +110,10 @@ function createHtmlForEditTask(column, i) {
                 <div class="assignedContainer">
                     <label>Assigned to</label>
                     <div id="assignedToInput">
-                        <div onclick="toggleAssigned()">Select Contacts to assign <img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
+                        <div onclick="toggleAssigned()">Select Contacts<img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
                         <ul class="assignedList" id="assignedList"></ul>
                     </div>
+                    <div id="selectedAssignments"></div>
                 </div>
             </div>
             <div class="rightEditContainer">
@@ -127,7 +129,6 @@ function createHtmlForEditTask(column, i) {
                         <button id="lowBtn" onclick="addPrio(2)"><span>Low</span><img class="prioImg"
                                 id="lowImage" src="/src/img/img_board/low_prio.png"></button>
                     </div>
-                    <p class="required" id="required5"></p>
                 </div>
                 <div class="subTaskContainer">
                     <label>Subtasks</label>
@@ -158,6 +159,18 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
-        <li><input onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s} )" type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label></li>
+        <li><input onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})" type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label><div onclick="deleteSubtask('${column}', ${i}, ${s})">X</div></li>
+    `;
+}
+
+
+function createHtmlMoveTo(column, i) {
+    return `
+        <div class="mobilMoveToContainer" onclick="doNotClose(event)">
+            <div class="mobileMoveToRow" onclick="moveToCategory('toDo', '${column}', ${i})">To Do</div>
+            <div class="mobileMoveToRow" onclick="moveToCategory('inProgress', '${column}', ${i})">In progress</div>
+            <div class="mobileMoveToRow" onclick="moveToCategory('feedback', '${column}', ${i})">Awaiting feedback</div>
+            <div class="mobileMoveToRow" onclick="moveToCategory('done', '${column}', ${i})">Done</div>
+        </div>
     `;
 }

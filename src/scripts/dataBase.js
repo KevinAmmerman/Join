@@ -44,6 +44,7 @@ let filteredTasks = {
     feedback: [],
     done: []
 };
+let dropClicked = false;
 
 
  let users = [];

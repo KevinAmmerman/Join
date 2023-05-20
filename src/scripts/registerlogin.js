@@ -1,4 +1,4 @@
-function init(){
+function logininit(){
     loadUsers();
     loadEmailPassword();
     messageSignIn(); 
@@ -26,15 +26,15 @@ async function loadUsers(){
 
 
 async function login(){
-    
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let user = users.find( (u) => u.email == email.value && u.password == password.value);
 
     if(user){
-        setUserName(user['names']);
+        email.value = '';
+        password.value = '';
         rememberLogin(email.value, password.value);
-        window.location.replace('summary.html');
+        window.location.href = `summary.html?user=${user.names}`;
     } else{
         showError();
     }
@@ -42,20 +42,15 @@ async function login(){
 
 
 function guestLogin(){
-    setUserName('Guest');
-       
-    window.location.replace('summary.html');
-       
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
     
-
-    // email.value = 'guest@guest.com';
-    //password.value = '123456';
-
-    //if(guestUser){
-    // email.value = guestUser[0]['guestName'];
-    //  password.value = guestUser[0]['guestPassword'];
+    if(guestUser){
+        email.value = guestUser[0]['email'];
+        password.value = guestUser[0]['Password'];
     
-
+    window.location.href = `summary.html?guestUser=${guestUser.guestName}`;
+}
 }
 
 function showError(){
@@ -161,4 +156,5 @@ function resetForm() {
     
     
 }
+
 

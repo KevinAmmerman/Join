@@ -49,4 +49,10 @@ let dropClicked = false;
 
  let users = [];
 
-
+guestUser =[
+    {
+        guestName:'Guest',
+        email: 'guest@guest.com',
+        password: '123456',
+    }
+]

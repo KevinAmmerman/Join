@@ -1,19 +1,16 @@
 
 
-async function getSummary(){
-    loadUsers();
+async function getSummary() {
+    await init();
+   
     generateSummaryTemplate();
     showGreetings();
-    changeGreetingName();
-    
-    
+    showGreetingName();
+ 
+   
 }
-function setUserName(user){
-    let now = getCookieExpireTime();
-    const lowercaseName = user.toLowerCase().replace(' ', '');
-    document.userName =
-    'user = ' + lowercaseName + '; expires=' + now.toUTCString() + '; path=/';
-}
+
+
 
 
 function greetings(){
@@ -35,26 +32,28 @@ function greetings(){
     }
     };
 
+    
+
     function showGreetings(){
         let greetinghtml = document.getElementById('greetings');
-        greetinghtml.innerHTML = greetings();
+            greetinghtml.innerHTML = greetings();
     }
 
 
-function changeGreetingName(){
-    let nameFromUser = document.userName;
-
-    showGreetingName(nameFromUser);
-}
-
-
-function showGreetingName(nameFromUser){
-    if (nameFromUser === undefined) {
-        document.getElementById('userGreeting').innerHTML = 'Guest';    
-    } else {
-        const selectedUser = users.find(user => user.name.toLowerCase().replace(' ', '') === nameUserFormatted);
-        document.getElementById('userGreeting').innerHTML = selectedUser.users;
+ async function showGreetingName(){
+    const loadingUsers = users[0];
+    const guestNames = guestUser[0]['guestName'];
+    let greetUser = document.getElementById('userGreeting');
+    
         
+
+      if(loadingUsers === users) { 
+        
+        greetUser.innerHTML = `<span>${loadingUsers}</span>`;
+            
+    } 
+    else {
+        greetUser.innerHTML = `<span>${guestNames}</span>`;
     }
 }
 
@@ -62,6 +61,7 @@ function showGreetingName(nameFromUser){
 
 function deadlineTime(){
     const time = new Date().getHours();
+    let 
 
 }
 
@@ -70,4 +70,48 @@ function goToBoard(){
     window.location.href = 'board.html';
 }
 
+
+
+
+async function renderSummary(){
+    await init();
+    let status = ['toDo', 'inProgress', 'feedback', 'done'];
+    for (let i = 0; i < status.length; i++) {
+        getTasks(status[i]);
+        
+    }
+    getTasksInBoard();
+}
+function getTasksInBoard() {
+    let tasksInBoard = document.getElementById('summaryTaskInBoard');
+    tasksInBoard.innerHTML = tasks.length;
+ 
+}
+
+function getTasks(status){
+    let task = document.getElementById(status);
+    let count = 0;
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i];
+        if (element['status'] == status) {
+            count++;
+        }
+    }
+    task.innerHTML = count;
+}
+
+function getDatesForSummary() {
+    if (tasks.length >= 1) {
+        for (let i = 0; i < tasks.length; i++) {
+            const task = tasks[i];
+            datesForSummary.push(`${task['dueDate']}`);
+        }
+        datesForSummary.sort();
+        let nextDate = null;
+        nextDate = datesForSummary[0];
+        document.getElementById('summaryDate').innerHTML = nextDate;
+    } else {
+        document.getElementById('summaryDate').innerHTML = 'No Task in Board';
+    }
+}
 

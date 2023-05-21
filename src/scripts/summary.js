@@ -7,7 +7,7 @@ async function getSummary() {
     showGreetings();
     showGreetingName();
     renderAmountOfTasks();
-    findDeadline();
+    
 }
 
 

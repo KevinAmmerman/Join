@@ -372,3 +372,17 @@ function generateRandomId() {
 	const random = Math.floor(Math.random() * 1000000);
 	return random.toString();
 }
+
+// This function creates the event listener for submit on enter button
+
+function addSubtaskOnEnter() {
+	let input =  document.getElementById('subtask-input');
+
+	if(input) {
+		input.addEventListener('keydown', function(event){
+			if (event.key === 'Enter') {
+				addSubtask();
+			}
+		});
+	}
+}

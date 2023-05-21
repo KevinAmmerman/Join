@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="add-task-container">
     <h1 class="task-headline">Add Task</h1>
     <div class="task-container">
         <div class="task-left">
@@ -121,7 +121,7 @@
                 <div class="input-field" id="subtask">
                     <input id="subtask-input" autofocus class="subtask__input" type="text"
                         placeholder="Add new subtask">
-                    <img id="subtask-plus" class="subtask__plus" onclick="openSubtaskEditor()" src="
+                    <img id="subtask-plus" class="subtask__plus" onclick="openSubtaskEditor(), addSubtaskOnEnter()" src="
                             /src/img/img_add_task/plus_dark.svg">
 
                     <div class="subtask__actions">

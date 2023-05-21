@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="src/css/sidebar.css">
     <link rel="stylesheet" href="src/css/board.css">
     <link rel="stylesheet" href="src/css/mobile-menu.css">
-    <link rel="stylesheet" href="src/css/add-task.css">
+    <link rel="stylesheet" href="src/css/add-task-board.css">
 
     <!-- Scripts -->
     <script src="src/scripts/includeHTML.js"></script>
@@ -76,8 +76,10 @@
                 <div id="done" class="taskContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
-        <div id="modalAddtask" class="modal dNone">
-            <div w3-include-html="src/templates/add_task_template.html"></div>
+        <div id="modalAddtask" class="test dNone">
+            <div id="transitionWindow" class="add-task-card">
+                <div w3-include-html="src/templates/add_task_template.html"></div>
+            </div>
         </div>
     </div>
 </body>

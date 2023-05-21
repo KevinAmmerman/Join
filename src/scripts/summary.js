@@ -13,7 +13,7 @@ async function getSummary() {
 
 
 
-function greetings(){
+function greetings() {
     const currentHour = new Date().getHours();
     
     let greetings = {
@@ -21,23 +21,18 @@ function greetings(){
     afternoon: 'Good afternoon,',
     evening: 'Good evening,',
   };
+
+
     if(currentHour >= 4 && currentHour < 12){
         return greetings.morning;
     }
-     else if(currentHour >= 12 && currentHour < 18){
+    else if (currentHour >= 12 && currentHour < 18) {
         return greetings.afternoon;
     }
     else {
         return greetings.evening;
     }
-    };
-
-    
-
-    function showGreetings(){
-        let greetinghtml = document.getElementById('greetings');
-            greetinghtml.innerHTML = greetings();
-    }
+};
 
 
  async function showGreetingName(){
@@ -54,12 +49,22 @@ function greetings(){
     else {
         greetUser.innerHTML = `<span>${userName}</span>`;
     }
+    if(urlParams.has('users')){
+        greetUser.innerHTML = `<span>${userName}</span>`;
+        localStorage.setItem('userName', userName);
+    }   else if(userName){
+            localStorage.getItem('userName', userName);
+            greetUser.innerHTML = `<span>${userName}</span>`;
+        }else{
+              greetUser.innerHTML = `<span>Guest</span>`;
+        }
+    
 }
 
 
 
 
-function goToBoard(){
+function goToBoard() {
     window.location.href = 'board.html';
 }
 

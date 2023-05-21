@@ -62,6 +62,11 @@ body {
     padding: 0 35px 0 35px;
 }
 
+#boardInnerContainer > p {
+    margin: 0;
+    display: none;
+}
+
 .boardHeadline {
     font-family: 'Inter';
     font-style: normal;
@@ -124,8 +129,31 @@ body {
     cursor: pointer;
 }
 
+#addTaskMobil {
+    padding: 3px;
+    position: absolute;
+    top: 175px;
+    right: 28px;
+    width: 35px;
+    height: 35px;
+    background: #2A3647;
+    border-radius: 10px;
+    background-image: url(../img/img_board/cross_white.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: none;
+    cursor: pointer;
+    z-index: 20;
+}
+
 #addTask:hover {
     background-color: #28ABE2;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+#addTaskMobil:hover {
+    background-color: #28ABE2;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 /* === BOARD-MAIN === */
@@ -179,7 +207,7 @@ body {
     overflow-y: auto;
     padding-right: 10px;
     padding-top: 2px;
-    min-height: 210px;
+    height: 100%;
 }
 
 /* TASK-FIELD */
@@ -197,6 +225,18 @@ body {
     margin-bottom: 16px;
     cursor: pointer;
     position: relative;
+}
+
+.emptyCategory {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dotted #979797;
+    color: #979797;
+    background: #D1D1D1;
+    border-radius: 10px;
 }
 
 .task:hover {
@@ -438,7 +478,7 @@ body {
     min-height: 20px;
 }
 
-.priorityValue > img {
+.priorityValue>img {
     filter: brightness(0) invert(1);
     width: 20px;
     height: 18px;
@@ -533,12 +573,12 @@ body {
 
 .prioBtn {
     display: flex;
-	width: 100%;
-	height: 40px;
+    width: 100%;
+    height: 40px;
     gap: 10px;
 }
 
-.prioBtn > button {
+.prioBtn>button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -553,17 +593,17 @@ body {
     cursor: pointer;
 }
 
-.prioBtn > button:hover {
+.prioBtn>button:hover {
     box-shadow: 0px 5px 9px -3px #979797;
 }
 
-.prioBtn > button img {
+.prioBtn>button img {
     object-fit: contain;
 }
 
 .prioImg {
-	width: 20px;
-	height: 18px;
+    width: 20px;
+    height: 18px;
 }
 
 .prioActive {
@@ -606,7 +646,7 @@ body {
     text-align: start;
     padding: 0;
     margin-top: 0;
-    overflow-y: scroll;    
+    overflow-y: scroll;
 }
 
 .assignedList label {
@@ -628,7 +668,7 @@ body {
     cursor: pointer;
 }
 
-.openAssigned{
+.openAssigned {
     height: 200px !important;
 }
 
@@ -642,7 +682,7 @@ body {
     flex-direction: column;
 }
 
-.subTaskContainer > label {
+.subTaskContainer>label {
     margin-bottom: 20px;
 }
 
@@ -777,13 +817,24 @@ body {
 
     #boardHeader {
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
+        left: -7px;
+    }
+
+    #boardInnerContainer > p {
+        display: block;
+    }
+
+    #boardInnerContainer {
+        align-items: flex-start;
+        padding: 0 0 0 35px;
     }
 
     #addTask {
-        width: 100px;
+        display: none;
+    }
+
+    #addTaskMobil {
+        display: block;
     }
 
     #taskInfoContainer {

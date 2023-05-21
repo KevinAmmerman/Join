@@ -24,6 +24,9 @@ async function init() {
 function renderTasks(array, column, id) {
     let columnId = document.getElementById(id)
     columnId.innerHTML = '';
+    if (array[column].length == 0) {
+        columnId.innerHTML = createHtmlForEmptyCategory();
+    }
     for (let i = 0; i < array[column].length; i++) {
         const task = array[column][i];
         columnId.innerHTML += createHtmlForTasks(task, column, i);
@@ -389,8 +392,8 @@ function filterTasks() {
  * @returns {boolean} - True if the task is included in the search results, false otherwise.
  */
 function checkIfIncluded(t, search) {
-    return t.title.toLowerCase().startsWith(search) ||
-        t.description.toLowerCase().startsWith(search);
+    return t.title.toLowerCase().includes(search) ||
+        t.description.toLowerCase().includes(search);
 }
 
 

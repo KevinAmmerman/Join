@@ -76,7 +76,7 @@ body {
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 750px) {
 
     .headline > p {
         display: none;

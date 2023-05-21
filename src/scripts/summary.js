@@ -1,8 +1,3 @@
-let allTasksAmount = 0;
-let allPrioOne = 0;
-let mostUrgentDates = [];
-let upcomingDeadline;
-
 /**
  * Retrieves a summary.
  * - Loads tasks and users from storage.
@@ -49,12 +44,7 @@ function showGreetings() {
 async function showGreetingName() {
     const guestNames = guestUser[0]['guestName'];
     let greetUser = document.getElementById('userGreeting');
-    if (userName === undefined) {
-        greetUser.innerHTML = `<span>${guestNames}</span>`;
-    }
-    else {
-        greetUser.innerHTML = `<span>${userName}</span>`;
-    }
+    greetUser.innerHTML = `<span>${userName}</span>`;
 }
 
 /**
@@ -68,6 +58,7 @@ function goToBoard() {
  * Renders the number of tasks for different categories.
  */
 function renderAmountOfTasks() {
+    let allTasksAmount = 0;
     let id = ['summarytoDo', 'summaryTaskInProgress', 'summaryTaskInAwaitingFeedback', 'summarytoDoDone'];
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
     for (let i = 0; i < categories.length; i++) {
@@ -76,13 +67,13 @@ function renderAmountOfTasks() {
         document.getElementById(id[i]).innerHTML = createHtmlforTasksAmount(number);
         allTasksAmount += number;
     }
-    renderAllAmountOfTasks();
+    renderAllAmountOfTasks(allTasksAmount);
 }
 
 /**
  * Renders the total number of tasks.
  */
-function renderAllAmountOfTasks() {
+function renderAllAmountOfTasks(allTasksAmount) {
     document.getElementById('summaryTaskInBoard').innerHTML = createHtmlforTasksAmount(allTasksAmount);
 }
 
@@ -90,6 +81,7 @@ function renderAllAmountOfTasks() {
  * Filters tasks by priority.
  */
 function filterForPrio() {
+    let allPrioOne = 0;
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
     for (let i = 0; i < categories.length; i++) {
         const catergory = categories[i];
@@ -107,6 +99,8 @@ function filterForPrio() {
  * Finds the most urgent task.
  */
 function mostUrgent() {
+    let mostUrgentDates = [];
+    let upcomingDeadline;
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
     for (let i = 0; i < categories.length; i++) {
         const catergory = categories[i];
@@ -116,7 +110,7 @@ function mostUrgent() {
         }
     }
     upcomingDeadline = Math.min(...mostUrgentDates);
-    convertToDate();
+    convertToDate(upcomingDeadline);
 }
 
 /**
@@ -131,7 +125,7 @@ function convertToInteger(date) {
 /**
  * Converts the upcoming deadline to the date format "Month Day, Year".
  */
-function convertToDate() {
+function convertToDate(upcomingDeadline) {
     let year = Math.floor(upcomingDeadline / 10000);
     let month = Math.floor((upcomingDeadline % 10000) / 100) - 1;
     let day = upcomingDeadline % 100;
@@ -139,6 +133,9 @@ function convertToDate() {
     document.getElementById('summaryDate').innerHTML = date;
 }
 
+/**
+ * Retrieves the user's name from the local storage.
+ */
 function getUserNameFromLocalStorage() {
     let userNameAsString = localStorage.getItem('userName');
     userName = JSON.parse(userNameAsString);

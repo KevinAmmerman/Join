@@ -157,8 +157,7 @@ function closeDropDown() {
  * @param {number} i - The task index.
  */
 function addEnterListener(column, i) {
-    let input = document.getElementById('inputSubtask');
-    
+    let input = document.getElementById('inputSubtask'); 
     if (input) {
       input.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {

@@ -6,24 +6,9 @@ let selectedCategoryName = null;
 let selectedCatColor = null;
 const prios = ['Urgent', 'Medium', 'Low'];
 
-// CSS selector for the "category" part
-
-
-
-
-// CSS selector for the "assigned to" part
-
-
-
-
-
-// CSS selector for the "subtask" part
-
-
-
 // this function loads the user when the page gets loaded
 
-async function init() {
+async function initAddTask() {
 	loadUsers();
 }
 async function loadUsers() {
@@ -157,13 +142,11 @@ function removeContactCheckboxes() {
 			element.checked = false;
 		}
 	}
-
 }
 
 // This function load the categories in the drop down menu
 
 async function loadCategories() {
-
 	let list = document.querySelector('.category-list');
 	list.innerHTML = '';
 
@@ -186,15 +169,6 @@ function categoryToggler() {
 	}
 }
 
-// (() => {
-// 	loadCategories();
-// 	loadContacts();
-// })();
-
-// EVENT LISTENERS
-/*document.querySelector('#select-task-category').addEventListener('click', categoryToggler);
-document.querySelector('.new-category__button--check').addEventListener('click', addNewCategory);
-document.querySelector('.assigned-to').addEventListener('click', assignToHandler); */
 
 // utility funtion for add task html view
 

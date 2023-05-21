@@ -21,7 +21,7 @@
     <script src="src/scripts/board_utilities.js"></script>
     <script src="src/scripts/board_html_templates.js"></script>
     <script src="src/scripts/board.js"></script>
-    <!-- <script defer src="src/scripts/add-task.js"></script> -->
+    <script defer src="src/scripts/add-task.js"></script>
 </head>
 
 <body onload="includeHTML(), init()">
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div id="modalAddtask" class="test dNone">
-            <div id="transitionWindow" class="add-task-card">
+            <div class="add-task-card" id="transition">
                 <div w3-include-html="src/templates/add_task_template.html"></div>
             </div>
         </div>

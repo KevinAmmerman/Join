@@ -437,12 +437,10 @@ async function moveTo(category) {
 }
 
 function openAddtaskSection() {
-    document.getElementById('modalAddtask').classList.remove('dNone');   
-    document.getElementById('transitionWindow').classList.add('show-overlay');
-    
-
-
+    document.getElementById('modalAddtask').classList.remove('dNone');
+    //document.getElementById('transitionWindow').classList.add('show-overlay'); 
 }
+
 
 /**
  * Moves a task to the "Mobil" column on mobile view.

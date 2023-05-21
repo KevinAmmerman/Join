@@ -744,7 +744,7 @@ body {
 	max-height: 100vh;
 	background-color: #F5F5F5;
 	border-radius: 30px;
-	transform: translateX(100vw);
+	/* transform: translateX(100vw); */
 	transition: all 220ms ease-in-out;
 	position: relative;
 	overflow-y: auto;

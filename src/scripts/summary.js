@@ -3,6 +3,16 @@ let allPrioOne = 0;
 let mostUrgentDates = [];
 let upcomingDeadline;
 
+/**
+ * Retrieves a summary.
+ * - Loads tasks and users from storage.
+ * - Generates a summary template.
+ * - Displays greeting messages.
+ * - Displays the user's name in the greeting.
+ * - Renders the number of tasks.
+ * - Filters by priority.
+ * - Finds the most urgent task.
+ */
 async function getSummary() {
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
@@ -14,7 +24,9 @@ async function getSummary() {
     mostUrgent();
 }
 
-
+/**
+ * Displays greeting messages based on the current time of day.
+ */
 function showGreetings() {
     const currentHour = new Date().getHours();
     greetings;
@@ -30,7 +42,9 @@ function showGreetings() {
     document.getElementById('greetings').innerHTML = greetings;
 };
 
-
+/**
+ * Displays the user's name in the greeting.
+ */
 async function showGreetingName() {
     let user = JSON.parse(await getItem('users'));
     let userName = user.names;
@@ -44,12 +58,16 @@ async function showGreetingName() {
     }
 }
 
-
+/**
+ * Redirects to the 'board.html' page.
+ */
 function goToBoard() {
     window.location.href = 'board.html';
 }
 
-
+/**
+ * Renders the number of tasks for different categories.
+ */
 function renderAmountOfTasks() {
     let id = ['summarytoDo', 'summaryTaskInProgress', 'summaryTaskInAwaitingFeedback', 'summarytoDoDone'];
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
@@ -62,11 +80,16 @@ function renderAmountOfTasks() {
     renderAllAmountOfTasks();
 }
 
-
+/**
+ * Renders the total number of tasks.
+ */
 function renderAllAmountOfTasks() {
     document.getElementById('summaryTaskInBoard').innerHTML = createHtmlforTasksAmount(allTasksAmount);
 }
 
+/**
+ * Filters tasks by priority.
+ */
 function filterForPrio() {
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
     for (let i = 0; i < categories.length; i++) {
@@ -81,7 +104,9 @@ function filterForPrio() {
     document.getElementById('summaryUrgentCount').innerHTML = allPrioOne;
 }
 
-
+/**
+ * Finds the most urgent task.
+ */
 function mostUrgent() {
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
     for (let i = 0; i < categories.length; i++) {
@@ -95,12 +120,18 @@ function mostUrgent() {
     convertToDate();
 }
 
-
+/**
+ * Converts a date to an integer by removing the hyphens.
+ * @param {string} date - The date to convert in the format "YYYY-MM-DD".
+ * @returns {number} The integer representation of the date.
+ */
 function convertToInteger(date) {
     return date.replace(/-/g, '');
 }
 
-
+/**
+ * Converts the upcoming deadline to the date format "Month Day, Year".
+ */
 function convertToDate() {
     let year = Math.floor(upcomingDeadline / 10000);
     let month = Math.floor((upcomingDeadline % 10000) / 100) - 1;

@@ -438,7 +438,7 @@ async function moveTo(category) {
 
 function openAddtaskSection() {
     document.getElementById('modalAddtask').classList.remove('dNone');   
-    document.getElementById('modalAddtask').classList.add('show-overlay');
+    document.getElementById('transitionWindow').classList.add('show-overlay');
     
 
 

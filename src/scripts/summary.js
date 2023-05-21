@@ -7,31 +7,28 @@ async function getSummary() {
     showGreetings();
     showGreetingName();
     renderAmountOfTasks();
-    
+    findDeadline();
 }
 
 
 
 
-function greetings() {
+function showGreetings() {
     const currentHour = new Date().getHours();
-    
-    let greetings = {
-    morning: 'Good morning,',
-    afternoon: 'Good afternoon,',
-    evening: 'Good evening,',
-  };
+     greetings;
 
 
     if(currentHour >= 4 && currentHour < 12){
-        return greetings.morning;
+        greetings = 'Good morning,';
     }
     else if (currentHour >= 12 && currentHour < 18) {
-        return greetings.afternoon;
+         greetings = 'Good afternoon,';
     }
     else {
-        return greetings.evening;
+        greetings = 'Good evening,';
     }
+
+    document.getElementById('greetings').innerHTML = greetings;
 };
 
 
@@ -49,15 +46,6 @@ function greetings() {
     else {
         greetUser.innerHTML = `<span>${userName}</span>`;
     }
-    if(urlParams.has('users')){
-        greetUser.innerHTML = `<span>${userName}</span>`;
-        localStorage.setItem('userName', userName);
-    }   else if(userName){
-            localStorage.getItem('userName', userName);
-            greetUser.innerHTML = `<span>${userName}</span>`;
-        }else{
-              greetUser.innerHTML = `<span>Guest</span>`;
-        }
     
 }
 
@@ -74,7 +62,7 @@ function renderAmountOfTasks(){
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
         
     for (let i = 0; i < categories.length; i++) {
-        const category= categories[i];
+        const category = categories[i];
         let number = tasks[category].length;
         document.getElementById(id[i]).innerHTML = countBoardTopSection(number); 
 
@@ -89,17 +77,22 @@ function renderAmountOfTasks(){
 
 
 
+
 function renderAllAmountOfTasks(allTasksAmount) {
     document.getElementById('summaryTaskInBoard').innerHTML = countBoardTopSection(allTasksAmount);
 
 }
     
 function countBoardTopSection(number){
-     tasks = allTasksAmount.length;
-     let toDoCount = (number);
-     let doneCount = (number);
-     let inProgress = (number);
-     let feedBack   = (number);
+    let toDoCount = (number);
+    let inProgress = (number);
+    let feedBack   = (number);
+    let doneCount = (number);
+        allTasksAmount = (number);
+    
+
+     
+    ;
      document.getElementById('summaryTaskInBoard').innerHTML = allTasksAmount;
      document.getElementById('summarytoDo').innerHTML = toDoCount;
      document.getElementById('summarytoDoDone').innerHTML = doneCount;
@@ -111,4 +104,4 @@ function countBoardTopSection(number){
 
 
 
-
+ 

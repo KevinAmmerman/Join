@@ -17,6 +17,7 @@ async function getSummary() {
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
     generateSummaryTemplate();
+    getUserNameFromLocalStorage();
     showGreetings();
     showGreetingName();
     renderAmountOfTasks();
@@ -46,8 +47,6 @@ function showGreetings() {
  * Displays the user's name in the greeting.
  */
 async function showGreetingName() {
-    let user = JSON.parse(await getItem('users'));
-    let userName = user.names;
     const guestNames = guestUser[0]['guestName'];
     let greetUser = document.getElementById('userGreeting');
     if (userName === undefined) {
@@ -138,4 +137,9 @@ function convertToDate() {
     let day = upcomingDeadline % 100;
     let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });;
     document.getElementById('summaryDate').innerHTML = date;
+}
+
+function getUserNameFromLocalStorage() {
+    let userNameAsString = localStorage.getItem('userName');
+    userName = JSON.parse(userNameAsString);
 }

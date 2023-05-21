@@ -1,3 +1,5 @@
+let userName;
+
 function logininit(){
     loadUser();
     loadEmailPassword();
@@ -34,7 +36,9 @@ async function login(){
         email.value = '';
         password.value = '';
         rememberLogin(email.value, password.value);
-        window.location.href = `summary.html?user=${user.names}`;
+        userName = user.names;
+        saveUserNameInLocalStorage();
+        window.location.href = 'summary.html';
     } else{
         showError();
     }
@@ -158,3 +162,7 @@ function resetForm() {
 }
 
 
+function saveUserNameInLocalStorage() {
+    let userNameAsString = JSON.stringify(userName);
+    localStorage.setItem('userName', userNameAsString);
+}

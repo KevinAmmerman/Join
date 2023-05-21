@@ -4,12 +4,12 @@ function generateSummaryTemplate(){
     content.innerHTML = /*html*/`
         <div class="task-container" onclick="goToBoard()">
             <div class="task-container-2">
-            <div class="task-progress"><span  class="task-number-container"> <p id="summaryTaskInBoard"></p></span> <span class="task-text-container"> Task in Board</span></div>
-            <div class="task-progress"><span  class="task-number-container"> <p id="summaryTaskInProgress"></p></span> <span class="task-text-container"> Tasks in Progress</span></div>
-            <div class="task-progress"><span  class="task-number-container"> <p id="summaryTaskInAwaitingFeedback"></p></span> <span class="task-text-container"> Awaiting Feedback</span></div>
+            <div class="task-progress"><span id="summaryTaskInBoard"  class="task-number-container"></span> <span class="task-text-container"> Task in Board</span></div>
+            <div class="task-progress"><span id="summaryTaskInProgress" class="task-number-container"></span> <span class="task-text-container"> Tasks in Progress</span></div>
+            <div class="task-progress"><span id="summaryTaskInAwaitingFeedback"  class="task-number-container"></span> <span class="task-text-container"> Awaiting Feedback</span></div>
             
-            
-            </div>
+
+        </div>
             
 
         <div class="task-Deadline-Container">
@@ -21,8 +21,8 @@ function generateSummaryTemplate(){
                 </div>
                 
                 <div class="gray-line"></div>
-                <div > 
-                    <span class="date" id=summaryDate> April 16, 2023</span> <p> Upcoming Deadline</p>
+                <div> 
+                    <span class="date" id="summaryDate"></span><p> Upcoming Deadline</p>
                </div>
 
               
@@ -45,4 +45,10 @@ function generateSummaryTemplate(){
 
 </div> `;
 
+}
+
+function createHtmlforTasksAmount(number) {
+    return `
+        <p>${number}</p>
+    `;
 }

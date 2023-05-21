@@ -437,7 +437,9 @@ async function moveTo(category) {
 }
 
 function openAddtaskSection() {
-    document.getElementById('modalAddtask').classList.remove('dNone');
+    document.getElementById('modalAddtask').classList.remove('dNone');   
+    document.getElementById('modalAddtask').classList.add('show-overlay');
+    
 
 
 }

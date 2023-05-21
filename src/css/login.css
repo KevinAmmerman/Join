@@ -27,7 +27,7 @@ html {
 
 @keyframes go_small {
     0% {
-        transform: translateX(1200px) translateY(450px) scale(3);
+        transform: translateX(1100px) translateY(600px) scale(3);
     }
 
     35% {
@@ -359,3 +359,112 @@ html {
         width: 350px;
     }
 }
+
+
+@media(max-width: 1200px){
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+}
+
+@keyframes go_small_mobile {
+    0% {
+        transform: translateX(500px) translateY(500px) scale(3);
+    }
+
+    35% {
+        transform: translateX(500px) translateY() scale(3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+
+}
+
+}
+
+
+@media(max-width:390px){
+
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+}
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(5px) translateY(600px) scale(3);
+        }
+    
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+    
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    
+    }
+
+
+    @media(max-width:1500px){
+    
+        .join-Logo-Container img {
+            width: 80px;
+            height: 80px;
+            animation: go_small_mobile 1.5s;
+    }
+        @keyframes go_small_mobile {
+            0% {
+                transform: translateX(700px) translateY(500px) scale(3);
+            }
+        
+            35% {
+                transform: translateX(00px) translateY() scale(3);
+            }
+        
+            100% {
+                transform: scale(1);
+            }
+        
+        
+        }
+        
+        
+        }
+
+        @media(max-width:980px){
+    
+            .join-Logo-Container img {
+                width: 80px;
+                height: 80px;
+                animation: go_small_mobile 1.5s;
+        }
+            @keyframes go_small_mobile {
+                0% {
+                    transform: translateX(500px) translateY(500px) scale(3);
+                }
+            
+                35% {
+                    transform: translateX(00px) translateY() scale(3);
+                }
+            
+                100% {
+                    transform: scale(1);
+                }
+            
+            
+            }
+            
+            
+            }
+
+
+        
+
+

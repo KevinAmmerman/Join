@@ -1,13 +1,13 @@
-
+let allTasksAmount = 0;
 
 async function getSummary() {
-    await init();
-   
+    tasks = JSON.parse(await getItem('tasks'));
+    users = JSON.parse(await getItem('users'));
     generateSummaryTemplate();
     showGreetings();
     showGreetingName();
- 
-   
+    renderAmountOfTasks();
+    
 }
 
 
@@ -19,7 +19,7 @@ function greetings(){
     let greetings = {
     morning: 'Good morning,',
     afternoon: 'Good afternoon,',
-    evening: 'Good evening,'
+    evening: 'Good evening,',
   };
     if(currentHour >= 4 && currentHour < 12){
         return greetings.morning;
@@ -41,29 +41,22 @@ function greetings(){
 
 
  async function showGreetingName(){
-    const loadingUsers = users[0];
+    let user = JSON.parse(await getItem('users'));
+    let userName = user.names;
     const guestNames = guestUser[0]['guestName'];
-    let greetUser = document.getElementById('userGreeting');
+    let   greetUser = document.getElementById('userGreeting');
     
+      if(userName === undefined) { 
+        greetUser.innerHTML = `<span>${guestNames}</span>`;
         
-
-      if(loadingUsers === users) { 
         
-        greetUser.innerHTML = `<span>${loadingUsers}</span>`;
-            
     } 
     else {
-        greetUser.innerHTML = `<span>${guestNames}</span>`;
+        greetUser.innerHTML = `<span>${userName}</span>`;
     }
 }
 
 
-
-function deadlineTime(){
-    const time = new Date().getHours();
-    let 
-
-}
 
 
 function goToBoard(){
@@ -71,47 +64,46 @@ function goToBoard(){
 }
 
 
-
-
-async function renderSummary(){
-    await init();
-    let status = ['toDo', 'inProgress', 'feedback', 'done'];
-    for (let i = 0; i < status.length; i++) {
-        getTasks(status[i]);
+function renderAmountOfTasks(){
+    let id = ['summarytoDo','summaryTaskInProgress' ,'summaryTaskInAwaitingFeedback','summarytoDoDone'];
+    let categories = ['toDo', 'inProgress', 'feedback', 'done'];
         
+    for (let i = 0; i < categories.length; i++) {
+        const category= categories[i];
+        let number = tasks[category].length;
+        document.getElementById(id[i]).innerHTML = countBoardTopSection(number); 
+
+        allTasksAmount += number;
     }
-    getTasksInBoard();
+    
+    
+    renderAllAmountOfTasks(allTasksAmount) ;
 }
-function getTasksInBoard() {
-    let tasksInBoard = document.getElementById('summaryTaskInBoard');
-    tasksInBoard.innerHTML = tasks.length;
+
+
+
+
+
+function renderAllAmountOfTasks(allTasksAmount) {
+    document.getElementById('summaryTaskInBoard').innerHTML = countBoardTopSection(allTasksAmount);
+
+}
+    
+function countBoardTopSection(number){
+     tasks = allTasksAmount.length;
+     let toDoCount = (number);
+     let doneCount = (number);
+     let inProgress = (number);
+     let feedBack   = (number);
+     document.getElementById('summaryTaskInBoard').innerHTML = allTasksAmount;
+     document.getElementById('summarytoDo').innerHTML = toDoCount;
+     document.getElementById('summarytoDoDone').innerHTML = doneCount;
+     document.getElementById('summaryTaskInProgress').innerHTML = inProgress;
+     document.getElementById('summaryTaskInAwaitingFeedback').innerHTML = feedBack;
+     
+ }
  
-}
 
-function getTasks(status){
-    let task = document.getElementById(status);
-    let count = 0;
-    for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i];
-        if (element['status'] == status) {
-            count++;
-        }
-    }
-    task.innerHTML = count;
-}
 
-function getDatesForSummary() {
-    if (tasks.length >= 1) {
-        for (let i = 0; i < tasks.length; i++) {
-            const task = tasks[i];
-            datesForSummary.push(`${task['dueDate']}`);
-        }
-        datesForSummary.sort();
-        let nextDate = null;
-        nextDate = datesForSummary[0];
-        document.getElementById('summaryDate').innerHTML = nextDate;
-    } else {
-        document.getElementById('summaryDate').innerHTML = 'No Task in Board';
-    }
-}
+
 

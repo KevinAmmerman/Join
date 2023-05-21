@@ -1,5 +1,5 @@
 function logininit(){
-    loadUsers();
+    loadUser();
     loadEmailPassword();
     messageSignIn(); 
 }
@@ -16,7 +16,7 @@ function getCookieExpireTime() {
     return now;
   }
 
-async function loadUsers(){
+async function loadUser(){
     users = JSON.parse(await getItem('users'));
     
 }

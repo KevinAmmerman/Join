@@ -59,17 +59,13 @@ function goToBoard() {
 
 function renderAmountOfTasks(){
     let id = ['summarytoDo','summaryTaskInProgress' ,'summaryTaskInAwaitingFeedback','summarytoDoDone'];
-    let categories = ['toDo', 'inProgress', 'feedback', 'done'];
-        
+    let categories = ['toDo', 'inProgress', 'feedback', 'done'];   
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
         let number = tasks[category].length;
         document.getElementById(id[i]).innerHTML = countBoardTopSection(number); 
-
         allTasksAmount += number;
     }
-    
-    
     renderAllAmountOfTasks(allTasksAmount) ;
 }
 

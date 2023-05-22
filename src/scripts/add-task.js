@@ -45,7 +45,17 @@ async function createTask() {
 
 	tasks.toDo.push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
-	resetForm();
+	alertMessage('Task succesfully created');
+	goToBoard();
+}
+
+
+// this function is for going to board after a task was created
+
+function goToBoard() {
+	setTimeout(function () {
+		window.location.href = "board.html";
+	}, 2000)
 }
 
 
@@ -161,7 +171,6 @@ async function loadCategories() {
 // This function loads the contacts 
 
 function categoryToggler() {
-	debugger;
 	const computedStyle = getComputedStyle(document.querySelector('.category-list'));
 	if (computedStyle.display === 'none') {
 		document.querySelector('.category-list').style.display = 'block';
@@ -171,17 +180,6 @@ function categoryToggler() {
 		document.querySelector('.category-list').style.display = 'none';
 		resetSelectCategory()
 	}
-
-
-
-	// OVERRIDING
-	// const categoryList = document.querySelector('.category-list');
-	// if(categoryList.style.display==='none'){
-	// 	document.querySelector('.category-list').style.display = 'block';
-	// 	document.querySelector('.select-task-category').style.borderBottom = '0px';
-	// 	document.querySelector('.select-task-category').style.borderRadius 
-
-	// }
 }
 
 
@@ -302,20 +300,19 @@ function addSubtask() {
 	const subTaskId = generateRandomId();
 	const value = document.querySelector('.subtask__input').value;
 	if (value !== '') {
-	const subTask = {
-		id: subTaskId,
-		title: value,
-		status: false,
-	};
-	subTasks.push(subTask);
-	composeSubTasks(subTasks);
-
-	document.querySelector('.subtask__input').style.display = 'none';
-	document.querySelector('.subtask__actions').style.display = 'none';
-	document.querySelector('.subtask__plus').style.display = 'block';
-} else {
-	alert("Please enter a subtask");
-}
+		const subTask = {
+			id: subTaskId,
+			title: value,
+			status: false,
+		};
+		subTasks.push(subTask);
+		composeSubTasks(subTasks);
+		document.querySelector('.subtask__input').style.display = 'none';
+		document.querySelector('.subtask__actions').style.display = 'none';
+		document.querySelector('.subtask__plus').style.display = 'block';
+	} else {
+		alert("Please enter a subtask");
+	}
 }
 
 // This function opens the Subtask editor
@@ -368,25 +365,28 @@ function generateRandomId() {
 }
 
 // This function creates the event listener for submit on enter button
-function submitOnEnter(){	
-let input =  document.getElementById('subtask-input');
-	input.addEventListener("keypress", function(event) {
-	  if (event.key === "Enter") {
-		event.preventDefault();
-		addSubtask();
-	  }
+function submitOnEnter() {
+	let input = document.getElementById('subtask-input');
+	input.addEventListener("keypress", function (event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			addSubtask();
+		}
 	});
 }
 
-
-
+function alertMessage(message) {
+	let taskCreatedAlert = document.getElementById('TaskCreatedAlert');
+	taskCreatedAlert.innerHTML = message;
+	taskCreatedAlert.classList.remove('dNone')
+	setTimeout(function () {
+		taskCreatedAlert.classList.add('dNone')
+	}, 2000);
+}
 
 // UTILITY FUNCTIONS
 
-function resetSelectCategory(){
+function resetSelectCategory() {
 	document.querySelector('.select-task-category').style.borderBottom = '1px solid #a8a8a8';
-		document.querySelector('.select-task-category').style.borderRadius = '10px';
+	document.querySelector('.select-task-category').style.borderRadius = '10px';
 }
-
-
-///close modal functionality here

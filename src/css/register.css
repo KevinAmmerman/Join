@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: 'Inter', 'sans-serif';
     font-size: normal;
+    
 }
 
 .register-logo-container {
@@ -25,6 +26,8 @@ body {
     height: 700px;
     padding: 0;
     margin: 0;
+    
+    
 
 }
 
@@ -39,8 +42,8 @@ body {
     border-radius: 20px;
     width: 500px;
     padding: 30px 60px 30px 60px;
-    animation: fade_in 1.5;
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
+    animation: fade_in 1.5;
 }
 
 
@@ -197,4 +200,117 @@ body {
     border: none;
     margin-right: 25px;
     cursor: pointer;
+}
+
+@media(max-width:1024px) {
+    .blue-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-top: 80px;
+        margin-left: 80px;
+    }
+
+
+    .register-container{
+        height: 600px;
+    }
+}
+
+@media(max-width:520px){
+    .register-SignUp{
+        padding: 0;
+    }
+.register-SignUp h1{
+    font-size: 50px;
+}
+}
+
+@media(max-width:393px){
+ .register-SignUp{
+    width: 380px;
+ }
+ .sign-Up-Container{
+    display: flex;
+    flex-direction: column;
+}
+ .input-register-password{
+    width: 100%;
+ }
+}
+
+
+
+@media(max-width:414px){
+    .register-SignUp{
+        padding: 0;
+    }
+.register-SignUp h1{
+    font-size: 50px;
+}
+}
+
+@media(max-width:393px){
+ .register-SignUp{
+    width: 380px;
+ }
+ .sign-Up-Container{
+    display: flex;
+    flex-direction: column;
+}
+ .input-register-password{
+    width: 100%;
+ }
+
+ .name-input{
+    width: 360px;
+    background-position: 340px;
+    padding-left: 0;
+ }
+ .email-input{
+    width: 360px;
+    background-position: 340px;
+    padding-left: 0;
+ }
+ .password-input{
+    width: 360px;
+    background-position: 340px;
+    padding-left: 0;
+ }
+}
+
+@media(max-width:360px){
+    .register-container{
+        height: 500px;
+    }
+
+    .register-SignUp{
+        width: 350px;
+        
+     }
+     .sign-Up-Container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+     .input-register-password{
+        width: 100%;
+     }
+    
+     .name-input{
+        width: 340px;
+        background-position: 320px;
+        padding-left: 0;
+     }
+     .email-input{
+        width: 340px;
+        background-position: 320px;
+        padding-left: 0;
+     }
+     .password-input{
+        width: 340px;
+        background-position: 320px;
+        padding-left: 0;
+     }
 }

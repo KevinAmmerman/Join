@@ -27,7 +27,7 @@ html {
 
 @keyframes go_small {
     0% {
-        transform: translateX(1100px) translateY(600px) scale(3);
+        transform: translateX(1100px) translateY(500px) scale(3);
     }
 
     35% {
@@ -259,12 +259,12 @@ html {
     justify-content: center;
 }
 
-.message{
+.message {
     display: flex;
     justify-content: center;
     width: 500px;
-    
-    color:#2A3647;
+
+    color: #2A3647;
     border-radius: 8px;
     padding: 10px;
     font-weight: bold;
@@ -273,15 +273,80 @@ html {
 
 
 .dNone {
-   display: none;
-    
+    display: none;
+
+}
+
+@media(max-width:1850px){
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(800px) translateY(400px) scale(3);
+        }
+
+        35% {
+            transform: translateX(00px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+
+
+    }
+
+
+}
+
+@media(max-width:1500px) {
+    .signIn-Container {
+        display: none;
+
+    }
+
+    .signIn-Container-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50px);
+        font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(700px) translateY(400px) scale(3);
+        }
+
+        35% {
+            transform: translateX(00px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+
+
+    }
+
+
 }
 
 @media(max-width:1280px) {
     .join-Logo-Container img {
         width: 100px;
         height: 100px;
-        
+        animation: go_small_mobile 1.5s;
     }
 
     @keyframes go_small {
@@ -301,15 +366,98 @@ html {
 
 }
 
-@media(max-width:850px) {
-    .signIn-Container {
-        position: absolute;
+@media(max-width: 1200px) {
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(500px) translateY(400px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+}
+
+@media(max-width:1024px) {
+
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(400px) translateY(350px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+
+    }
+
+    .login-Container{
+        height: 500px;
+       
+    }
+
+    .signIn-Container-mobile {
         display: flex;
         align-items: center;
-        top: 740px;
-        left: 50px;
+        justify-content: center;
+        transform: translateY(50px);
         font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+}
 
+
+@media(max-width:688px) {
+    .signIn-Container {
+        display: none;
+
+    }
+
+    .signIn-Container-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(40px);
+        font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+
+    @keyframes fade_in_mobile {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+
+        }
+
+        40% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .join-Logo-Container {
@@ -326,7 +474,7 @@ html {
 
     @keyframes go_small_mobile {
         0% {
-            transform: translateX(100px) translateY(400px) scale(3);
+            transform: translateX(300px) translateY(400px) scale(3);
         }
 
         35% {
@@ -358,113 +506,135 @@ html {
     .login-password-input-area {
         width: 350px;
     }
+
+
+    .message-container {
+        width: 100%;
+        transform: translateY(-150px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .message {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+
+        color: #2A3647;
+        border-radius: 8px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 20px;
+    }
 }
 
+@media(max-width: 415px) {
+    .join-Logo-Container {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
 
-@media(max-width: 1200px){
     .join-Logo-Container img {
         width: 80px;
         height: 80px;
         animation: go_small_mobile 1.5s;
-}
 
-@keyframes go_small_mobile {
-    0% {
-        transform: translateX(500px) translateY(500px) scale(3);
     }
 
-    35% {
-        transform: translateX(500px) translateY() scale(3);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-
-
-}
-
-}
-
-
-@media(max-width:390px){
-
-    .join-Logo-Container img {
-        width: 80px;
-        height: 80px;
-        animation: go_small_mobile 1.5s;
-}
     @keyframes go_small_mobile {
         0% {
-            transform: translateX(5px) translateY(600px) scale(3);
+            transform: translateX(150px) translateY(350px) scale(3);
         }
-    
+
         35% {
             transform: translateX(500px) translateY() scale(3);
         }
-    
+
         100% {
             transform: scale(1);
         }
     }
-    
-    
+    .signIn-Container-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(50px);
+        font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+}
+
+.message-container {
+    width: 100%;
+    transform: translateY(-60px);
+    display: flex;
+    justify-content: center;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+
+    color: #2A3647;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+
+@media(max-width:360px) {
+    .join-Logo-Container {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
     }
 
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(100px) translateY(400px) scale(3);
+        }
 
-    @media(max-width:1500px){
-    
-        .join-Logo-Container img {
-            width: 80px;
-            height: 80px;
-            animation: go_small_mobile 1.5s;
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
-        @keyframes go_small_mobile {
-            0% {
-                transform: translateX(700px) translateY(500px) scale(3);
-            }
-        
-            35% {
-                transform: translateX(00px) translateY() scale(3);
-            }
-        
-            100% {
-                transform: scale(1);
-            }
-        
-        
-        }
-        
-        
-        }
 
-        @media(max-width:980px){
     
-            .join-Logo-Container img {
-                width: 80px;
-                height: 80px;
-                animation: go_small_mobile 1.5s;
-        }
-            @keyframes go_small_mobile {
-                0% {
-                    transform: translateX(500px) translateY(500px) scale(3);
-                }
-            
-                35% {
-                    transform: translateX(00px) translateY() scale(3);
-                }
-            
-                100% {
-                    transform: scale(1);
-                }
-            
-            
-            }
-            
-            
-            }
-
-
-        
-
-
+    .message-container {
+        width: 100%;
+        transform: translateY(-50px);
+        display: flex;
+        justify-content: center;
+    }
+    
+    .message {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        color: #2A3647;
+        border-radius: 8px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .login-Container{
+        height: 500px;
+       width: 300px;
+       margin-left: 30px;
+    }
+    .login-password-content{
+        padding: 0;
+    }
+}

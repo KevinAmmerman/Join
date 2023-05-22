@@ -59,7 +59,7 @@ function guestLogin() {
     if (guestUser) {
         email.value = guestUser[0]['email'];
         password.value = guestUser[0]['Password'];
-        userName = 'guest';
+        userName = 'Guest';
         saveUserNameInLocalStorage();
         window.location.href = `summary.html?guestUser=${guestUser.guestName}`;
     }
@@ -121,7 +121,7 @@ function rememberLogin(email, password) {
  * Displays sign-in messages and handles their visibility.
  */
 async function messageSignIn() {
-    await loadUsers();
+    await loadUser();
     const urlParams = new URLSearchParams(window.location.search);
     const msg = urlParams.get('msg');
     if (msgBox) {

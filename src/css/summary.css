@@ -2,19 +2,18 @@
         margin: 0;
         font-family: 'Inter', 'sans-serif';
         font-size: normal;
+        height: 98vh;
+        width: 50%;
     }
 
     .summary-container {
-        position: absolute;
-        width: auto;
-        margin-top: 70px;
-        left: 267px;
-        right: 28px;
-        top: 57px;
+        position: relative;
         display: flex;
         align-items: center;
+        width: 100%;
+        left: 260px;
+        top: 150px;
         margin-left: 90px;
-        
     }
 
     .summary-header {
@@ -27,50 +26,43 @@
         margin: 0;
         margin-left: 80px;
         background-color: rgba(11, 173, 221, 1);
-
     }
 
     .text-header h2 {
         font-weight: 400;
         font-size: 30px;
-        margin-left: 40px;
-
+        margin-left: 70px;
     }
 
 
     .summary-Task {
-        display: flex;
-        margin-left: 80px;
-        position: absolute;
-        left: 267px;
-        right: 30px;
-        top: 300px;
-        
-
-
+        min-width: min-content;
+        max-width: 700px;
+        position: relative;
+        left: 350px;
+        top: 200px;
+        bottom: 0;
     }
 
     .task-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        margin: 0;
         width: 100%;
-        width: 45%
-
-
     }
 
     .task-container-2 {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 100%;
-       
-
     }
 
     .task-progress {
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
-        padding: 40px;
+        padding: 50px 50px;
+        gap: 10px;
         border-radius: 20px;
         display: flex;
         justify-content: center;
@@ -78,7 +70,7 @@
         text-align: center;
         height: 80px;
         width: 90px;
-        
+
     }
 
     .task-progress:hover {
@@ -90,8 +82,8 @@
     .task-number-container {
         display: flex;
         flex-direction: column;
-        text-align: center;
-        flex-wrap: wrap;
+
+
     }
 
     .task-number-container p {
@@ -101,7 +93,7 @@
         margin: 0;
     }
 
-    
+
 
     .task-text-container {
         font-size: 20px;
@@ -115,10 +107,10 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
         height: 200px;
-        width: 85%;
+        width: 100%;
         border-radius: 20px;
         margin-top: 50px;
-        margin-left: 70px;
+
 
     }
 
@@ -144,7 +136,7 @@
     .deadline-text {
         display: flex;
         flex-direction: column;
-        margin-left: 20px;
+        align-items: center;
 
     }
 
@@ -162,9 +154,8 @@
     }
 
     .to-do-done-container {
-        width: 85%;
-        margin-left: 70px;
-        
+        width: 100%;
+
     }
 
     .to-do-done-container2 {
@@ -178,9 +169,17 @@
     }
 
     .times-Container {
+        position: absolute;
+        left: 1100px;
+        top: 610px;
         display: flex;
-        align-items: center;
+        gap: 0;
 
+    }
+
+    #greetings{
+        margin: 0;
+        margin-bottom: 15px;
     }
 
     .times p {
@@ -194,6 +193,7 @@
     .time-name {
         font-size: 40px;
         font-weight: bold;
+        margin: 0;
     }
 
     .to-do-done {
@@ -209,7 +209,6 @@
         margin-top: 50px;
         background-color: white
     }
-
 
 
     .to-do-done img {
@@ -239,4 +238,79 @@
         filter: brightness(101%) contrast(200%) grayscale(52%) hue-rotate(-7deg) invert(100%) saturate(0%);
 
 
+    }
+
+
+    @media(max-width:1024px){
+        .summary-container{
+            top: 120px;
+        }
+
+        .summary-header {
+            font-size: 20px;
+        }
+
+        .text-header h2 {
+            font-weight: 400;
+            font-size: 20px;
+            margin-left: 70px;
+            width: 100%;
+        }
+
+        .times-Container{
+            display: none;
+        }
+
+        .summary-Task{
+            top: 150px;
+        }
+
+        .task-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 100%;
+        }
+        .task-progress{
+            width: 100%;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-number-container p{
+            font-size: 50px;
+        }
+        .task-text-container{
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;            
+        }
+
+        .task-Deadline-Container{
+            height: 150px;
+            
+            margin-top: 15px;
+        }
+
+        .deadline-text{
+            margin-left: 40px;
+        }
+        .to-do-done{
+            padding: 0;
+        }
+
+        .to-do-done-text p{
+            font-size: 50px !important;
+        }
+        .to-do-done-text{
+            font-size: 20px;
+        }
+
+        .to-do-done-container2 {
+            display: flex;
+            justify-content: space-between;
+        }
     }

@@ -465,9 +465,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .add-task-buttons {
-	width: 322;
+	width: 850px;
 	display: flex;
 	gap: 20px;
+	display: flex;
+	justify-content: flex-end;
 }
 
 /* Color Circles Category */
@@ -546,7 +548,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .mt-lg {
-	margin-top: 100px;
+	
 }
 
 
@@ -561,4 +563,22 @@ input[type='date']::-webkit-calendar-picker-indicator {
     left: 0;
     background: rgba(0, 0, 0, 0.2);
     z-index: 20;
+}
+
+.task-left {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(219, 219, 219);
+    padding-right: 20px;
+}
+
+.task-right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.task-container {
+	display: flex;
+
 }

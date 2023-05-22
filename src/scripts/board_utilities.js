@@ -124,6 +124,9 @@ function deUmlaut(value) {
  * @param {Event} event - The event object.
  */
 function doNotClose(event) {
+    
+    const id= event.currentTarget.id;
+    console.log(id)
     event.stopPropagation();
 }
 
@@ -132,11 +135,19 @@ function doNotClose(event) {
  * Closes the task information container.
  */
 function closeTaskInfo() {
+   
+
+    
     let taskInfoContainer = document.getElementById('taskInfoContainer');
     taskInfoContainer.classList.add('dNone');
     preventScrollingInBackground();
 }
-
+function closeAddTask() {
+    
+    let AddTaskContainer = document.getElementById('modalAddtask');
+    AddTaskContainer.classList.add('dNone');
+    preventScrollingInBackground();
+}
 /**
  * Toggles the visibility of the assigned input field.
  */

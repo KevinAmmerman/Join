@@ -161,12 +161,27 @@ async function loadCategories() {
 // This function loads the contacts 
 
 function categoryToggler() {
+	debugger;
 	const computedStyle = getComputedStyle(document.querySelector('.category-list'));
 	if (computedStyle.display === 'none') {
 		document.querySelector('.category-list').style.display = 'block';
-	} else {
+		document.querySelector('.select-task-category').style.borderBottom = '0px';
+		document.querySelector('.select-task-category').style.borderRadius = '10px 10px 0px 0px';
+	} else if (computedStyle.display === 'block') {
 		document.querySelector('.category-list').style.display = 'none';
+		resetSelectCategory()
 	}
+
+
+
+	// OVERRIDING
+	// const categoryList = document.querySelector('.category-list');
+	// if(categoryList.style.display==='none'){
+	// 	document.querySelector('.category-list').style.display = 'block';
+	// 	document.querySelector('.select-task-category').style.borderBottom = '0px';
+	// 	document.querySelector('.select-task-category').style.borderRadius 
+
+	// }
 }
 
 
@@ -243,6 +258,7 @@ function selectCategory(category, color) {
 
 	selectedCatColor = color;
 	selectedCategoryName = category;
+	resetSelectCategory();
 }
 
 // this function loads the contacts from the backend and displays it in a li element
@@ -285,6 +301,7 @@ function assignToHandlerInList() {
 function addSubtask() {
 	const subTaskId = generateRandomId();
 	const value = document.querySelector('.subtask__input').value;
+	if (value !== '') {
 	const subTask = {
 		id: subTaskId,
 		title: value,
@@ -296,6 +313,9 @@ function addSubtask() {
 	document.querySelector('.subtask__input').style.display = 'none';
 	document.querySelector('.subtask__actions').style.display = 'none';
 	document.querySelector('.subtask__plus').style.display = 'block';
+} else {
+	alert("Please enter a subtask");
+}
 }
 
 // This function opens the Subtask editor
@@ -348,15 +368,25 @@ function generateRandomId() {
 }
 
 // This function creates the event listener for submit on enter button
-
-function addSubtaskOnEnter() {
-	let input =  document.getElementById('subtask-input');
-
-	if(input) {
-		input.addEventListener('keydown', function(event){
-			if (event.key === 'Enter') {
-				addSubtask();
-			}
-		});
-	}
+function submitOnEnter(){	
+let input =  document.getElementById('subtask-input');
+	input.addEventListener("keypress", function(event) {
+	  if (event.key === "Enter") {
+		event.preventDefault();
+		addSubtask();
+	  }
+	});
 }
+
+
+
+
+// UTILITY FUNCTIONS
+
+function resetSelectCategory(){
+	document.querySelector('.select-task-category').style.borderBottom = '1px solid #a8a8a8';
+		document.querySelector('.select-task-category').style.borderRadius = '10px';
+}
+
+
+///close modal functionality here

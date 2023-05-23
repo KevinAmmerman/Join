@@ -21,7 +21,7 @@
     <title>Summary</title>
 </head>
 <body>
-    <body onload="includeHTML(), getSummary()">
+    <body onload="includeHTML(), getSummary()" id="summaryBody">
         <div w3-include-html="src/templates/header.html"></div>
         <div w3-include-html="src/templates/sidebar.html"></div>
 
@@ -45,6 +45,11 @@
                 <p id="userGreeting"></p>
             </span>
         </div>
+        </div>
+
+        <div class="summaryWelcomeResponsive" id="summaryWelcomeResponsive">
+            <span class="summaryWelcomeGreeting summaryWelcomeCenter" id="summaryGreetingResponsive"></span>
+            <span class="summaryWelcomeName summaryWelcomeCenter" id="summaryGreetingNameResponsive"></span>
         </div>
 </body>
 </html>

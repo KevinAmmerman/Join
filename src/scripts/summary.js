@@ -11,6 +11,7 @@
 async function getSummary() {
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
+    summaryGreetingResponsive();
     generateSummaryTemplate();
     getUserNameFromLocalStorage();
     showGreetings();
@@ -19,6 +20,28 @@ async function getSummary() {
     filterForPrio();
     mostUrgent();
 }
+
+function summaryGreetingResponsive() {
+    if (window.innerWidth > 1533){ 
+        document.getElementById('summaryWelcomeResponsive').classList.add('dNone');
+        return;
+    }
+    summaryGreetingAnimation();
+}
+
+function summaryGreetingAnimation(){
+    document.getElementById('summaryWelcomeResponsive').classList.remove('dNone');
+    document.getElementById('summaryBody').classList.add('summary-hidden');
+    setTimeout(() =>{
+        document.getElementById('summaryWelcomeResponsive').classList.add('summaryWelcomeAnimation');
+        setTimeout(() => {
+            document.getElementById('summaryWelcomeResponsive').classList.add('d-none');
+            document.getElementById('summaryBody').classList.remove('summary-hidden');
+           
+        }, 1000);
+    }, 2000);
+}
+
 
 /**
  * Displays greeting messages based on the current time of day.
@@ -36,15 +59,17 @@ function showGreetings() {
         greetings = 'Good evening,';
     }
     document.getElementById('greetings').innerHTML = greetings;
+    document.getElementById('summaryGreetingResponsive').innerHTML = greetings;
 };
 
 /**
  * Displays the user's name in the greeting.
  */
 async function showGreetingName() {
-    const guestNames = guestUser[0]['guestName'];
+    let greetUserMobile = document.getElementById('summaryGreetingNameResponsive');
     let greetUser = document.getElementById('userGreeting');
     greetUser.innerHTML = `<span>${userName}</span>`;
+    greetUserMobile.innerHTML = `<span>${userName}</span>`;
 }
 
 /**
@@ -131,7 +156,7 @@ function convertToDate(upcomingDeadline) {
     let year = Math.floor(upcomingDeadline / 10000);
     let month = Math.floor((upcomingDeadline % 10000) / 100) - 1;
     let day = upcomingDeadline % 100;
-    let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });;
+    let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     document.getElementById('summaryDate').innerHTML = date;
 }
 

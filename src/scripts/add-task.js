@@ -384,7 +384,7 @@ function alertMessage(message) {
 	}, 2000);
 }
 
-// UTILITY FUNCTIONS
+// this function is to create the bottom border from the category drop down
 
 function resetSelectCategory() {
 	document.querySelector('.select-task-category').style.borderBottom = '1px solid #a8a8a8';

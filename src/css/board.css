@@ -62,7 +62,7 @@ body {
     padding: 0 35px 0 35px;
 }
 
-#boardInnerContainer > p {
+#boardInnerContainer>p {
     margin: 0;
     display: none;
 }
@@ -740,14 +740,14 @@ body {
 
 .add-task-card {
     padding: 10px 50px;
-	background-color: #F5F5F5;
-	border-radius: 30px;
+    background-color: #F5F5F5;
+    border-radius: 30px;
     animation: slide-in-left;
     animation-duration: 0.5s;
-	transition: all 220ms ease-in-out;
-	position: relative;
-	overflow-y: auto;
-	overflow-x: hidden;
+    transition: all 220ms ease-in-out;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 h1.task-headline {
@@ -758,53 +758,18 @@ h1.task-headline {
     0% {
         transform: translateX(100vw);
     }
+
     100% {
-        transform: translateX(0vw); 
+        transform: translateX(0vw);
     }
 }
+
 .show-overlay {
     transform: translate(0);
 }
 
 
-@media (max-width: 868px) { 
-    .add-task-card {
-        width: 100%;
-        height: 100%;
-    }
-    .task-container {
-        flex-direction: column;
-    }
-    .task-left {
-        border-right: 0px!important;
-        padding-right: 0px!important;
-        width: 100%;
-    }
-    .task-right { 
-        padding-left: 0px!important;
-    }
-    h1.task-headline {
-        width: 52%;
-        margin: 0;
-        padding: 0;
-        font-size: 50px;
-    }
-    #add-task-container {
-        margin-top: 20px;
-    }
 
-    /* .add-task-buttons{
-        width: 100%;
-        margin:0 auto;
-    } */
-    .task-headline{
-        text-align: center;
-    }
-    .add-task-buttons{
-        width: 100% !important;
-        justify-content: center !important;
-    }
-}
 /* === MEDIA-QUERIES === */
 
 @media (max-width: 868px) {
@@ -868,7 +833,7 @@ h1.task-headline {
         left: -7px;
     }
 
-    #boardInnerContainer > p {
+    #boardInnerContainer>p {
         display: block;
     }
 

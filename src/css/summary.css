@@ -6,6 +6,10 @@
         width: 50%;
     }
 
+    .tool-mobile-container {
+        display: none;
+    }
+
     .summary-container {
         position: relative;
         display: flex;
@@ -28,6 +32,10 @@
         background-color: rgba(11, 173, 221, 1);
     }
 
+    .blue-line-mobile {
+        display: none;
+    }
+
     .text-header h2 {
         font-weight: 400;
         font-size: 30px;
@@ -47,7 +55,8 @@
     .task-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: space-between;
+        justify-content: space-between;
         margin: 0;
         width: 100%;
     }
@@ -153,10 +162,6 @@
         background-color: gray;
     }
 
-    .to-do-done-container {
-        width: 100%;
-
-    }
 
     .to-do-done-container2 {
         display: flex;
@@ -177,7 +182,7 @@
 
     }
 
-    #greetings{
+    #greetings {
         margin: 0;
         margin-bottom: 15px;
     }
@@ -241,8 +246,17 @@
     }
 
 
-    @media(max-width:1024px){
-        .summary-container{
+    @media(max-width:1024px) {
+
+        body {
+            margin: 0;
+        }
+
+        .question-mark{
+            display: none;
+        }
+
+        .summary-container {
             top: 120px;
         }
 
@@ -257,60 +271,358 @@
             width: 100%;
         }
 
-        .times-Container{
+        .times-Container {
             display: none;
         }
 
-        .summary-Task{
+        .summary-Task {
             top: 150px;
+            width: 110%;
         }
 
-        .task-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px;
-        width: 100%;
-        }
-        .task-progress{
+        .task-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateY(-10px);
             width: 100%;
-            margin: 10px;
+        }
+
+        .task-container-container-2 {
+            display: flex;
+            margin: 50px;
+
+        }
+
+        .task-progress {
+            padding: 40px;
+            margin-bottom: 10px;
             display: flex;
             flex-direction: column;
         }
 
-        .task-number-container p{
+        .task-number-container p {
             font-size: 50px;
         }
-        .task-text-container{
+
+        .task-text-container {
             font-size: 15px;
             display: flex;
             flex-direction: column;
-            width: 100%;            
+            width: 100%;
         }
 
-        .task-Deadline-Container{
+        .task-Deadline-Container {
             height: 150px;
-            
             margin-top: 15px;
         }
 
-        .deadline-text{
+        .deadline-text {
             margin-left: 40px;
         }
-        .to-do-done{
+
+        .to-do-done {
             padding: 0;
+            margin-top: 15px;
         }
 
-        .to-do-done-text p{
+        .to-do-done-text p {
             font-size: 50px !important;
         }
-        .to-do-done-text{
+
+        .to-do-done-text {
             font-size: 20px;
         }
 
         .to-do-done-container2 {
             display: flex;
             justify-content: space-between;
+        }
+    }
+
+    @media(max-width: 688px){
+        body {
+            width: 90%;
+            height: 90%;
+        }
+        .task-container-2 {
+            display: flex;
+            align-items: center;
+            transform: translateY(-10px);
+            width: 90%;
+            
+        }
+       
+
+        .summary-Task {
+            left: 0;
+
+        }
+
+        .summary-container {
+            display: flex;
+            width: max-content;
+            top: 120px;
+            margin: 0;
+            left: 30px;
+        }
+
+        .task-Deadline-Container{
+            width: 90%;
+        }
+
+        .to-do-done-container {
+            display: flex;
+            justify-content: space-between;
+
+            
+        }
+
+       
+    }
+
+
+    @media(max-width: 414px) {
+        body {
+            width: 90%;
+            height: 90%;
+        }
+        
+
+        .tool-mobile-container {
+            display: flex;
+        }
+
+        .summary-Task {
+            left: 0;
+
+        }
+
+        .summary-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: max-content;
+            top: 120px;
+            margin: 0;
+            left: 30px;
+        }
+
+
+        .summary-header h1 {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .blue-line {
+            display: none;
+        }
+
+        .blue-line-mobile {
+            display: flex;
+            height: 3px;
+            width: 100px;
+            margin: 0;
+            margin-top: 30px;
+            background-color: rgba(11, 173, 221, 1);
+        }
+
+        .text-header h2 {
+            font-weight: 400;
+            font-size: 20px;
+            width: 100%;
+            margin: 0;
+        }
+
+        .task-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            width: 100%;
+        }
+
+        .task-progress {
+            width: 50%;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .task-number-container p {
+            font-size: 50px;
+        }
+
+
+        .task-text-container {
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .task-Deadline-Container {
+            height: 120px;
+            width: 95%;
+
+        }
+
+        .task-Deadline-Container img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .deadline-text p {
+            font-size: 30px;
+        }
+
+        .date {
+            font-size: 20px;
+        }
+
+        .upcoming-Deadline {
+            font-size: 15px;
+
+        }
+
+        .to-do-done-container2 {
+            margin: 0;
+        }
+
+        .to-do-done {
+            margin: 10px;
+            margin-top: 20px;
+            width: 50%;
+
+        }
+
+        .to-do-done img {
+            width: 50px;
+            height: 50px;
+
+        }
+
+        .to-do-done-text {
+            font-size: 15px;
+
+        }
+
+        #summarytoDo p {
+            font-size: 5px;
+        }
+
+    }
+
+    @media(max-width:393px) {
+        .blue-line-mobile {
+            margin: 0;
+            margin-top: 15px;
+        }
+
+
+        .summary-container h1 {
+            font-size: 30px;
+
+        }
+
+        .task-container {
+            width: 100%;
+        }
+
+        .task-Deadline-Container {
+            margin: 0;
+            width: 92%;
+        }
+
+        .task-progress {
+            width: 100%;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        .task-text-container {
+            font-size: 15px
+        }
+
+        .to-do-done {
+            margin: 10px;
+        }
+
+        .to-do-done-container2 {
+            margin: 0;
+            width: 100%;
+            height: 50%;
+        }
+
+        .to-do-done {
+            width: 50%;
+            height: 100%;
+            padding: 20px;
+        }
+    }
+
+
+
+    @media(max-width:375px) {
+        .summary-container h1 {
+            font-size: 30px;
+
+        }
+
+        .task-container {
+            width: 100%;
+        }
+
+        .task-Deadline-Container {
+            margin: 0;
+            width: 92%;
+        }
+
+        .task-progress {
+            width: 100%;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        .task-text-container {
+            font-size: 15px
+        }
+
+        .to-do-done {
+            margin: 10px;
+        }
+    }
+
+    @media(max-width:375px) {
+        .summary-container {
+            transform: translateY(-20px);
+        }
+
+        .tool-mobile-container {
+            font-size: 20px;
+        }
+
+        .task-container{
+            transform: translateY(-40px);
+
+        }
+
+        .summary-header h1{
+            font-size: 20px;
+        }
+        .text-header h2{
+            font-size: 20px;
+        }
+        .task-progress{
+            padding: 15px;
+            
+            
         }
     }

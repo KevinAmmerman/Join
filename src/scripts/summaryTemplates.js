@@ -2,17 +2,17 @@ function generateSummaryTemplate(){
     let content = document.getElementById('summaryContent');
 
     content.innerHTML = /*html*/`
-        <div class="task-container" onclick="goToBoard()">
-    <div class="task-container-2">
-        <div class="task-progress"><span id="summaryTaskInBoard" class="task-number-container"></span> <span
-                class="task-text-container"> Task in Board</span>
-        </div>
-        <div class="task-progress"><span id="summaryTaskInProgress" class="task-number-container"></span> <span
-                class="task-text-container"> Tasks in Progress</span>
-        </div>
-            <div class="task-progress"><span id="summaryTaskInAwaitingFeedback" class="task-number-container"></span> 
-                 <span class="task-text-container"> Awaiting Feedback</span>
+    <div class="task-container" onclick="goToBoard()">
+        <div class="task-container-2">
+            <div class="task-progress"><span id="summaryTaskInBoard" class="task-number-container"></span> 
+                <span class="task-text-container"> Task in Board</span>
             </div>
+            <div class="task-progress"><span id="summaryTaskInProgress" class="task-number-container"></span> 
+                <span class="task-text-container"> Tasks in Progress</span>
+            </div>
+                <div class="task-progress"><span id="summaryTaskInAwaitingFeedback" class="task-number-container"></span> 
+                     <span class="task-text-container"> Awaiting Feedback</span>
+                </div>
     </div>
 
 
@@ -29,7 +29,7 @@ function generateSummaryTemplate(){
         <div class="gray-line"></div>
         <div>
             <span class="date" id="summaryDate"></span>
-            <span><p> Upcoming Deadline</p></span>
+            <span class="upcoming-Deadline"><p> Upcoming Deadline</p></span>
         </div>
     </div>
 

@@ -6,24 +6,9 @@ let selectedCategoryName = null;
 let selectedCatColor = null;
 const prios = ['Urgent', 'Medium', 'Low'];
 
-// CSS selector for the "category" part
-
-
-
-
-// CSS selector for the "assigned to" part
-
-
-
-
-
-// CSS selector for the "subtask" part
-
-
-
 // this function loads the user when the page gets loaded
 
-async function init() {
+async function initAddTask() {
 	loadUsers();
 }
 async function loadUsers() {
@@ -60,7 +45,17 @@ async function createTask() {
 
 	tasks.toDo.push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
-	resetForm();
+	alertMessage('Task succesfully created');
+	goToBoard();
+}
+
+
+// this function is for going to board after a task was created
+
+function goToBoard() {
+	setTimeout(function () {
+		window.location.href = "board.html";
+	}, 2000)
 }
 
 
@@ -157,13 +152,11 @@ function removeContactCheckboxes() {
 			element.checked = false;
 		}
 	}
-
 }
 
 // This function load the categories in the drop down menu
 
 async function loadCategories() {
-
 	let list = document.querySelector('.category-list');
 	list.innerHTML = '';
 
@@ -181,20 +174,14 @@ function categoryToggler() {
 	const computedStyle = getComputedStyle(document.querySelector('.category-list'));
 	if (computedStyle.display === 'none') {
 		document.querySelector('.category-list').style.display = 'block';
-	} else {
+		document.querySelector('.select-task-category').style.borderBottom = '0px';
+		document.querySelector('.select-task-category').style.borderRadius = '10px 10px 0px 0px';
+	} else if (computedStyle.display === 'block') {
 		document.querySelector('.category-list').style.display = 'none';
+		resetSelectCategory()
 	}
 }
 
-// (() => {
-// 	loadCategories();
-// 	loadContacts();
-// })();
-
-// EVENT LISTENERS
-/*document.querySelector('#select-task-category').addEventListener('click', categoryToggler);
-document.querySelector('.new-category__button--check').addEventListener('click', addNewCategory);
-document.querySelector('.assigned-to').addEventListener('click', assignToHandler); */
 
 // utility funtion for add task html view
 
@@ -269,6 +256,7 @@ function selectCategory(category, color) {
 
 	selectedCatColor = color;
 	selectedCategoryName = category;
+	resetSelectCategory();
 }
 
 // this function loads the contacts from the backend and displays it in a li element
@@ -311,17 +299,20 @@ function assignToHandlerInList() {
 function addSubtask() {
 	const subTaskId = generateRandomId();
 	const value = document.querySelector('.subtask__input').value;
-	const subTask = {
-		id: subTaskId,
-		title: value,
-		status: false,
-	};
-	subTasks.push(subTask);
-	composeSubTasks(subTasks);
-
-	document.querySelector('.subtask__input').style.display = 'none';
-	document.querySelector('.subtask__actions').style.display = 'none';
-	document.querySelector('.subtask__plus').style.display = 'block';
+	if (value !== '') {
+		const subTask = {
+			id: subTaskId,
+			title: value,
+			status: false,
+		};
+		subTasks.push(subTask);
+		composeSubTasks(subTasks);
+		document.querySelector('.subtask__input').style.display = 'none';
+		document.querySelector('.subtask__actions').style.display = 'none';
+		document.querySelector('.subtask__plus').style.display = 'block';
+	} else {
+		alert("Please enter a subtask");
+	}
 }
 
 // This function opens the Subtask editor
@@ -374,15 +365,28 @@ function generateRandomId() {
 }
 
 // This function creates the event listener for submit on enter button
+function submitOnEnter() {
+	let input = document.getElementById('subtask-input');
+	input.addEventListener("keypress", function (event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			addSubtask();
+		}
+	});
+}
 
-function addSubtaskOnEnter() {
-	let input =  document.getElementById('subtask-input');
+function alertMessage(message) {
+	let taskCreatedAlert = document.getElementById('TaskCreatedAlert');
+	taskCreatedAlert.innerHTML = message;
+	taskCreatedAlert.classList.remove('dNone')
+	setTimeout(function () {
+		taskCreatedAlert.classList.add('dNone')
+	}, 2000);
+}
 
-	if(input) {
-		input.addEventListener('keydown', function(event){
-			if (event.key === 'Enter') {
-				addSubtask();
-			}
-		});
-	}
+// UTILITY FUNCTIONS
+
+function resetSelectCategory() {
+	document.querySelector('.select-task-category').style.borderBottom = '1px solid #a8a8a8';
+	document.querySelector('.select-task-category').style.borderRadius = '10px';
 }

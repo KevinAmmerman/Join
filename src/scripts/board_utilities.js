@@ -132,11 +132,24 @@ function doNotClose(event) {
  * Closes the task information container.
  */
 function closeTaskInfo() {
+
+
+
     let taskInfoContainer = document.getElementById('taskInfoContainer');
     taskInfoContainer.classList.add('dNone');
     preventScrollingInBackground();
 }
 
+/**
+ * Closed AddTask Container
+ */
+
+function closeAddTask() {
+
+    let AddTaskContainer = document.getElementById('modalAddtask');
+    AddTaskContainer.classList.add('dNone');
+    preventScrollingInBackground();
+}
 /**
  * Toggles the visibility of the assigned input field.
  */
@@ -157,15 +170,15 @@ function closeDropDown() {
  * @param {number} i - The task index.
  */
 function addEnterListener(column, i) {
-    let input = document.getElementById('inputSubtask'); 
+    let input = document.getElementById('inputSubtask');
     if (input) {
-      input.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-          addSubtask(column, i);
-        }
-      });
+        input.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                addSubtask(column, i);
+            }
+        });
     }
-  }
+}
 
 /**
  * Checks the boolean value and returns 'checked' if true, otherwise returns undefined.

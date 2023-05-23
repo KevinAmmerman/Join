@@ -21,21 +21,35 @@
     <title>Summary</title>
 </head>
 <body>
-    <body onload="includeHTML(), getSummary()">
+    <body onload="includeHTML(), getSummary()" id="summaryBody">
         <div w3-include-html="src/templates/header.html"></div>
         <div w3-include-html="src/templates/sidebar.html"></div>
 
         <div class="summary-container">
             <div class="summary-header">
+                <div class="tool-mobile-container">Kanban Project Management Tool</div>
                 <h1>Summary</h1>
            </div>
 
             <div class="blue-line"></div>
             <div class="text-header"><h2>Everything in a nutshell</h2></div>
-
+            <div class="blue-line-mobile"></div>
         </div>
 
        <div class="summary-Task" id="summaryContent"></div>
-        
+       
+       <div class="times-Container">
+        <div class="times">
+            <span class="time-name">
+                <h2 id="greetings"></h2>
+                <p id="userGreeting"></p>
+            </span>
+        </div>
+        </div>
+
+        <div class="summaryWelcomeResponsive" id="summaryWelcomeResponsive">
+            <span class="summaryWelcomeGreeting summaryWelcomeCenter" id="summaryGreetingResponsive"></span>
+            <span class="summaryWelcomeName summaryWelcomeCenter" id="summaryGreetingNameResponsive"></span>
+        </div>
 </body>
 </html>

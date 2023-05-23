@@ -74,6 +74,9 @@ body {
         align-items: center;
         justify-content: center;
     }
+    .question-mark{
+        display: none;
+    }
 }
 
 @media(max-width: 750px) {

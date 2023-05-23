@@ -1,6 +1,8 @@
 <div class="container" id="add-task-container">
     <h1 class="task-headline">Add Task</h1>
+    <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeAddTask()">
     <div class="task-container">
+        
         <div class="task-left">
             <!-- tittle input -->
             <div class="input-container">
@@ -119,16 +121,16 @@
             <div class="input-container">
                 <label for="subtask">Subtasks</label>
                 <div class="input-field" id="subtask">
-                    <input id="subtask-input" autofocus class="subtask__input" type="text"
+                    <input  id="subtask-input" autofocus class="subtask__input" type="text"
                         placeholder="Add new subtask">
-                    <img id="subtask-plus" class="subtask__plus" onclick="openSubtaskEditor(), addSubtaskOnEnter()" src="
+                    <img onclick="openSubtaskEditor()" id="subtask-plus" class="subtask__plus" src="
                             /src/img/img_add_task/plus_dark.svg">
 
                     <div class="subtask__actions">
-                        <img id="subtask-close" class="subtask__close" onclick="closeSubtaskEditor()" src="
+                        <img onclick="closeSubtaskEditor()" id="subtask-close" class="subtask__close"  src="
                                 /src/img/img_add_task/close.svg">
 
-                        <img id="subtask-check" onclick="addSubtask()" src=" /src/img/img_add_task/check.svg"
+                        <img id="subtask-check" onload="submitOnEnter()" onclick="addSubtask()" src=" /src/img/img_add_task/check.svg"
                             class="subtask__check">
                     </div>
                 </div>
@@ -149,3 +151,4 @@
         </button>
     </div>
 </div>
+<div id="TaskCreatedAlert" class="coloredBtn dNone"></div>

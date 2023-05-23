@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Add Task</title>
         <!-- CSS -->
         <link rel="stylesheet" href="src/css/fonts.css">
         <link rel="stylesheet" href="src/css/header.css">
@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="src/css/add-task.css">
         <link rel="stylesheet" href="src/css/mobile-menu.css">
         <link rel="stylesheet" href="src/css/main.css">
+        <link rel="icon" type="image/x-icon" href="/src/favicon/Capa 1.svg"> 
         <!-- Scripts -->
         <script defer src="src/scripts/includeHTML.js"></script>
         <script defer src="src/scripts/storage.js"></script>
@@ -21,12 +22,10 @@
         <script defer src="src/scripts/add-task.js"></script>
     </head>
 
-    <body onload="includeHTML(); init();">
+    <body onload="includeHTML(); initAddTask();">
         <div w3-include-html="src/templates/header.html"></div>
         <div w3-include-html="src/templates/sidebar.html"></div>
-        <div w3-include-html="src/templates/add_task_template.html"></div>
-
-     
+        <div w3-include-html="src/templates/add_task_template.html"></div>    
 
 
     </body>

@@ -130,11 +130,11 @@ function getValuesForTask(column, i) {
 function getPrioStatus(column, i) {
     let prioStatus = tasks[column][i].prio;
     if (prioStatus == 1) {
-        addPrio(0);
+        addPrioEditTask(0);
     } else if (prioStatus == 2) {
-        addPrio(1);
+        addPrioEditTask(1);
     } else {
-        addPrio(2);
+        addPrioEditTask(2);
     }
 }
 
@@ -143,7 +143,7 @@ function getPrioStatus(column, i) {
  * 
  * @param {number} status - The index of the priority level.
  */
-function addPrio(status) {
+function addPrioEditTask(status) {
     resetPrioActive(status);
 }
 

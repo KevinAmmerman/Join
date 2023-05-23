@@ -48,7 +48,7 @@ function summaryGreetingAnimation(){
             document.getElementById('summaryBody').classList.remove('summary-hidden');
            
         }, 1000);
-    }, 2000);
+    }, 1000);
 }
 
 

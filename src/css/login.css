@@ -9,7 +9,6 @@ html {
     height: 100%;
 }
 
-
 .join-Logo-Container {
     display: flex;
     justify-content: space-between;
@@ -19,7 +18,6 @@ html {
     margin-right: 120px;
 }
 
-
 .join-Logo-Container img {
     width: 150px;
     height: 150px;
@@ -27,7 +25,6 @@ html {
     object-fit: contain;
     animation: go_small 1.5s;
 }
-
 
 @keyframes go_small {
     0% {
@@ -44,10 +41,8 @@ html {
 }
 
 .signIn-Container {
-
     font-size: 30px;
     animation: fade_in 1.5s;
-
 }
 
 @keyframes fade_in {
@@ -68,7 +63,6 @@ html {
     }
 }
 
-
 .sign-Up-Button {
     background: #2A3647;
     border-radius: 10px;
@@ -78,11 +72,9 @@ html {
     text-decoration: none;
 }
 
-
 .sign-Up-Button:hover {
     background-color: #29ABE2;
 }
-
 
 .login-Container {
     display: flex;
@@ -93,7 +85,6 @@ html {
     margin: 0;
 }
 
-
 .login-head {
     display: flex;
     flex-direction: column;
@@ -102,13 +93,11 @@ html {
 
 }
 
-
 .login-head h1 {
     font-size: 70px;
     margin: 0;
     margin-bottom: 15px;
 }
-
 
 .blue-line {
     display: flex;
@@ -118,7 +107,6 @@ html {
     background-color: rgba(11, 173, 221, 1);
 
 }
-
 
 .login-password-content {
     display: flex;
@@ -134,14 +122,12 @@ html {
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
 }
 
-
 .login-password-input-area {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     width: 400px;
 }
-
 
 .email-input {
     background-image: url('/src/img/email.png');
@@ -155,11 +141,9 @@ html {
     border: solid 1px rgba(0, 0, 0, 0.1);
 }
 
-
 .email-input::placeholder {
     color: rgba(0, 0, 0, 0.3);
 }
-
 
 .password-input {
     background-image: url('/src/img/password.png');
@@ -172,7 +156,6 @@ html {
     border: solid 1px rgba(0, 0, 0, 0.1);
     margin-bottom: 25px;
 }
-
 
 .password-input::placeholder {
     color: rgba(0, 0, 0, 0.3);
@@ -191,22 +174,17 @@ html {
     padding-right: 40px;
 }
 
-
 .checkbox-input {
-    padding: 40px;
     width: 18px;
     height: 18px;
     border: 1px solid black;
-
 }
-
 
 .login-guest-button-container {
     padding-bottom: 25px;
     display: flex;
     justify-content: center;
 }
-
 
 .sign-in-button {
     background-color: #2A3647;
@@ -220,12 +198,10 @@ html {
     cursor: pointer;
 }
 
-
 .sign-in-button:hover {
     background-color: #29ABE2;
     border: none;
 }
-
 
 .guest-login-button {
     padding: 9px;
@@ -235,23 +211,17 @@ html {
     font-size: 20px;
     border: black 1px solid;
     cursor: pointer;
-
 }
-
 
 .guest-login-button:hover {
     color: #29ABE2;
-    ;
     border: 1px solid #29ABE2;
-    ;
 }
-
 
 .forget-Password-Container a {
     text-decoration: none;
     color: #29ABE2;
     font-weight: 400;
-
 }
 
 
@@ -280,11 +250,9 @@ html {
     font-size: 29px;
 }
 
-
 .dNone {
     display: none;
 }
-
 
 @media(max-width:1850px) {
     .join-Logo-Container img {
@@ -309,8 +277,6 @@ html {
 }
 
 @media(max-width:1500px) {
-
-
     .signIn-Container-mobile {
         display: flex;
         align-items: center;
@@ -341,8 +307,7 @@ html {
     }
 }
 
-
-@media(max-width:1280px) {
+@media(max-width:1281px) {
     body {
         height: 90%;
     }
@@ -364,7 +329,6 @@ html {
         font-size: 15px;
     }
 
-
     .join-Logo-Container img {
         width: 100px;
         height: 100px;
@@ -373,7 +337,7 @@ html {
 
     @keyframes go_small_mobile {
         0% {
-            transform: translateX(500px) translateY(400px) scale(3);
+            transform: translateX(600px) translateY(300px) scale(3);
         }
 
         35% {
@@ -383,11 +347,15 @@ html {
         100% {
             transform: scale(1);
         }
-
     }
 
+    .message-container {
+        width: 100%;
+        transform: translateY(450px);
+        display: flex;
+        justify-content: center;
+    }
 }
-
 
 @media(max-width: 1200px) {
     .join-Logo-Container img {
@@ -411,7 +379,7 @@ html {
     }
 }
 
-@media(max-width:1024px) {
+@media(max-width:1025px) {
     .signIn-Container-mobile {
         display: none;
     }
@@ -443,7 +411,7 @@ html {
 
     @keyframes go_small_mobile {
         0% {
-            transform: translateX(400px) translateY(350px) scale(3);
+            transform: translateX(450px) translateY(300px) scale(3);
         }
 
         35% {
@@ -465,497 +433,576 @@ html {
         height: 0%;
     }
 
-
-
-    @media(max-width:688px) {
-        .signIn-Container {
-            display: none;
-        }
-
-
-        .signIn-Container-mobile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(40px);
-            font-size: 20px;
-            animation: fade_in_mobile 1.5;
-        }
-
-
-        @keyframes fade_in_mobile {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-
-            40% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-
-        .join-Logo-Container {
-            margin-left: 50px;
-            margin-top: 50px;
-        }
-
-
-        .join-Logo-Container img {
-            width: 80px;
-            height: 80px;
-            animation: go_small_mobile 1.5s;
-        }
-
-
-        @keyframes go_small_mobile {
-            0% {
-                transform: translateX(300px) translateY(400px) scale(3);
-            }
-
-            35% {
-                transform: translateX(500px) translateY() scale(3);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-
-        .email-input {
-            background-image: url('/src/img/email.png');
-            background-repeat: no-repeat;
-            background-position: 320px;
-            background-size: 20px;
-            margin-bottom: 15px;
-            width: 100%;
-            padding: 8px;
-            font-size: 20px;
-            border-radius: 5px;
-            border: solid 1px rgba(0, 0, 0, 0.1);
-        }
-
-        .email-input::placeholder {
-            color: rgba(0, 0, 0, 0.3);
-
-        }
-
-
-        .password-input {
-            background-image: url('/src/img/password.png');
-            background-repeat: no-repeat;
-            background-position: 320px;
-            background-size: 20px;
-            padding: 8px;
-            width: 100%;
-            font-size: 20px;
-            border-radius: 5px;
-            border: solid 1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 25px;
-        }
-
-
-        .login-password-content {
-            transform: translateY(50px);
-        }
-
-
-        .login-password-input-area {
-            width: 350px
-        }
-
-
-        .message-container {
-            width: 100%;
-            transform: translateY(-10px);
-            display: flex;
-            justify-content: center;
-        }
-
-
-        .message {
-            display: flex;
-            justify-content: center;
-            width: 500px;
-            color: #2A3647;
-            border-radius: 8px;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-
-        .signIn-Container-mobile {
-            transform: translateY(100px);
-        }
-    }
-
-
-    @media(max-width: 414px) {
-
-        .join-Logo-Container {
-            margin-left: 10px;
-            margin-top: 20px;
-            margin-bottom: 50px;
-        }
-
-        .login-password-content {
-            width: 85%;
-            transform: translateY(200px);
-            padding: 15px;
-        }
-
-
-        .login-password-input-area {
-            width: 90%;
-        }
-
-
-        .checkbox-container {
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            justify-content: center;
-        }
-
-        .login-guest-button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-
-        .sign-in-button {
-            margin: 0;
-            width: 200px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-
-        .guest-login-button {
-            margin: 0;
-            width: 200px;
-            padding: 15px;
-            font-weight: bold;
-        }
-
-
-        .join-Logo-Container img {
-            width: 100px;
-            height: 100px;
-            animation: go_small_mobile 1.5s;
-        }
-
-
-        @keyframes go_small_mobile {
-            0% {
-                transform: translateX(150px) translateY(350px) scale(3);
-            }
-
-            35% {
-                transform: translateX(500px) translateY() scale(3);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .signIn-Container-mobile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(50px);
-            font-size: 20px;
-            animation: fade_in_mobile 1.5;
-        }
-
-
-        .email-input {
-            background-image: url('/src/img/email.png');
-            background-repeat: no-repeat;
-            background-position: 280px;
-            background-size: 20px;
-            margin-bottom: 15px;
-            padding: 8px;
-            width: 300px;
-            font-size: 20px;
-            border-radius: 10px;
-            border: solid 1px rgba(0, 0, 0, 0.1);
-        }
-
-
-        .password-input {
-            background-image: url('/src/img/password.png');
-            background-repeat: no-repeat;
-            background-position: 280px;
-            background-size: 20px;
-            padding: 8px;
-            width: 300px;
-            font-size: 20px;
-            border-radius: 5px;
-            border: solid 1px rgba(0, 0, 0, 0.1);
-        }
-
-
-        .message-container {
-            width: 100%;
-            transform: translateY(-60px);
-            display: flex;
-            justify-content: center;
-        }
-
-
-        .message {
-            display: flex;
-            justify-content: center;
-            width: 500px;
-            color: #2A3647;
-            border-radius: 8px;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-            transform: translateY(520px);
-        }
-
-
-        .checkbox {
-            display: flex;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-        }
-
-
-        .signIn-Container-mobile {
-            transform: translateY(570px);
-        }
-
-
-        .forget-Password-Container {
-            margin-bottom: 15px;
-            margin-left: 5px;
-        }
-    }
-
-
-
-    @media(max-width: 375px) {
-
-        .join-Logo-Container {
-            margin-left: 10px;
-            margin-top: 20px;
-            margin-bottom: 50px;
-        }
-
-
-        .join-Logo-Container img {
-            width: 50px;
-            height: 50px;
-        }
-
-
-        .blue-logo {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            margin-top: 80px;
-            margin-left: 80px;
-        }
-
-
-        .login-head h1 {
-            font-size: 25px;
-        }
-
-
-        .blue-line {
-            width: 100px;
-        }
-
-
-        .login-password-content {
-            width: 90%;
-            padding: 5px;
-            transform: translateY(150px);
-        }
-
-
-        .login-password-input-area {
-            width: 70%;
-        }
-
-
-        .checkbox-container {
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            justify-content: center;
-        }
-
-
-        .checkbox {
-            display: flex;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-        }
-
-
-        .email-input {
-            background-image: url('/src/img/email.png');
-            background-repeat: no-repeat;
-            background-position: 280px;
-            background-size: 20px;
-            margin-bottom: 15px;
-            padding: 8px;
-            width: 300px;
-            font-size: 20px;
-            border-radius: 10px;
-            border: solid 1px rgba(0, 0, 0, 0.1);
-        }
-
-
-        .password-input {
-            background-image: url('/src/img/password.png');
-            background-repeat: no-repeat;
-            background-position: 280px;
-            background-size: 20px;
-            padding: 8px;
-            width: 300px;
-            font-size: 20px;
-            border-radius: 5px;
-            border: solid 1px rgba(0, 0, 0, 0.1);
-        }
-
-
-        .login-guest-button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-
-        .sign-in-button {
-            margin: 0;
-            width: 200px;
-            padding: 8px;
-            margin-bottom: 15px;
-        }
-
-
-        .guest-login-button {
-            margin: 0;
-            width: 200px;
-            padding: 8px;
-            font-weight: bold;
-        }
-
-
-        .checkbox-input {
-            margin-right: 20px;
-        }
-
-
-        .forget-Password-Container a {
-            font-weight: 500;
-
-        }
-
-
-        .forget-Password-Container {
-            margin-bottom: 15px;
-            margin-left: 5px;
-        }
-
-
-        .message {
-            transform: translateY(430px);
-            font-size: 20px;
-        }
-
-
-        .signIn-Container-mobile {
-            transform: translateY(480px);
-
-        }
-
-    }
-
-
-    @media(max-width:360px) {
-
-        .join-Logo-Container {
-            margin-left: 50px;
-            margin-top: 50px;
-        }
-
-        .join-Logo-Container img {
-            width: 80px;
-            height: 80px;
-            animation: go_small_mobile 1.5s;
-        }
-
-        @keyframes go_small_mobile {
-            0% {
-                transform: translateX(100px) translateY(400px) scale(3);
-            }
-
-            35% {
-                transform: translateX(500px) translateY() scale(3);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-
-        .message-container {
-            width: 100%;
-            transform: translateY(-50px);
-            display: flex;
-            justify-content: center;
-        }
-
-        .message {
-            display: flex;
-            justify-content: center;
-            width: 500px;
-            color: #2A3647;
-            border-radius: 8px;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-
-        .login-Container {
-            height: 500px;
-            width: 300px;
-            margin-left: 30px;
-        }
-
-        .login-password-content {
-            padding: 0;
-        }
+    .message-container {
+        width: 100%;
+        transform: translateY(400px);
+        display: flex;
+        justify-content: center;
     }
 }
 
-@media(max-width: 280px){
+@media(max-width:769px) {
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
 
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(300px) translateY(250px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .message-container {
+        width: 100%;
+        transform: translateY(420px);
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media(max-width:689px) {
+    .signIn-Container {
+        display: flex;
+        align-items: center;
+    }
+
+    .login-Container {
+        transform: translateY(200px);
+        height: 0%;
+    }
+
+    .signIn-Container-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(40px);
+        font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+
+    @keyframes fade_in_mobile {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        40% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
 
     .join-Logo-Container {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+
+
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(300px) translateY(400px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .email-input {
+        background-image: url('/src/img/email.png');
+        background-repeat: no-repeat;
+        background-position: 320px;
+        background-size: 20px;
+        margin-bottom: 15px;
+        width: 100%;
+        padding: 8px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .email-input::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+
+    }
+
+    .password-input {
+        background-image: url('/src/img/password.png');
+        background-repeat: no-repeat;
+        background-position: 320px;
+        background-size: 20px;
+        padding: 8px;
+        width: 100%;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+    }
+
+    .login-password-content {
+        transform: translateY(50px);
+    }
+
+    .login-password-input-area {
+        width: 350px
+    }
+
+    .message-container {
+        width: 100%;
+        transform: translateY(460px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .message {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        color: #2A3647;
+        border-radius: 8px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .signIn-Container-mobile {
+        display: none;
+    }
+}
+
+@media(max-width:540px) {
+    .join-Logo-Container img {
+        width: 80px;
+        height: 80px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(250px) translateY(300px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .signIn-Container {
+        display: none;
+    }
+
+    .join-Logo-Container {
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    .login-password-content {
+        width: 85%;
+        transform: translateY(0px);
+        padding: 15px;
+    }
+
+    .signIn-Container-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(480px);
+        font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+
+    .message-container {
+        width: 100%;
+        transform: translateY(350px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .checkbox {
+        padding-right: 40px;
+        display: flex;
+        align-items: center;
+    }
+
+    .checkbox-input {
+        margin-right: 12px;
+    }
+}
+
+@media(max-width: 415px) {
+    .join-Logo-Container {
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    .login-password-content {
+        width: 85%;
+        transform: translateY(30px);
+        padding: 15px;
+    }
+
+    .login-password-input-area {
+        width: 90%;
+    }
+
+    .checkbox-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .login-guest-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-in-button {
+        margin: 0;
+        width: 200px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .guest-login-button {
+        margin: 0;
+        width: 200px;
+        padding: 15px;
+        font-weight: bold;
+    }
+
+    .join-Logo-Container img {
+        width: 50px;
+        height: 50px;
+        animation: go_small_mobile 1.5s;
+    }
+
+    @keyframes go_small_mobile {
+        0% {
+            transform: translateX(150px) translateY(330px) scale(3);
+        }
+
+        35% {
+            transform: translateX(500px) translateY() scale(3);
+        }
+
+        100% {
+            transform: scale(1);
+
+        }
+    }
+
+    .signIn-Container-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(530px);
+        font-size: 20px;
+        animation: fade_in_mobile 1.5;
+    }
+
+    .email-input {
+        background-image: url('/src/img/email.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        margin-bottom: 15px;
+        padding: 8px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .password-input {
+        background-image: url('/src/img/password.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        padding: 8px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .message-container {
+        width: 100%;
+        transform: translateY(-120px);
+        display: flex;
+        justify-content: center;
+    }
+
+    .message {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        color: #2A3647;
+        border-radius: 8px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 20px;
+        transform: translateY(550px);
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+
+
+    .forget-Password-Container {
+        margin-bottom: 15px;
+        margin-left: 5px;
+    }
+}
+
+@media(max-width: 376px) {
+
+    .join-Logo-Container {
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    .join-Logo-Container img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .blue-logo {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin-top: 80px;
+        margin-left: 80px;
+    }
+
+    .login-head h1 {
+        font-size: 25px;
+    }
+
+    .blue-line {
+        width: 60px;
+    }
+
+    .login-password-content {
+        width: 85%;
+        transform: translateY(30px);
+        padding: 15px;
+    }
+
+    .login-password-input-area {
+        width: 70%;
+    }
+
+    .checkbox-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .email-input {
+        background-image: url('/src/img/email.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        margin-bottom: 15px;
+        padding: 8px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .password-input {
+        background-image: url('/src/img/password.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        padding: 8px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-guest-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-in-button {
+        margin: 0;
+        width: 200px;
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+
+    .guest-login-button {
+        margin: 0;
+        width: 200px;
+        padding: 8px;
+        font-weight: bold;
+    }
+
+    .checkbox-input {
+        margin-right: 20px;
+    }
+
+    .forget-Password-Container a {
+        font-weight: 500;
+    }
+
+
+    .forget-Password-Container {
+        margin-bottom: 15px;
+        margin-left: 5px;
+    }
+
+    .message {
+        transform: translateY(540px);
+        font-size: 20px;
+    }
+
+    .signIn-Container-mobile {
+        transform: translateY(520px);
+    }
+}
+
+@media(max-width:360px) {
+    .message {
+        font-size: 15px;
+     }
+
+     .email-input {
+        background-image: url('/src/img/email.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        margin-bottom: 15px;
+        padding: 8px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .password-input {
+        background-image: url('/src/img/password.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        padding: 8px;
+        width: 300px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media(max-width: 340px){
+    .email-input {
+        background-image: url('/src/img/email.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        margin-bottom: 15px;
+        padding: 8px;
+        width: 290px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .password-input {
+        background-image: url('/src/img/password.png');
+        background-repeat: no-repeat;
+        background-position: 280px;
+        background-size: 20px;
+        padding: 8px;
+        width: 290px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media(max-width:330px){
+    .email-input {
+        background-image: url('/src/img/email.png');
+        background-repeat: no-repeat;
+        background-position: 260px;
+        background-size: 20px;
+        margin-bottom: 15px;
+        padding: 8px;
+        width: 280px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .password-input {
+        background-image: url('/src/img/password.png');
+        background-repeat: no-repeat;
+        background-position: 260px;
+        background-size: 20px;
+        padding: 8px;
+        width: 280px;
+        font-size: 20px;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+}
+
+@media(max-width: 316px) {
+    .join-Logo-Container {
         margin: 15px;
-        
     }
 
     .join-Logo-Container img {
@@ -979,19 +1026,10 @@ html {
     }
 
     .login-password-content {
-        width: 93%;
-        padding: 5px;
-        transform: translateY(-60px);
-    }
-
-    .login-Container {
-        height: 500px;
-        width: 300px;
-        margin: 0;
-        width: 100%;
-        padding: 0;
-        
-    }
+        width: 85%;
+        transform: translateY(50px);
+        padding: 15px;
+    } 
 
     .login-password-input-area {
         width: 90%;
@@ -1000,20 +1038,18 @@ html {
         padding: 0;
     }
 
-
     .email-input {
         background-image: url('/src/img/email.png');
         background-repeat: no-repeat;
         background-position: 220px;
         background-size: 20px;
         margin-bottom: 15px;
-        
+
         width: 240px;
         font-size: 20px;
         border-radius: 10px;
         border: solid 1px rgba(0, 0, 0, 0.1);
     }
-
 
     .password-input {
         background-image: url('/src/img/password.png');
@@ -1027,20 +1063,17 @@ html {
         border: solid 1px rgba(0, 0, 0, 0.1);
     }
 
-
-
     .message {
-        transform: translateY(-30px);
+        transform: translateY(550px);
         font-size: 15px;
     }
 
     .signIn-Container-mobile {
-        transform: translateY(0px);
+        transform: translateY(520px);
         font-size: 20px;
-
     }
 
-    .sign-Up-Button{
+    .sign-Up-Button {
         padding: 5px;
         margin: 4px;
     }

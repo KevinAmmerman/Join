@@ -13,3 +13,12 @@
     font-weight: 500;
     margin-top: 50px;
 }
+
+@media (max-width: 750px) {
+
+    .impressum {
+        left: 28px;
+        right: 28px;
+        padding-bottom: 95px;
+    }
+}

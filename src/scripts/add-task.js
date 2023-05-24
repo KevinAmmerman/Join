@@ -40,7 +40,7 @@ function initAddTasks() {
  * Creates a new task with the provided data and saves it in the backend.11
  * Displays a success message and navigates to the board page.
  */
-async function createTask() {
+async function createTask(mobil) {
 	const { value: title } = document.getElementById('title');
 	const { value: description } = document.getElementById('description');
 	const { value: dueDate } = document.getElementById('due-date');
@@ -59,7 +59,13 @@ async function createTask() {
 	tasks.toDo.push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
-	goToBoard();
+	if (mobil == 'mobil') {
+		closeWindow('modalAddtask');
+		resetForm();
+		init();
+	} else {
+		goToBoard();
+	}
 }
 
 /**

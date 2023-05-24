@@ -41,7 +41,7 @@ label {
 }
 
 .input-field input {
-	width: 220px;
+	width: 305px;
 	padding-left: 6px;
 	font-size: 20px;
 	border: 0;
@@ -140,6 +140,7 @@ textarea:focus {
 	padding-bottom: 6px;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	gap: 6px;
 }
 

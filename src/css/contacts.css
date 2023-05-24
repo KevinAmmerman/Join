@@ -311,26 +311,6 @@ body {
     gap: 50px;
 }
 
-.contactAddTask {
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding-left: 25px;
-    color: #28ABE2;
-    cursor: pointer;
-}
-
-.contactAddTask:hover {
-    font-weight: bold;
-}
-
-.contactAddTask>div {
-    font-size: 1.8rem;
-    position: absolute;
-    top: -9px;
-    left: 0px;
-}
-
 .cardMidPart {
     display: flex;
     align-items: center;

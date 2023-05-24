@@ -57,10 +57,7 @@ function createHtmlForContactCard(contact, i, j) {
             <div class="cardTopPart">
                 <div class="circalInitialsBig" style="background-color: ${contactColor}">${initials}</div>
                 <div class="contactName">
-                    <span>${name}</span>
-                    <div class="contactAddTask">
-                        <div>+</div>Add Task
-                    </div>
+                    <span>${name}</span>    
                 </div>
             </div>
             <div class="cardMidPart">

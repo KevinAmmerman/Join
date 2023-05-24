@@ -37,6 +37,7 @@ body {
 
 .question-mark {
     cursor: pointer;
+    display: none;
 }
 
 .guestLogin{
@@ -75,7 +76,7 @@ body {
         justify-content: center;
     }
     .question-mark{
-        display: none;
+        display: block;
     }
 }
 

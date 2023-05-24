@@ -53,43 +53,31 @@ function calculateProgress(subtasklength, finishedSubtasks) {
  * @param {string} returnTyp - The return type: 'path' for image path, 'word' for corresponding word.
  * @returns {string} - The image path or corresponding word based on the priority.
  */
+// 
 function checkPrioStatus(prio, returnTyp) {
-    if (prio == 1) {
-        if (returnTyp == 'path') {
-            return 'src/img/img_board/urgent_prio.png';
-        } else if (returnTyp == 'word') {
-            return 'Urgent';
-        }
+    let priorities = {
+        1: ['src/img/img_board/urgent_prio.png', 'Urgent'],
+        2: ['src/img/img_board/medium_prio.png', 'Medium'],
+        3: ['src/img/img_board/low_prio.png', 'Low']
     }
-    if (prio == 2) {
-        if (returnTyp == 'path') {
-            return 'src/img/img_board/medium_prio.png'
-        } else if (returnTyp == 'word') {
-            return 'Medium';
-        }
-    }
+    let defaultPrio = 3;
+    let priority = priorities[prio] || priorities[defaultPrio];
     if (returnTyp == 'path') {
-        return 'src/img/img_board/low_prio.png'
+        return priority[0];
     } else if (returnTyp == 'word') {
-        return 'Low';
+        return priority[1];
     }
 }
 
 /**
- * Gets the color for the priority based on its value.
- * 
- * @param {number} prio - The priority value.
- * @returns {string} - The color code for the priority.
+ * Retrieves the color associated with a given priority level.
+ *
+ * @param {number} prio - The priority level.
+ * @returns {string} The color associated with the priority level.
  */
 function getPrioColor(prio) {
-    if (prio == 1) {
-        return '#FB3D01';
-    }
-    if (prio == 2) {
-        return '#FFA800';
-    } else {
-        return '#7AE22A';
-    }
+    let colors = ['#FB3D01', '#FFA800', '#7AE22A'];
+    return colors[prio-1];
 }
 
 /**
@@ -127,41 +115,32 @@ function doNotClose(event) {
     event.stopPropagation();
 }
 
-
 /**
- * Closes the task information container.
+ * This function closes a window or modal with the given ID by adding the "dNone" class to hide it.
+ * It also calls the "preventScrollingInBackground" function to prevent scrolling of the background content.
+ *
+ * @param {string} id - The ID of the window or modal element to close.
  */
-function closeTaskInfo() {
-
-
-
-    let taskInfoContainer = document.getElementById('taskInfoContainer');
-    taskInfoContainer.classList.add('dNone');
+function closeWindow(id) {
+    let windowContainer = document.getElementById(id);
+    windowContainer.classList.add('dNone');
     preventScrollingInBackground();
 }
 
 /**
- * Closed AddTask Container
+ * This function assigns an action to the "assignedToInput" element based on the given action parameter.
+ * If the action is 'close', it removes the 'openAssigned' class from the element.
+ * If the action is 'toggle', it toggles the presence of the 'openAssigned' class on the element.
+ *
+ * @param {string} action - The action to assign to the "assignedToInput" element.
  */
-
-function closeAddTask() {
-
-    let AddTaskContainer = document.getElementById('modalAddtask');
-    AddTaskContainer.classList.add('dNone');
-    preventScrollingInBackground();
-}
-/**
- * Toggles the visibility of the assigned input field.
- */
-function toggleAssigned() {
-    document.getElementById('assignedToInput').classList.toggle('openAssigned');
-}
-
-/**
- * Closes the assignedToInput dropdown.
- */
-function closeDropDown() {
-    document.getElementById('assignedToInput').classList.remove('openAssigned');
+function assignAction(action) {
+    const assignedToInput = document.getElementById('assignedToInput');
+    if (action === 'close') {
+        assignedToInput.classList.remove('openAssigned');
+    } else if (action === 'toggle') {
+        assignedToInput.classList.toggle('openAssigned');
+    }
 }
 
 /**
@@ -227,4 +206,16 @@ function checkIfSubtask(task, column, i) {
     } else {
         return;
     }
+}
+
+/**
+ * This function sets a minimum date for input fields with the name "dueDate",
+ * ensuring that past dates are not selectable.
+ * It retrieves the current date and sets it as the minimum value for each "dueDate" input field.
+ */
+function noPastDate() {
+	let today = new Date().toISOString().split('T')[0];
+	for (let i = 0; i < document.getElementsByName("dueDate").length; i++) {
+		document.getElementsByName("dueDate")[i].setAttribute('min', today);
+	}
 }

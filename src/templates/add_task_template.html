@@ -1,6 +1,6 @@
 <div class="container" id="add-task-container">
     <h1 class="task-headline">Add Task</h1>
-    <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeAddTask()">
+    <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeWindow('modalAddtask')">
     <div class="task-container">
         
         <div class="task-left">
@@ -144,7 +144,7 @@
     <div class="add-task-buttons">
         <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear
                 x</span></button>
-        <button onclick="createTask()" type="submit" class="dark-btn create-btn">
+        <button onclick="createTask('mobil')" type="submit" class="dark-btn create-btn">
             <span>Create Task</span>
             <img src="./src/img/img_add_task/hook.png">
         </button>

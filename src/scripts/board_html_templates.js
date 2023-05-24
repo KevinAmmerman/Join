@@ -63,7 +63,7 @@ function createHtmlForTaskInfo(column, i) {
     let prioColor = getPrioColor(tasks[column][i].prio);
     return `
         <div class="taskEditContainer" onclick="doNotClose(event)">
-            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
+            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeWindow('taskInfoContainer')">
             <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title titleEditWindow">${title}</h3>
             <div class="description">${description}</div>
@@ -147,8 +147,8 @@ function createHtmlForAdditional(amount) {
  */
 function createHtmlForEditTask(column, i) {
     return `
-        <div id="taskEditContainer" class="taskEditContainer editTaskGap" onclick="doNotClose(event); closeDropDown()">
-            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeTaskInfo()">
+        <div id="taskEditContainer" class="taskEditContainer editTaskGap" onclick="doNotClose(event); assignAction('close')">
+            <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeWindow('taskInfoContainer')">
             <div class="leftEditContainer">
                 <label class="editTitle">Title</label>
                 <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
@@ -157,7 +157,7 @@ function createHtmlForEditTask(column, i) {
                 <div class="assignedContainer">
                     <label>Assigned to</label>
                     <div id="assignedToInput">
-                        <div onclick="doNotClose(event); toggleAssigned()" class="assignedBtn">Select Contacts<img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
+                        <div onclick="doNotClose(event); assignAction('toggle')" class="assignedBtn">Select Contacts<img class="assignedOpenBtn" src="src/img/img_board/arrow_down.png" alt=""></div>
                         <ul class="assignedList" id="assignedList"></ul>
                     </div>
                     <div id="selectedAssignments"></div>
@@ -165,7 +165,7 @@ function createHtmlForEditTask(column, i) {
             </div>
             <div class="rightEditContainer">
                 <label class="editDate">Due date</label>
-                <input type="date" onclick="limitDueDate()" id="due-date" name="due-date" required>
+                <input type="date" onclick="noPastDate()" class="dueDate" id="dueDate" name="dueDate" required>
                 <div class="inputPrioContainer">
                     <label>Prio</label>
                     <div class="prioBtn">
@@ -221,7 +221,7 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
-        <li onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})"><input type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label><div onclick="deleteSubtask('${column}', ${i}, ${s})">X</div></li>
+        <li onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})"><input type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label><div class="deleteSubtaskBtn" onclick="deleteSubtask('${column}', ${i}, ${s})"></div></li>
     `;
 }
 

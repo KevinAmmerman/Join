@@ -11,7 +11,6 @@ async function init() {
     renderTasks(tasks, 'inProgress', 'inProgress');
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
-
 }
 
 /**
@@ -90,7 +89,6 @@ function renderAssignetPeople(column, i) {
 
 // EDIT TASK FUNCTIONS
 
-
 /**
  * Edits the details of a task in the task information container.
  * 
@@ -118,7 +116,7 @@ function editTask(column, i) {
 function getValuesForTask(column, i) {
     document.getElementById('inputEditTitle').value = tasks[column][i].title;
     document.getElementById('inputEditDescription').value = tasks[column][i].description;
-    document.getElementById('due-date').value = tasks[column][i].date;
+    document.getElementById('dueDate').value = tasks[column][i].date;
 }
 
 /**
@@ -316,7 +314,7 @@ function deleteSubtask(column, i, s) {
 async function saveChangesForTask(column, i) {
     let title = document.getElementById('inputEditTitle').value;
     let description = document.getElementById('inputEditDescription').value;
-    let dueDate = document.getElementById('editDate').value;
+    let dueDate = document.getElementById('dueDate').value;
     let prioStatus = prioValue;
     tasks[column][i].title = title;
     tasks[column][i].description = description;
@@ -358,13 +356,11 @@ async function deleteTask(column, i) {
     tasks[column].splice(i, 1);
     await setItem('tasks', JSON.stringify(tasks));
     init();
-    closeTaskInfo();
+    closeWindow('taskInfoContainer');
     preventScrollingInBackground();
 }
 
-
 // FILTER FUNCTIONS
-
 
 /**
  * Filters the tasks based on the search input.
@@ -396,9 +392,7 @@ function checkIfIncluded(t, search) {
         t.description.toLowerCase().includes(search);
 }
 
-
 // DRAG & DROP FUNTIONS
-
 
 /**
  * Allows the dropping of elements during drag and drop.
@@ -436,11 +430,13 @@ async function moveTo(category) {
     init();
 }
 
+/**
+ * This function opens the "Add Task" section by removing the "dNone" class from the "modalAddtask" element.
+ * It makes the "Add Task" section visible on the page.
+ */
 function openAddtaskSection() {
     document.getElementById('modalAddtask').classList.remove('dNone');
-   
 }
-
 
 /**
  * Moves a task to the "Mobil" column on mobile view.
@@ -475,4 +471,3 @@ async function moveToCategory(goal, column, i) {
     await setItem('tasks', JSON.stringify(tasks));
     init();
 }
-

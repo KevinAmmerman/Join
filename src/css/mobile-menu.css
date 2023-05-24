@@ -8,7 +8,7 @@
     position: fixed;
     bottom: 0;
     display: none;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-end;
     z-index: 994;
 

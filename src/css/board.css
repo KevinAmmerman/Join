@@ -551,8 +551,8 @@ body {
     font-size: 1.1rem;
 }
 
-#editDate {
-    padding: 13px 21px;
+.dueDate {
+    padding: 11.5px 21px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-family: 'Inter';
@@ -561,7 +561,7 @@ body {
 
 #inputEditTitle:focus,
 #inputEditDescription:focus,
-#editDate:focus {
+.dueDate:focus {
     outline: none;
 }
 
@@ -623,7 +623,7 @@ body {
     align-items: center;
     cursor: pointer;
     justify-content: space-between;
-    padding: 7px 21px;
+    padding: 7.5px 21px;
 }
 
 .assignedOpenBtn {
@@ -725,6 +725,9 @@ body {
 #subtasksList {
     list-style: none;
     padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #subtasksList li {
@@ -735,6 +738,21 @@ body {
 
 #subtasksList li input {
     cursor: pointer;
+}
+
+.deleteSubtaskBtn {
+    background-image: url(../img/img_board/delete.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 48px;
+}
+
+.deleteSubtaskBtn:hover {
+    transform: scale(1.1);
 }
 
 

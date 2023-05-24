@@ -13,9 +13,6 @@ const prios = ['Urgent', 'Medium', 'Low'];
  */
 async function initAddTask() {
 	loadUsers();
-	//  limitDueDate();
-
-
 }
 
 /**
@@ -369,7 +366,7 @@ function assignToHandlerInList() {
  * Validates the input value and adds the subtask to the subTasks array.
  */
 
-function addSubtask() {
+function addSubtaskAddTask() {
 	const subTaskId = generateRandomId();
 	const value = document.querySelector('.subtask__input').value;
 	if (value !== '') {
@@ -461,7 +458,7 @@ function submitOnEnter() {
 	input.addEventListener("keypress", function (event) {
 		if (event.key === "Enter") {
 			event.preventDefault();
-			addSubtask();
+			addSubtaskAddTask();
 		}
 	});
 }
@@ -492,11 +489,11 @@ function resetSelectCategory() {
 
 
 function limitDueDate() {
-    let today = new Date().toISOString().split('T')[0];
-    for (let i = 0; i < document.getElementsByName("due-date").length; i++) {
-        document.getElementsByName("due-date")[i].setAttribute('min', today);
-    }	
-	
-console.log(today);
+	let today = new Date().toISOString().split('T')[0];
+	for (let i = 0; i < document.getElementsByName("due-date").length; i++) {
+		document.getElementsByName("due-date")[i].setAttribute('min', today);
+	}
+
+	console.log(today);
 }
 

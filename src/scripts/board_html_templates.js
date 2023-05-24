@@ -165,7 +165,7 @@ function createHtmlForEditTask(column, i) {
             </div>
             <div class="rightEditContainer">
                 <label class="editDate">Due date</label>
-                <input type="date" id="editDate" required>
+                <input type="date" onclick="limitDueDate()" id="due-date" name="due-date" required>
                 <div class="inputPrioContainer">
                     <label>Prio</label>
                     <div class="prioBtn">

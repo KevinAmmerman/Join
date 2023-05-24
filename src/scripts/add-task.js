@@ -1,5 +1,6 @@
 // global variables
 
+
 let prio = null;
 let subTasks = [];
 let selectedCategoryName = null;
@@ -12,6 +13,9 @@ const prios = ['Urgent', 'Medium', 'Low'];
  */
 async function initAddTask() {
 	loadUsers();
+	//  limitDueDate();
+
+
 }
 
 /**
@@ -36,7 +40,7 @@ function initAddTasks() {
 }
 
 /**
- * Creates a new task with the provided data and saves it in the backend.
+ * Creates a new task with the provided data and saves it in the backend.11
  * Displays a success message and navigates to the board page.
  */
 async function createTask() {
@@ -167,6 +171,8 @@ function resetForm() {
 	addPrio(null);
 	subTasks = [];
 	composeSubTasks(subTasks);
+	closeSubtaskEditor();
+
 }
 
 /**
@@ -374,12 +380,12 @@ function addSubtask() {
 		};
 		subTasks.push(subTask);
 		composeSubTasks(subTasks);
-		document.querySelector('.subtask__input').style.display = 'none';
 		document.querySelector('.subtask__actions').style.display = 'none';
 		document.querySelector('.subtask__plus').style.display = 'block';
 	} else {
 		alert("Please enter a subtask");
 	}
+	document.querySelector('.subtask__input').value = '';
 }
 
 /**
@@ -389,7 +395,6 @@ function addSubtask() {
 
 function openSubtaskEditor() {
 	document.querySelector('.subtask__input').value = '';
-	document.querySelector('.subtask__input').style.display = 'inline';
 	document.querySelector('.subtask__actions').style.display = 'flex';
 	document.querySelector('.subtask__plus').style.display = 'none';
 }
@@ -400,9 +405,9 @@ function openSubtaskEditor() {
  */
 
 function closeSubtaskEditor() {
-	document.querySelector('.subtask__input').style.display = 'none';
 	document.querySelector('.subtask__actions').style.display = 'none';
 	document.querySelector('.subtask__plus').style.display = 'block';
+	document.querySelector('.subtask__input').value = '';
 }
 
 /**
@@ -484,3 +489,14 @@ function resetSelectCategory() {
 	document.querySelector('.select-task-category').style.borderBottom = '1px solid #a8a8a8';
 	document.querySelector('.select-task-category').style.borderRadius = '10px';
 }
+
+
+function limitDueDate() {
+    let today = new Date().toISOString().split('T')[0];
+    for (let i = 0; i < document.getElementsByName("due-date").length; i++) {
+        document.getElementsByName("due-date")[i].setAttribute('min', today);
+    }	
+	
+console.log(today);
+}
+

@@ -100,7 +100,7 @@
             <div class="input-container">
                 <label>Due date</label>
                 <div class="input-field due-date">
-                    <input id="due-date" type="date" placeholder="dd/mm/yyyy">
+                    <input onclick="limitDueDate()" id="due-date" name="due-date"  type="date" placeholder="dd/mm/yyyy">
                 </div>
                 <p class="required" id="required4"></p>
             </div>
@@ -121,11 +121,10 @@
             <div class="input-container">
                 <label for="subtask">Subtasks</label>
                 <div class="input-field" id="subtask">
-                    <input  id="subtask-input" autofocus class="subtask__input" type="text"
-                        placeholder="Add new subtask">
-                    <img onclick="openSubtaskEditor()" id="subtask-plus" class="subtask__plus" src="
+                    <input onclick="openSubtaskEditor()"   id="subtask-input" autofocus class="subtask__input" type="text"
+                        placeholder="Add new subtask" style="display: inline;" >
+                    <img   id="subtask-plus" class="subtask__plus" src="
                             ./src/img/img_add_task/plus_dark.svg">
-
                     <div class="subtask__actions">
                         <img onclick="closeSubtaskEditor()" id="subtask-close" class="subtask__close"  src="
                                 ./src/img/img_add_task/close.svg">

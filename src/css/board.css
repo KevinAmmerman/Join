@@ -751,9 +751,6 @@ body {
     overflow-x: hidden;
 }
 
-h1.task-headline {
-    width: 100%;
-}
 
 @keyframes slide-in-left {
     0% {

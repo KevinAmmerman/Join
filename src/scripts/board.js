@@ -118,7 +118,7 @@ function editTask(column, i) {
 function getValuesForTask(column, i) {
     document.getElementById('inputEditTitle').value = tasks[column][i].title;
     document.getElementById('inputEditDescription').value = tasks[column][i].description;
-    document.getElementById('editDate').value = tasks[column][i].date;
+    document.getElementById('due-date').value = tasks[column][i].date;
 }
 
 /**

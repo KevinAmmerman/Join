@@ -1,6 +1,6 @@
 <div class="container" id="add-task-container">
     <h1 class="task-headline">Add Task</h1>
-    <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeAddTask()">
+    <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeAddTask()">
     <div class="task-container">
         
         <div class="task-left">
@@ -24,7 +24,7 @@
                 <div class="toggle-menu">
                     <div class="select-task-category" id="select-task-category">
                         <div id="selected-category">Select task category</div>
-                        <img src="/src/img/img_add_task/triangle.svg">
+                        <img src="./src/img/img_add_task/triangle.svg">
 
                     </div>
 
@@ -78,7 +78,7 @@
                 <div class="toggle-menu" id="assigned-to-dropdown">
                     <div class="assigned-to" id="assigned-to">
                         <span>Select contact to assign</span>
-                        <img src="/src/img/img_add_task/triangle.svg">
+                        <img src="./src/img/img_add_task/triangle.svg">
 
                     </div>
 
@@ -86,7 +86,7 @@
                         <li class="assigned-to__list-action">
                             <div class="assigned-to__in-list">
                                 <span>Select contact to assign</span>
-                                <img src="/src/img/img_add_task/triangle.svg">
+                                <img src="./src/img/img_add_task/triangle.svg">
                             </div>
                         </li>
                     </ul>
@@ -109,11 +109,11 @@
                 <label>Prio</label>
                 <div class="prio-btn">
                     <button id="urgent-btn" onclick="addPrio(0)"><span>Urgent</span><img class="prio-img"
-                            id="urgent-image" src="/src/img/img_add_task/red-arrows-up.png"></button>
+                            id="urgent-image" src="./src/img/img_add_task/red-arrows-up.png"></button>
                     <button id="medium-btn" onclick="addPrio(1)"><span>Medium</span><img class="prio-img"
-                            id="medium-image" src="/src/img/img_add_task/orange-lines3.svg"></button>
+                            id="medium-image" src="./src/img/img_add_task/orange-lines3.svg"></button>
                     <button id="low-btn" onclick="addPrio(2)"><span>Low</span><img class="prio-img" id="low-image"
-                            src="/src/img/img_add_task/green-arrows-down.png"></button>
+                            src="./src/img/img_add_task/green-arrows-down.png"></button>
                 </div>
                 <p class="required" id="required5"></p>
             </div>
@@ -124,13 +124,13 @@
                     <input  id="subtask-input" autofocus class="subtask__input" type="text"
                         placeholder="Add new subtask">
                     <img onclick="openSubtaskEditor()" id="subtask-plus" class="subtask__plus" src="
-                            /src/img/img_add_task/plus_dark.svg">
+                            ./src/img/img_add_task/plus_dark.svg">
 
                     <div class="subtask__actions">
                         <img onclick="closeSubtaskEditor()" id="subtask-close" class="subtask__close"  src="
-                                /src/img/img_add_task/close.svg">
+                                ./src/img/img_add_task/close.svg">
 
-                        <img id="subtask-check" onload="submitOnEnter()" onclick="addSubtask()" src=" /src/img/img_add_task/check.svg"
+                        <img id="subtask-check" onload="submitOnEnter()" onclick="addSubtask()" src=" ./src/img/img_add_task/check.svg"
                             class="subtask__check">
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                 x</span></button>
         <button onclick="createTask()" type="submit" class="dark-btn create-btn">
             <span>Create Task</span>
-            <img src="/src/img/img_add_task/hook.png">
+            <img src="./src/img/img_add_task/hook.png">
         </button>
     </div>
 </div>

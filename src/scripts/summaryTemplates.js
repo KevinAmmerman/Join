@@ -1,4 +1,4 @@
-function generateSummaryTemplate(){
+function generateSummaryTemplate() {
     let content = document.getElementById('summaryContent');
 
     content.innerHTML = /*html*/`

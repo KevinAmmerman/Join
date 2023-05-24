@@ -169,12 +169,12 @@ function createHtmlForEditTask(column, i) {
                 <div class="inputPrioContainer">
                     <label>Prio</label>
                     <div class="prioBtn">
-                        <button id="urgentBtn" onclick="addPrio(0)"><span>Urgent</span><img class="prioImg"
-                                id="urgentImage" src="/src/img/img_board/urgent_prio.png"></button>
-                        <button id="mediumBtn" onclick="addPrio(1)"><span>Medium</span><img class="prioImg"
-                                id="mediumImage" src="/src/img/img_board/medium_prio.png"></button>
-                        <button id="lowBtn" onclick="addPrio(2)"><span>Low</span><img class="prioImg"
-                                id="lowImage" src="/src/img/img_board/low_prio.png"></button>
+                        <button id="urgentBtn" onclick="addPrioEditTask(0)"><span>Urgent</span><img class="prioImg"
+                                id="urgentImage" src="./src/img/img_board/urgent_prio.png"></button>
+                        <button id="mediumBtn" onclick="addPrioEditTask(1)"><span>Medium</span><img class="prioImg"
+                                id="mediumImage" src="./src/img/img_board/medium_prio.png"></button>
+                        <button id="lowBtn" onclick="addPrioEditTask(2)"><span>Low</span><img class="prioImg"
+                                id="lowImage" src="./src/img/img_board/low_prio.png"></button>
                     </div>
                 </div>
                 <div class="subTaskContainer">

@@ -21,6 +21,11 @@ async function getSummary() {
     mostUrgent();
 }
 
+/**
+ * This function determines whether to display or hide the welcome summary based on the window width.
+ * If the window width is greater than 1533 pixels, the welcome summary is hidden.
+ * Otherwise, it triggers the greeting animation.
+ */
 function summaryGreetingResponsive() {
     if (window.innerWidth > 1533){ 
         document.getElementById('summaryWelcomeResponsive').classList.add('dNone');
@@ -29,6 +34,10 @@ function summaryGreetingResponsive() {
     summaryGreetingAnimation();
 }
 
+/**
+ * This function performs the greeting animation by showing the welcome summary and hiding the summary body temporarily.
+ * It adds necessary CSS classes to animate the welcome summary and reveals the summary body after a delay.
+ */
 function summaryGreetingAnimation(){
     document.getElementById('summaryWelcomeResponsive').classList.remove('dNone');
     document.getElementById('summaryBody').classList.add('summary-hidden');
@@ -39,7 +48,7 @@ function summaryGreetingAnimation(){
             document.getElementById('summaryBody').classList.remove('summary-hidden');
            
         }, 1000);
-    }, 2000);
+    }, 1000);
 }
 
 

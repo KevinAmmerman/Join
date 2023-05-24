@@ -6,15 +6,25 @@ let selectedCategoryName = null;
 let selectedCatColor = null;
 const prios = ['Urgent', 'Medium', 'Low'];
 
-// this function loads the user when the page gets loaded
-
+/**
+ * Initializes the addition of a task.
+ * Calls the "loadUsers" function.
+ */
 async function initAddTask() {
 	loadUsers();
 }
+
+/**
+ * Loads user data from the backend.
+ */
 async function loadUsers() {
 	tasks = JSON.parse(await getItem('tasks'));
 }
 
+/**
+ * Initializes the task addition functionality.
+ * Adds event listeners and loads categories and contacts.
+ */
 function initAddTasks() {
 	document.querySelector('#select-task-category').addEventListener('click', categoryToggler);
 	document.querySelector('.new-category__button--check').addEventListener('click', addNewCategory);
@@ -25,8 +35,10 @@ function initAddTasks() {
 	})();
 }
 
-// this function gets all values, creates the task and saves it in the backend
-
+/**
+ * Creates a new task with the provided data and saves it in the backend.
+ * Displays a success message and navigates to the board page.
+ */
 async function createTask() {
 	const { value: title } = document.getElementById('title');
 	const { value: description } = document.getElementById('description');
@@ -49,9 +61,9 @@ async function createTask() {
 	goToBoard();
 }
 
-
-// this function is for going to board after a task was created
-
+/**
+ * Navigates to the board page after a task is created.
+ */
 function goToBoard() {
 	setTimeout(function () {
 		window.location.href = "board.html";
@@ -59,8 +71,11 @@ function goToBoard() {
 }
 
 
-// this function checks which button is clicked
-
+/**
+ * Adds priority to the task based on the provided value.
+ * Updates the UI to reflect the selected priority.
+ * @param {number} prioValue - The priority value (0: urgent, 1: medium, 2: low).
+ */
 function addPrio(prioValue) {
 	resetPrio();
 	if (prioValue == 0) {
@@ -76,7 +91,9 @@ function addPrio(prioValue) {
 }
 
 
-// This function changes the color of the Urgent button
+/**
+ * Selects the "Urgent" priority and updates the UI.
+ */
 
 function selectUrgent() {
 	document.getElementById('urgent-btn').classList.add('urgent-aktiv');
@@ -85,7 +102,9 @@ function selectUrgent() {
 	prio = 1;
 }
 
-// This function changes the color of the Medium button
+/**
+ * Selects the "Medium" priority and updates the UI.
+ */
 
 function selectMedium() {
 	document.getElementById('medium-btn').classList.add('medium-aktiv');
@@ -95,7 +114,9 @@ function selectMedium() {
 }
 
 
-// This function changes the color of the Low button
+/**
+ * Selects the "Low" priority and updates the UI.
+ */
 
 function selectLow() {
 	document.getElementById('low-btn').classList.add('low-aktiv');
@@ -104,7 +125,9 @@ function selectLow() {
 }
 
 
-// This function is used to reset all prio buttons
+/**
+ * Resets the priority buttons to their default state.
+ */
 
 function resetPrio() {
 	document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
@@ -116,7 +139,9 @@ function resetPrio() {
 }
 
 
-// This function is used to reset the required alert
+/**
+ * Resets the required alert messages in the form.
+ */
 
 function resetRequired() {
 	for (let i = 0; i <= 5; i++) {
@@ -125,7 +150,9 @@ function resetRequired() {
 }
 
 
-// This function reset the complete form
+/**
+ * Resets the form to its default state.
+ */
 
 function resetForm() {
 	resetRequired();
@@ -142,7 +169,9 @@ function resetForm() {
 	composeSubTasks(subTasks);
 }
 
-// This function removes the selected Contact Checkboxes
+/**
+ * Removes the selected contact checkboxes.
+ */
 
 function removeContactCheckboxes() {
 	const contactCheckboxes = document.querySelectorAll('.contact__checkbox');
@@ -154,7 +183,9 @@ function removeContactCheckboxes() {
 	}
 }
 
-// This function load the categories in the drop down menu
+/**
+ * Loads the task categories from the backend and displays them in a dropdown menu.
+ */
 
 async function loadCategories() {
 	let list = document.querySelector('.category-list');
@@ -168,7 +199,9 @@ async function loadCategories() {
 	}
 }
 
-// This function loads the contacts 
+/**
+ * Toggles the display of the category dropdown menu.
+ */
 
 function categoryToggler() {
 	const computedStyle = getComputedStyle(document.querySelector('.category-list'));
@@ -183,7 +216,12 @@ function categoryToggler() {
 }
 
 
-// utility funtion for add task html view
+/**
+ * Generates the HTML markup for a task category.
+ * @param {string} category - The category name.
+ * @param {string} color - The category color.
+ * @returns {string} The HTML markup for the category.
+ */
 
 function categoryHTML(category, color) {
 	return /*html*/ `
@@ -193,7 +231,10 @@ function categoryHTML(category, color) {
         </li>`;
 }
 
-// This function adds a new field for adding a new category
+/**
+ * Generates the HTML markup for adding a new category.
+ * @returns {string} The HTML markup for adding a new category.
+ */
 
 function addCategoryHTML() {
 	return /*html*/ `
@@ -202,6 +243,10 @@ function addCategoryHTML() {
         </li>`;
 }
 
+/**
+ * Handles the creation of a new category.
+ */
+
 function newCategoryHandler() {
 	document.querySelector('.category-list').style.display = 'none';
 	document.querySelector('#select-task-category').style.display = 'none';
@@ -209,7 +254,9 @@ function newCategoryHandler() {
 	document.querySelector('.color-container').style.display = 'flex';
 }
 
-// This function is to cancel the new category
+/**
+ * Cancels the creation of a new category.
+ */
 
 function cancelNewCategory() {
 	document.querySelector('.new-category').style.display = 'none';
@@ -217,7 +264,9 @@ function cancelNewCategory() {
 	document.querySelector('#select-task-category').style.display = 'flex';
 }
 
-// This functions adds the new category
+/**
+ * Adds a new category with the provided name and color.
+ */
 
 async function addNewCategory() {
 	document.querySelector('.new-category').style.display = 'none';
@@ -240,7 +289,10 @@ async function addNewCategory() {
 	clearInputs();
 }
 
-// This function clears the inputs if a new category is created
+/**
+ * Clears the input fields and color selection for creating a new category.
+ */
+
 function clearInputs() {
 	document.querySelector('.new-catgory__input').value = '';
 	for (let i = 0; i < document.querySelectorAll('.color-container input[type="radio"]').length; i++) {
@@ -249,7 +301,12 @@ function clearInputs() {
 }
 
 
-// This function is for selecting a category and to display the selected category
+/**
+ * Selects a category and updates the UI to reflect the selected category.
+ * @param {string} category - The selected category name.
+ * @param {string} color - The selected category color.
+ */
+
 function selectCategory(category, color) {
 	document.querySelector('#selected-category').innerHTML = `<span class='selected-category-heading'>${category} <span class='color-dot' style="background-color: ${color}"></span></span>`;
 	document.querySelector('.category-list').style.display = 'none';
@@ -259,7 +316,9 @@ function selectCategory(category, color) {
 	resetSelectCategory();
 }
 
-// this function loads the contacts from the backend and displays it in a li element
+/**
+ * Loads the contacts from the backend and displays them as checkboxes.
+ */
 
 async function loadContacts() {
 	let contactsSingleQuote = await getItem('contacts');
@@ -278,7 +337,9 @@ async function loadContacts() {
 	}
 }
 
-// This function open the toggle menu for the contacts
+/**
+ * Handles the click event to display the list of assigned contacts.
+ */
 
 function assignToHandler() {
 	document.querySelector('.assigned-to__list').style.display = 'flex';
@@ -287,14 +348,20 @@ function assignToHandler() {
 }
 
 
-// This function is used to select a contact
+/**
+ * Handles the click event when selecting a contact from the assigned contacts list.
+ */
+
 function assignToHandlerInList() {
 	document.querySelector('.assigned-to__list').style.display = 'none';
 
 	document.querySelector('.assigned-to').style.display = 'flex';
 }
 
-// This function adds a new subtask
+/**
+ * Adds a new subtask to the task.
+ * Validates the input value and adds the subtask to the subTasks array.
+ */
 
 function addSubtask() {
 	const subTaskId = generateRandomId();
@@ -315,7 +382,10 @@ function addSubtask() {
 	}
 }
 
-// This function opens the Subtask editor
+/**
+ * Opens the subtask editor to add a new subtask.
+ * Resets the input value and displays the necessary elements.
+ */
 
 function openSubtaskEditor() {
 	document.querySelector('.subtask__input').value = '';
@@ -323,7 +393,11 @@ function openSubtaskEditor() {
 	document.querySelector('.subtask__actions').style.display = 'flex';
 	document.querySelector('.subtask__plus').style.display = 'none';
 }
-// This function closess the Subtask editor
+
+/**
+ * Closes the subtask editor without adding a new subtask.
+ * Hides the input field and actions, and shows the plus icon.
+ */
 
 function closeSubtaskEditor() {
 	document.querySelector('.subtask__input').style.display = 'none';
@@ -331,7 +405,11 @@ function closeSubtaskEditor() {
 	document.querySelector('.subtask__plus').style.display = 'block';
 }
 
-// This functions displays the added subtask
+/**
+ * Displays the added subtasks on the webpage.
+ * Creates HTML markup for each subtask and updates the subtasks-list element.
+ * @param {object[]} subTasks - An array of subtask objects.
+ */
 
 function composeSubTasks(subTasks) {
 	document.querySelector('.subtasks-list').style.display = 'block';
@@ -348,7 +426,10 @@ function composeSubTasks(subTasks) {
 	}
 }
 
-// This function is for removing the added subtasks
+/**
+ * Removes a subtask from the subTasks array and updates the displayed subtasks.
+ * @param {string} id - The ID of the subtask to be removed.
+ */
 
 function removeSubtask(id) {
 	const filteredSubtasks = subTasks.filter((sub) => sub.id !== id.toString());
@@ -356,15 +437,20 @@ function removeSubtask(id) {
 	composeSubTasks(filteredSubtasks);
 }
 
+/**
+ * Generates a random ID for a subtask.
+ * @returns {string} A random ID as a string.
+ */
 
-
-// This function creates a random id for the added subtask to remove it later on
 function generateRandomId() {
 	const random = Math.floor(Math.random() * 1000000);
 	return random.toString();
 }
 
-// This function creates the event listener for submit on enter button
+/**
+ * Adds an event listener to submit the subtask on pressing the Enter key.
+ */
+
 function submitOnEnter() {
 	let input = document.getElementById('subtask-input');
 	input.addEventListener("keypress", function (event) {
@@ -375,6 +461,11 @@ function submitOnEnter() {
 	});
 }
 
+/**
+ * Displays an alert message on the webpage.
+ * @param {string} message - The message to be displayed in the alert.
+ */
+
 function alertMessage(message) {
 	let taskCreatedAlert = document.getElementById('TaskCreatedAlert');
 	taskCreatedAlert.innerHTML = message;
@@ -384,7 +475,10 @@ function alertMessage(message) {
 	}, 2000);
 }
 
-// UTILITY FUNCTIONS
+/**
+ * Resets the styling of the select task category element.
+ * Removes the custom border and border-radius styles.
+ */
 
 function resetSelectCategory() {
 	document.querySelector('.select-task-category').style.borderBottom = '1px solid #a8a8a8';

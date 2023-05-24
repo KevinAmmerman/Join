@@ -337,7 +337,7 @@ async function loadContacts() {
 	document.querySelector('.assigned-to__list').innerHTML += `<li onclick="assignToHandlerInList()" class="assigned-to__list-action">
 	<div class="assigned-to__in-list">
 			<span>Select contact to assign</span>
-			<img src="/src/img/img_add_task/triangle.svg">
+			<img src="./src/img/img_add_task/triangle.svg">
 	</div>
 </li>`;
 
@@ -426,7 +426,7 @@ function composeSubTasks(subTasks) {
 	if (subTasks) {
 		for (let i = 0; i < subTasks.length; i++) {
 			document.querySelector('.subtasks-list').innerHTML += `
-		<li class='subtask'> <div class='subtask__title-box'><span class='subtask__square'></span>${subTasks[i].title}</div> <span class='subtask__remove' onclick='removeSubtask(${subTasks[i].id})'>X</span></li>
+		<li class='subtask'> <div class='subtask__title-box'><span class='subtask__square'></span>${subTasks[i].title}</div> <div class='subtask__remove' onclick='removeSubtask(${subTasks[i].id})'></div></li>
 		`;
 		}
 	} else {

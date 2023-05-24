@@ -455,14 +455,16 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .subtask__remove {
+	background-image: url(../img/img_board/delete.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
 	cursor: pointer;
-	display: block;
-	transition: all 0.4s;
-	font-weight: bold;
 }
-
-.subtask__remove:active {
-	transform: translateY(4px);
+.subtask__remove:hover {
+	transform: scale(1.1);
 }
 
 .x {

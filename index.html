@@ -7,20 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/login.css">
     <link rel="stylesheet" href="./src/css/fonts.css">
+    <link rel="stylesheet" href="./src/css/loginMobileCss.css">
     <link rel="shortcut icon" href="./src/favicon/logo_blue_join.png" type="image/x-icon">
     <script src="./src/scripts/storage.js"></script>
     <script src="./src/scripts/registerlogin.js"></script>
     <script src="./src/scripts/summary.js"></script>
     <script src="./src/scripts/dataBase.js"></script>
+    
     <title>Login</title>
     <link rel="icon" type="image/x-icon" href="/src/favicon/Capa 1.svg"> 
 </head>
 
 <body onload="logininit()">
-    <div class="join-Logo-Container">
-        <img src="./src/img/logo_blue_join.png" alt="Join-Blue-Logo">
+    
+    <div class="join-Logo-Container login-animation-container">
+        <img id="join-logo" src="./src/img/logo_blue_join.png" alt="Join-Blue-Logo">
+        <img id="joinLogoMobile" class="join-logo-mobile" src="./src/img/logo_blue_join.png" alt="Join-Blue-Logo">
         <div class="signIn-Container">Not a Join User? <a class="sign-Up-Button" href="register.html">Sign up</a></div>
     </div>
+    
     
     <div class="login-Container">
 
@@ -62,7 +67,7 @@
     <div class="message" id="msgBox"></div>
     </div>
 
-
+   
 </body>
 
 </html>

@@ -179,3 +179,5 @@ function saveUserNameInLocalStorage() {
     let userNameAsString = JSON.stringify(userName);
     localStorage.setItem('userName', userNameAsString);
 }
+
+

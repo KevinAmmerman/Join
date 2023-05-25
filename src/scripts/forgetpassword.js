@@ -11,15 +11,13 @@ async function loadUsers(){
 
 async function forgetPassword(){
     loadUsers();
-    document.getElementById('sendMail').classList.remove('dNone')
 
-    setTimeout(()=>{
-        document.getElementById('sendMail').classList.add('dNone')
-    },2500)
      setTimeout(() =>{
     window.location.href = 'resetpassword.html';
     
     },4000)
+
+    sendEmailAlert();
       }
 
 
@@ -39,11 +37,29 @@ function resetPassword() {
          setTimeout(() =>{
         window.location.href = 'index.html';
         
-        },4000)
+        },2000)
     } else{
         alert('Password is not identic')
     }        
 }
+
+function sendEmailAlert(){
+    let sendEmail = document.getElementById('sendMail');
+    let sendButton = document.getElementById('sendButton');
+    let passwordContinue = document.getElementById('confirmPasswordReset');  
+    
+    if(sendButton){
+     setTimeout(function(){
+         sendEmail.classList.remove('dNone')
+         passwordContinue.classList.remove('dNone');
+     },900)
+     setTimeout(function(){
+         sendEmail.classList.add('dNone');
+         passwordContinue.classList.add('dNone');
+     },200)
+     }
+ 
+ }
 
     
 

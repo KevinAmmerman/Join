@@ -171,8 +171,6 @@ body {
 
 }
 
-
-
 .SignUp-button-container {
     display: flex;
     justify-content: center;
@@ -358,6 +356,26 @@ body {
         width: 95%;
         padding: 0;
         transform: translateY(-100px);
+        animation: fade_in 1.5s;
+    }
+
+    @keyframes fade_in {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+            transform: translateY(-100px)
+        }
+    
+        40% {
+            opacity: 0;
+            transform: scale(0.5);
+            transform: translateY(-100px)
+        }   
+    
+        100% {
+            opacity: 1;
+            transform: scale(1);transform: translateY(-100px)
+            }
     }
 
     .sign-Up-Container {
@@ -419,8 +437,28 @@ body {
     .register-SignUp {
         width: 95%;
         padding: 0;
+        transform: translateY(-100px);
     }
-
+    
+    @keyframes fade_in {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+            transform: translateY(-100px)
+        }
+    
+        40% {
+            opacity: 0;
+            transform: scale(0.5);
+            transform: translateY(-100px)
+        }   
+    
+        100% {
+            opacity: 1;
+            transform: scale(1);transform: translateY(-100px)
+            }
+    }
+    
     .register-SignUp h1{
         font-size: 30px;
         margin-top: 15px;

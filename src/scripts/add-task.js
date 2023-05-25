@@ -213,15 +213,26 @@ async function loadCategories() {
  */
 
 function categoryToggler() {
-	const computedStyle = getComputedStyle(document.querySelector('.category-list'));
-	if (computedStyle.display === 'none') {
-		document.querySelector('.category-list').style.display = 'block';
-		document.querySelector('.select-task-category').style.borderBottom = '0px';
-		document.querySelector('.select-task-category').style.borderRadius = '10px 10px 0px 0px';
-	} else if (computedStyle.display === 'block') {
-		document.querySelector('.category-list').style.display = 'none';
-		resetSelectCategory()
+	const categoryList = document.querySelector('.category-list');
+	const selectCategory = document.querySelector('.select-task-category');
+
+	if (categoryList.style.display === 'none') {
+		categoryList.style.display = 'block';
+		selectCategory.style.borderBottom = '0px';
+		selectCategory.style.borderRadius = '10px 10px 0px 0px';
+	} else {
+		categoryList.style.display = 'none';
+		resetSelectCategory();
 	}
+}
+
+/**
+ * Closes the category toggler by hiding the category list and resetting the select category element.
+ */
+
+function closeCategoryToggler() {
+	document.querySelector('.category-list').style.display = 'none';
+	resetSelectCategory()
 }
 
 
@@ -309,7 +320,6 @@ function clearInputs() {
 	}
 }
 
-
 /**
  * Selects a category and updates the UI to reflect the selected category.
  * @param {string} category - The selected category name.
@@ -352,7 +362,6 @@ async function loadContacts() {
 
 function assignToHandler() {
 	document.querySelector('.assigned-to__list').style.display = 'flex';
-
 	document.querySelector('.assigned-to').style.display = 'none';
 }
 
@@ -363,7 +372,6 @@ function assignToHandler() {
 
 function assignToHandlerInList() {
 	document.querySelector('.assigned-to__list').style.display = 'none';
-
 	document.querySelector('.assigned-to').style.display = 'flex';
 }
 
@@ -493,13 +501,13 @@ function resetSelectCategory() {
 	document.querySelector('.select-task-category').style.borderRadius = '10px';
 }
 
+/**
+ * Sets the minimum value for all elements with the name "due-date" to today's date.
+ */
 
 function limitDueDate() {
 	let today = new Date().toISOString().split('T')[0];
 	for (let i = 0; i < document.getElementsByName("due-date").length; i++) {
 		document.getElementsByName("due-date")[i].setAttribute('min', today);
-	}
-
-	console.log(today);
+	}	
 }
-

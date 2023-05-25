@@ -1,4 +1,4 @@
-<div class="container" id="add-task-container">
+<div class="container" id="add-task-container" onclick="closeCategoryToggler(); assignToHandlerInList()"  >
     <h1 class="task-headline">Add Task</h1>
     <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeWindow('modalAddtask')">
     <div class="task-container">
@@ -21,13 +21,11 @@
             <!-- category input -->
             <div class="input-container">
                 <label for="select-task-category">Category</label>
-                <div class="toggle-menu">
+                <div class="toggle-menu" onclick="doNotClose(event)">
                     <div class="select-task-category" id="select-task-category">
                         <div id="selected-category">Select task category</div>
                         <img src="./src/img/img_add_task/triangle.svg">
-
                     </div>
-
                     <ul class="category-list">
 
                         <!-- categores to be loaded from server -->
@@ -73,7 +71,7 @@
                 <p class="required" id="required2"></p>
             </div>
             <!-- contact input -->
-            <div class="input-container mt-lg">
+            <div class="input-container mt-lg" onclick="doNotClose(event)">
                 <label>Assigned to</label>
                 <div class="toggle-menu" id="assigned-to-dropdown">
                     <div class="assigned-to" id="assigned-to">

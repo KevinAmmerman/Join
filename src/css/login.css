@@ -16,7 +16,7 @@ html {
 .join-Logo-Container {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 30px;
     align-items: center;
     margin-left: 80px;
     margin-right: 120px;
@@ -84,7 +84,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 600px;
     padding: 0;
     margin: 0;
 }

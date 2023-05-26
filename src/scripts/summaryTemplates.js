@@ -27,7 +27,7 @@ function generateSummaryTemplate() {
         </div>
 
         <div class="gray-line"></div>
-        <div>
+        <div class="deadline-container">
             <span class="date" id="summaryDate"></span>
             <span class="upcoming-Deadline"><p> Upcoming Deadline</p></span>
         </div>

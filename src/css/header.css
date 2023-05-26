@@ -65,10 +65,14 @@ body {
     display: none;
 }
 
+.logout-mobile-container{
+    display: none;
+}
+
 @media(max-width: 750px) {
     .headline {
         top: 105px;
-       padding-left: 0;
+        padding-left: 0;
         font-size: 16px;
         text-align: center;
         display: flex;
@@ -76,8 +80,42 @@ body {
         justify-content: center;
     }
     .question-mark{
-        display: block;
+        display: none;
     }
+
+    .logout{
+        display: none;
+    }
+
+    .logout-mobile-container{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 30px;
+        top: 90px;
+        background-color: #2A3647;
+        color: white;
+        font-size: 15px;
+        
+        border-radius: 20px 0px 20px 20px;
+    }
+
+    .logout-mobile{
+        cursor: pointer;
+    }
+    
+    .legal-notice-mobile{
+        padding-bottom: 10px !important;
+        padding-top: 15px !important;
+        padding: 30px;
+        cursor: pointer;
+    }
+
+    .logout-mobile{
+        padding-left: 30px;
+        margin-bottom: 20px;
+    }
+
 }
 
 @media(max-width: 750px) {

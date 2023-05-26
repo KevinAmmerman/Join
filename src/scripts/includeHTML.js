@@ -24,21 +24,28 @@ async function includeHTML() {
 
 
 function openLogout(){
+    document.getElementById('legalNoticeMobile').classList.remove('dNone');
+    document.getElementById('logoutMobile').classList.remove('dNone');
     document.getElementById('logout').classList.remove('dNone');
     setTimeout(() => {
         document.addEventListener('click', checkLogout);
     },0)
+}
 
+function legalNoticeMobile(){
+    document.getElementById('')
 
 }
 
 function closeLogout(){
+    document.getElementById('legalNoticeMobile').classList.add('dNone');
+    document.getElementById('logoutMobile').classList.add('dNone');
     document.getElementById('logout').classList.add('dNone');
     document.removeEventListener('click', checkLogout);
 }
 
 function checkLogout(event){
-    if(event.target.id !== 'logout'){
+    if(event.target.id !== 'logout', 'logoutMobile', 'legalNoticeMobile'){
         closeLogout();
 }
 }

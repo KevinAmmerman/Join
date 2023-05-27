@@ -1,6 +1,5 @@
 // global variables
-
-
+let isMobil;
 let prio = null;
 let subTasks = [];
 let selectedCategoryName = null;
@@ -40,7 +39,7 @@ function initAddTasks() {
  * Creates a new task with the provided data and saves it in the backend.11
  * Displays a success message and navigates to the board page.
  */
-async function createTask(mobil) {
+async function createTask() {
 	const { value: title } = document.getElementById('title');
 	const { value: description } = document.getElementById('description');
 	const { value: dueDate } = document.getElementById('due-date');
@@ -59,7 +58,7 @@ async function createTask(mobil) {
 	tasks.toDo.push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
-	if (mobil == 'mobil') {
+	if (isMobil == true) {
 		closeWindow('modalAddtask');
 		resetForm();
 		init();

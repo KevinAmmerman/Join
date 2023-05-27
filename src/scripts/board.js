@@ -436,6 +436,7 @@ async function moveTo(category) {
  */
 function openAddtaskSection() {
     document.getElementById('modalAddtask').classList.remove('dNone');
+    isMobil = true;
 }
 
 /**

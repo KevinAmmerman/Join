@@ -5,7 +5,7 @@ let prio = null;
 let subTasks = [];
 let selectedCategoryName = null;
 let selectedCatColor = null;
-const prios = ['Urgent', 'Medium', 'Low'];
+const prios = ['urgent', 'medium', 'low'];
 
 /**
  * Initializes the addition of a task.
@@ -83,68 +83,32 @@ function goToBoard() {
  * Updates the UI to reflect the selected priority.
  * @param {number} prioValue - The priority value (0: urgent, 1: medium, 2: low).
  */
-function addPrio(prioValue) {
+function addPrio(priorityValue) {
 	resetPrio();
-	if (prioValue == 0) {
-		selectUrgent();
-	}
-	if (prioValue == 1) {
-		selectMedium();
-	}
-	if (prioValue == 2) {
-		selectLow();
-	}
-
-}
-
-
-/**
- * Selects the "Urgent" priority and updates the UI.
- */
-
-function selectUrgent() {
-	document.getElementById('urgent-btn').classList.add('urgent-aktiv');
-	document.getElementById('urgent-image').style.filter =
-		'brightness(0) invert(1)';
-	prio = 1;
+	selectPriority(priorityValue);
 }
 
 /**
- * Selects the "Medium" priority and updates the UI.
+ * Selects a priority level and applies corresponding styles to the elements.
+ * @param {number} priorityValue - The selected priority value.
  */
-
-function selectMedium() {
-	document.getElementById('medium-btn').classList.add('medium-aktiv');
-	document.getElementById('medium-image').style.filter =
-		'brightness(0) invert(1)';
-	prio = 2;
+function selectPriority(priorityValue) {
+	document.getElementById(`${prios[priorityValue]}-btn`).classList.add(`${prios[priorityValue]}-aktiv`);
+	document.getElementById(`${prios[priorityValue]}-image`).style.filter = 'brightness(0) invert(1)';
+	prio = priorityValue + 1;
 }
 
-
-/**
- * Selects the "Low" priority and updates the UI.
- */
-
-function selectLow() {
-	document.getElementById('low-btn').classList.add('low-aktiv');
-	document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
-	prio = 3;
-}
-
-
-/**
- * Resets the priority buttons to their default state.
- */
+// /**
+//  * Resets the priority buttons to their default state.
+//  */
 
 function resetPrio() {
-	document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
-	document.getElementById('urgent-image').style.filter = '';
-	document.getElementById('medium-btn').classList.remove('medium-aktiv');
-	document.getElementById('medium-image').style.filter = '';
-	document.getElementById('low-btn').classList.remove('low-aktiv');
-	document.getElementById('low-image').style.filter = '';
+	for (let i = 0; i < prios.length; i++) {
+		const priority = prios[i];
+		document.getElementById(`${priority}-btn`).classList.remove(`${priority}-aktiv`);
+		document.getElementById(`${priority}-image`).style.filter = '';
+	}
 }
-
 
 /**
  * Resets the required alert messages in the form.
@@ -155,7 +119,6 @@ function resetRequired() {
 		document.getElementById(`required${i}`).innerText = '';
 	}
 }
-
 
 /**
  * Resets the form to its default state.
@@ -171,7 +134,7 @@ function resetForm() {
 	document.querySelector('.assigned-to__list').style.display = 'none';
 	removeContactCheckboxes();
 	document.getElementById('due-date').value = '';
-	addPrio(null);
+	resetPrio();
 	subTasks = [];
 	composeSubTasks(subTasks);
 	closeSubtaskEditor();
@@ -509,5 +472,5 @@ function limitDueDate() {
 	let today = new Date().toISOString().split('T')[0];
 	for (let i = 0; i < document.getElementsByName("due-date").length; i++) {
 		document.getElementsByName("due-date")[i].setAttribute('min', today);
-	}	
+	}
 }

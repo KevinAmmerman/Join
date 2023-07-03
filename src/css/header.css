@@ -14,7 +14,7 @@ body {
     background: rgb(255, 255, 255);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     font-size: 21px;
-    z-index: 2;
+    z-index: 21;
 }
 
 .headline {
@@ -40,13 +40,11 @@ body {
     display: none;
 }
 
-.guestLogin{
+.guestLogin {
     cursor: pointer;
 }
 
-
-
-.logout{
+.logout {
     position: absolute;
     top: 60px;
     right: 40px;
@@ -54,10 +52,9 @@ body {
     cursor: pointer;
 }
 
-.dNone{
+.dNone {
     display: none;
 }
-
 
 .headline-logo {
     height: 39px;
@@ -65,7 +62,7 @@ body {
     display: none;
 }
 
-.logout-mobile-container{
+.logout-mobile-container {
     display: none;
 }
 
@@ -79,15 +76,16 @@ body {
         align-items: center;
         justify-content: center;
     }
-    .question-mark{
+
+    .question-mark {
         display: none;
     }
 
-    .logout{
+    .logout {
         display: none;
     }
 
-    .logout-mobile-container{
+    .logout-mobile-container {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -96,45 +94,30 @@ body {
         background-color: #2A3647;
         color: white;
         font-size: 15px;
-        
+
         border-radius: 20px 0px 20px 20px;
     }
 
-    .logout-mobile{
+    .logout-mobile {
         cursor: pointer;
     }
-    
-    .legal-notice-mobile{
+
+    .legal-notice-mobile {
         padding-bottom: 10px !important;
         padding-top: 15px !important;
         padding: 30px;
         cursor: pointer;
     }
 
-    .logout-mobile{
+    .logout-mobile {
         padding-left: 30px;
         margin-bottom: 20px;
     }
-
 }
 
 @media(max-width: 750px) {
 
-    .headline > p {
+    .headline>p {
         display: none;
     }
 }
-
-
- /*@media(max-width: 600px) {      
-    .headline {
-        top:105px;        
-        font-size: 14px;
-        padding-left:100px;
-    }
-
-    .headline-logo{
-        display: block;
-    }
-}
-

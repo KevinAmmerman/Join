@@ -46,7 +46,6 @@ function summaryGreetingAnimation(){
         setTimeout(() => {
             document.getElementById('summaryWelcomeResponsive').classList.add('d-none');
             document.getElementById('summaryBody').classList.remove('summary-hidden');
-           
         }, 1000);
     }, 1000);
 }
@@ -121,9 +120,7 @@ function filterForPrio() {
         const catergory = categories[i];
         for (let j = 0; j < tasks[catergory].length; j++) {
             const prio = tasks[catergory][j].prio;
-            if (prio == 1) {
-                allPrioOne += prio;
-            }
+            if (prio == 1) allPrioOne += prio;
         }
     }
     document.getElementById('summaryUrgentCount').innerHTML = allPrioOne;

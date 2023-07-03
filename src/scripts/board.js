@@ -290,7 +290,6 @@ function addSubtask(column, i) {
     } else {
         alert('Type in a titel to add a subtask')
     }
-
 }
 
 /**

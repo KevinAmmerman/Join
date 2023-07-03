@@ -1,8 +1,9 @@
-<div class="container" id="add-task-container" onclick="closeCategoryToggler(); assignToHandlerInList()"  >
+<div class="container" id="add-task-container" onclick="closeCategoryToggler(); assignToHandlerInList()">
     <h1 class="task-headline">Add Task</h1>
-    <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeWindow('modalAddtask')">
+    <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn"
+        onclick="closeWindow('modalAddtask')">
     <div class="task-container">
-        
+
         <div class="task-left">
             <!-- tittle input -->
             <div class="input-container">
@@ -98,7 +99,7 @@
             <div class="input-container">
                 <label>Due date</label>
                 <div class="input-field due-date">
-                    <input onclick="limitDueDate()" id="due-date" name="due-date"  type="date" placeholder="dd/mm/yyyy">
+                    <input onclick="limitDueDate()" id="due-date" name="due-date" type="date" placeholder="dd/mm/yyyy">
                 </div>
                 <p class="required" id="required4"></p>
             </div>
@@ -119,33 +120,31 @@
             <div class="input-container">
                 <label for="subtask">Subtasks</label>
                 <div class="input-field" id="subtask">
-                    <input onclick="openSubtaskEditor()"   id="subtask-input" autofocus class="subtask__input" type="text"
-                        placeholder="Add new subtask" style="display: inline;" >
-                    <img   id="subtask-plus" class="subtask__plus" src="
+                    <input onclick="openSubtaskEditor()" id="subtask-input" autofocus class="subtask__input" type="text"
+                        placeholder="Add new subtask" style="display: inline;">
+                    <img id="subtask-plus" class="subtask__plus" src="
                             ./src/img/img_add_task/plus_dark.svg">
                     <div class="subtask__actions">
-                        <img onclick="closeSubtaskEditor()" id="subtask-close" class="subtask__close"  src="
+                        <img onclick="closeSubtaskEditor()" id="subtask-close" class="subtask__close" src="
                                 ./src/img/img_add_task/close.svg">
 
-                        <img id="subtask-check" onload="submitOnEnter()" onclick="addSubtaskAddTask()" src=" ./src/img/img_add_task/check.svg"
-                            class="subtask__check">
+                        <img id="subtask-check" onload="submitOnEnter()" onclick="addSubtaskAddTask()"
+                            src=" ./src/img/img_add_task/check.svg" class="subtask__check">
                     </div>
                 </div>
-
                 <ul class="subtasks-list">
-
                 </ul>
             </div>
+            <!-- Clear and Create Buttons -->
+            <div class="add-task-buttons">
+                <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear
+                        x</span></button>
+                <button onclick="createTask('mobil')" type="submit" class="dark-btn create-btn">
+                    <span>Create Task</span>
+                    <img src="./src/img/img_add_task/hook.png">
+                </button>
+            </div>
         </div>
-    </div>
-    <!-- Clear and Create Buttons -->
-    <div class="add-task-buttons">
-        <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear
-                x</span></button>
-        <button onclick="createTask('mobil')" type="submit" class="dark-btn create-btn">
-            <span>Create Task</span>
-            <img src="./src/img/img_add_task/hook.png">
-        </button>
     </div>
 </div>
 <div id="TaskCreatedAlert" class="coloredBtn dNone"></div>

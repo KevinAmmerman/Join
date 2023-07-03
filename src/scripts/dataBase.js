@@ -45,13 +45,11 @@ let filteredTasks = {
     done: []
 };
 let dropClicked = false;
+let users = [];
 
-
- let users = [];
-
-guestUser =[
+guestUser = [
     {
-        guestName:'Guest',
+        guestName: 'Guest',
         email: 'guest@guest.com',
         password: '123456',
     }

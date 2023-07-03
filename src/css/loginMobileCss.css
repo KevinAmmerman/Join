@@ -27,17 +27,14 @@
         justify-content: center;
         transform: translateY(-50px);
         font-size: 20px;
-        
     }
 
-    
-
-    .join-logo-mobile{
+    .join-logo-mobile {
         margin-left: 20px;
         margin-top: 20px;
     }
 
-    .signIn-Container-mobile{
+    .signIn-Container-mobile {
         display: none;
     }
 }
@@ -46,7 +43,6 @@
     body {
         height: 90%;
     }
-
 
     .join-Logo-Container {
         margin: 50px;
@@ -60,7 +56,6 @@
     .signIn-Container {
         font-size: 15px;
     }
-
 
     .message-container {
         width: 100%;
@@ -175,7 +170,7 @@
     }
 }
 
-@media(max-width:820px){
+@media(max-width:820px) {
     .message-container {
         width: 100%;
         transform: translateY(530px);
@@ -185,10 +180,10 @@
 }
 
 @media(max-width:769px) {
-    .join-logo-mobile{
+    .join-logo-mobile {
         position: absolute;
-        top:0;
-        left:0;
+        top: 0;
+        left: 0;
         z-index: 5;
         right: 0;
         bottom: 0;
@@ -196,45 +191,15 @@
         animation: fadeOutJoinLogo 1.5s ease-in-out;
     }
 
-    .join-logo-mobile img{
+    .join-logo-mobile img {
         display: flex;
         width: 100px;
         height: 100px;
         object-fit: contain;
-        
-            
+
+
     }
 
- /*   .joinLogoAnimation {
-        animation: fadeOutJoinLogo 1.5s;
-    }
-
-    @keyframes fadeOutJoinLogo {
-        0% {
-            transform: translateX(500px) translateY(400px) scale(3);
-        }
-
-        35% {
-            transform: translateX(500px) translateY() scale(3)
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    .login-animation-container{
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        z-index: 99;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #2A3647;
-        
-    }
-*/
     .message-container {
         width: 100%;
         transform: translateY(420px);
@@ -555,7 +520,6 @@
 
         100% {
             transform: scale(1);
-
         }
     }
 
@@ -588,7 +552,7 @@
         }
     }
 
-    
+
 
     .email-input {
         background-image: url('/src/img/email.png');
@@ -641,8 +605,6 @@
         margin: 0;
     }
 
-
-
     .forget-Password-Container {
         margin-bottom: 15px;
         margin-left: 5px;
@@ -650,10 +612,9 @@
 }
 
 @media(max-width: 376px) {
-    .signIn-Container{
+    .signIn-Container {
         display: none;
     }
-    
 
     .join-Logo-Container {
         margin-left: 10px;
@@ -816,16 +777,14 @@
             transform: translateY(494px);
         }
     }
-
-
 }
 
 @media(max-width:360px) {
     .message {
         font-size: 15px;
-     }
+    }
 
-     .email-input {
+    .email-input {
         background-image: url('/src/img/email.png');
         background-repeat: no-repeat;
         background-position: 280px;
@@ -851,7 +810,7 @@
     }
 }
 
-@media(max-width: 340px){
+@media(max-width: 340px) {
     .email-input {
         background-image: url('/src/img/email.png');
         background-repeat: no-repeat;
@@ -878,7 +837,7 @@
     }
 }
 
-@media(max-width:330px){
+@media(max-width:330px) {
     .email-input {
         background-image: url('/src/img/email.png');
         background-repeat: no-repeat;
@@ -935,7 +894,7 @@
         width: 85%;
         transform: translateY(50px);
         padding: 15px;
-    } 
+    }
 
     .login-password-input-area {
         width: 90%;
@@ -1006,13 +965,13 @@
     }
 }
 
-@media(max-width: 281px){
+@media(max-width: 281px) {
     .message {
         transform: translateY(550px);
         font-size: 15px;
     }
 
-     .login-password-content {
+    .login-password-content {
         width: 85%;
         transform: translateY(50px);
         padding: 15px;
@@ -1039,6 +998,4 @@
             transform: translateY(50px);
         }
     }
-    
-    
 }

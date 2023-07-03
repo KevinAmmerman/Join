@@ -54,7 +54,14 @@ async function createTask() {
 		date: dueDate,
 		subtask: subTasks
 	};
+	createNewTask(newTask);
+}
 
+/**
+ * Creates a new task.
+ * @param {string} newTask - The new task to be added.
+ */
+async function createNewTask(newTask) {
 	tasks.toDo.push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
@@ -71,11 +78,8 @@ async function createTask() {
  * Navigates to the board page after a task is created.
  */
 function goToBoard() {
-	setTimeout(function () {
-		window.location.href = "board.html";
-	}, 2000)
+	setTimeout(() => window.location.href = "board.html", 2000)
 }
-
 
 /**
  * Adds priority to the task based on the provided value.
@@ -137,7 +141,6 @@ function resetForm() {
 	subTasks = [];
 	composeSubTasks(subTasks);
 	closeSubtaskEditor();
-
 }
 
 /**
@@ -161,7 +164,6 @@ function removeContactCheckboxes() {
 async function loadCategories() {
 	let list = document.querySelector('.category-list');
 	list.innerHTML = '';
-
 	list.innerHTML += addCategoryHTML();
 	for (let i = 0; i < categories.length; i++) {
 		let category = categories[i]['name'];
@@ -177,7 +179,6 @@ async function loadCategories() {
 function categoryToggler() {
 	const categoryList = document.querySelector('.category-list');
 	const selectCategory = document.querySelector('.select-task-category');
-
 	if (categoryList.style.display === 'none') {
 		categoryList.style.display = 'block';
 		selectCategory.style.borderBottom = '0px';
@@ -194,35 +195,7 @@ function categoryToggler() {
 
 function closeCategoryToggler() {
 	document.querySelector('.category-list').style.display = 'none';
-	resetSelectCategory()
-}
-
-
-/**
- * Generates the HTML markup for a task category.
- * @param {string} category - The category name.
- * @param {string} color - The category color.
- * @returns {string} The HTML markup for the category.
- */
-
-function categoryHTML(category, color) {
-	return /*html*/ `
-        <li class='category-task' onclick="selectCategory('${category}', '${color}')">
-            <div>${category}</div>
-            <div class="color-dot ${color}" style="background-color: ${color}"></div>
-        </li>`;
-}
-
-/**
- * Generates the HTML markup for adding a new category.
- * @returns {string} The HTML markup for adding a new category.
- */
-
-function addCategoryHTML() {
-	return /*html*/ `
-        <li class='category-task' onclick="newCategoryHandler()">
-            <div>New Category</div>
-        </li>`;
+	resetSelectCategory();
 }
 
 /**
@@ -289,9 +262,8 @@ function clearInputs() {
  */
 
 function selectCategory(category, color) {
-	document.querySelector('#selected-category').innerHTML = `<span class='selected-category-heading'>${category} <span class='color-dot' style="background-color: ${color}"></span></span>`;
+	document.querySelector('#selected-category').innerHTML = selectedCategoryHTML(category, color);
 	document.querySelector('.category-list').style.display = 'none';
-
 	selectedCatColor = color;
 	selectedCategoryName = category;
 	resetSelectCategory();
@@ -304,17 +276,10 @@ function selectCategory(category, color) {
 async function loadContacts() {
 	let contactsSingleQuote = await getItem('contacts');
 	contacts = JSON.parse(contactsSingleQuote.replace(/'/g, '"'));
-
 	document.querySelector('.assigned-to__list').innerHTML = '';
-	document.querySelector('.assigned-to__list').innerHTML += `<li onclick="assignToHandlerInList()" class="assigned-to__list-action">
-	<div class="assigned-to__in-list">
-			<span>Select contact to assign</span>
-			<img src="./src/img/img_add_task/triangle.svg">
-	</div>
-</li>`;
-
+	document.querySelector('.assigned-to__list').innerHTML += contactListHTML();
 	for (let i = 0; i < contacts.length; i++) {
-		document.querySelector('.assigned-to__list').innerHTML += `<li class="contact"><label>${contacts[i].name}</label> <input value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
+		document.querySelector('.assigned-to__list').innerHTML += contactListElementsHTML(contacts, i);
 	}
 }
 
@@ -392,12 +357,9 @@ function closeSubtaskEditor() {
 function composeSubTasks(subTasks) {
 	document.querySelector('.subtasks-list').style.display = 'block';
 	document.querySelector('.subtasks-list').innerHTML = '';
-
 	if (subTasks) {
 		for (let i = 0; i < subTasks.length; i++) {
-			document.querySelector('.subtasks-list').innerHTML += `
-		<li class='subtask'> <div class='subtask__title-box'><span class='subtask__square'></span>${subTasks[i].title}</div> <div class='subtask__remove' onclick='removeSubtask(${subTasks[i].id})'></div></li>
-		`;
+			document.querySelector('.subtasks-list').innerHTML += subTaskHTML(subTasks, i);
 		}
 	} else {
 		document.querySelector('.subtasks-list').innerHTML = '';
@@ -448,9 +410,7 @@ function alertMessage(message) {
 	let taskCreatedAlert = document.getElementById('TaskCreatedAlert');
 	taskCreatedAlert.innerHTML = message;
 	taskCreatedAlert.classList.remove('dNone')
-	setTimeout(function () {
-		taskCreatedAlert.classList.add('dNone')
-	}, 2000);
+	setTimeout(() => taskCreatedAlert.classList.add('dNone'), 2000);
 }
 
 /**

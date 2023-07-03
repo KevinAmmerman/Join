@@ -124,19 +124,13 @@ async function messageSignIn() {
     await loadUser();
     const urlParams = new URLSearchParams(window.location.search);
     const msg = urlParams.get('msg');
-    if (msgBox) {
-        msgBox.innerHTML = msg;
-    }
+    if (msgBox) msgBox.innerHTML = msg;
     const alreadyShown = await getItem('users', JSON.stringify(users));
     if (!alreadyShown && !user.length) {
         await setItem('alreadyShown', true)
-        setTimeout(() => {
-            msgBox.classList.remove('dNone');
-        }, 2000);
+        setTimeout(() => msgBox.classList.remove('dNone'), 2000);
     }
-    setTimeout(() => {
-        msgBox.classList.add('dNone');
-    }, 5000);
+    setTimeout(() => msgBox.classList.add('dNone'), 5000);
 }
 
 /**
@@ -148,11 +142,7 @@ async function register() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    users.push({
-        names: name.value,
-        email: email.value,
-        password: password.value,
-    });
+    addUser(name, email, password);
     window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
     await setItem('users', JSON.stringify(users));
     const registerForm = document.getElementById('register-form');
@@ -160,6 +150,14 @@ async function register() {
         event.preventDefault();
     }
     messageSignIn();
+}
+
+function addUser(name, email, password) {
+    users.push({
+        names: name.value,
+        email: email.value,
+        password: password.value,
+    });
 }
 
 /**
@@ -179,5 +177,3 @@ function saveUserNameInLocalStorage() {
     let userNameAsString = JSON.stringify(userName);
     localStorage.setItem('userName', userNameAsString);
 }
-
-

@@ -1,6 +1,5 @@
 h1 {
 	font-size: 61px;
-
 }
 
 .join-menu {
@@ -13,7 +12,7 @@ h1 {
 	flex-direction: column;
 	align-items: center;
 	margin-top: 120px;
-	margin-bottom: 120px;
+	margin-bottom: 80px;
 }
 
 .input-container {
@@ -42,7 +41,7 @@ label {
 
 .input-field input {
 	width: 80%;
-	padding-left: 6px;
+	padding: 0 12px 0 15px;
 	font-size: 20px;
 	border: 0;
 	background-color: transparent;
@@ -53,7 +52,7 @@ label {
 /* textarea */
 
 .textarea-field {
-	padding-left: 6px;
+	padding: 6px 0 0 15px;
 	resize: vertical;
 	width: 310px;
 	border: 1px solid #a8a8a8;
@@ -88,8 +87,7 @@ textarea:focus {
 	display: none;
 	margin: 0;
 	margin-top: -10px;
-
-	padding: 10px 6px;
+	padding: 10px 0;
 	border-radius: 0 0 10px 10px;
 	border: 1px solid #a8a8a8;
 	border-top: 0px;
@@ -119,7 +117,7 @@ textarea:focus {
 	border: 1px solid #a8a8a8;
 	border-radius: 10px;
 	height: 41px;
-	padding: 0px 6px;
+	padding: 0px 15px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -147,10 +145,10 @@ textarea:focus {
 }
 
 .category-task {
-	padding-right: 6px;
-	padding-bottom: 6px;
+	padding: 3px 15px;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	gap: 6px;
 }
 
@@ -162,9 +160,9 @@ textarea:focus {
 }
 
 /* toggle Menu Contact */
+
 .contact {
-	padding: 6px 0px;
-	padding-right: 6px;
+	padding: 6px 15px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -176,6 +174,7 @@ textarea:focus {
 }
 
 /* NEW CATEGORY STYLE */
+
 .new-category {
 	display: none;
 }
@@ -184,6 +183,8 @@ textarea:focus {
 	border: none;
 	background-color: transparent;
 	width: 100%;
+	height: 100%;
+	font-size: 20px;
 }
 
 .new-category__actions {
@@ -203,20 +204,20 @@ textarea:focus {
 
 .vertical {
 	border-left: 2px solid black;
-	/* height: 100%; */
 	height: 20px;
 	margin: 0 10px;
 }
 
 .new-category__button--close {
 	background: url('../img/img_add_task/close.svg');
-
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .new-category__button--check {
 	background: url('../img/img_add_task/check.svg');
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .color-container {
@@ -292,11 +293,10 @@ textarea:focus {
 	border: 1px solid #a8a8a8;
 	border-radius: 10px;
 	height: auto;
-	padding: 0px 6px;
+	padding-bottom: 10px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	gap: 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	display: none;
@@ -307,7 +307,7 @@ textarea:focus {
 }
 
 .assigned-to__list li {
-	width: 100%;
+	width: 93%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -318,18 +318,18 @@ textarea:focus {
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+	padding: 7px 0;
 }
 
 .contact {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
 }
 
 /* dueDate */
+
 input[type='date']::-webkit-calendar-picker-indicator {
-	/* background: url('../img/calender.svg'); */
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
@@ -340,10 +340,12 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 /* prio Button */
+
 .prio-btn {
 	display: flex;
 	width: 320px;
 	height: 40px;
+	gap: 3px;
 }
 
 .prio-btn button:hover {
@@ -401,7 +403,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 #subtask-plus {
-	margin-right: 6px;
+	margin-right: 12px;
 	cursor: pointer;
 	margin-left: auto;
 }
@@ -476,6 +478,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 /* Clear and Add_Task Button */
+
 .clear-btn {
 	width: 100px;
 	font-size: 20px;
@@ -490,12 +493,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .add-task-buttons {
-	width: 322;
+	width: 325;
 	display: flex;
 	gap: 20px;
+	margin-top: 20px;
 }
 
 /* Color Circles Category */
+
 .color-circle {
 	height: 15px;
 	width: 15px;
@@ -584,6 +589,44 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	cursor: pointer;
 }
 
+.dark-btn {
+	border: 0;
+	background-color: rgb(42, 54, 71);
+	color: white;
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+	transition: 100ms ease-in-out;
+	cursor: pointer;
+}
+
+.dark-btn:hover {
+	background-color: rgb(68, 182, 230);
+	-webkit-box-shadow: 0px 10px 9px -3px #979797;
+	box-shadow: 0px 5px 9px -3px #979797;
+}
+
+.dark-btn:active {
+	background-color: #091931;
+}
+
+.transparent-btn {
+	background-color: rgba(255, 255, 255, 0);
+	border: 2px solid rgb(42, 54, 71);
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+	transition: 100ms ease-in-out;
+	cursor: pointer;
+}
+
+.transparent-btn:hover {
+	border: 2px solid rgb(41, 171, 226);
+	color: rgb(41, 171, 226);
+	-webkit-box-shadow: 0px 10px 9px -3px #979797;
+	box-shadow: 0px 5px 9px -3px #979797;
+}
+
 @media (min-width: 750px) {
 	.join-menu {
 		visibility: visible;
@@ -602,12 +645,18 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	}
 }
 
+@media (max-width: 750px) {
+	.container {
+		margin-top: 80px;
+		margin-bottom: 120px;
+	}
+}
+
 @media (min-width: 1200px) {
 	.add-task-buttons {
-		width: 850px;
 		display: flex;
 		justify-content: flex-end;
-		gap: 20px;
+		margin-top: 85px;
 	}
 
 	.toggle-menu,
@@ -621,7 +670,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	}
 
 	.textarea-field {
-		width: 390px;
+		width: 385px;
 	}
 
 	.textarea-field textarea {
@@ -663,46 +712,4 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		flex-direction: column;
 		padding-left: 20px;
 	}
-}
-
-.dark-btn {
-	border: 0;
-	background-color: rgb(42, 54, 71);
-	color: white;
-	width: 150px;
-	height: 50px;
-	border-radius: 10px;
-	transition: 100ms ease-in-out;
-	cursor: pointer;
-}
-
-.dark-btn:hover {
-	background-color: rgb(68, 182, 230);
-	-webkit-box-shadow: 0px 10px 9px -3px #979797;
-	box-shadow: 0px 5px 9px -3px #979797;
-}
-
-.dark-btn:active {
-	background-color: #091931;
-}
-
-.transparent-btn {
-	background-color: rgba(255, 255, 255, 0);
-	border: 2px solid rgb(42, 54, 71);
-	width: 150px;
-	height: 50px;
-	border-radius: 10px;
-	transition: 100ms ease-in-out;
-	cursor: pointer;
-}
-
-.transparent-btn:hover {
-	border: 2px solid rgb(41, 171, 226);
-	color: rgb(41, 171, 226);
-	-webkit-box-shadow: 0px 10px 9px -3px #979797;
-	box-shadow: 0px 5px 9px -3px #979797;
-}
-
-.mt-lg {
-	margin-top: 100px;
 }

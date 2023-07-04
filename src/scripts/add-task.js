@@ -1,5 +1,6 @@
 // global variables
 let isMobil;
+let inBoard;
 let prio = null;
 let subTasks = [];
 let selectedCategoryName = null;
@@ -11,6 +12,7 @@ const prios = ['urgent', 'medium', 'low'];
  * Calls the "loadUsers" function.
  */
 async function initAddTask() {
+	await includeHTML();
 	loadUsers();
 }
 
@@ -33,6 +35,7 @@ function initAddTasks() {
 		loadCategories();
 		loadContacts();
 	})();
+	if (!inBoard) addActiveToMenu('addTaskLink');
 }
 
 /**

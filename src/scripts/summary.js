@@ -19,6 +19,7 @@ async function getSummary() {
     renderAmountOfTasks();
     filterForPrio();
     mostUrgent();
+    addActiveToMenu('summaryLink');
 }
 
 /**
@@ -162,8 +163,12 @@ function convertToDate(upcomingDeadline) {
     let year = Math.floor(upcomingDeadline / 10000);
     let month = Math.floor((upcomingDeadline % 10000) / 100) - 1;
     let day = upcomingDeadline % 100;
-    let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    document.getElementById('summaryDate').innerHTML = date;
+    if (year == Infinity) {
+        document.getElementById('summaryDate').innerHTML = 'None';
+    } else {
+        let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        document.getElementById('summaryDate').innerHTML = date;
+    }
 }
 
 /**

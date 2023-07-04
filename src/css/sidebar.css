@@ -39,10 +39,16 @@ body {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .menu-icon-text:hover {
-    background-color: rgb(9, 25, 49);
+    background-color: #222b39;
+    /* border-left: 5px solid #FFFFFF; */
+}
+
+.activeLink {
+    border-left: 5px solid #FFFFFF;
 }
 
 

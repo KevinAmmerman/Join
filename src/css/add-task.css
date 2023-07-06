@@ -168,6 +168,10 @@ textarea:focus {
 	justify-content: space-between;
 }
 
+.contact > label {
+	cursor: pointer;
+}
+
 .category-task:hover,
 .contact:hover {
 	background-color: rgb(209, 209, 209);
@@ -532,7 +536,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 .required {
 	margin-top: 4px;
-	margin-bottom: px;
 	color: rgb(251, 129, 144);
 }
 
@@ -642,13 +645,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		display: flex;
 		justify-items: center;
 		align-items: center;
+		margin-top: 80px;
+		margin-bottom: 120px;
 	}
 }
 
 @media (max-width: 750px) {
 	.container {
-		margin-top: 80px;
-		margin-bottom: 120px;
+		
 	}
 }
 

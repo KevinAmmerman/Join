@@ -25,7 +25,7 @@ function contactListHTML() {
 }
 
 function contactListElementsHTML(contacts, i) {
-    return `<li class="contact"><label>${contacts[i].name}</label> <input value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
+    return `<li onclick="doNotClose(event); checkbox(${i})" class="contact"><label>${contacts[i].name}</label> <input id="checkbox${i}" value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
 }
 
 

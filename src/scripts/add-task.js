@@ -57,7 +57,15 @@ async function createTask() {
 		date: dueDate,
 		subtask: subTasks
 	};
+	taskFormValidation(newTask);
 	createNewTask(newTask);
+}
+
+
+function taskFormValidation(newTask) {
+	if (newTask.category.name === null || newTask.title.length < 0 || newTask.description.length < 0) {
+		alert('Please fill out required fields');
+	}
 }
 
 /**
@@ -284,6 +292,15 @@ async function loadContacts() {
 	for (let i = 0; i < contacts.length; i++) {
 		document.querySelector('.assigned-to__list').innerHTML += contactListElementsHTML(contacts, i);
 	}
+}
+
+/**
+ * Toggles the checked state of a checkbox based on its ID.
+ * @param {number} i - The index of the checkbox.
+ */
+function checkbox(i) {
+	let checkbox = document.getElementById(`checkbox${i}`);
+	checkbox.checked = !checkbox.checked;
 }
 
 /**

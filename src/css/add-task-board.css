@@ -15,11 +15,21 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.addTaskForm {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .input-container {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 	margin-bottom: 6px;
+}
+
+.task-headline {
+	margin: 0 0 25px 0;
 }
 
 /* inputfield */
@@ -498,7 +508,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	gap: 20px;
 	display: flex;
 	justify-content: flex-end;
-	margin-top: 80px;
+	margin-top: 60px;
 }
 
 /* Color Circles Category */
@@ -595,12 +605,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	flex-direction: column;
 	border-right: 1px solid rgb(219, 219, 219);
 	padding-right: 20px;
+	gap: 20px;
 }
 
 .task-right {
 	display: flex;
 	flex-direction: column;
 	padding-left: 20px;
+	gap: 20px;
 }
 
 .task-container {
@@ -683,6 +695,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 	.task-right {
 		padding-left: 0px !important;
+		padding-top: 20px;
 	}
 
 	h1.task-headline {
@@ -705,8 +718,21 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		margin-top: 25px;
 	}
 
+	.add-task-buttons {
+		margin-top: 0;
+	}
+
 	.input-container {
 		gap: 0;
+	}
+
+	.input-field {
+		width: 320px;
+	}
+
+	.textarea-field {
+		width: 320px;
+		box-sizing: border-box;
 	}
 
 	.input-container > label {

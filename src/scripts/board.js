@@ -449,6 +449,7 @@ function openAddtaskSection() {
  */
 function moveToMobil(column, i) {
     renderMoveToMobil(column, i)
+    // generateMoveToOptions(column, i);
 }
 
 /**

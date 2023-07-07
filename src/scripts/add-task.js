@@ -3,7 +3,7 @@ let isMobil;
 let inBoard;
 let prio = null;
 let subTasks = [];
-let selectedCategoryName = null;
+let selectedCategoryName = 'None';
 let selectedCatColor = null;
 const prios = ['urgent', 'medium', 'low'];
 
@@ -57,16 +57,9 @@ async function createTask() {
 		date: dueDate,
 		subtask: subTasks
 	};
-	taskFormValidation(newTask);
 	createNewTask(newTask);
 }
 
-
-function taskFormValidation(newTask) {
-	if (newTask.category.name === null || newTask.title.length < 0 || newTask.description.length < 0) {
-		alert('Please fill out required fields');
-	}
-}
 
 /**
  * Creates a new task.
@@ -89,7 +82,7 @@ async function createNewTask(newTask) {
  * Navigates to the board page after a task is created.
  */
 function goToBoard() {
-	setTimeout(() => window.location.href = "board.html", 2000)
+	setTimeout(() => window.location.href = "board.html", 1500)
 }
 
 /**
@@ -125,21 +118,10 @@ function resetPrio() {
 }
 
 /**
- * Resets the required alert messages in the form.
- */
-
-function resetRequired() {
-	for (let i = 0; i <= 5; i++) {
-		document.getElementById(`required${i}`).innerText = '';
-	}
-}
-
-/**
  * Resets the form to its default state.
  */
 
 function resetForm() {
-	resetRequired();
 	document.getElementById('title').value = '';
 	document.getElementById('description').value = '';
 	document.getElementById('selected-category').innerHTML = 'Select task category';
@@ -173,6 +155,7 @@ function removeContactCheckboxes() {
  */
 
 async function loadCategories() {
+	categories = JSON.parse(await getItem('categoriess'));
 	let list = document.querySelector('.category-list');
 	list.innerHTML = '';
 	list.innerHTML += addCategoryHTML();
@@ -251,7 +234,9 @@ async function addNewCategory() {
 		color: selectedColor,
 	};
 	categories.push(newCategory);
+	await setItem('categoriess', JSON.stringify(categories));
 	loadCategories();
+	selectCategory(categoryName, selectedColor)
 	clearInputs();
 }
 

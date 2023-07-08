@@ -1,5 +1,5 @@
 <div class="container" id="add-task-container" onclick="closeCategoryToggler(); assignToHandlerInList()">
-    <form class="addTaskForm" onsubmit="createTask('mobil'); return false">
+    <form class="addTaskForm" onsubmit="createTask(); return false">
         <h1 class="task-headline">Add Task</h1>
         <img src="./src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn"
             onclick="closeWindow('modalAddtask')">
@@ -26,7 +26,7 @@
                             <div id="selected-category">Select task category</div>
                             <img src="./src/img/img_add_task/triangle.svg">
                         </div>
-                        <ul class="category-list">
+                        <ul class="category-list" style="display: none;">
 
                             <!-- categores to be loaded from server -->
                         </ul>

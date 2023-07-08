@@ -1,4 +1,4 @@
-let userName;
+
 
 /**
  * Initializes the login process.
@@ -143,7 +143,7 @@ async function register() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     addUser(name, email, password);
-    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert!';
+    window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert!';
     await setItem('users', JSON.stringify(users));
     const registerForm = document.getElementById('register-form');
     registerForm.addEventListener('submit'), function (event) {

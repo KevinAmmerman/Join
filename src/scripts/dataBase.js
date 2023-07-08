@@ -54,3 +54,4 @@ guestUser = [
         password: '123456',
     }
 ]
+let userName;

@@ -11,7 +11,7 @@
 async function getSummary() {
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
-    summaryGreetingResponsive();
+    // summaryGreetingResponsive();
     generateSummaryTemplate();
     getUserNameFromLocalStorage();
     showGreetings();
@@ -20,6 +20,7 @@ async function getSummary() {
     filterForPrio();
     mostUrgent();
     addActiveToMenu('summaryLink');
+    generateLoggedinUserLogo();
 }
 
 /**
@@ -68,7 +69,7 @@ function showGreetings() {
         greetings = 'Good evening,';
     }
     document.getElementById('greetings').innerHTML = greetings;
-    document.getElementById('summaryGreetingResponsive').innerHTML = greetings;
+    // document.getElementById('summaryGreetingResponsive').innerHTML = greetings;
 };
 
 /**
@@ -78,7 +79,7 @@ async function showGreetingName() {
     let greetUserMobile = document.getElementById('summaryGreetingNameResponsive');
     let greetUser = document.getElementById('userGreeting');
     greetUser.innerHTML = `<span>${userName}</span>`;
-    greetUserMobile.innerHTML = `<span>${userName}</span>`;
+    // greetUserMobile.innerHTML = `<span>${userName}</span>`;
 }
 
 /**
@@ -169,12 +170,4 @@ function convertToDate(upcomingDeadline) {
         let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
         document.getElementById('summaryDate').innerHTML = date;
     }
-}
-
-/**
- * Retrieves the user's name from the local storage.
- */
-function getUserNameFromLocalStorage() {
-    let userNameAsString = localStorage.getItem('userName');
-    userName = JSON.parse(userNameAsString);
 }

@@ -14,6 +14,7 @@ const prios = ['urgent', 'medium', 'low'];
 async function initAddTask() {
 	await includeHTML();
 	loadUsers();
+	generateLoggedinUserLogo();
 }
 
 /**
@@ -70,9 +71,11 @@ async function createNewTask(newTask) {
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
 	if (isMobil == true) {
-		closeWindow('modalAddtask');
-		resetForm();
-		init();
+		setTimeout(() => {
+			closeWindow('modalAddtask');
+			resetForm();
+			init();
+		}, 1500);
 	} else {
 		goToBoard();
 	}
@@ -93,6 +96,7 @@ function goToBoard() {
 function addPrio(priorityValue) {
 	resetPrio();
 	selectPriority(priorityValue);
+	event.preventDefault();
 }
 
 /**
@@ -218,6 +222,7 @@ function cancelNewCategory() {
  */
 
 async function addNewCategory() {
+	event.preventDefault();
 	document.querySelector('.new-category').style.display = 'none';
 	document.querySelector('.color-container').style.display = 'none';
 	document.querySelector('#select-task-category').style.display = 'flex';

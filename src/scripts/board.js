@@ -14,6 +14,7 @@ async function init() {
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
     addActiveToMenu('boardLink');
+    generateLoggedinUserLogo();
 }
 
 /**

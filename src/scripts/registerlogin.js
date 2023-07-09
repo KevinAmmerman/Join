@@ -1,5 +1,3 @@
-
-
 /**
  * Initializes the login process.
  * - Loads user data.
@@ -61,7 +59,7 @@ function guestLogin() {
         password.value = guestUser[0]['Password'];
         userName = 'Guest';
         saveUserNameInLocalStorage();
-        window.location.href = `summary.html?guestUser=${guestUser.guestName}`;
+        window.location.href = `summary.html`;
     }
 }
 
@@ -152,6 +150,12 @@ async function register() {
     messageSignIn();
 }
 
+/**
+ * Adds a new user to the users array.
+ * @param {string} name - The name of the user.
+ * @param {string} email - The email of the user.
+ * @param {string} password - The password of the user.
+ */
 function addUser(name, email, password) {
     users.push({
         names: name.value,

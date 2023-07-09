@@ -1,3 +1,6 @@
+/**
+ * Generates the HTML template for the summary section.
+ */
 function generateSummaryTemplate() {
     let content = document.getElementById('summaryContent');
 
@@ -49,6 +52,11 @@ function generateSummaryTemplate() {
  `;
 }
 
+/**
+ * Creates HTML for displaying the tasks amount.
+ * @param {number} number - The number of tasks.
+ * @returns {string} - The HTML string representing the tasks amount.
+ */
 function createHtmlforTasksAmount(number) {
     return `
         <p>${number}</p>

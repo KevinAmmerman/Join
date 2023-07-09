@@ -1,6 +1,5 @@
 body {
-    font-family: 'Inter' ;
-    
+    font-family: 'Inter';
     margin: 0;
 }
 
@@ -10,7 +9,7 @@ body {
     width: 232px;
     height: 100%;
     background: rgb(42, 54, 71);
-    z-index: 2;
+    z-index: 21;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,12 +38,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .menu-icon-text:hover {
-    background-color: rgb(9, 25, 49);
+    background-color: #222b39;
+    /* border-left: 5px solid #FFFFFF; */
+}
+
+.activeLink {
+    border-left: 5px solid #FFFFFF;
 }
 
 
@@ -110,7 +114,6 @@ a {
         padding-left: 0px;
         font-size: 14px;
     }
-
 }
 
 @media(max-width: 420px) {
@@ -118,6 +121,3 @@ a {
         display: none;
     }
 }
-
-
-

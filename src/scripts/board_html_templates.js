@@ -13,7 +13,7 @@ function createHtmlForTasks(task, column, i) {
     let categoryColor = task.category.color;
     let prio = checkPrioStatus(task.prio, 'path');
     let subtasklength = task.subtask.length;
-    let finishedSubtasks = checkIfSubtaskIsDone(task.subtask); 
+    let finishedSubtasks = checkIfSubtaskIsDone(task.subtask);
     let progress = calculateProgress(subtasklength, finishedSubtasks);
     return `
         <div draggable="true" ondragstart="startDragging('${column}', ${i})" id="moveFrom${column}${i}" class="task" onclick="openTask('${column}', ${i})">
@@ -59,7 +59,7 @@ function createHtmlForTaskInfo(column, i) {
     let categoryColor = tasks[column][i].category.color;
     let date = tasks[column][i].date;
     let prioImage = checkPrioStatus(tasks[column][i].prio, 'path');
-    let prio =  checkPrioStatus(tasks[column][i].prio, 'word');
+    let prio = checkPrioStatus(tasks[column][i].prio, 'word');
     let prioColor = getPrioColor(tasks[column][i].prio);
     return `
         <div class="taskEditContainer" onclick="doNotClose(event)">
@@ -234,12 +234,28 @@ function createHtmlForSubtask(task, checked, column, i, s) {
  * @returns {string} - The HTML code for rendering the move to mobile options.
  */
 function createHtmlMoveTo(column, i) {
+    let moveOptions = generateMoveToOptions(column, i);
     return `
         <div class="mobilMoveToContainer" onclick="doNotClose(event)">
-            <div class="mobileMoveToRow" onclick="moveToCategory('toDo', '${column}', ${i})">To Do</div>
-            <div class="mobileMoveToRow" onclick="moveToCategory('inProgress', '${column}', ${i})">In progress</div>
-            <div class="mobileMoveToRow" onclick="moveToCategory('feedback', '${column}', ${i})">Awaiting feedback</div>
-            <div class="mobileMoveToRow" onclick="moveToCategory('done', '${column}', ${i})">Done</div>
+            ${moveOptions}
         </div>
     `;
+}
+
+/**
+ * Generates the move-to options for a task column.
+ * @param {string} column - The current column of the task.
+ * @param {number} index - The index of the task.
+ * @returns {string} - The HTML string representing the move-to options.
+ */
+function generateMoveToOptions(column, index) {
+    const categories = ['toDo', 'inProgress', 'feedback', 'done'];
+    const names = ['To Do', 'In progress', 'Awaiting feedback', 'Done'];
+    let moveOptions = '';
+    for (let i = 0; i < categories.length; i++) {
+        if (column != categories[i]) {
+            moveOptions += `<div class="mobileMoveToRow" onclick="moveToCategory('${categories[i]}', '${column}', ${index})">${names[i]}</div>`;
+        }
+    }
+    return moveOptions;
 }

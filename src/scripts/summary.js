@@ -11,7 +11,7 @@
 async function getSummary() {
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
-    summaryGreetingResponsive();
+    // summaryGreetingResponsive();
     generateSummaryTemplate();
     getUserNameFromLocalStorage();
     showGreetings();
@@ -19,6 +19,8 @@ async function getSummary() {
     renderAmountOfTasks();
     filterForPrio();
     mostUrgent();
+    addActiveToMenu('summaryLink');
+    generateLoggedinUserLogo();
 }
 
 /**
@@ -46,7 +48,6 @@ function summaryGreetingAnimation(){
         setTimeout(() => {
             document.getElementById('summaryWelcomeResponsive').classList.add('d-none');
             document.getElementById('summaryBody').classList.remove('summary-hidden');
-           
         }, 1000);
     }, 1000);
 }
@@ -68,7 +69,7 @@ function showGreetings() {
         greetings = 'Good evening,';
     }
     document.getElementById('greetings').innerHTML = greetings;
-    document.getElementById('summaryGreetingResponsive').innerHTML = greetings;
+    // document.getElementById('summaryGreetingResponsive').innerHTML = greetings;
 };
 
 /**
@@ -78,7 +79,7 @@ async function showGreetingName() {
     let greetUserMobile = document.getElementById('summaryGreetingNameResponsive');
     let greetUser = document.getElementById('userGreeting');
     greetUser.innerHTML = `<span>${userName}</span>`;
-    greetUserMobile.innerHTML = `<span>${userName}</span>`;
+    // greetUserMobile.innerHTML = `<span>${userName}</span>`;
 }
 
 /**
@@ -121,9 +122,7 @@ function filterForPrio() {
         const catergory = categories[i];
         for (let j = 0; j < tasks[catergory].length; j++) {
             const prio = tasks[catergory][j].prio;
-            if (prio == 1) {
-                allPrioOne += prio;
-            }
+            if (prio == 1) allPrioOne += prio;
         }
     }
     document.getElementById('summaryUrgentCount').innerHTML = allPrioOne;
@@ -165,14 +164,10 @@ function convertToDate(upcomingDeadline) {
     let year = Math.floor(upcomingDeadline / 10000);
     let month = Math.floor((upcomingDeadline % 10000) / 100) - 1;
     let day = upcomingDeadline % 100;
-    let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    document.getElementById('summaryDate').innerHTML = date;
-}
-
-/**
- * Retrieves the user's name from the local storage.
- */
-function getUserNameFromLocalStorage() {
-    let userNameAsString = localStorage.getItem('userName');
-    userName = JSON.parse(userNameAsString);
+    if (year == Infinity) {
+        document.getElementById('summaryDate').innerHTML = 'None';
+    } else {
+        let date = new Date(year, month, day).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        document.getElementById('summaryDate').innerHTML = date;
+    }
 }

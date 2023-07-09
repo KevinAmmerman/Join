@@ -5,12 +5,16 @@
  * Renders the tasks in the 'toDo', 'inProgress', 'feedback', and 'done' columns.
  */
 async function init() {
+    inBoard = true;
+    await includeHTML();
     tasks = JSON.parse(await getItem('tasks'));
     contacts = JSON.parse(await getItem('contacts'));
     renderTasks(tasks, 'toDo', 'toDo');
     renderTasks(tasks, 'inProgress', 'inProgress');
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
+    addActiveToMenu('boardLink');
+    generateLoggedinUserLogo();
 }
 
 /**
@@ -290,7 +294,6 @@ function addSubtask(column, i) {
     } else {
         alert('Type in a titel to add a subtask')
     }
-
 }
 
 /**
@@ -447,6 +450,7 @@ function openAddtaskSection() {
  */
 function moveToMobil(column, i) {
     renderMoveToMobil(column, i)
+    // generateMoveToOptions(column, i);
 }
 
 /**

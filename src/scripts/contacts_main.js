@@ -5,9 +5,12 @@
  * - Renders the contacts in the UI.
  */
 async function init() {
+    await includeHTML();
     contacts = JSON.parse(await getItem('contacts'));
     orderContacts();
     renderContacts();
+    addActiveToMenu('contactsLink');
+    generateLoggedinUserLogo();
 }
 
 // CONTACT-LIST FUNCTIONS
@@ -112,9 +115,9 @@ function renderEditContactWindow(i, j) {
  * @param {Object} contact - The contact object.
  */
 function getValuesForInput(contact) {
-    document.getElementById('inputName').setAttribute('value',contact.name);
-    document.getElementById('inputEmail').setAttribute('value',contact.email);
-    document.getElementById('inputPhone').setAttribute('value',contact.phone);
+    document.getElementById('inputName').setAttribute('value', contact.name);
+    document.getElementById('inputEmail').setAttribute('value', contact.email);
+    document.getElementById('inputPhone').setAttribute('value', contact.phone);
 }
 
 /**
@@ -149,7 +152,7 @@ async function saveContactEdits(contactsIndex, i, j) {
 async function deleteContact(contactsIndex, i, j, mobil) {
     contacts.splice(contactsIndex, 1);
     groups[i].splice(j, 1);
-    if(!mobil) openAndCloseNewContactWindow();
+    if (!mobil) openAndCloseNewContactWindow();
     alertMessage('Contact succesfully deleted');
     await setItem('contacts', JSON.stringify(contacts));
     emptyContainer();

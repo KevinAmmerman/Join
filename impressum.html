@@ -6,42 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum</title>
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="120x120" href="./src/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./src/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./src/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./src/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <!-- CSS -->
     <link rel="stylesheet" href="src/css/fonts.css">
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/sidebar.css">
     <link rel="stylesheet" href="src/css/impressum.css">
     <link rel="stylesheet" href="src/css/mobile-menu.css">
-    <link rel="icon" type="image/x-icon" href="/src/favicon/Capa 1.svg"> 
     <!-- Scripts -->
-    <script src="src/scripts/includeHTML.js"></script>
+    <script src="src/scripts/script.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML().then(initImpressum)">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
     <div class="impressum">
 
         <h2 class="topic">Angaben gemäß § 5 TMG</h2>
-        <p>Christian Störmer<br>
-            Muster-Str. 0<br>
-            08080 MusterStadt
-        </p>
-        <p> Pascal Marienfeld <br>
-            detzweg 12<br>
-            187187 Panama</p>
+
         <p>Kevin Ammerman<br>
-            Muster-Str. 0<br>
-            08080 MusterStadt
+            Grimmeisenstr. 9<br>
+            81927 München
         </p>
 
         <h2 class="topic">Kontakt</h2>
-        <p>Telefon: ---<br>
-            E-Mail: ---</p>
-
-        <p>Telefon: ---<br>
-            E-Mail: ---</p>
-
+ 
         <p>Telefon: +49 (0) 123456789<br>
             E-Mail: join.a4v8m@simplelogin.com</p>
 
@@ -141,7 +138,8 @@
         <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich.
             Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit
             der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
-        <h3 class="topic">Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21
+        <h3 class="topic">Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art.
+            21
             DSGVO)</h3>
         <p>WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT, HABEN SIE
             JEDERZEIT DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, GEGEN DIE

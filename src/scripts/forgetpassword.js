@@ -1,21 +1,32 @@
+/**
+ * Initializes the application by loading users.
+ */
 function init() {
     loadUsers();
 }
 
-
+/**
+ * Loads users from the local storage.
+ */
 async function loadUsers() {
     users = JSON.parse(await getItem('users'));
 }
 
-
+/**
+ * Initiates the password reset process.
+ * Loads users, redirects to the reset password page, and sends email alerts.
+ */
 async function forgetPassword() {
     loadUsers();
     setTimeout(() => window.location.href = 'resetpassword.html', 4000)
     sendEmailAlert();
 }
 
-
-
+/**
+ * Resets the password based on the entered values.
+ * Checks if the new password and confirm password match, shows a confirmation message,
+ * and redirects to the index page.
+ */
 function resetPassword() {
     const continuePassword = document.getElementById('confirmPasswordReset');
     const newPassword = document.getElementById('newPassword').value;
@@ -29,6 +40,10 @@ function resetPassword() {
     }
 }
 
+/**
+ * Sends email alert messages.
+ * Shows and hides the email alert and password confirmation elements after a delay.
+ */
 function sendEmailAlert() {
     let sendEmail = document.getElementById('sendMail');
     let sendButton = document.getElementById('sendButton');
@@ -44,12 +59,3 @@ function sendEmailAlert() {
         }, 200)
     }
 }
-
-
-
-
-
-
-
-
-

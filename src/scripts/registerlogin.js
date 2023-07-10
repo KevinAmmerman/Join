@@ -1,14 +1,12 @@
-
-
 /**
  * Initializes the login process.
  * - Loads user data.
  * - Loads email and password from storage.
  * - Displays sign-in messages.
  */
-function logininit() {
-    loadUser();
-    loadEmailPassword();
+async function logininit(login) {
+    await loadUser();
+    if(login) loadEmailPassword();
     messageSignIn();
 }
 
@@ -39,10 +37,10 @@ async function login() {
     let password = document.getElementById('password');
     let user = users.find((u) => u.email == email.value && u.password == password.value);
     if (user) {
-        email.value = '';
-        password.value = '';
         rememberLogin(email.value, password.value);
         userName = user.names;
+        email.value = '';
+        password.value = '';
         saveUserNameInLocalStorage();
         window.location.href = 'summary.html';
     } else {
@@ -61,7 +59,7 @@ function guestLogin() {
         password.value = guestUser[0]['Password'];
         userName = 'Guest';
         saveUserNameInLocalStorage();
-        window.location.href = `summary.html?guestUser=${guestUser.guestName}`;
+        window.location.href = `summary.html`;
     }
 }
 
@@ -87,9 +85,9 @@ function loadEmailPassword() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let checkbox = document.getElementById('loginCheckbox');
-    let rememberMeChecked = localStorage.getItem('rememberMeChecked');
-    if (rememberMeChecked === 'true') {
-        checkbox.checked === true;
+    let rememberMeChecked = JSON.parse(localStorage.getItem('rememberMeChecked'));
+    if (rememberMeChecked === true) {
+        checkbox.checked = true;
         email.value = localStorage.getItem('email');
         password.value = localStorage.getItem('password');
     } else {
@@ -121,16 +119,12 @@ function rememberLogin(email, password) {
  * Displays sign-in messages and handles their visibility.
  */
 async function messageSignIn() {
-    await loadUser();
-    const urlParams = new URLSearchParams(window.location.search);
-    const msg = urlParams.get('msg');
-    if (msgBox) msgBox.innerHTML = msg;
-    const alreadyShown = await getItem('users', JSON.stringify(users));
-    if (!alreadyShown && !user.length) {
-        await setItem('alreadyShown', true)
-        setTimeout(() => msgBox.classList.remove('dNone'), 2000);
+    let regMsg = document.getElementById('regMsg');
+    if (getNewRegistration()) {
+        regMsg.classList.remove('dNone');
+        setTimeout(() => regMsg.classList.add('dNone'), 2000);
     }
-    setTimeout(() => msgBox.classList.add('dNone'), 5000);
+    setNewRegistration(false);
 }
 
 /**
@@ -143,15 +137,17 @@ async function register() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     addUser(name, email, password);
-    window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert!';
     await setItem('users', JSON.stringify(users));
-    const registerForm = document.getElementById('register-form');
-    registerForm.addEventListener('submit'), function (event) {
-        event.preventDefault();
-    }
-    messageSignIn();
+    setNewRegistration(true);
+    window.location.href = 'login.html';
 }
 
+/**
+ * Adds a new user to the users array.
+ * @param {string} name - The name of the user.
+ * @param {string} email - The email of the user.
+ * @param {string} password - The password of the user.
+ */
 function addUser(name, email, password) {
     users.push({
         names: name.value,
@@ -171,9 +167,19 @@ function resetForm() {
 }
 
 /**
- * Saves the user's name in local storage.
+ * Sets the value of new registration in local storage.
+ * @param {boolean} value - The value of new registration.
  */
-function saveUserNameInLocalStorage() {
-    let userNameAsString = JSON.stringify(userName);
-    localStorage.setItem('userName', userNameAsString);
+function setNewRegistration(value) {
+    let isNewRegistered = value;
+    localStorage.setItem('newReg', isNewRegistered);
+}
+
+/**
+ * Retrieves the value of new registration from local storage.
+ * @returns {boolean} - The value of new registration.
+ */
+function getNewRegistration() {
+    let value = localStorage.getItem('newReg');
+    return isNewRegistered = JSON.parse(value);
 }

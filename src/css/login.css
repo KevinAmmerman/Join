@@ -255,5 +255,12 @@ html {
 }
 
 .dNone {
-    display: none;
+    display: none !important;
+}
+
+.registeredMsg {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: #2A3647;
 }

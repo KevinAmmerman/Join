@@ -10,6 +10,7 @@ async function init() {
     orderContacts();
     renderContacts();
     addActiveToMenu('contactsLink');
+    addActiveToMenu('mobile-buttonId4');
     generateLoggedinUserLogo();
 }
 

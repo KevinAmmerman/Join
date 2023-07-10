@@ -359,7 +359,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 50px;
+    padding: 50px 20px;
     gap: 25px;
     position: relative;
     width: 385px;
@@ -728,6 +728,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+#subtasksList li label {
+    width: 75%;
 }
 
 #subtasksList li {

@@ -49,6 +49,10 @@ html {
     animation: fade_in 1.5s;
 }
 
+.signIn-Container-mobile {
+        display: none;
+    }
+
 @keyframes fade_in {
     0% {
         opacity: 0;

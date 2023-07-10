@@ -448,6 +448,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	display: none;
 }
 
+.subtaskText {
+	width: 240px;
+}
+
 .subtask {
 	display: flex;
 	align-items: center;

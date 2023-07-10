@@ -21,22 +21,22 @@
 }
 
 @media(max-width:1500px) {
-    .signIn-Container-mobile {
+    /* .signIn-Container-mobile {
         display: flex;
         align-items: center;
         justify-content: center;
         transform: translateY(-50px);
         font-size: 20px;
-    }
+    } */
 
     .join-logo-mobile {
         margin-left: 20px;
         margin-top: 20px;
     }
 
-    .signIn-Container-mobile {
+    /* .signIn-Container-mobile {
         display: none;
-    }
+    } */
 }
 
 @media(max-width:1281px) {

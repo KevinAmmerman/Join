@@ -3,7 +3,7 @@ let isMobil;
 let inBoard;
 let prio = null;
 let subTasks = [];
-let selectedCategoryName = 'None';
+let selectedCategoryName = 'Other';
 let selectedCatColor = null;
 const prios = ['urgent', 'medium', 'low'];
 
@@ -36,7 +36,10 @@ function initAddTasks() {
 		loadCategories();
 		loadContacts();
 	})();
-	if (!inBoard) addActiveToMenu('addTaskLink');
+	if (!inBoard) {
+		addActiveToMenu('addTaskLink');
+		addActiveToMenu('mobile-buttonId3');
+	}
 }
 
 /**
@@ -67,7 +70,8 @@ async function createTask() {
  * @param {string} newTask - The new task to be added.
  */
 async function createNewTask(newTask) {
-	tasks.toDo.push(newTask);
+	if (taskColumn === undefined) taskColumn = 'toDo';
+	tasks[taskColumn].push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
 	if (isMobil == true) {

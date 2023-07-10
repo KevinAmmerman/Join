@@ -55,7 +55,7 @@ function contactListElementsHTML(contacts, i) {
  */
 function subTaskHTML(subTasks, i) {
     return `
-    <li class='subtask'> <div class='subtask__title-box'><span class='subtask__square'></span>${subTasks[i].title}</div> <div class='subtask__remove' onclick='removeSubtask(${subTasks[i].id})'></div></li>
+    <li class='subtask'> <div class='subtask__title-box'><span class='subtask__square'></span><div class="subtaskText">${subTasks[i].title}</div></div> <div class='subtask__remove' onclick='removeSubtask(${subTasks[i].id})'></div></li>
     `;
 }
 

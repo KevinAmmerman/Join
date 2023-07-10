@@ -49,11 +49,14 @@ html {
     animation: fade_in 1.5s;
 }
 
+.signIn-Container-mobile {
+        display: none;
+    }
+
 @keyframes fade_in {
     0% {
         opacity: 0;
         transform: scale(0.5);
-
     }
 
     40% {

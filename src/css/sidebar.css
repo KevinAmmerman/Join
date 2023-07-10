@@ -44,11 +44,14 @@ body {
 
 .menu-icon-text:hover {
     background-color: #222b39;
-    /* border-left: 5px solid #FFFFFF; */
 }
 
 .activeLink {
     border-left: 5px solid #FFFFFF;
+}
+
+.activeLinkMobil {
+    border-bottom: 5px solid #FFFFFF;
 }
 
 

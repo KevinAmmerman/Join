@@ -35,6 +35,7 @@ let tasks = {
     feedback: [],
     done: []
 };
+let taskColumn;
 
 let prioValue;
 let assignedPeople = [];

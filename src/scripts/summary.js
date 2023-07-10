@@ -20,6 +20,7 @@ async function getSummary() {
     filterForPrio();
     mostUrgent();
     addActiveToMenu('summaryLink');
+    addActiveToMenu('mobile-buttonId1')
     generateLoggedinUserLogo();
 }
 

@@ -74,8 +74,14 @@ function logout() {
  */
 function addActiveToMenu(id) {
     if (id == undefined) id = 'impressumLink';
-    let active = document.getElementById(id);
-    active.classList.add('activeLink');
+    if (id.includes('Link')) {
+        let active = document.getElementById(id);
+        active.classList.add('activeLink');
+    }
+    if (id.includes('mobile')) {
+        let active = document.getElementById(id);
+        active.classList.add('activeLinkMobil');
+    }
 }
 
 /**

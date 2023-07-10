@@ -254,10 +254,6 @@
             position: relative;
         }
 
-        /* .time-name {
-            display: none;
-        } */
-
         .summary-hidden {
             overflow: hidden;
         }
@@ -312,7 +308,6 @@
 
         .to-do-done {
             margin-bottom: 30px !important;
-            /* margin: 10px; */
         }
     }
 
@@ -329,7 +324,7 @@
         .task-container-2,
         .task-Deadline-Container,
         .to-do-done-container {
-            width: 80%;
+            width: 70%;
         }
 
         .times-Container {
@@ -342,7 +337,7 @@
         .task-container-2,
         .task-Deadline-Container,
         .to-do-done-container {
-            width: 90%;
+            width: 70%;
         }
     }
 
@@ -370,7 +365,7 @@
 
         .summary-Task {
             top: 150px;
-            width: 110%;
+            left: 245px;
         }
 
         .task-container {
@@ -428,8 +423,12 @@
             top: 100px;
         }
 
-        .task-progress {
-            padding: 20px;
+        .blue-line {
+            margin-left: 20px;
+        }
+
+        .text-header h2 {
+            margin-left: 20px;
         }
 
         .task-Deadline-Container {
@@ -443,11 +442,15 @@
         }
 
         .summary-Task {
-            left: 310px;
+            left: 165px;
         }
 
         .text-header h2 {
             margin-left: 30px;
+        }
+
+        .summary-container {
+            margin-left: 10px;
         }
     }
 
@@ -456,7 +459,11 @@
         .task-container-2,
         .task-Deadline-Container,
         .to-do-done-container {
-            width: 100%;
+            width: 65%;
+        }
+
+        .summary-Task {
+            left: 145px;
         }
     }
 
@@ -488,7 +495,7 @@
         }
 
         .summary-Task {
-            left: 30px;
+            left: 0;
         }
 
         .blue-line-mobile {
@@ -513,10 +520,6 @@
     }
 
     @media(max-width: 688px) {
-        body {
-            width: 90%;
-            height: 90%;
-        }
 
         .task-container-2 {
             display: flex;
@@ -600,11 +603,6 @@
 
 
     @media(max-width: 414px) {
-        body {
-            width: 90%;
-            height: 90%
-        }
-
 
         .tool-mobile-container {
             display: flex;
@@ -682,7 +680,7 @@
         }
 
         .task-Deadline-Container {
-            height: 120px;
+            height: 110px;
             width: 90%;
             margin-top: 1px;
         }
@@ -834,7 +832,7 @@
         }
 
         .to-do-done {
-            padding: 10px 0 10px 0;
+            padding: 5px 0 5px 0;
         }
     }
 

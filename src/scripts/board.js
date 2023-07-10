@@ -14,6 +14,7 @@ async function init() {
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
     addActiveToMenu('boardLink');
+    addActiveToMenu('mobile-buttonId2');
     generateLoggedinUserLogo();
 }
 
@@ -437,9 +438,10 @@ async function moveTo(category) {
  * This function opens the "Add Task" section by removing the "dNone" class from the "modalAddtask" element.
  * It makes the "Add Task" section visible on the page.
  */
-function openAddtaskSection() {
+function openAddtaskSection(column) {
     document.getElementById('modalAddtask').classList.remove('dNone');
     isMobil = true;
+    taskColumn = column;
 }
 
 /**

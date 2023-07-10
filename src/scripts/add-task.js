@@ -3,7 +3,7 @@ let isMobil;
 let inBoard;
 let prio = null;
 let subTasks = [];
-let selectedCategoryName = 'None';
+let selectedCategoryName;
 let selectedCatColor = null;
 const prios = ['urgent', 'medium', 'low'];
 
@@ -36,7 +36,10 @@ function initAddTasks() {
 		loadCategories();
 		loadContacts();
 	})();
-	if (!inBoard) addActiveToMenu('addTaskLink');
+	if (!inBoard) {
+		addActiveToMenu('addTaskLink');
+		addActiveToMenu('mobile-buttonId3');
+	}
 }
 
 /**
@@ -48,17 +51,27 @@ async function createTask() {
 	const { value: description } = document.getElementById('description');
 	const { value: dueDate } = document.getElementById('due-date');
 	const selectedCategory = { name: selectedCategoryName, color: selectedCatColor };
-	const assignees = Array.from(document.querySelectorAll('.contact__checkbox:checked')).map(input => input.value);
-	const newTask = {
-		category: { ...selectedCategory },
-		assignedTo: assignees,
-		title,
-		description,
-		prio,
-		date: dueDate,
-		subtask: subTasks
-	};
-	createNewTask(newTask);
+	if (selectedCategory.name === undefined) {
+		highlightField();
+	} else {
+		const assignees = Array.from(document.querySelectorAll('.contact__checkbox:checked')).map(input => input.value);
+		const newTask = {
+			category: { ...selectedCategory },
+			assignedTo: assignees,
+			title,
+			description,
+			prio,
+			date: dueDate,
+			subtask: subTasks
+		};
+		createNewTask(newTask);
+		
+	}
+
+}
+
+function highlightField() {
+	document.getElementById('select-task-category').style.backgroundColor = '#f2e8d9';
 }
 
 
@@ -67,7 +80,8 @@ async function createTask() {
  * @param {string} newTask - The new task to be added.
  */
 async function createNewTask(newTask) {
-	tasks.toDo.push(newTask);
+	if (taskColumn === undefined) taskColumn = 'toDo';
+	tasks[taskColumn].push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
 	if (isMobil == true) {
@@ -136,6 +150,7 @@ function resetForm() {
 	document.getElementById('due-date').value = '';
 	resetPrio();
 	subTasks = [];
+	selectedCategoryName = undefined;
 	composeSubTasks(subTasks);
 	closeSubtaskEditor();
 }

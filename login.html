@@ -22,13 +22,14 @@
     <link rel="stylesheet" href="./src/css/loginMobileCss.css">
 
     <!-- JS -->
+    <script src="./src/scripts/script.js"></script>
     <script src="./src/scripts/storage.js"></script>
     <script src="./src/scripts/registerlogin.js"></script>
     <script src="./src/scripts/summary.js"></script>
     <script src="./src/scripts/dataBase.js"></script>
 </head>
 
-<body onload="logininit()">
+<body onload="logininit(true)">
     <div class="join-Logo-Container login-animation-container">
         <img id="join-logo" src="./src/img/logo_blue_join.png" alt="Join-Blue-Logo">
         <img id="joinLogoMobile" class="join-logo-mobile" src="./src/img/logo_blue_join.png" alt="Join-Blue-Logo">
@@ -49,6 +50,9 @@
                         <input class="password-input" type="password" name="password" placeholder="Password"
                             id="password">
                     </div>
+                    <div class="registeredMsg dNone" id="regMsg">
+                        <div>You have successfully registered!</div>
+                    </div>
                     <div class="checkbox-container">
                         <div class="checkbox"><input class="checkbox-input" type="checkbox" name="" id="loginCheckbox">
                             <label for="remember-me">Remember me</label></div>
@@ -63,11 +67,8 @@
             </form>
         </div>
     </div>
-    <div class="signIn-Container-mobile dNone">Not a Join User? <a class="sign-Up-Button" href="register.html">Sign
+    <div class="signIn-Container-mobile">Not a Join User? <a class="sign-Up-Button" href="register.html">Sign
             up</a></div>
-    <div class="message-container">
-        <div class="message" id="msgBox"></div>
-    </div>
 </body>
 
 </html>

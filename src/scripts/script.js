@@ -108,6 +108,14 @@ function deUmlaut(value) {
 }
 
 /**
+ * Saves the user's name in local storage.
+ */
+function saveUserNameInLocalStorage() {
+    let userNameAsString = JSON.stringify(userName);
+    localStorage.setItem('userName', userNameAsString);
+}
+
+/**
  * Retrieves the user's name from the local storage.
  */
 function getUserNameFromLocalStorage() {

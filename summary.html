@@ -30,7 +30,7 @@
     <script src="./src/scripts/summaryTemplates.js"></script>
 </head>
 
-<body onload="includeHTML(), getSummary()" id="summaryBody">
+<body onload="includeHTML().then(getSummary)" id="summaryBody">
     <div w3-include-html="src/templates/header.html"></div>
     <div w3-include-html="src/templates/sidebar.html"></div>
     <div class="summary-container">

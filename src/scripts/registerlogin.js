@@ -8,6 +8,7 @@ async function logininit(login) {
     await loadUser();
     if(login) loadEmailPassword();
     messageSignIn();
+    
 }
 
 /**

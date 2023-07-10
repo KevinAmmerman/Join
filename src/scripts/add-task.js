@@ -3,7 +3,7 @@ let isMobil;
 let inBoard;
 let prio = null;
 let subTasks = [];
-let selectedCategoryName = 'Other';
+let selectedCategoryName;
 let selectedCatColor = null;
 const prios = ['urgent', 'medium', 'low'];
 
@@ -51,17 +51,27 @@ async function createTask() {
 	const { value: description } = document.getElementById('description');
 	const { value: dueDate } = document.getElementById('due-date');
 	const selectedCategory = { name: selectedCategoryName, color: selectedCatColor };
-	const assignees = Array.from(document.querySelectorAll('.contact__checkbox:checked')).map(input => input.value);
-	const newTask = {
-		category: { ...selectedCategory },
-		assignedTo: assignees,
-		title,
-		description,
-		prio,
-		date: dueDate,
-		subtask: subTasks
-	};
-	createNewTask(newTask);
+	if (selectedCategory.name === undefined) {
+		highlightField();
+	} else {
+		const assignees = Array.from(document.querySelectorAll('.contact__checkbox:checked')).map(input => input.value);
+		const newTask = {
+			category: { ...selectedCategory },
+			assignedTo: assignees,
+			title,
+			description,
+			prio,
+			date: dueDate,
+			subtask: subTasks
+		};
+		createNewTask(newTask);
+		
+	}
+
+}
+
+function highlightField() {
+	document.getElementById('select-task-category').style.backgroundColor = '#f2e8d9';
 }
 
 
@@ -140,6 +150,7 @@ function resetForm() {
 	document.getElementById('due-date').value = '';
 	resetPrio();
 	subTasks = [];
+	selectedCategoryName = undefined;
 	composeSubTasks(subTasks);
 	closeSubtaskEditor();
 }

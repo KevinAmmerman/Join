@@ -139,7 +139,7 @@ async function register() {
     addUser(name, email, password);
     await setItem('users', JSON.stringify(users));
     setNewRegistration(true);
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 /**

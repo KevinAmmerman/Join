@@ -309,6 +309,26 @@ function deleteSubtask(column, i, s) {
     getSubtasks(column, i);
 }
 
+
+function editSubtask(column, i, s) {
+    const editInputField = document.getElementById(`editSubtask${s}`);
+    const subTask = document.getElementById(`subtaskValue${s}`);
+    const editBtn = document.getElementById(`editSubtaskBtn${s}`);
+    const saveBtn = document.getElementById(`saveSubtaskBtn${s}`);
+    editInputField.classList.remove('dNone');
+    subTask.classList.add('dNone');
+    editBtn.classList.add('dNone');
+    saveBtn.classList.remove('dNone');
+    editInputField.value = tasks[column][i].subtask[s].title;
+}
+
+
+function saveEditedSubtask(column, i, s) {
+    const editInputField = document.getElementById(`editSubtask${s}`);
+    tasks[column][i].subtask[s].title = editInputField.value;
+    getSubtasks(column, i);
+}
+
 /**
  * Saves the changes made to a task in the edit task form.
  * 

@@ -221,7 +221,16 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
-        <li onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})"><input type="checkbox" id="${id}" ${checkedStatus}><label for="subtask${i}">${title}</label><div class="deleteSubtaskBtn" onclick="deleteSubtask('${column}', ${i}, ${s})"></div></li>
+        <li onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
+        <input type="checkbox" id="${id}" ${checkedStatus}>
+        <label for="subtask${i}" id="subtaskValue${s}">${title}</label>
+        <input type="text" id="editSubtask${s}" class="editSubtask dNone">
+        <div class="btnContainer">
+            <div id="editSubtaskBtn${s}"" class="editSubtaskBtn subtaskBtnStyle" onclick="editSubtask('${column}', ${i}, ${s})"></div>
+            <div id="saveSubtaskBtn${s}"" class="saveSubtaskBtn subtaskBtnStyle dNone" onclick="saveEditedSubtask('${column}', ${i}, ${s})"></div>
+            <hr>
+            <div class="deleteSubtaskBtn subtaskBtnStyle" onclick="deleteSubtask('${column}', ${i}, ${s})"></div></li>
+        </div>
     `;
 }
 

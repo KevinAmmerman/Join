@@ -730,12 +730,17 @@ body {
     gap: 5px;
 }
 
+#subtasksList hr {
+    height: 25px;
+}
+
 #subtasksList li label {
     width: 75%;
 }
 
 #subtasksList li {
     display: flex;
+    align-items: center;
     gap: 10px;
     cursor: pointer;
 }
@@ -744,20 +749,52 @@ body {
     cursor: pointer;
 }
 
-.deleteSubtaskBtn {
-    background-image: url(../img/img_board/delete.svg);
+.btnContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.subtaskBtnStyle {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 25px 25px;
     width: 25px;
     height: 25px;
-    position: absolute;
-    right: 48px;
+}
+
+.deleteSubtaskBtn {
+    background-image: url(../img/img_board/delete.svg);
 }
 
 .deleteSubtaskBtn:hover {
     transform: scale(1.1);
 }
+
+.editSubtaskBtn {
+    background-image: url(../img/img_board/edit.svg);
+}
+
+.editSubtaskBtn:hover {
+    transform: scale(1.1);
+}
+
+.saveSubtaskBtn {
+    background-image: url(../img/img_board/check.svg);
+    filter: invert();
+}
+
+#saveSubtaskBtn:hover {
+    transform: scale(1.1);
+}
+
+.editSubtask {
+    width: 75%;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 6px;
+}
+
 
 
 /* === Modal for Task creation === */

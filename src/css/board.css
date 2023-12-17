@@ -557,6 +557,48 @@ body {
     border-radius: 10px;
     font-family: 'Inter';
     font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* dueDate iOS version */
+
+.input-container-edit {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-date-ios-edit {
+    display: flex;
+    justify-content: space-between;
+	display: none !important;
+}
+
+
+.input-field-edit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+    height: 41px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 23px 21px;
+    box-sizing: border-box;
+}
+
+.field-style-edit {
+	width: 32%;
+	border: 1px solid #a8a8a8;
+    border-radius: 10px;
+	height: 41px;
+    box-sizing: border-box;
+    padding: 0 15px;
+	background-color: transparent;
+}
+
+#day, #months, #year {
+	display: none;
 }
 
 #inputEditTitle:focus,
@@ -920,6 +962,35 @@ body {
         bottom: 0;
         width: 100%;
     }
+
+    .taskEditContainer {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+
+    .due-date {
+		display: none !important;
+	}
+
+	#due-date {
+		display: none !important;
+	}
+
+	.input-date-ios-edit {
+		display: flex !important;
+	}
+
+	#day, #months, #year {
+		display: block;
+	}
+
+    .applyEditBtn {
+        align-self: flex-end;
+        position: unset;
+    }
 }
 
 @media (max-width: 725px) {
@@ -936,7 +1007,7 @@ body {
         height: 200px;
     }
 
-    .taskEditContainer {
+    /* .taskEditContainer {
         width: 100%;
         height: 100%;
         border-radius: 0;
@@ -947,13 +1018,16 @@ body {
     .applyEditBtn {
         align-self: flex-end;
         position: unset;
-    }
+    } */
 }
 
 @media (max-width: 500px) {
 
     .taskEditContainer {
-        min-height: calc(100% - 95px);
+        height: calc(100vh - 95px);
+        height: calc(100svh - 95px);
+        position: absolute;
+        top: 0;
     }
 }
 

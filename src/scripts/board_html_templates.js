@@ -164,8 +164,29 @@ function createHtmlForEditTask(column, i) {
                 </div>
             </div>
             <div class="rightEditContainer">
-                <label class="editDate">Due date</label>
-                <input type="date" onclick="noPastDate()" class="dueDate" id="dueDate" name="dueDate" required>
+                    <div class="input-container-edit">
+                        <label>Due date</label>
+                        <input onclick="limitDueDate()" class="dueDate" id="due-date" name="due-date" type="date" placeholder="dd/mm/yyyy">
+                        <div class="input-date-ios-edit">
+                            <input class="field-style-edit" id="day" type="number" placeholder="Day" name="day" min="1" max="31">
+                            <select class="field-style-edit" name="months" id="months">
+                                <option value="">Month</option>
+                                <option value="01">Januar</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">Mai</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <input class="field-style-edit" id="year" type="number" name="year" placeholder="Year">
+                        </div>
+                    </div>
                 <div class="inputPrioContainer">
                     <label>Prio</label>
                     <div class="prioBtn">

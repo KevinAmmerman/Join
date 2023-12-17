@@ -571,6 +571,7 @@ body {
     display: flex;
     justify-content: space-between;
 	display: none !important;
+    margin-top: 20px;
 }
 
 

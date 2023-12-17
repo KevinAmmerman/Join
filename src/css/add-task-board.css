@@ -359,7 +359,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .field-style {
-	max-width: 32%;
+	width: 32%;
 	border: 1px solid #a8a8a8;
     border-radius: 10px;
 	height: 41px;
@@ -784,5 +784,18 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 	#day, #months, #year {
 		display: block;
+	}
+}
+
+@media (max-width: 450px) {
+	.prio-btn {
+		flex-direction: column;
+		height: auto;
+	}
+
+	.prioBtnMobile {
+		width: fit-content;
+		padding: 5px 20px;
+		min-width: 166px
 	}
 }

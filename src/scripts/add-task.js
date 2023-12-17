@@ -6,6 +6,7 @@ let subTasks = [];
 let selectedCategoryName;
 let selectedCatColor = null;
 const prios = ['urgent', 'medium', 'low'];
+window.addEventListener('resize', setsRequiredAttributeForDateInput);
 
 /**
  * Initializes the addition of a task.
@@ -35,6 +36,7 @@ function initAddTasks() {
 	(() => {
 		loadCategories();
 		loadContacts();
+		setsRequiredAttributeForDateInput();
 	})();
 	if (!inBoard) {
 		addActiveToMenu('addTaskLink');
@@ -49,7 +51,7 @@ function initAddTasks() {
 async function createTask() {
 	const { value: title } = document.getElementById('title');
 	const { value: description } = document.getElementById('description');
-	const { value: dueDate } = document.getElementById('due-date');
+	const dueDate  = isDesktop() ? document.getElementById('due-date').value : getDate();
 	const selectedCategory = { name: selectedCategoryName, color: selectedCatColor };
 	if (selectedCategory.name === undefined) {
 		highlightField();
@@ -64,12 +66,64 @@ async function createTask() {
 			date: dueDate,
 			subtask: subTasks
 		};
-		createNewTask(newTask);
-		
+		createNewTask(newTask);	
 	}
-
 }
 
+
+function isDesktop() {
+	return window.innerWidth > 750;
+}
+
+/**
+ * Sets or removes the 'required' attribute for date input fields based on screen size.
+ * This function targets elements with specific IDs ('year', 'months', 'day', 'due-date')
+ * and updates their 'required' attribute depending on the screen width.
+ */
+function setsRequiredAttributeForDateInput() {
+	const screen = window.innerWidth;
+	const year = document.getElementById('year');
+	const month = document.getElementById('months');
+	const day = document.getElementById('day');
+    const desktop = document.getElementById('due-date');
+    if (screen < 750) {
+        desktop.removeAttribute('required');
+		year.setAttribute('required', '');
+		month.setAttribute('required', '');
+		day.setAttribute('required', '');
+    } else {
+        desktop.setAttribute('required', '');
+		year.removeAttribute('required');
+		month.removeAttribute('required');
+		day.removeAttribute('required');
+    }
+}
+
+/**
+ * Retrieves the date from input fields and formats it as a string.
+ * Assumes the existence of elements with IDs 'year', 'months', and 'day'.
+ * 
+ * @returns {string} The formatted date string in 'YYYY-MM-DD' format.
+ */
+function getDate() {
+	const year = document.getElementById('year').value;
+	const month = document.getElementById('months').value;
+	const day = document.getElementById('day').value;
+	const newDate = `${year}-${month}-${day}`;
+	return newDate;
+}
+
+
+function resetDate() {
+	document.getElementById('year').value = '';
+	document.getElementById('months').value = '';
+	document.getElementById('day').value = '';
+}
+
+/**
+ * Highlights a field by changing its background color.
+ * Targets the element with the ID 'select-task-category' for styling.
+ */
 function highlightField() {
 	document.getElementById('select-task-category').style.backgroundColor = '#f2e8d9';
 }
@@ -147,7 +201,7 @@ function resetForm() {
 	document.querySelector('.assigned-to').style.display = 'flex';
 	document.querySelector('.assigned-to__list').style.display = 'none';
 	removeContactCheckboxes();
-	document.getElementById('due-date').value = '';
+	document.getElementById('due-date') ? document.getElementById('due-date').value = '' : resetDate();
 	resetPrio();
 	subTasks = [];
 	selectedCategoryName = undefined;

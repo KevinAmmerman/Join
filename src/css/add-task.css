@@ -372,6 +372,28 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	width: 300px;
 }
 
+/* dueDate iOS version */
+
+.input-date-ios {
+	max-width: 320px;
+	justify-content: space-between;
+	display: none !important;
+}
+
+.field-style {
+	max-width: 32%;
+	border: 1px solid #a8a8a8;
+    border-radius: 10px;
+	height: 41px;
+    box-sizing: border-box;
+    padding: 0 15px;
+	background-color: transparent;
+}
+
+#day, #months, #year {
+	display: none;
+}
+
 /* prio Button */
 
 .prio-btn {
@@ -754,5 +776,21 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		align-items: center;
 		margin-top: 80px;
 		margin-bottom: 120px;
+	}
+
+	.due-date {
+		display: none !important;
+	}
+
+	#due-date {
+		display: none !important;
+	}
+
+	.input-date-ios {
+		display: flex !important;
+	}
+
+	#day, #months, #year {
+		display: block;
 	}
 }

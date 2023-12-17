@@ -18,6 +18,9 @@ async function init() {
     generateLoggedinUserLogo();
 }
 
+
+window.addEventListener('resize', setsRequiredAttributeForDateInput);
+
 /**
  * Renders the tasks for a specific column.
  * 
@@ -110,6 +113,7 @@ function editTask(column, i) {
     renderAssignetPeopleForEdit();
     renderAssignetInitials(column, i);
     getSubtasks(column, i);
+    setsRequiredAttributeForDateInput();
 }
 
 /**
@@ -121,7 +125,14 @@ function editTask(column, i) {
 function getValuesForTask(column, i) {
     document.getElementById('inputEditTitle').value = tasks[column][i].title;
     document.getElementById('inputEditDescription').value = tasks[column][i].description;
-    document.getElementById('dueDate').value = tasks[column][i].date;
+    if (isDesktop()) {
+        document.getElementById('due-date').value = tasks[column][i].date;
+    } else {
+        const dateParts = tasks[column][i].date.split("-");
+        document.getElementById('year').value = dateParts[0];
+        document.getElementById('months').value = dateParts[1];
+        document.getElementById('day').value = dateParts[2];
+    }
 }
 
 /**
@@ -338,7 +349,7 @@ function saveEditedSubtask(column, i, s) {
 async function saveChangesForTask(column, i) {
     let title = document.getElementById('inputEditTitle').value;
     let description = document.getElementById('inputEditDescription').value;
-    let dueDate = document.getElementById('dueDate').value;
+    let dueDate = isDesktop() ? document.getElementById('dueDate').value : getDate();
     let prioStatus = prioValue;
     tasks[column][i].title = title;
     tasks[column][i].description = description;
@@ -349,6 +360,46 @@ async function saveChangesForTask(column, i) {
     init();
     openTask(column, i);
     preventScrollingInBackground();
+}
+
+
+function isDesktop() {
+    return window.innerWidth > 750;
+}
+
+
+/**
+ * Retrieves the date from input fields and formats it as a string.
+ * Assumes the existence of elements with IDs 'year', 'months', and 'day'.
+ * 
+ * @returns {string} The formatted date string in 'YYYY-MM-DD' format.
+ */
+function getDate() {
+    const year = document.getElementById('year').value;
+    const month = document.getElementById('months').value;
+    const day = document.getElementById('day').value;
+    const newDate = `${year}-${month}-${day}`;
+    return newDate;
+}
+
+
+function setsRequiredAttributeForDateInput() {
+    const screen = window.innerWidth;
+    const year = document.getElementById('year');
+    const month = document.getElementById('months');
+    const day = document.getElementById('day');
+    const desktop = document.getElementById('due-date');
+    if (screen < 750) {
+        desktop.removeAttribute('required');
+        year.setAttribute('required', '');
+        month.setAttribute('required', '');
+        day.setAttribute('required', '');
+    } else {
+        desktop.setAttribute('required', '');
+        year.removeAttribute('required');
+        month.removeAttribute('required');
+        day.removeAttribute('required');
+    }
 }
 
 /**

@@ -44,7 +44,25 @@ function contactListHTML() {
  * @returns {string} - The HTML string representing the contact list element.
  */
 function contactListElementsHTML(contacts, i) {
-    return `<li onclick="doNotClose(event); checkbox(${i})" class="contact"><label>${contacts[i].name}</label> <input id="checkbox${i}" value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
+    return `<li onclick="doNotClose(event); checkbox(${i}, '${contacts[i].name}')" class="contact"><label>${contacts[i].name}</label> <input id="checkbox${i}" value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
+}
+
+
+/**
+ * Creates the HTML code for rendering the initials of an assigned person (used in task view).
+ * 
+ * @param {string} person - The name of the assigned person.
+ * @returns {string} - The HTML code for rendering the assigned person's initials.
+ */
+function createHtmlForAssignedPeopleTask(person) {
+    let initialsColor = getColorForInitials(person)
+    let nameWithoutUmlauts = deUmlaut(person);
+    let initials = nameWithoutUmlauts.match(/\b\w/g).join('').toUpperCase();
+    return `
+        <div class="assignedPersonInitials">
+            <div class="initials" style="background-color: ${initialsColor}">${initials}</div>
+        </div>
+    `;
 }
 
 /**

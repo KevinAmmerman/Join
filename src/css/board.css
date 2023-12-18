@@ -40,6 +40,13 @@ body {
     overflow: hidden !important;
 }
 
+.required-star {
+	color: #FF8190;
+}
+
+/* CUSTOM CHECKBOX */
+
+
 /* === BOARD-HEADER === */
 
 #boardHeader {
@@ -51,6 +58,7 @@ body {
     top: 30px;
     display: flex;
     align-items: center;
+    max-width: 1995px;
 }
 
 #boardInnerContainer {
@@ -169,6 +177,7 @@ body {
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
+    max-width: 1920px;
 }
 
 .col {
@@ -258,6 +267,18 @@ body {
 
 .description {
     color: #000000;
+}
+
+.subtaskMainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#subtaskContainer div,
+#subtaskContainer div input,
+#subtaskContainer div label {
+    cursor: pointer;
 }
 
 .subtaskBar {
@@ -487,6 +508,11 @@ body {
 }
 
 /* === EDIT-TASK === */
+
+.taskEditForm {
+    display: flex;
+    gap: 25px;
+}
 
 .applyEditBtn {
     display: flex;
@@ -777,18 +803,19 @@ body {
     height: 25px;
 }
 
-#subtasksList li label {
+#subtasksList div label {
     width: 75%;
+    cursor: pointer;
 }
 
-#subtasksList li {
+#subtasksList div {
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 }
 
-#subtasksList li input {
+#subtasksList div input {
     cursor: pointer;
 }
 
@@ -970,6 +997,11 @@ body {
         border-radius: 0;
         flex-direction: column;
         overflow-y: scroll;
+    }
+
+    .taskEditForm {
+        flex-direction: column;
+        margin: auto;
     }
 
     .due-date {

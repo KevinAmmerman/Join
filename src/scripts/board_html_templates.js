@@ -79,6 +79,10 @@ function createHtmlForTaskInfo(column, i) {
                 <div class="subheadlineStyle">Assigned to:</div>
                 <div id="assignedToContainer"></div>
             </div>
+            <div class="subtaskMainContainer">
+                <div class="subheadlineStyle">Subtasks</div>
+                <div id="subtaskContainer"></div>
+            </div>
             <div class="editDeleteContainer">
                 <div onclick="deleteTask('${column}', ${i})" class="left"></div>
                 <div onclick="editTask('${column}', ${i}), addEnterListener('${column}', ${i})" class="right">
@@ -148,11 +152,12 @@ function createHtmlForAdditional(amount) {
 function createHtmlForEditTask(column, i) {
     return `
         <div id="taskEditContainer" class="taskEditContainer editTaskGap" onclick="doNotClose(event); assignAction('close')">
+        <form class="taskEditForm editTaskGap" onsubmit="saveChangesForTask('${column}',${i}); return false">
             <img src="src/img/img_board/cross.png" alt="cross for closing the window" class="closeBtn" onclick="closeWindow('taskInfoContainer')">
             <div class="leftEditContainer">
-                <label class="editTitle">Title</label>
+                <label class="editTitle">Title<span class="required-star">*</span></label>
                 <input type="text" id="inputEditTitle" placeholder="Enter a title" required>
-                <label class="editDescription">Description</label>
+                <label class="editDescription">Description<span class="required-star">*</span></label>
                 <textarea id="inputEditDescription" placeholder="Enter a description" method="dialog" required></textarea>
                 <div class="assignedContainer">
                     <label>Assigned to</label>
@@ -165,7 +170,7 @@ function createHtmlForEditTask(column, i) {
             </div>
             <div class="rightEditContainer">
                     <div class="input-container-edit">
-                        <label>Due date</label>
+                        <label>Due date<span class="required-star">*</span></label>
                         <input onclick="limitDueDate()" class="dueDate" id="due-date" name="due-date" type="date" placeholder="dd/mm/yyyy">
                         <div class="input-date-ios-edit">
                             <input class="field-style-edit" id="day" type="number" placeholder="Day" name="day" min="1" max="31">
@@ -198,16 +203,17 @@ function createHtmlForEditTask(column, i) {
                                 id="lowImage" src="./src/img/img_board/low_prio.png"></button>
                     </div>
                 </div>
-                <div class="subTaskContainer">
+                <div class="subTaskContainer" onclick="doNotClose(event); assignAction('close')">
                     <label>Subtasks</label>
                     <div class="subtaksInputContainer">
-                        <input type="text" id="inputSubtask" placeholder="Add new subtask">
-                        <button onclick="addSubtask('${column}', ${i})" class="subtaskAddBtn"></button>
+                        <input type="text" id="inputSubtask" placeholder="Add new subtask" onkeypress="return handleKeyPress(event, '${column}', ${i})">
+                        <button type="button" onclick="addSubtask('${column}', ${i})" class="subtaskAddBtn"></button>
                     </div>
                     <ul id="subtasksList"></ul>
                 </div>
             </div>
-            <button onclick="saveChangesForTask('${column}',${i})" class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>          
+            <button type="submit"  class="applyEditBtn">Ok<img src="src/img/img_contacts/ok_chop.png"alt="image of a chop"></button>   
+            </form>       
         </div>
     `;
 }
@@ -242,15 +248,28 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
-        <li onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
+        <div onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
+            <input type="checkbox" id="${id}" ${checkedStatus}>
+            <label for="subtask${i}" id="subtaskValue${s}">${title}</label>
+            <input type="text" id="editSubtask${s}" class="editSubtask dNone" onclick="doNotClose(event)">
+            <div class="btnContainer" onclick="doNotClose(event)">
+                <div id="editSubtaskBtn${s}"" class="editSubtaskBtn subtaskBtnStyle" onclick="editSubtask('${column}', ${i}, ${s})"></div>
+                <div id="saveSubtaskBtn${s}"" class="saveSubtaskBtn subtaskBtnStyle dNone" onclick="saveEditedSubtask('${column}', ${i}, ${s})"></div>
+                <hr>
+                <div class="deleteSubtaskBtn subtaskBtnStyle" onclick="deleteSubtask('${column}', ${i}, ${s})"></div></li>
+            </div>
+        </div>
+    `;
+}
+
+function createHtmlForSubtaskTaskInfo(task, checked, column, i, s) {
+    let title = task.title;
+    let checkedStatus = checkBooleanValue(checked)
+    let id = task.id;
+    return `
+        <div onclick="doNotClose(event); changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
         <input type="checkbox" id="${id}" ${checkedStatus}>
-        <label for="subtask${i}" id="subtaskValue${s}">${title}</label>
-        <input type="text" id="editSubtask${s}" class="editSubtask dNone">
-        <div class="btnContainer">
-            <div id="editSubtaskBtn${s}"" class="editSubtaskBtn subtaskBtnStyle" onclick="editSubtask('${column}', ${i}, ${s})"></div>
-            <div id="saveSubtaskBtn${s}"" class="saveSubtaskBtn subtaskBtnStyle dNone" onclick="saveEditedSubtask('${column}', ${i}, ${s})"></div>
-            <hr>
-            <div class="deleteSubtaskBtn subtaskBtnStyle" onclick="deleteSubtask('${column}', ${i}, ${s})"></div></li>
+        <label for="${id}" id="subtaskValue${s}">${title}</label>
         </div>
     `;
 }

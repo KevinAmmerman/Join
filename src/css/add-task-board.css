@@ -59,6 +59,10 @@ label {
 	cursor: pointer;
 }
 
+.required-star {
+	color: #FF8190;
+}
+
 /* textarea */
 
 .textarea-field {
@@ -563,6 +567,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .color-container-contact {
 	display: flex;
 	gap: 12px;
+	margin-left: 4px;
 }
 
 ::placeholder {

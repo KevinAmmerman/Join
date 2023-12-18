@@ -9,13 +9,17 @@ async function init() {
     await includeHTML();
     tasks = JSON.parse(await getItem('tasks'));
     contacts = JSON.parse(await getItem('contacts'));
+    renderAllTasks();
+    addActiveToMenu('boardLink');
+    addActiveToMenu('mobile-buttonId2');
+    generateLoggedinUserLogo();
+}
+
+function renderAllTasks() {
     renderTasks(tasks, 'toDo', 'toDo');
     renderTasks(tasks, 'inProgress', 'inProgress');
     renderTasks(tasks, 'feedback', 'feedback');
     renderTasks(tasks, 'done', 'done');
-    addActiveToMenu('boardLink');
-    addActiveToMenu('mobile-buttonId2');
-    generateLoggedinUserLogo();
 }
 
 
@@ -75,6 +79,7 @@ function openTask(column, i) {
     taskInfoContainer.innerHTML = createHtmlForTaskInfo(column, i);
     renderAssignetPeople(column, i);
     preventScrollingInBackground();
+    getSubtasks(column, i, 'taskInfo');
 }
 
 /**
@@ -111,7 +116,7 @@ function editTask(column, i) {
     getPrioStatus(column, i);
     getAssignedTo(column, i);
     renderAssignetPeopleForEdit();
-    renderAssignetInitials(column, i);
+    renderAssignetInitials();
     getSubtasks(column, i);
     setsRequiredAttributeForDateInput();
 }
@@ -233,11 +238,12 @@ function renderAssignetPeopleForEdit() {
  * @param {string} column - The column the task belongs to.
  * @param {number} i - The index of the task within the column.
  */
-function renderAssignetInitials(column, i) {
+function renderAssignetInitials() {
     let selectedAssignments = document.getElementById('selectedAssignments');
-    for (let p = 0; p < tasks[column][i].assignedTo.length; p++) {
-        const person = tasks[column][i].assignedTo[p];
-        selectedAssignments.innerHTML += createHtmlForAssignedPeopleTask(person);
+    selectedAssignments.innerHTML = '';
+    for (let i = 0; i < assignedPeople.length; i++) {
+        const person = assignedPeople[i].name;
+        if (assignedPeople[i].assigned === true) selectedAssignments.innerHTML += createHtmlForAssignedPeopleTask(person);
     }
 }
 
@@ -247,9 +253,12 @@ function renderAssignetInitials(column, i) {
  * @param {number} i - The index of the assigned person in the assignedPeople array.
  */
 function changeAssignedStatus(i) {
-    let checked = document.getElementById(`checkbox${i}`).checked;
-    assignedPeople[i].assigned = checked;
+    let checkbox = document.getElementById(`checkbox${i}`);
+    checkbox.checked = !checkbox.checked;
+    assignedPeople[i].assigned = checked.checked;
+    renderAssignetInitials();
 }
+
 
 /**
  * Retrieves the subtasks for a task and updates the subtasks list in the edit task form.
@@ -257,19 +266,39 @@ function changeAssignedStatus(i) {
  * @param {string} column - The column the task belongs to.
  * @param {number} i - The index of the task within the column.
  */
-function getSubtasks(column, i) {
-    let subtaskList = document.getElementById('subtasksList');
-    subtaskList.innerHTML = '';
-    if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
-        for (let s = 0; s < tasks[column][i].subtask.length; s++) {
-            const task = tasks[column][i].subtask[s];
-            if (task.status == true) {
-                subtaskList.innerHTML += createHtmlForSubtask(task, true, column, i, s);
-            } else {
-                subtaskList.innerHTML += createHtmlForSubtask(task, false, column, i, s);
+function getSubtasks(column, i, taskInfo) {
+    if (taskInfo === 'taskInfo') {
+        getSubtasksForTaskInfo(column, i);
+    } else {
+        let subtaskList = document.getElementById('subtasksList');
+        subtaskList.innerHTML = '';
+        if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
+            for (let s = 0; s < tasks[column][i].subtask.length; s++) {
+                const task = tasks[column][i].subtask[s];
+                if (task.status == true) {
+                    subtaskList.innerHTML += createHtmlForSubtask(task, true, column, i, s);
+                } else {
+                    subtaskList.innerHTML += createHtmlForSubtask(task, false, column, i, s);
+                }
             }
         }
     }
+}
+
+
+function getSubtasksForTaskInfo(column, i) {
+    let subtaskList = document.getElementById('subtaskContainer');
+        subtaskList.innerHTML = '';
+        if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
+            for (let s = 0; s < tasks[column][i].subtask.length; s++) {
+                const task = tasks[column][i].subtask[s];
+                if (task.status == true) {
+                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, true, column, i, s);
+                } else {
+                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, false, column, i, s);
+                }
+            }
+        }
 }
 
 /**
@@ -281,8 +310,10 @@ function getSubtasks(column, i) {
  * @param {number} s - The index of the subtask within the task.
  */
 function changeSubtaskStatus(column, i, id, s) {
-    let subtaskStatus = document.getElementById(id).checked;
-    tasks[column][i].subtask[s].status = subtaskStatus;
+    let subtaskStatus = document.getElementById(id);
+    subtaskStatus.checked = !subtaskStatus.checked
+    tasks[column][i].subtask[s].status = subtaskStatus.checked;
+    renderAllTasks();
 }
 
 /**
@@ -303,9 +334,25 @@ function addSubtask(column, i) {
         tasks[column][i].subtask.push(newSubtast);
         getSubtasks(column, i);
         subtaskInput.value = '';
-    } else {
-        alert('Type in a titel to add a subtask')
     }
+}
+
+/**
+ * Handles key press events for a given input field, specifically looking for the Enter key.
+ * If the Enter key is pressed, it prevents the default action (form submission) and triggers the addition of a subtask.
+ *
+ * @param {Event} event - The key press event object.
+ * @param {Object} column - The column object where the subtask is to be added.
+ * @param {number} i - The index indicating the specific position in the column where the subtask will be added.
+ * @returns {boolean} False if the Enter key is pressed to prevent default action, true otherwise.
+ */
+function handleKeyPress(event, column, i) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        addSubtask(column, i);
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -320,7 +367,14 @@ function deleteSubtask(column, i, s) {
     getSubtasks(column, i);
 }
 
-
+/**
+ * Enables editing mode for a specific subtask. It reveals the input field for editing, 
+ * hides the current subtask display, and toggles the edit/save buttons.
+ * 
+ * @param {Object} column - The column object representing the column containing the subtask.
+ * @param {number} i - The index of the task in the column.
+ * @param {number} s - The index of the subtask within the task.
+ */
 function editSubtask(column, i, s) {
     const editInputField = document.getElementById(`editSubtask${s}`);
     const subTask = document.getElementById(`subtaskValue${s}`);
@@ -333,7 +387,14 @@ function editSubtask(column, i, s) {
     editInputField.value = tasks[column][i].subtask[s].title;
 }
 
-
+/**
+ * Saves the edited title of a subtask and updates the task display. This function is called
+ * when the user completes editing a subtask and clicks the save button.
+ * 
+ * @param {Object} column - The column object representing the column containing the subtask.
+ * @param {number} i - The index of the task in the column.
+ * @param {number} s - The index of the subtask within the task.
+ */
 function saveEditedSubtask(column, i, s) {
     const editInputField = document.getElementById(`editSubtask${s}`);
     tasks[column][i].subtask[s].title = editInputField.value;
@@ -349,7 +410,7 @@ function saveEditedSubtask(column, i, s) {
 async function saveChangesForTask(column, i) {
     let title = document.getElementById('inputEditTitle').value;
     let description = document.getElementById('inputEditDescription').value;
-    let dueDate = isDesktop() ? document.getElementById('dueDate').value : getDate();
+    let dueDate = isDesktop() ? document.getElementById('due-date').value : getDate();
     let prioStatus = prioValue;
     tasks[column][i].title = title;
     tasks[column][i].description = description;

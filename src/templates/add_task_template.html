@@ -8,19 +8,19 @@
             <div class="task-left">
                 <!-- tittle input -->
                 <div class="input-container">
-                    <label>Title</label>
+                    <label>Title<span class="required-star">*</span></label>
                     <div class="input-field">
                         <input id="title" type="text" placeholder="Enter a title" required autofocus>
                     </div>
                 </div>
                 <!-- description input -->
                 <div class="input-container">
-                    <label>Description</label>
+                    <label>Description<span class="required-star">*</span></label>
                     <textarea class="textarea-field" id="description" rows="3" placeholder="Enter a description" required></textarea>
                 </div>
                 <!-- category input -->
                 <div class="input-container">
-                    <label for="select-task-category">Category</label>
+                    <label for="select-task-category">Category<span class="required-star">*</span></label>
                     <div class="toggle-menu" onclick="doNotClose(event)">
                         <div class="select-task-category" id="select-task-category">
                             <div id="selected-category">Select task category</div>
@@ -94,7 +94,7 @@
             <div class="task-right">
                 <!-- Date input -->
                 <div class="input-container">
-                    <label>Due date</label>
+                    <label>Due date<span class="required-star">*</span></label>
                     <div class="input-field due-date">
                         <input onclick="limitDueDate()" id="due-date" name="due-date" type="date" placeholder="dd/mm/yyyy">
                     </div>
@@ -122,11 +122,11 @@
                 <div class="input-container">
                     <label>Prio</label>
                     <div class="prio-btn">
-                        <button id="urgent-btn" onclick="addPrio(0)"><span>Urgent</span><img class="prio-img"
+                        <button class="prioBtnMobile" id="urgent-btn" onclick="addPrio(0)"><span>Urgent</span><img class="prio-img"
                                 id="urgent-image" src="./src/img/img_add_task/red-arrows-up.png"></button>
-                        <button id="medium-btn" onclick="addPrio(1)"><span>Medium</span><img class="prio-img"
+                        <button class="prioBtnMobile" id="medium-btn" onclick="addPrio(1)"><span>Medium</span><img class="prio-img"
                                 id="medium-image" src="./src/img/img_add_task/orange-lines3.svg"></button>
-                        <button id="low-btn" onclick="addPrio(2)"><span>Low</span><img class="prio-img" id="low-image"
+                        <button class="prioBtnMobile" id="low-btn" onclick="addPrio(2)"><span>Low</span><img class="prio-img" id="low-image"
                                 src="./src/img/img_add_task/green-arrows-down.png"></button>
                     </div>
                 </div>

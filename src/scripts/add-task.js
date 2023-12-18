@@ -7,6 +7,7 @@ let selectedCategoryName;
 let selectedCatColor = null;
 const prios = ['urgent', 'medium', 'low'];
 window.addEventListener('resize', setsRequiredAttributeForDateInput);
+let assignedPeopleForTask = [];
 
 /**
  * Initializes the addition of a task.
@@ -51,7 +52,7 @@ function initAddTasks() {
 async function createTask() {
 	const { value: title } = document.getElementById('title');
 	const { value: description } = document.getElementById('description');
-	const dueDate  = isDesktop() ? document.getElementById('due-date').value : getDate();
+	const dueDate = isDesktop() ? document.getElementById('due-date').value : getDate();
 	const selectedCategory = { name: selectedCategoryName, color: selectedCatColor };
 	if (selectedCategory.name === undefined) {
 		highlightField();
@@ -66,7 +67,7 @@ async function createTask() {
 			date: dueDate,
 			subtask: subTasks
 		};
-		createNewTask(newTask);	
+		createNewTask(newTask);
 	}
 }
 
@@ -85,18 +86,18 @@ function setsRequiredAttributeForDateInput() {
 	const year = document.getElementById('year');
 	const month = document.getElementById('months');
 	const day = document.getElementById('day');
-    const desktop = document.getElementById('due-date');
-    if (screen < 750) {
-        desktop.removeAttribute('required');
+	const desktop = document.getElementById('due-date');
+	if (screen < 750) {
+		desktop.removeAttribute('required');
 		year.setAttribute('required', '');
 		month.setAttribute('required', '');
 		day.setAttribute('required', '');
-    } else {
-        desktop.setAttribute('required', '');
+	} else {
+		desktop.setAttribute('required', '');
 		year.removeAttribute('required');
 		month.removeAttribute('required');
 		day.removeAttribute('required');
-    }
+	}
 }
 
 /**
@@ -354,12 +355,43 @@ async function loadContacts() {
 }
 
 /**
- * Toggles the checked state of a checkbox based on its ID.
- * @param {number} i - The index of the checkbox.
+ * Toggles the checkbox state and updates the list of assigned people for a task.
+ * Also updates the visual representation of assigned people.
+ * 
+ * @param {number} i - The index of the checkbox in the list.
+ * @param {Object} person - The person object associated with the checkbox.
  */
-function checkbox(i) {
+function checkbox(i, person) {
+	collectAssignedPeople(person);
+	renderAssignedPeopleInitinals();
 	let checkbox = document.getElementById(`checkbox${i}`);
 	checkbox.checked = !checkbox.checked;
+}
+
+/**
+ * Adds or removes a person to/from the list of assigned people for a task.
+ * 
+ * @param {Object} person - The person to be added or removed.
+ */
+function collectAssignedPeople(person) {
+	const index = assignedPeopleForTask.indexOf(person);
+	if (index === -1) {
+		assignedPeopleForTask.push(person);
+	} else {
+		assignedPeopleForTask.splice(index, 1);
+	}
+}
+
+/**
+ * Renders the initials of assigned people in a designated container.
+ * It clears the container and then repopulates it based on the current state of 'assignedPeopleForTask'.
+ */
+function renderAssignedPeopleInitinals() {
+	let assignContainer = document.getElementById('inicial-circles');
+	assignContainer.innerHTML = '';
+	for (let i = 0; i < assignedPeopleForTask.length; i++) {
+		assignContainer.innerHTML += createHtmlForAssignedPeopleTask(assignedPeopleForTask[i]);
+   }
 }
 
 /**

@@ -17,8 +17,8 @@ h1 {
 
 .addTaskForm {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
+	flex-direction: column;
+	align-items: center;
 }
 
 .input-container {
@@ -76,6 +76,10 @@ label {
 	background-color: transparent;
 	font-family: 'Inter';
 	cursor: pointer;
+}
+
+.required-star {
+	color: #FF8190;
 }
 
 /* textarea */
@@ -197,7 +201,7 @@ textarea:focus {
 	justify-content: space-between;
 }
 
-.contact > label {
+.contact>label {
 	cursor: pointer;
 }
 
@@ -381,16 +385,18 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .field-style {
-	max-width: 32%;
+	width: 32%;
 	border: 1px solid #a8a8a8;
-    border-radius: 10px;
+	border-radius: 10px;
 	height: 41px;
-    box-sizing: border-box;
-    padding: 0 15px;
+	box-sizing: border-box;
+	padding: 0 15px;
 	background-color: transparent;
 }
 
-#day, #months, #year {
+#day,
+#months,
+#year {
 	display: none;
 }
 
@@ -583,6 +589,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .color-container-contact {
 	display: flex;
 	gap: 12px;
+	margin-left: 4px;
 }
 
 ::placeholder {
@@ -754,7 +761,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		box-sizing: border-box;
 	}
 
-	.toggle-menu, .input-field {
+	.toggle-menu,
+	.input-field {
 		width: 320px;
 	}
 }
@@ -790,7 +798,22 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		display: flex !important;
 	}
 
-	#day, #months, #year {
+	#day,
+	#months,
+	#year {
 		display: block;
+	}
+}
+
+@media (max-width: 450px) {
+	.prio-btn {
+		flex-direction: column;
+		height: auto;
+	}
+
+	.prioBtnMobile {
+		width: fit-content;
+		padding: 5px 20px;
+		min-width: 166px
 	}
 }

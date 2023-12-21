@@ -81,7 +81,7 @@ function createHtmlForTaskInfo(column, i) {
             </div>
             <div class="subtaskMainContainer">
                 <div class="subheadlineStyle">Subtasks</div>
-                <div id="subtaskContainer"></div>
+                <div id="subtaskTaskInfoContainer"></div>
             </div>
             <div class="editDeleteContainer">
                 <div onclick="deleteTask('${column}', ${i})" class="left"></div>
@@ -225,11 +225,11 @@ function createHtmlForEditTask(column, i) {
  * @param {number} i - The index of the assigned person.
  * @returns {string} - The HTML code for rendering the assigned person in the edit task window.
  */
-function createHtmlForAssignedList(assign, i) {
+function createHtmlForAssignedList(assign, i, checkbox) {
     let name = assign.name;
     let checked = checkBooleanValue(assign.assigned);
     return `
-        <li onclick="doNotClose(event); changeAssignedStatus(${i})"><label for="checkbox${i}">${name}</label><input type="checkbox" id="checkbox${i}" ${checked}></li>
+        <li onclick="doNotClose(event); changeAssignedStatus(${i})"><span>${name}</span><img id="checkbox${i}" src="${checkbox}"></li>
     `;
 }
 
@@ -245,12 +245,11 @@ function createHtmlForAssignedList(assign, i) {
  */
 function createHtmlForSubtask(task, checked, column, i, s) {
     let title = task.title;
-    let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
         <div onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
-            <input type="checkbox" id="${id}" ${checkedStatus}>
-            <label for="subtask${i}" id="subtaskValue${s}">${title}</label>
+            <img id="${id}" src="${checked}">
+            <span id="subtaskValue${s}">${title}</span>
             <input type="text" id="editSubtask${s}" class="editSubtask dNone" onclick="doNotClose(event)">
             <div class="btnContainer" onclick="doNotClose(event)">
                 <div id="editSubtaskBtn${s}"" class="editSubtaskBtn subtaskBtnStyle" onclick="editSubtask('${column}', ${i}, ${s})"></div>
@@ -262,14 +261,13 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     `;
 }
 
-function createHtmlForSubtaskTaskInfo(task, checked, column, i, s) {
+function createHtmlForSubtaskTaskInfo(task, checkbox, column, i, s) {
     let title = task.title;
-    let checkedStatus = checkBooleanValue(checked)
     let id = task.id;
     return `
-        <div onclick="doNotClose(event); changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
-        <input type="checkbox" id="${id}" ${checkedStatus}>
-        <label for="${id}" id="subtaskValue${s}">${title}</label>
+        <div onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
+        <img id="${id}" src="${checkbox}">
+        <span>${title}</span>
         </div>
     `;
 }

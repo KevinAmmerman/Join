@@ -65,7 +65,7 @@ function checkLogout(event) {
  * Logs out the user and redirects to the login page.
  */
 function logout() {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 /**

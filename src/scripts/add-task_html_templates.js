@@ -43,8 +43,8 @@ function contactListHTML() {
  * @param {number} i - The index of the contact.
  * @returns {string} - The HTML string representing the contact list element.
  */
-function contactListElementsHTML(contacts, i) {
-    return `<li onclick="doNotClose(event); checkbox(${i}, '${contacts[i].name}')" class="contact"><label>${contacts[i].name}</label> <input id="checkbox${i}" value="${contacts[i].name}" type='checkbox' class='contact__checkbox' /></li>`;
+function contactListElementsHTML(contacts, i, status) {
+    return `<li onclick="doNotClose(event); checkbox(${i}, '${contacts[i].name}')" class="contact"><span>${contacts[i].name}</span><img id="checkbox${i}" src="${status}"/></li>`;
 }
 
 

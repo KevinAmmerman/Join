@@ -135,6 +135,7 @@ body {
     color: #FFFFFF;
     border-radius: 10px;
     cursor: pointer;
+    width: max-content;
 }
 
 #addTaskMobil {
@@ -275,11 +276,19 @@ body {
     gap: 10px;
 }
 
-#subtaskContainer div,
-#subtaskContainer div input,
-#subtaskContainer div label {
-    cursor: pointer;
+#subtaskTaskInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
+
+#subtaskTaskInfoContainer div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 
 .subtaskBar {
     display: flex;
@@ -322,6 +331,7 @@ body {
 
 .prioImage {
     object-fit: contain;
+    width: fit-content;
 }
 
 .mobileMoveToBtn {
@@ -726,6 +736,7 @@ body {
 .assignedList li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     cursor: pointer;
     padding: 4px 15px;
 }
@@ -750,6 +761,7 @@ body {
 .subTaskContainer {
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .subTaskContainer>label {

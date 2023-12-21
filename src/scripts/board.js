@@ -1,3 +1,6 @@
+const checked = 'src/img/checked.png';
+const unchecked = 'src/img/unchecked.png';
+
 /**
  * Initializes the application by retrieving tasks and contacts from storage, and rendering the tasks in each column.
  * 
@@ -228,7 +231,11 @@ function renderAssignetPeopleForEdit() {
     assignedList.innerHTML = '';
     for (let i = 0; i < assignedPeople.length; i++) {
         const assign = assignedPeople[i];
-        assignedList.innerHTML += createHtmlForAssignedList(assign, i)
+        if (assign.assigned === true) {
+            assignedList.innerHTML += createHtmlForAssignedList(assign, i, checked)
+        } else {
+            assignedList.innerHTML += createHtmlForAssignedList(assign, i, unchecked)
+        }
     }
 }
 
@@ -254,8 +261,13 @@ function renderAssignetInitials() {
  */
 function changeAssignedStatus(i) {
     let checkbox = document.getElementById(`checkbox${i}`);
-    checkbox.checked = !checkbox.checked;
-    assignedPeople[i].assigned = checked.checked;
+    let status = assignedPeople[i].assigned = !assignedPeople[i].assigned;
+    assignedPeople[i].assigned = status;
+    if (status) {
+        checkbox.src = checked;
+    } else {
+        checkbox.src = unchecked;
+    }
     renderAssignetInitials();
 }
 
@@ -276,26 +288,31 @@ function getSubtasks(column, i, taskInfo) {
             for (let s = 0; s < tasks[column][i].subtask.length; s++) {
                 const task = tasks[column][i].subtask[s];
                 if (task.status == true) {
-                    subtaskList.innerHTML += createHtmlForSubtask(task, true, column, i, s);
+                    subtaskList.innerHTML += createHtmlForSubtask(task, checked, column, i, s);
                 } else {
-                    subtaskList.innerHTML += createHtmlForSubtask(task, false, column, i, s);
+                    subtaskList.innerHTML += createHtmlForSubtask(task, unchecked, column, i, s);
                 }
             }
         }
     }
 }
 
-
+/**
+ * Retrieves the subtasks for a task and updates the subtasks list in the task info form.
+ * 
+ * @param {string} column - The column the task belongs to.
+ * @param {number} i - The index of the task within the column.
+ */
 function getSubtasksForTaskInfo(column, i) {
-    let subtaskList = document.getElementById('subtaskContainer');
+    let subtaskList = document.getElementById('subtaskTaskInfoContainer');
         subtaskList.innerHTML = '';
         if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
             for (let s = 0; s < tasks[column][i].subtask.length; s++) {
                 const task = tasks[column][i].subtask[s];
                 if (task.status == true) {
-                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, true, column, i, s);
+                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, checked, column, i, s);
                 } else {
-                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, false, column, i, s);
+                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, unchecked, column, i, s);
                 }
             }
         }
@@ -311,8 +328,12 @@ function getSubtasksForTaskInfo(column, i) {
  */
 function changeSubtaskStatus(column, i, id, s) {
     let subtaskStatus = document.getElementById(id);
-    subtaskStatus.checked = !subtaskStatus.checked
-    tasks[column][i].subtask[s].status = subtaskStatus.checked;
+    let status = tasks[column][i].subtask[s].status = !tasks[column][i].subtask[s].status;
+    if (status) {
+        subtaskStatus.src = checked;
+    } else {
+        subtaskStatus.src = unchecked;
+    }
     renderAllTasks();
 }
 

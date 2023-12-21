@@ -6,11 +6,29 @@
     padding-bottom: 30px;
 }
 
+.impressum a {
+    font-size: .9rem;
+    color: black;
+    font-weight: bold;
+}
+
+.impressum a:hover {
+    color: rgba(11, 173, 221);
+}
+
+.impressum p:first-of-type {
+    font-weight: bold;
+}
+
 .topic {
     font-size: 1.8em;
     color: rgba(11, 173, 221);
     font-weight: 500;
     margin-top: 50px;
+}
+
+.blue-headline {
+    color: rgba(11, 173, 221);
 }
 
 @media (max-width: 750px) {

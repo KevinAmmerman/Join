@@ -11,7 +11,6 @@
 async function getSummary() {
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
-    // summaryGreetingResponsive();
     generateSummaryTemplate();
     getUserNameFromLocalStorage();
     showGreetings();

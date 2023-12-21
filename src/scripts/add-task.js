@@ -57,7 +57,7 @@ async function createTask() {
 	if (selectedCategory.name === undefined) {
 		highlightField();
 	} else {
-		const assignees = Array.from(document.querySelectorAll('.contact__checkbox:checked')).map(input => input.value);
+		const assignees = assignedPeopleForTask;
 		const newTask = {
 			category: { ...selectedCategory },
 			assignedTo: assignees,
@@ -350,7 +350,7 @@ async function loadContacts() {
 	document.querySelector('.assigned-to__list').innerHTML = '';
 	document.querySelector('.assigned-to__list').innerHTML += contactListHTML();
 	for (let i = 0; i < contacts.length; i++) {
-		document.querySelector('.assigned-to__list').innerHTML += contactListElementsHTML(contacts, i);
+		document.querySelector('.assigned-to__list').innerHTML += contactListElementsHTML(contacts, i, unchecked);
 	}
 }
 
@@ -362,10 +362,14 @@ async function loadContacts() {
  * @param {Object} person - The person object associated with the checkbox.
  */
 function checkbox(i, person) {
-	collectAssignedPeople(person);
+	const status = collectAssignedPeople(person);
+	const checkbox = document.getElementById(`checkbox${i}`);
 	renderAssignedPeopleInitinals();
-	let checkbox = document.getElementById(`checkbox${i}`);
-	checkbox.checked = !checkbox.checked;
+	if (status === -1) {
+		checkbox.src = checked;
+	} else {
+		checkbox.src = unchecked;
+	}
 }
 
 /**
@@ -380,6 +384,7 @@ function collectAssignedPeople(person) {
 	} else {
 		assignedPeopleForTask.splice(index, 1);
 	}
+	return index;
 }
 
 /**

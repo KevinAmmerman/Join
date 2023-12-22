@@ -1,3 +1,5 @@
+let menuToggle = false;
+
 /**
  * Includes HTML content from external files.
  * @returns {Promise} - A promise that resolves when the HTML content has been included.
@@ -27,38 +29,35 @@ async function includeHTML() {
 }
 
 /**
- * Opens the logout menu and adds event listeners for closing the menu.
+ * Toggles the visibility of a menu. This function changes the display state of the menu
+ * based on a boolean flag 'menuToggle'. It also sets up an event listener to handle clicks outside the menu.
  */
-function openLogout() {
-    document.getElementById('legalNoticeMobile').classList.remove('dNone');
-    document.getElementById('logoutMobile').classList.remove('dNone');
-    document.getElementById('logout').classList.remove('dNone');
-    setTimeout(() => document.addEventListener('click', checkLogout), 0);
+function toggleMenu() {
+    const menu = document.getElementById('logo-container');
+    startEventListener(menu);
+    menuToggle = !menuToggle;
+    if (menuToggle) {
+        menu.classList.remove('dNone');
+    } else {
+        menu.classList.add('dNone');
+    }
+
 }
 
 /**
- * Displays the legal notice for mobile view.
+ * Sets up an event listener to close the menu when clicking outside of it. This function is called 
+ * to ensure the menu is closed when the user interacts with other parts of the application.
+ * 
+ * @param {HTMLElement} menu - The DOM element representing the menu to be toggled.
  */
-function legalNoticeMobile() {
-    document.getElementById('');
-}
-
-/**
- * Closes the logout menu and removes event listeners for closing the menu.
- */
-function closeLogout() {
-    document.getElementById('legalNoticeMobile').classList.add('dNone');
-    document.getElementById('logoutMobile').classList.add('dNone');
-    document.getElementById('logout').classList.add('dNone');
-    document.removeEventListener('click', checkLogout);
-}
-
-/**
- * Checks if the click event target is outside the logout menu and closes the menu if necessary.
- * @param {Event} event - The click event.
- */
-function checkLogout(event) {
-    if (event.target.id !== 'logout', 'logoutMobile', 'legalNoticeMobile') closeLogout();
+function startEventListener(menu) {
+    const button = document.getElementById('guestLogin');
+    document.addEventListener('click', (event) => {
+        if (menuToggle && !button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add('dNone');
+            menuToggle = false;
+        }
+    })
 }
 
 /**
@@ -73,7 +72,6 @@ function logout() {
  * @param {string} id - The ID of the menu item.
  */
 function addActiveToMenu(id) {
-    if (id == undefined) id = 'impressumLink';
     if (id.includes('Link')) {
         let active = document.getElementById(id);
         active.classList.add('activeLink');
@@ -133,6 +131,12 @@ function getUserNameFromLocalStorage() {
  * Initializes the impressum page by adding the 'activeLink' class to the menu item and generating the logged-in user logo.
  */
 function initImpressum() {
-    addActiveToMenu();
+    addActiveToMenu('impressumLink');
+    generateLoggedinUserLogo();
+}
+
+
+function initPrivacy() {
+    addActiveToMenu('privacyLink');
     generateLoggedinUserLogo();
 }

@@ -179,12 +179,12 @@ html {
 
 .checkbox {
     padding-right: 40px;
+    display: flex;
+    align-items: center;
 }
 
-.checkbox-input {
-    width: 18px;
-    height: 18px;
-    border: 1px solid black;
+#remember-me-checkbox {
+    margin-right: 6px;
 }
 
 .login-guest-button-container {

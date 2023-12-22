@@ -93,6 +93,18 @@ body {
     flex-direction: column;
     margin-top: 20px;
     width: 400px;
+    gap: 25px;
+}
+
+.password-error-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: red;
+}
+
+.dNone {
+    display: none;
 }
 
 .password-input {
@@ -120,7 +132,6 @@ body {
     border-radius: 5px;
     font-size: 20px;
     padding: 8px;
-    margin-bottom: 25px;
     width: 100%;
 }
 
@@ -133,7 +144,6 @@ body {
     border-radius: 5px;
     font-size: 20px;
     padding: 8px;
-    margin-bottom: 25px;
     width: 100%;
 }
 
@@ -147,6 +157,12 @@ body {
 
 .password-input::placeholder {
     color: rgba(0, 0, 0, 0.3);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .SignUp-button-container {

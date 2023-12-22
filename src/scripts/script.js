@@ -1,4 +1,5 @@
 let menuToggle = false;
+let isLoggedIn = true;
 
 /**
  * Includes HTML content from external files.
@@ -133,10 +134,28 @@ function getUserNameFromLocalStorage() {
 function initImpressum() {
     addActiveToMenu('impressumLink');
     generateLoggedinUserLogo();
+    // checkIfLoggedIn();
 }
 
 
 function initPrivacy() {
     addActiveToMenu('privacyLink');
     generateLoggedinUserLogo();
+    checkIfLoggedIn();
+}
+
+
+function checkIfLoggedIn() {
+    const menu = document.querySelector('.top-part');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const logo = document.querySelector('.join-logo-not-loggedin');
+    if (!isLoggedIn) {
+        menu.classList.add('dNone');
+        mobileMenu.classList.add('dNone');
+        logo.classList.remove('dNone');
+    } else {
+        menu.classList.remove('dNone');
+        mobileMenu.classList.remove('dNone');
+        logo.classList.add('dNone');
+    }
 }

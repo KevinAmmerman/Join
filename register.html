@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    
+
     <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="120x120" href="./src/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./src/favicon/favicon-32x32.png">
@@ -22,6 +22,7 @@
     <script src="./src/scripts/dataBase.js"></script>
     <script src="./src/scripts/storage.js"></script>
     <script src="./src/scripts/registerlogin.js"></script>
+    <script src="src/scripts/script.js"></script>
 </head>
 
 <body onload="logininit()">
@@ -40,6 +41,15 @@
                         <input class="email-input" type="email" name="email" placeholder="Email" id="email" required>
                         <input class="password-input" type="password" name="password" placeholder="Password"
                             id="password" autocomplete="on" required>
+                        <div class="password-error-box">
+                            <input class="password-input" type="password" name="password" placeholder="Confirm Password"
+                                id="confirm-password" autocomplete="on" onkeyup="checkPassword()" required>
+                                <span class="dNone" id="password-error">Passwords do not match</span>
+                        </div>
+                        <div class="checkbox">
+                            <img src="src/img/unchecked.png" id="remember-me-checkbox" onclick="">
+                            <span>I accept the <div onclick="goToPrivacyPolicy()">Privacy Policy</div></span>
+                        </div>
                     </div>
                     <div class="SignUp-button-container">
                         <button id="registerBtn" class="SignUp-button">Sign up</button>

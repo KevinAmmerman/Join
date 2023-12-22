@@ -1,3 +1,5 @@
+let rememberMe = false;
+
 /**
  * Initializes the login process.
  * - Loads user data.
@@ -6,7 +8,7 @@
  */
 async function logininit(login) {
     await loadUser();
-    if(login) loadEmailPassword();
+    if (login) loadEmailPassword();
     messageSignIn();
 }
 
@@ -82,29 +84,32 @@ function hideError() {
  * Loads the email and password from storage.
  */
 function loadEmailPassword() {
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let checkbox = document.getElementById('loginCheckbox');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const checkbox = document.getElementById('remember-me-checkbox');
     let rememberMeChecked = JSON.parse(localStorage.getItem('rememberMeChecked'));
     if (rememberMeChecked === true) {
-        checkbox.checked = true;
+        checkbox.src = 'src/img/checked.png';
+        rememberMe = true;
         email.value = localStorage.getItem('email');
         password.value = localStorage.getItem('password');
     } else {
-        checkbox.checked = false;
+        checkbox.src = 'src/img/unchecked.png';
         email.value = '';
         password.value = '';
     }
 }
 
 /**
- * Stores the login email and password in local storage.
- * @param {string} email - The login email.
- * @param {string} password - The login password.
+ * Stores or removes user login information in localStorage based on the 'rememberMe' flag.
+ * If 'rememberMe' is true, the user's email and password are stored. Otherwise, they are removed.
+ * This function also updates the 'rememberMeChecked' item in localStorage to reflect the user's choice.
+ * 
+ * @param {string} email - The user's email address.
+ * @param {string} password - The user's password.
  */
 function rememberLogin(email, password) {
-    let checkbox = document.getElementById("loginCheckbox");
-    if (checkbox.checked) {
+    if (rememberMe) {
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
         localStorage.setItem("rememberMeChecked", "true");
@@ -112,6 +117,21 @@ function rememberLogin(email, password) {
         localStorage.removeItem("email");
         localStorage.removeItem("password");
         localStorage.setItem("rememberMeChecked", "false");
+    }
+}
+
+/**
+ * Toggles the 'rememberMe' boolean flag and updates the checkbox image source accordingly.
+ * If 'rememberMe' is true, it sets the checkbox image to indicate a checked state.
+ * If false, it changes the image to an unchecked state.
+ */
+function toggleRememberMe() {
+    const checkbox = document.getElementById('remember-me-checkbox');
+    rememberMe = !rememberMe;
+    if (rememberMe) {
+        checkbox.src = 'src/img/checked.png';
+    } else {
+        checkbox.src = 'src/img/unchecked.png';
     }
 }
 
@@ -136,10 +156,25 @@ async function register() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    addUser(name, email, password);
-    await setItem('users', JSON.stringify(users));
-    setNewRegistration(true);
-    window.location.href = 'index.html';
+    let confirmPassword = document.getElementById('confirm-password');
+    if (password.value === confirmPassword.value) {
+        addUser(name, email, password);
+        await setItem('users', JSON.stringify(users));
+        setNewRegistration(true);
+        window.location.href = 'index.html';
+    }
+}
+
+function checkPassword() {
+    let password = document.getElementById('password');
+    let confirmPassword = document.getElementById('confirm-password');
+    let error = document.getElementById('password-error');
+    if (password.value !== confirmPassword.value) {
+        error.classList.remove('dNone');
+    } else {
+        error.classList.add('dNone');
+    }
+
 }
 
 /**

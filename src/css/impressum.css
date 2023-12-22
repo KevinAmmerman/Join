@@ -10,6 +10,7 @@
     font-size: .9rem;
     color: black;
     font-weight: bold;
+    word-wrap: break-word;
 }
 
 .impressum a:hover {

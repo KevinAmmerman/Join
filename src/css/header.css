@@ -34,6 +34,29 @@ body {
     background-size: 50px 50px;
 }
 
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 30px;
+    top: 90px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px 0px 20px 20px;
+    padding: 10px;
+}
+
+.logout-container div {
+    padding: 8px 16px 8px 16px;
+    cursor: pointer;
+    color: #CDCDCD;
+}
+
+.logout-container div:hover {
+    background-color: #2A3D59;
+}
+
 .loggedinUserLogo {
     width: 50px;
     height: 50px;
@@ -111,19 +134,6 @@ body {
 
     .logout {
         display: none;
-    }
-
-    .logout-mobile-container {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        right: 30px;
-        top: 90px;
-        background-color: #2A3647;
-        color: white;
-        font-size: 15px;
-
-        border-radius: 20px 0px 20px 20px;
     }
 
     .logout-mobile {

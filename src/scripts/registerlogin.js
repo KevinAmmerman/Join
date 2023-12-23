@@ -1,4 +1,5 @@
 let rememberMe = false;
+let privacy = false;
 
 /**
  * Initializes the login process.
@@ -45,6 +46,7 @@ async function login() {
         password.value = '';
         saveUserNameInLocalStorage();
         window.location.href = 'summary.html';
+        localStorage.setItem('loggedIn', '');
     } else {
         showError();
     }
@@ -62,6 +64,7 @@ function guestLogin() {
         userName = 'Guest';
         saveUserNameInLocalStorage();
         window.location.href = `summary.html`;
+        localStorage.setItem('loggedIn', '');
     }
 }
 
@@ -151,14 +154,14 @@ async function messageSignIn() {
  * Handles the registration process.
  */
 async function register() {
-    const registerBtn = document.getElementById('registerBtn');
-    registerBtn.disabled = true;
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let confirmPassword = document.getElementById('confirm-password');
-    if (password.value === confirmPassword.value) {
+    checkPrivacyCheckbox();
+    if (password.value === confirmPassword.value && privacy) {
         addUser(name, email, password);
+        addContact(name.value, email.value);
         await setItem('users', JSON.stringify(users));
         setNewRegistration(true);
         window.location.href = 'index.html';
@@ -175,6 +178,14 @@ function checkPassword() {
         error.classList.add('dNone');
     }
 
+}
+
+
+function checkPrivacyCheckbox() {
+    const checkbox = document.getElementById('privacy-checkbox');
+    if (!privacy) {
+        checkbox.style.filter = 'invert(11%) sepia(97%) saturate(7050%) hue-rotate(2deg) brightness(99%) contrast(110%)';
+    }
 }
 
 /**
@@ -217,4 +228,38 @@ function setNewRegistration(value) {
 function getNewRegistration() {
     let value = localStorage.getItem('newReg');
     return isNewRegistered = JSON.parse(value);
+}
+
+/**
+ * Redirects the user to a specified legal information page and updates the user's login status to 'not logged in'.
+ * 
+ * @param {string} page - The name of the legal information page to navigate to. 
+ *                        This string is used to construct the URL of the destination page.
+ */
+function goToLegalInfoPage(page) {
+    setNotLoggedIn();
+    window.location.href = `${page}.html`;
+}
+
+/**
+ * Updates the user's login status in localStorage to indicate they are not logged in.
+ */
+function setNotLoggedIn() {
+    localStorage.setItem('loggedIn', 'false');
+}
+
+/**
+ * Toggles the state of a custom privacy checkbox. This function changes the image source 
+ * of the checkbox to represent its checked or unchecked state and updates a global 'privacy' variable.
+ * The checkbox is assumed to be an image element with the ID 'privacy-checkbox'.
+ */
+function togglePrivacyCheckbox() {
+    const checkbox = document.getElementById('privacy-checkbox');
+    privacy = !privacy;
+    if (privacy) {
+        checkbox.src = 'src/img/checked.png';
+        checkbox.style.filter = '';
+    } else {
+        checkbox.src = 'src/img/unchecked.png';
+    }
 }

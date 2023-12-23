@@ -23,19 +23,23 @@
     <script src="./src/scripts/storage.js"></script>
     <script src="./src/scripts/registerlogin.js"></script>
     <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/contacts_main.js"></script>
 </head>
 
 <body onload="logininit()">
-    <div class="register-logo-container">
+    <!-- <div class="register-logo-container">
         <img class="blue-logo" src="./src/img/logo_blue_join.png">
-    </div>
+    </div> -->
     <div class="register-container">
+        <div class="register-logo-container">
+            <img class="blue-logo" src="./src/img/logo_blue_join.png">
+        </div>
         <div class="register-SignUp">
             <a href="index.html"><img src="./src/img/left-arrow.png" alt=""></a>
             <h1>Sign up</h1>
             <div class="blue-line"></div>
             <Form onsubmit="register(); return false;" id="register-form">
-                <div class="sign-Up-Container">
+                <!-- <div class="sign-Up-Container"> -->
                     <div class="input-register-password">
                         <input class="name-input" type="text" name="name" placeholder="Name" id="name" required>
                         <input class="email-input" type="email" name="email" placeholder="Email" id="email" required>
@@ -47,15 +51,19 @@
                                 <span class="dNone" id="password-error">Passwords do not match</span>
                         </div>
                         <div class="checkbox">
-                            <img src="src/img/unchecked.png" id="remember-me-checkbox" onclick="">
-                            <span>I accept the <div onclick="goToPrivacyPolicy()">Privacy Policy</div></span>
+                            <img src="src/img/unchecked.png" id="privacy-checkbox" onclick="togglePrivacyCheckbox()">
+                            <span>I accept the <div onclick="goToLegalInfoPage('privacy')">Privacy Policy</div></span>
                         </div>
                     </div>
                     <div class="SignUp-button-container">
-                        <button id="registerBtn" class="SignUp-button">Sign up</button>
+                        <button id="registerBtn" type="submit" class="SignUp-button">Sign up</button>
                     </div>
-                </div>
+                <!-- </div> -->
             </Form>
+        </div>
+        <div class="legal-info-links">
+            <div onclick="goToLegalInfoPage('privacy')">Privacy Policy</div>
+            <div onclick="goToLegalInfoPage('impressum')">Legal notice</div>
         </div>
     </div>
 </body>

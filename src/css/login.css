@@ -16,10 +16,10 @@ html {
 .join-Logo-Container {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 80px;
     align-items: center;
     margin-left: 80px;
-    margin-right: 120px;
+    margin-right: 80px;
 }
 
 .join-Logo-Container img {

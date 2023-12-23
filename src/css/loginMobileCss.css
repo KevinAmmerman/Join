@@ -37,10 +37,10 @@
         margin: 50px;
     }
 
-    .login-Container {
+    /* .login-Container {
         height: 0;
         transform: translateY(200px);
-    }
+    } */
 
     .signIn-Container {
         font-size: 15px;
@@ -350,7 +350,7 @@
     .join-Logo-Container {
         margin-left: 10px;
         margin-top: 20px;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
 
     .login-password-content {
@@ -431,7 +431,7 @@
     .join-Logo-Container {
         margin-left: 10px;
         margin-top: 20px;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
 
     .login-password-content {
@@ -608,7 +608,6 @@
     .join-Logo-Container {
         margin-left: 10px;
         margin-top: 20px;
-        margin-bottom: 50px;
     }
 
     .join-Logo-Container img {

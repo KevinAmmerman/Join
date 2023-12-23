@@ -30,7 +30,8 @@ body {
     justify-content: center;
 }
 
-.join-logo-menu {
+.join-logo-menu,
+.join-logo-not-loggedin {
     width: 100.3px;
     height: 121.97px;
     margin-top: 66px;

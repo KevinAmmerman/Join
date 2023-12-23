@@ -43,9 +43,11 @@ function renderTasks(array, column, id) {
     }
     for (let i = 0; i < array[column].length; i++) {
         const task = array[column][i];
-        columnId.innerHTML += createHtmlForTasks(task, column, i);
-        renderInitinalsForAssingetPeople(column, i);
-        checkIfSubtask(task, column, i);
+        if (task) {
+            columnId.innerHTML += createHtmlForTasks(task, column, i);
+            renderInitinalsForAssingetPeople(column, i);
+            checkIfSubtask(task, column, i);
+        }
     }
 }
 
@@ -305,17 +307,17 @@ function getSubtasks(column, i, taskInfo) {
  */
 function getSubtasksForTaskInfo(column, i) {
     let subtaskList = document.getElementById('subtaskTaskInfoContainer');
-        subtaskList.innerHTML = '';
-        if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
-            for (let s = 0; s < tasks[column][i].subtask.length; s++) {
-                const task = tasks[column][i].subtask[s];
-                if (task.status == true) {
-                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, checked, column, i, s);
-                } else {
-                    subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, unchecked, column, i, s);
-                }
+    subtaskList.innerHTML = '';
+    if (tasks[column][i].subtask && tasks[column][i].subtask.length > 0) {
+        for (let s = 0; s < tasks[column][i].subtask.length; s++) {
+            const task = tasks[column][i].subtask[s];
+            if (task.status == true) {
+                subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, checked, column, i, s);
+            } else {
+                subtaskList.innerHTML += createHtmlForSubtaskTaskInfo(task, unchecked, column, i, s);
             }
         }
+    }
 }
 
 /**

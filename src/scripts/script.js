@@ -1,5 +1,4 @@
 let menuToggle = false;
-let isLoggedIn = true;
 
 /**
  * Includes HTML content from external files.
@@ -129,33 +128,51 @@ function getUserNameFromLocalStorage() {
 }
 
 /**
- * Initializes the impressum page by adding the 'activeLink' class to the menu item and generating the logged-in user logo.
+ * Initializes the Impressum page. This includes highlighting the Impressum link in the menu,
+ * generating the logged-in user logo, and checking the user's login status.
  */
 function initImpressum() {
     addActiveToMenu('impressumLink');
     generateLoggedinUserLogo();
-    // checkIfLoggedIn();
+    checkIfLoggedIn();
 }
 
-
+/**
+ * Initializes the Privacy page. This includes highlighting the Privacy link in the menu,
+ * generating the logged-in user logo, and checking the user's login status.
+ */
 function initPrivacy() {
     addActiveToMenu('privacyLink');
     generateLoggedinUserLogo();
     checkIfLoggedIn();
 }
 
-
+/**
+ * Checks if a user is logged in based on localStorage data.
+ * Modifies the UI elements based on the login status. It hides certain menu items and
+ * shows the back button and logo for non-logged-in users.
+ */
 function checkIfLoggedIn() {
+    const isLoggedIn = localStorage.getItem('loggedIn');
     const menu = document.querySelector('.top-part');
     const mobileMenu = document.querySelector('.mobile-menu');
     const logo = document.querySelector('.join-logo-not-loggedin');
-    if (!isLoggedIn) {
-        menu.classList.add('dNone');
-        mobileMenu.classList.add('dNone');
+    const userMenu = document.querySelector('.profile-section');
+    const backBtn = document.querySelector('.arrow-back-btn');
+    if (isLoggedIn === 'false') {
+        mobileMenu.remove();
+        menu.remove();
+        userMenu.remove();
         logo.classList.remove('dNone');
-    } else {
-        menu.classList.remove('dNone');
-        mobileMenu.classList.remove('dNone');
-        logo.classList.add('dNone');
+        backBtn.classList.remove('dNone');
     }
+}
+
+/**
+ * Handles the 'Go Back' action. It resets the loggedIn status in localStorage and
+ * redirects the user to the registration page.
+ */
+function goBack() {
+    localStorage.setItem('loggedIn', '');
+    window.location.href = 'register.html';
 }

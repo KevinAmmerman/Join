@@ -121,7 +121,7 @@ function filterForPrio() {
     for (let i = 0; i < categories.length; i++) {
         const catergory = categories[i];
         for (let j = 0; j < tasks[catergory].length; j++) {
-            const prio = tasks[catergory][j].prio;
+            const prio = tasks[catergory][j] ? tasks[catergory][j].prio : 0;
             if (prio == 1) allPrioOne += prio;
         }
     }
@@ -138,7 +138,7 @@ function mostUrgent() {
     for (let i = 0; i < categories.length; i++) {
         const catergory = categories[i];
         for (let j = 0; j < tasks[catergory].length; j++) {
-            if (tasks[catergory][j].prio == 1) {
+            if (tasks[catergory][j] && tasks[catergory][j].prio == 1) {
                 const date = tasks[catergory][j].date;
                 mostUrgentDates.push(parseInt(convertToInteger(date)));
             }

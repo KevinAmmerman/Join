@@ -172,12 +172,15 @@ body {
     gap: 20px;
     overflow-y: scroll;
     padding: 24px 0 24px 0;
+    height: calc(100svh - 280px);
 }
 
 #contactView {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: calc(100svh - 189px);
+    /* height: 100svh; */
 }
 
 /* === CONTACT-HEADER === */

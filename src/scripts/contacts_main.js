@@ -75,10 +75,10 @@ function renderCreateContactWindow() {
  * - Adds the new contact to the list, updates the UI, and stores the updated list.
  * - Initializes the application.
  */
-async function addContact(n, e) {
-    let name = document.getElementById('inputName') ? document.getElementById('inputName').value : n;
-    let email = document.getElementById('inputEmail') ? document.getElementById('inputEmail').value : e;
-    let phone = document.getElementById('inputPhone') ? document.getElementById('inputPhone').value : '';
+async function addContact() {
+    let name = document.getElementById('inputName').value;
+    let email = document.getElementById('inputEmail').value;
+    let phone = document.getElementById('inputPhone').value;
     let newContact = {
         "name": name,
         "email": email,

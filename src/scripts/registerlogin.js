@@ -48,7 +48,8 @@ async function login() {
         window.location.href = 'summary.html';
         localStorage.setItem('loggedIn', '');
     } else {
-        showError();
+        setTimeout(() => showError(), 500);
+
     }
 }
 
@@ -161,7 +162,6 @@ async function register() {
     checkPrivacyCheckbox();
     if (password.value === confirmPassword.value && privacy) {
         addUser(name, email, password);
-        addContact(name.value, email.value);
         await setItem('users', JSON.stringify(users));
         setNewRegistration(true);
         window.location.href = 'index.html';

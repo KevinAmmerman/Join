@@ -70,6 +70,7 @@
     .task-container-2 {
         display: flex;
         justify-content: space-between;
+        gap: 5;
         width: 70%;
     }
 
@@ -100,7 +101,7 @@
 
     .task-number-container p {
         text-align: center;
-        font-size: 50px;
+        font-size: clamp(32px, 5vw, 50px);
         font-weight: bold;
         margin: 0;
     }
@@ -111,7 +112,7 @@
 
     .task-Deadline-Container {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
@@ -133,6 +134,7 @@
     .task-Deadline-Info {
         display: flex;
         align-items: center;
+        gap: clamp(4px, 5vw, 25px);
     }
 
     .deadline-text {
@@ -165,7 +167,7 @@
     }
 
     .date {
-        font-size: 30px;
+        font-size: clamp(12px, 5vw, 30px);
         font-weight: bold;
     }
 
@@ -242,6 +244,10 @@
 
     .header-logout-mobile {
         display: none;
+    }
+
+    .upcoming-Deadline p {
+        font-size: clamp(10px, 4.5vw, 20px);
     }
 
     @media(max-width:1533px) {
@@ -386,9 +392,9 @@
             flex-direction: column;
         }
 
-        .task-number-container p {
+        /* .task-number-container p {
             font-size: 50px;
-        }
+        } */
 
         .task-text-container {
             font-size: 15px;
@@ -401,9 +407,9 @@
             height: 150px;
         }
 
-        .deadline-text {
+        /* .deadline-text {
             margin-left: 40px;
-        }
+        } */
 
         .to-do-done {
             margin-top: 20px;
@@ -566,12 +572,10 @@
         }
 
         .task-container {
-            /* width: 90%; */
             margin: 0;
         }
 
         .task-progress {
-            margin: 5px;
             padding: 15px;
         }
 
@@ -594,10 +598,6 @@
         .to-do-done img {
             width: 40px;
             height: 40px;
-        }
-
-        .date {
-            font-size: 20px;
         }
     }
 
@@ -663,10 +663,6 @@
             flex-direction: column;
         }
 
-        .task-number-container p {
-            font-size: 50px;
-        }
-
         .task-container-2 {
             width: 95%;
         }
@@ -692,14 +688,6 @@
 
         .deadline-text p {
             font-size: 30px;
-        }
-
-        .date {
-            font-size: 20px;
-        }
-
-        .upcoming-Deadline {
-            font-size: 15px;
         }
 
         .to-do-done-container {
@@ -853,14 +841,14 @@
         .header {
             width: 100%;
         }
-
+/* 
         .date {
             font-size: 15px;
-        }
+        } */
 
-        .upcoming-Deadline {
+        /* .upcoming-Deadline {
             font-size: 10px;
-        }
+        } */
 
         .task-text-container {
             font-size: 10px;
@@ -884,10 +872,6 @@
             display: flex;
             justify-content: space-between;
             width: 250px;
-        }
-
-        .task-number-container p {
-            font-size: 25px;
         }
 
         .deadline-container {
@@ -929,10 +913,6 @@
             width: 35px;
             height: 35px;
             margin-left: 20px;
-        }
-
-        .deadline-text {
-            margin-left: 10px;
         }
 
         .mobile-menu span {

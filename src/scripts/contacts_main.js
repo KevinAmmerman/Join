@@ -173,6 +173,8 @@ async function deleteContact(contactsIndex, i, j, mobil) {
 function openContact(i, j) {
     let fullContactCard = document.getElementById('fullContactCard');
     let contactView = document.getElementById('contactView');
+    let backBtn = document.querySelector('.arrowBack');
+    backBtn.classList.remove('dNone');
     contactView.style.zIndex = 1;
     let contact = groups[i][j];
     fullContactCard.innerHTML = createHtmlForContactCard(contact, i, j);

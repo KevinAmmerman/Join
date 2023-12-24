@@ -248,8 +248,10 @@ function createHtmlForSubtask(task, checked, column, i, s) {
     let id = task.id;
     return `
         <div onclick="changeSubtaskStatus('${column}', ${i}, ${id}, ${s})">
-            <img id="${id}" src="${checked}">
-            <span id="subtaskValue${s}">${title}</span>
+            <div>
+                <img id="${id}" src="${checked}">
+                <span id="subtaskValue${s}">${title}</span>
+            </div>
             <input type="text" id="editSubtask${s}" class="editSubtask dNone" onclick="doNotClose(event)">
             <div class="btnContainer" onclick="doNotClose(event)">
                 <div id="editSubtaskBtn${s}"" class="editSubtaskBtn subtaskBtnStyle" onclick="editSubtask('${column}', ${i}, ${s})"></div>

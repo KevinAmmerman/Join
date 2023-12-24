@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Inter', 'sans-serif';
-    font-size: normal;
+    overflow-y: hidden;
 }
 
 .register-logo-container {
@@ -132,7 +132,7 @@ body {
 }
 
 .dNone {
-    display: none;
+    display: none !important;
 }
 
 .password-input {
@@ -221,6 +221,60 @@ body {
     padding: 15px 30px 15px 30px;
     font-size: 20px;
     border: none;
+    cursor: pointer;
+}
+
+#register-alert {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
+    z-index: 20;
+    animation: move-up 3000ms ease-in-out forwards;
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 326px;
+    text-align: center;
+}
+
+
+@keyframes move-up {
+
+    0% {
+        bottom: -100%;
+    }
+
+    30% {
+        bottom: 100px;
+    }
+
+    50% {
+        bottom: 100px;
+    }
+
+    70% {
+        bottom: 100px;
+    }
+
+    100% {
+        bottom: -100%;
+    }
+}
+
+.coloredBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 15px;
+    gap: 10px;
+    background: #2A3647;
+    border: none;
+    border-radius: 10px;
+    line-height: 120%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
     cursor: pointer;
 }
 

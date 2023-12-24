@@ -64,6 +64,7 @@ function startEventListener(menu) {
  * Logs out the user and redirects to the login page.
  */
 function logout() {
+    setNotLoggedIn('false');
     window.location.href = 'index.html';
 }
 
@@ -175,4 +176,20 @@ function checkIfLoggedIn() {
 function goBack() {
     localStorage.setItem('loggedIn', '');
     window.location.href = 'register.html';
+}
+
+/**
+ * Gets user's login status in localStorage to check if user is logged in.
+ */
+function getloggedInStatus() {
+    const value = localStorage.getItem('loggedIn');
+    return value;
+}
+
+
+/**
+ * Updates the user's login status in localStorage to indicate they are not logged in.
+ */
+function setNotLoggedIn(value) {
+    localStorage.setItem('loggedIn', value);
 }

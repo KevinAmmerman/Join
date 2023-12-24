@@ -9,6 +9,7 @@
  * - Finds the most urgent task.
  */
 async function getSummary() {
+    if(getloggedInStatus() === 'false') window.location.href = 'index.html';
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
     generateSummaryTemplate();

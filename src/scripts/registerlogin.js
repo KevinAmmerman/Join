@@ -46,7 +46,7 @@ async function login() {
         password.value = '';
         saveUserNameInLocalStorage();
         window.location.href = 'summary.html';
-        localStorage.setItem('loggedIn', '');
+        setNotLoggedIn('true');
     } else {
         setTimeout(() => showError(), 500);
 
@@ -65,7 +65,7 @@ function guestLogin() {
         userName = 'Guest';
         saveUserNameInLocalStorage();
         window.location.href = `summary.html`;
-        localStorage.setItem('loggedIn', '');
+        setNotLoggedIn('true')
     }
 }
 
@@ -263,15 +263,8 @@ function getNewRegistration() {
  *                        This string is used to construct the URL of the destination page.
  */
 function goToLegalInfoPage(page) {
-    setNotLoggedIn();
+    setNotLoggedIn('false');
     window.location.href = `${page}.html`;
-}
-
-/**
- * Updates the user's login status in localStorage to indicate they are not logged in.
- */
-function setNotLoggedIn() {
-    localStorage.setItem('loggedIn', 'false');
 }
 
 /**

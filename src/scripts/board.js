@@ -8,6 +8,7 @@ const unchecked = 'src/img/unchecked.png';
  * Renders the tasks in the 'toDo', 'inProgress', 'feedback', and 'done' columns.
  */
 async function init() {
+    if(getloggedInStatus() === 'false') window.location.href = 'index.html';
     inBoard = true;
     await includeHTML();
     startFilterEventListener();
@@ -572,7 +573,13 @@ function renderMoveToMobil(column, i) {
     smallTask.innerHTML = createHtmlMoveTo(column, i);
 }
 
-
+/**
+ * Adds a click event listener to the document that hides the specified element 
+ * if a click occurs outside of it. This is commonly used for implementing click-away 
+ * behaviors for modals, dropdowns, or other overlay elements.
+ *
+ * @param {HTMLElement} element - The DOM element that will be hidden when clicking outside of it.
+ */
 function startEventListenerMoveTo(element) {
     document.addEventListener('click', (event) => {
         if (!element.contains(event.target)) {

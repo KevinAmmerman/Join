@@ -14,6 +14,7 @@ let assignedPeopleForTask = [];
  * Calls the "loadUsers" function.
  */
 async function initAddTask() {
+	if(getloggedInStatus() === 'false') window.location.href = 'index.html';
 	await includeHTML();
 	loadUsers();
 	generateLoggedinUserLogo();

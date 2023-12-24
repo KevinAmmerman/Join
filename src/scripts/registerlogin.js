@@ -164,10 +164,16 @@ async function register() {
         addUser(name, email, password);
         await setItem('users', JSON.stringify(users));
         setNewRegistration(true);
-        window.location.href = 'index.html';
+        alertMessage('Successfully registered')
+        setTimeout(() => window.location.href = 'index.html', 2500);
     }
 }
 
+/**
+ * Checks if the password and confirmation password fields match. If they do not match, 
+ * an error message is displayed. Assumes the presence of elements with specific IDs: 
+ * 'password', 'confirm-password', and 'password-error'.
+ */
 function checkPassword() {
     let password = document.getElementById('password');
     let confirmPassword = document.getElementById('confirm-password');
@@ -181,11 +187,31 @@ function checkPassword() {
 }
 
 
+/**
+ * Applies a visual filter to the privacy checkbox if the 'privacy' variable is false.
+ * This function assumes the checkbox is represented by an image element with the ID 'privacy-checkbox'.
+ * The 'privacy' variable should be a boolean representing the state of the checkbox.
+ */
 function checkPrivacyCheckbox() {
     const checkbox = document.getElementById('privacy-checkbox');
     if (!privacy) {
         checkbox.style.filter = 'invert(11%) sepia(97%) saturate(7050%) hue-rotate(2deg) brightness(99%) contrast(110%)';
     }
+}
+
+/**
+ * Displays an alert message for a specified duration. The message is set as the innerHTML 
+ * of an element with the ID 'register-alert' and is visible for 4000 milliseconds.
+ * 
+ * @param {string} message - The message to be displayed in the alert.
+ */
+function alertMessage(message) {
+    let contactCreatedAlert = document.getElementById('register-alert');
+    contactCreatedAlert.innerHTML = message;
+    contactCreatedAlert.classList.remove('dNone')
+    setTimeout(function () {
+        contactCreatedAlert.classList.add('dNone')
+    }, 4000);
 }
 
 /**

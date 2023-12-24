@@ -185,6 +185,7 @@ html {
 
 #remember-me-checkbox {
     margin-right: 6px;
+    cursor: pointer;
 }
 
 .login-guest-button-container {

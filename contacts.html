@@ -37,14 +37,12 @@
         <div id="addContactContainer" class="addContactContainer" onclick="doNotClose(event)"></div>
     </div>
     <div id="contactsMainContainer">
-        <div class="addContactBtnContainer">
-            <div onclick="renderCreateContactWindow()" class="addContactBtnMobile">New contact<img
-                    src="src/img/img_contacts/addContact_img.png" alt="logo of small person"></div>
-        </div>
+        <div onclick="renderCreateContactWindow()" class="addContactBtnMobile"><img
+                src="src/img/img_contacts/addContact_img.png" alt="logo of small person"></div>
         <div id="contactList"></div>
         <div id="contactView">
             <div id="contactHeader">
-                <img onclick="closeContactCard()" class="arrowBack" src="src/img/img_contacts/arrow_back.svg">
+                <img onclick="closeContactCard()" class="arrowBack dNone" src="src/img/img_contacts/arrow_back.svg">
                 <h1>Contacts</h1>
                 <div class="devider"></div>
                 <span>Better with a team</span>

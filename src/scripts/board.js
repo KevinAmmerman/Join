@@ -10,23 +10,14 @@ const unchecked = 'src/img/unchecked.png';
 async function init() {
     inBoard = true;
     await includeHTML();
-    tasks = JSON.parse(await getItem('tasks'));
+    startFilterEventListener();
+    tasks = await checkTasks();
     contacts = JSON.parse(await getItem('contacts'));
     renderAllTasks();
     addActiveToMenu('boardLink');
     addActiveToMenu('mobile-buttonId2');
     generateLoggedinUserLogo();
 }
-
-function renderAllTasks() {
-    renderTasks(tasks, 'toDo', 'toDo');
-    renderTasks(tasks, 'inProgress', 'inProgress');
-    renderTasks(tasks, 'feedback', 'feedback');
-    renderTasks(tasks, 'done', 'done');
-}
-
-
-window.addEventListener('resize', setsRequiredAttributeForDateInput);
 
 /**
  * Renders the tasks for a specific column.
@@ -361,24 +352,6 @@ function addSubtask(column, i) {
 }
 
 /**
- * Handles key press events for a given input field, specifically looking for the Enter key.
- * If the Enter key is pressed, it prevents the default action (form submission) and triggers the addition of a subtask.
- *
- * @param {Event} event - The key press event object.
- * @param {Object} column - The column object where the subtask is to be added.
- * @param {number} i - The index indicating the specific position in the column where the subtask will be added.
- * @returns {boolean} False if the Enter key is pressed to prevent default action, true otherwise.
- */
-function handleKeyPress(event, column, i) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        addSubtask(column, i);
-        return false;
-    }
-    return true;
-}
-
-/**
  * Deletes a subtask from a task.
  * 
  * @param {string} column - The column the task belongs to.
@@ -446,12 +419,6 @@ async function saveChangesForTask(column, i) {
     preventScrollingInBackground();
 }
 
-
-function isDesktop() {
-    return window.innerWidth > 750;
-}
-
-
 /**
  * Retrieves the date from input fields and formats it as a string.
  * Assumes the existence of elements with IDs 'year', 'months', and 'day'.
@@ -464,26 +431,6 @@ function getDate() {
     const day = document.getElementById('day').value;
     const newDate = `${year}-${month}-${day}`;
     return newDate;
-}
-
-
-function setsRequiredAttributeForDateInput() {
-    const screen = window.innerWidth;
-    const year = document.getElementById('year');
-    const month = document.getElementById('months');
-    const day = document.getElementById('day');
-    const desktop = document.getElementById('due-date');
-    if (screen < 750) {
-        desktop.removeAttribute('required');
-        year.setAttribute('required', '');
-        month.setAttribute('required', '');
-        day.setAttribute('required', '');
-    } else {
-        desktop.setAttribute('required', '');
-        year.removeAttribute('required');
-        month.removeAttribute('required');
-        day.removeAttribute('required');
-    }
 }
 
 /**
@@ -531,7 +478,7 @@ function filterTasks() {
     for (let c = 0; c < column.length; c++) {
         const space = column[c];
         if (search.length > 0) {
-            filteredTasks[space] = tasks[space].filter(t => checkIfIncluded(t, search));
+            filteredTasks[space] = tasks[space].filter( t => checkIfIncluded(t, search) );
             renderTasks(filteredTasks, space, space);
         } else {
             init();
@@ -607,7 +554,6 @@ function openAddtaskSection(column) {
  */
 function moveToMobil(column, i) {
     renderMoveToMobil(column, i)
-    // generateMoveToOptions(column, i);
 }
 
 /**

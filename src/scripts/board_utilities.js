@@ -1,4 +1,94 @@
 /**
+ * Asynchronously retrieves and filters tasks from the backend.
+ * It parses the stored tasks and filters out any invalid tasks using the 'taskIsValid' function.
+ *
+ * @returns {Promise<Object>} A promise that resolves to an object containing filtered tasks.
+ */
+async function checkTasks() {
+    const tasks = JSON.parse(await getItem('tasks'));
+    let filteredTasks = Object.keys(tasks).reduce((result, key) => {
+        result[key] = tasks[key].filter(taskIsValid);
+        return result;
+    }, {});
+    return filteredTasks;
+}
+
+
+function taskIsValid(task) {
+    return task !== null;
+}
+
+/**
+ * Initializes an event listener on the search input field. The listener triggers the 'filterTasks' 
+ * function whenever there is an input event
+ */
+function startFilterEventListener() {
+    document.getElementById('inputSearch').addEventListener('input', filterTasks);
+}
+
+/**
+ * Renders tasks for all categories ('toDo', 'inProgress', 'feedback', 'done').
+ * Assumes the existence of a global 'tasks' object containing tasks categorized by their status.
+ */
+function renderAllTasks() {
+    renderTasks(tasks, 'toDo', 'toDo');
+    renderTasks(tasks, 'inProgress', 'inProgress');
+    renderTasks(tasks, 'feedback', 'feedback');
+    renderTasks(tasks, 'done', 'done');
+}
+
+
+window.addEventListener('resize', setsRequiredAttributeForDateInput);
+
+
+function isDesktop() {
+    return window.innerWidth > 750;
+}
+
+/**
+ * Adjusts the 'required' attribute on date input fields based on the screen width.
+ * If the screen width is less than 750 pixels, it sets the 'required' attribute on individual
+ * year, month, and day fields and removes it from the 'due-date' field.
+ * For wider screens, it does the opposite: sets 'required' on the 'due-date' field and removes it from the individual fields.
+ */
+function setsRequiredAttributeForDateInput() {
+    const screen = window.innerWidth;
+    const year = document.getElementById('year');
+    const month = document.getElementById('months');
+    const day = document.getElementById('day');
+    const desktop = document.getElementById('due-date');
+    if (screen < 750) {
+        desktop.removeAttribute('required');
+        year.setAttribute('required', '');
+        month.setAttribute('required', '');
+        day.setAttribute('required', '');
+    } else {
+        desktop.setAttribute('required', '');
+        year.removeAttribute('required');
+        month.removeAttribute('required');
+        day.removeAttribute('required');
+    }
+}
+
+/**
+ * Handles key press events for a given input field, specifically looking for the Enter key.
+ * If the Enter key is pressed, it prevents the default action (form submission) and triggers the addition of a subtask.
+ *
+ * @param {Event} event - The key press event object.
+ * @param {Object} column - The column object where the subtask is to be added.
+ * @param {number} i - The index indicating the specific position in the column where the subtask will be added.
+ * @returns {boolean} False if the Enter key is pressed to prevent default action, true otherwise.
+ */
+function handleKeyPress(event, column, i) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        addSubtask(column, i);
+        return false;
+    }
+    return true;
+}
+
+/**
  * Truncates the text to a specified maximum length and adds ellipsis if necessary.
  * 
  * @param {string} text - The text to truncate.

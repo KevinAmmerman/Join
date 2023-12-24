@@ -45,7 +45,7 @@
                 <h1 class="boardHeadline">Board</h1>
                 <div id="searchContainer">
                     <div class="searchField">
-                        <input type="text" id="inputSearch" placeholder="Find Task" onkeyup="filterTasks()">
+                        <input type="text" id="inputSearch" placeholder="Find Task">
                         <div class="devider"></div>
                         <img src="src/img/img_board/magnifyingGlass.png" alt="" class="searchFieldImage">
                     </div>
@@ -83,8 +83,6 @@
             <div class="col">
                 <div class="boardControlElements">
                     <h2>Done</h2>
-                    <img src="src/img/img_board/plus_button.svg" onclick="openAddtaskSection('done')" alt="plus symbol"
-                        class="addBtn">
                 </div>
                 <div id="done" class="taskContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
             </div>

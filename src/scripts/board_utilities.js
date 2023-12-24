@@ -309,3 +309,20 @@ function noPastDate() {
 		document.getElementsByName("dueDate")[i].setAttribute('min', today);
 	}
 }
+
+/**
+ * Displays an alert message for a specified duration. The message is set as the innerHTML 
+ * of an element with the ID 'register-alert' and is visible for 4000 milliseconds.
+ * 
+ * @param {string} message - The message to be displayed in the alert.
+ */
+function alertMessageBoard(message) {
+    const taskAlert = document.getElementById('task-alert');
+    const taskContainer = document.querySelector('.taskEditContainer');
+    taskAlert.innerHTML = message;
+    taskAlert.classList.remove('dNone')
+    taskContainer.style.overflow = 'hidden';
+    setTimeout(function () {
+        taskAlert.classList.add('dNone')
+    }, 3000);
+}

@@ -416,6 +416,9 @@ async function saveChangesForTask(column, i) {
     await setItem('tasks', JSON.stringify(tasks));
     init();
     openTask(column, i);
+    setTimeout(() => {
+        alertMessageBoard('Task saved');
+    }, 1000); 
     preventScrollingInBackground();
 }
 
@@ -563,8 +566,19 @@ function moveToMobil(column, i) {
  * @param {number} i - The index of the task within the column.
  */
 function renderMoveToMobil(column, i) {
-    let smallTask = document.getElementById(`moveFrom${column}${i}`);
+    let smallTask = document.getElementById(`moveFromBox${column}${i}`);
+    startEventListenerMoveTo(smallTask);
+    smallTask.classList.remove('dNone');
     smallTask.innerHTML = createHtmlMoveTo(column, i);
+}
+
+
+function startEventListenerMoveTo(element) {
+    document.addEventListener('click', (event) => {
+        if (!element.contains(event.target)) {
+            element.classList.add('dNone');
+        }
+    })
 }
 
 /**

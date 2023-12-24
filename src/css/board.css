@@ -355,6 +355,19 @@ body {
     width: 100%;
 }
 
+.moveToBox {
+    position: absolute;
+    background-color: white;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    border-radius: 30px;
+    padding: 18px;
+}
+
 .mobileMoveToRow {
     width: 100%;
     text-align: center;
@@ -515,6 +528,43 @@ body {
     width: 20px;
     height: 18px;
     object-fit: contain;
+}
+
+#task-alert {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
+    z-index: 20;
+    animation: move-up 3000ms ease-in-out forwards;
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 326px;
+    text-align: center;
+}
+
+
+@keyframes move-up {
+
+    0% {
+        bottom: -100%;
+    }
+
+    30% {
+        bottom: 100px;
+    }
+
+    50% {
+        bottom: 100px;
+    }
+
+    70% {
+        bottom: 100px;
+    }
+
+    100% {
+        bottom: -100%;
+    }
 }
 
 /* === EDIT-TASK === */

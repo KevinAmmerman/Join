@@ -135,15 +135,18 @@ function highlightField() {
  * @param {string} newTask - The new task to be added.
  */
 async function createNewTask(newTask) {
+	const addTaskBtn = document.getElementById('add-task-btn');
 	if (taskColumn === undefined) taskColumn = 'toDo';
 	tasks[taskColumn].push(newTask);
 	await setItem('tasks', JSON.stringify(tasks));
 	alertMessage('Task succesfully created');
+	addTaskBtn.disabled = true;
 	if (isMobil == true) {
 		setTimeout(() => {
 			closeWindow('modalAddtask');
 			resetForm();
 			init();
+			addTaskBtn.disabled = false;
 		}, 1500);
 	} else {
 		goToBoard();

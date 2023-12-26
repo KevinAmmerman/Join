@@ -1,3 +1,5 @@
+let delayedSearch = debounce(filterTasks);
+
 /**
  * Asynchronously retrieves and filters tasks from the backend.
  * It parses the stored tasks and filters out any invalid tasks using the 'taskIsValid' function.
@@ -23,7 +25,21 @@ function taskIsValid(task) {
  * function whenever there is an input event
  */
 function startFilterEventListener() {
-    document.getElementById('inputSearch').addEventListener('input', filterTasks);
+    document.getElementById('inputSearch').addEventListener('input', delayedSearch);
+}
+
+
+
+
+function debounce(db, delay = 500) {
+    let timeout;
+    return () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            db();
+            console.log('check')
+        }, delay);
+    }
 }
 
 /**
@@ -167,7 +183,7 @@ function checkPrioStatus(prio, returnTyp) {
  */
 function getPrioColor(prio) {
     let colors = ['#FB3D01', '#FFA800', '#7AE22A'];
-    return colors[prio-1];
+    return colors[prio - 1];
 }
 
 /**
@@ -304,10 +320,10 @@ function checkIfSubtask(task, column, i) {
  * It retrieves the current date and sets it as the minimum value for each "dueDate" input field.
  */
 function noPastDate() {
-	let today = new Date().toISOString().split('T')[0];
-	for (let i = 0; i < document.getElementsByName("dueDate").length; i++) {
-		document.getElementsByName("dueDate")[i].setAttribute('min', today);
-	}
+    let today = new Date().toISOString().split('T')[0];
+    for (let i = 0; i < document.getElementsByName("dueDate").length; i++) {
+        document.getElementsByName("dueDate")[i].setAttribute('min', today);
+    }
 }
 
 /**

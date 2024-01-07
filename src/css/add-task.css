@@ -718,12 +718,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		background: darkgrey;
 	}
 
-	/* .container {
-		display: flex;
-		align-items: flex-start;
-		margin-left: calc(232px + 5%);
-	} */
-
 	.task-left {
 		display: flex;
 		flex-direction: column;

@@ -158,8 +158,9 @@ body {
     top: 89px;
     left: 232px;
     right: 0;
-    height: calc(100vh - 89px);
+    height: calc(100svh - 89px);
     overflow: hidden;
+    max-width: 1920px;
 }
 
 #contactList {
@@ -178,7 +179,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100svh - 189px);
 }
 
 /* === CONTACT-HEADER === */
@@ -541,10 +541,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* gap: 10px; */
     position: absolute;
-    /* color: #ffffff;
-    font-weight: bold; */
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -740,7 +737,6 @@ body {
         top: 0;
         bottom: 0;
         padding-left: 60px;
-        /* padding-top: 80px; */
         align-items: flex-start;
     }
 
@@ -762,6 +758,7 @@ body {
 
     .addContactBtnMobile {
         display: flex !important;
+        right: 260px;
     }
 }
 
@@ -800,13 +797,18 @@ body {
         align-items: center;
     }
 
+    #contactView {
+        height: calc(100svh - 189px);
+    }
+
     .contactOrder {
         margin-left: 0;
     }
 
-    /* .addContactBtnMobile {
+    .addContactBtnMobile {
         right: 18px;
-    } */
+        top: 30px;
+    }
 
     .mobileBtnSection {
         display: flex !important;
@@ -917,7 +919,6 @@ body {
 @media (max-width: 520px) {
 
     #contactList {
-        /* padding-top: 80px; */
         min-width: 100%;
     }
 }

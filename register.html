@@ -26,9 +26,6 @@
 </head>
 
 <body onload="logininit()">
-    <!-- <div class="register-logo-container">
-        <img class="blue-logo" src="./src/img/logo_blue_join.png">
-    </div> -->
     <div class="register-container">
         <div class="register-logo-container">
             <img class="blue-logo" src="./src/img/logo_blue_join.png">
@@ -38,10 +35,9 @@
             <h1>Sign up</h1>
             <div class="blue-line"></div>
             <Form onsubmit="register(); return false;" id="register-form">
-                <!-- <div class="sign-Up-Container"> -->
                     <div class="input-register-password">
                         <input class="name-input" type="text" name="name" placeholder="Name" id="name" required>
-                        <input class="email-input" type="email" name="email" placeholder="Email" id="email" required>
+                        <input class="email-input" type="email" name="email" placeholder="Email" id="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                         <input class="password-input" type="password" name="password" placeholder="Password"
                             id="password" autocomplete="on" required>
                         <div class="password-error-box">
@@ -57,7 +53,6 @@
                     <div class="SignUp-button-container">
                         <button id="registerBtn" type="submit" class="SignUp-button">Sign up</button>
                     </div>
-                <!-- </div> -->
             </Form>
         </div>
         <div class="legal-info-links">

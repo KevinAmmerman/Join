@@ -17,6 +17,7 @@ function createHtmlForTasks(task, column, i) {
     let progress = calculateProgress(subtasklength, finishedSubtasks);
     return `
         <div draggable="true" ondragstart="startDragging('${column}', ${i})" id="moveFrom${column}${i}" class="task" onclick="openTask('${column}', ${i})">
+            <div class="moveToBox dNone" id="moveFromBox${column}${i}"></div>
             <img class="mobileMoveToBtn" onclick="doNotClose(event); moveToMobil('${column}', ${i})" src="src/img/img_board/arrows.png">
             <div class="category" style="background-color: ${categoryColor}">${category}</div>
             <h3 class="title">${title}</h3>
@@ -89,6 +90,7 @@ function createHtmlForTaskInfo(column, i) {
                     <img src="src/img/img_board/pencil.png" alt="image of a pencil">
                 </div>
             </div>
+            <div id="task-alert" class="coloredBtn dNone"></div>
         </div>
     `;
 }

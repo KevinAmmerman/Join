@@ -9,6 +9,7 @@
  * - Finds the most urgent task.
  */
 async function getSummary() {
+    if(getloggedInStatus() === 'false') window.location.href = 'index.html';
     tasks = JSON.parse(await getItem('tasks'));
     users = JSON.parse(await getItem('users'));
     generateSummaryTemplate();
@@ -94,7 +95,7 @@ function goToBoard() {
  */
 function renderAmountOfTasks() {
     let allTasksAmount = 0;
-    let id = ['summarytoDo', 'summaryTaskInProgress', 'summaryTaskInAwaitingFeedback', 'summarytoDoDone'];
+    let id = ['summarytoDo', 'summaryTaskInProgress', 'summaryTaskInAwaitingFeedback', 'summaryDone'];
     let categories = ['toDo', 'inProgress', 'feedback', 'done'];
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];

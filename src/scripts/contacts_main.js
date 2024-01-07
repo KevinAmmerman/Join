@@ -5,6 +5,7 @@
  * - Renders the contacts in the UI.
  */
 async function init() {
+    if(getloggedInStatus() === 'false') window.location.href = 'index.html';
     await includeHTML();
     contacts = JSON.parse(await getItem('contacts'));
     orderContacts();

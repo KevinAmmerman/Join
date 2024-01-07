@@ -8,6 +8,7 @@ const unchecked = 'src/img/unchecked.png';
  * Renders the tasks in the 'toDo', 'inProgress', 'feedback', and 'done' columns.
  */
 async function init() {
+    if(getloggedInStatus() === 'false') window.location.href = 'index.html';
     inBoard = true;
     await includeHTML();
     startFilterEventListener();
@@ -416,6 +417,9 @@ async function saveChangesForTask(column, i) {
     await setItem('tasks', JSON.stringify(tasks));
     init();
     openTask(column, i);
+    setTimeout(() => {
+        alertMessageBoard('Task saved');
+    }, 1000); 
     preventScrollingInBackground();
 }
 
@@ -533,7 +537,7 @@ async function moveTo(category) {
     let toMoveTask = tasks[column].splice(position, 1)[0];
     tasks[category].push(toMoveTask);
     await setItem('tasks', JSON.stringify(tasks));
-    init();
+    renderAllTasks();
 }
 
 /**
@@ -563,8 +567,25 @@ function moveToMobil(column, i) {
  * @param {number} i - The index of the task within the column.
  */
 function renderMoveToMobil(column, i) {
-    let smallTask = document.getElementById(`moveFrom${column}${i}`);
+    let smallTask = document.getElementById(`moveFromBox${column}${i}`);
+    startEventListenerMoveTo(smallTask);
+    smallTask.classList.remove('dNone');
     smallTask.innerHTML = createHtmlMoveTo(column, i);
+}
+
+/**
+ * Adds a click event listener to the document that hides the specified element 
+ * if a click occurs outside of it. This is commonly used for implementing click-away 
+ * behaviors for modals, dropdowns, or other overlay elements.
+ *
+ * @param {HTMLElement} element - The DOM element that will be hidden when clicking outside of it.
+ */
+function startEventListenerMoveTo(element) {
+    document.addEventListener('click', (event) => {
+        if (!element.contains(event.target)) {
+            element.classList.add('dNone');
+        }
+    })
 }
 
 /**
@@ -577,5 +598,5 @@ function renderMoveToMobil(column, i) {
 async function moveToCategory(goal, column, i) {
     tasks[goal].push(tasks[column].splice(i, 1)[0]);
     await setItem('tasks', JSON.stringify(tasks));
-    init();
+    renderAllTasks();
 }

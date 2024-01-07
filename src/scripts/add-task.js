@@ -43,6 +43,7 @@ function initAddTasks() {
 	if (!inBoard) {
 		addActiveToMenu('addTaskLink');
 		addActiveToMenu('mobile-buttonId3');
+		document.querySelector('.closeBtn').style.display = 'none';
 	}
 }
 

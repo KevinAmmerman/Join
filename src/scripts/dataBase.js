@@ -24,7 +24,7 @@ let categories = [
     },
 
     {
-        name: 'Developement',
+        name: 'Development',
         color: 'red',
     },
 ];

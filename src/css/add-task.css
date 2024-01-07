@@ -1,5 +1,5 @@
 h1 {
-	font-size: 61px;
+	font-size: clamp(2.3rem, 5vw, 3.2rem);
 }
 
 .join-menu {
@@ -9,16 +9,21 @@ h1 {
 
 .container {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 120px;
-	margin-bottom: 80px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 232px;
+    top: 0;
+    max-width: 1920px;
+    bottom: 0;
 }
 
 .addTaskForm {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	margin-left: 90px;
+	height: 587px;
 }
 
 .input-container {
@@ -713,11 +718,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
 		background: darkgrey;
 	}
 
-	.container {
+	/* .container {
 		display: flex;
 		align-items: flex-start;
 		margin-left: calc(232px + 5%);
-	}
+	} */
 
 	.task-left {
 		display: flex;
@@ -735,6 +740,13 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 	.container {
 		align-items: center;
+		right: 0;
+		top: 89px;
+	}
+
+	.addTaskForm {
+		height: 100%;
+		margin-left: 0;
 	}
 
 	.task-container {
@@ -749,6 +761,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	.task-right {
 		padding-left: 0;
 		padding-top: 10px;
+		margin-bottom: 20px;
 	}
 
 	.add-task-buttons {
@@ -778,12 +791,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	}
 
 	.container {
+		position: unset;
 		margin-left: 0;
 		display: flex;
 		justify-items: center;
 		align-items: center;
 		margin-top: 80px;
 		margin-bottom: 120px;
+		left: 0;
 	}
 
 	.due-date {

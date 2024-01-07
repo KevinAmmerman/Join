@@ -1102,19 +1102,6 @@ body {
     #boardHeader {
         height: 200px;
     }
-
-    /* .taskEditContainer {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        flex-direction: column;
-        overflow-y: scroll;
-    }
-
-    .applyEditBtn {
-        align-self: flex-end;
-        position: unset;
-    } */
 }
 
 @media (max-width: 500px) {

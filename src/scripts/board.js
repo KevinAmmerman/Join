@@ -537,7 +537,7 @@ async function moveTo(category) {
     let toMoveTask = tasks[column].splice(position, 1)[0];
     tasks[category].push(toMoveTask);
     await setItem('tasks', JSON.stringify(tasks));
-    init();
+    renderAllTasks();
 }
 
 /**
@@ -598,5 +598,5 @@ function startEventListenerMoveTo(element) {
 async function moveToCategory(goal, column, i) {
     tasks[goal].push(tasks[column].splice(i, 1)[0]);
     await setItem('tasks', JSON.stringify(tasks));
-    init();
+    renderAllTasks();
 }

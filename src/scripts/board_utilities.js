@@ -37,7 +37,6 @@ function debounce(db, delay = 500) {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
             db();
-            console.log('check')
         }, delay);
     }
 }

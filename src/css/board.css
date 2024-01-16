@@ -216,6 +216,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     padding-right: 10px;
+    padding-left: 10px;
     padding-top: 2px;
     height: 100%;
 }
@@ -238,7 +239,6 @@ body {
 }
 
 .emptyCategory {
-    width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -379,6 +379,17 @@ body {
 
 .mobileMoveToRow:hover {
     background-color: #28ABE2;
+}
+
+.drag-over {
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted #979797;
+    color: #979797;
+    background: #d1d1d14e;
+    border-radius: 10px;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 /* === TASK-WINDOW === */
@@ -1007,6 +1018,14 @@ body {
 
     body {
         overflow-y: auto;
+    }
+
+    .drag-over {
+        flex-direction: row;
+    }
+
+    .emptyCategory {
+        width: 100%;
     }
 }
 

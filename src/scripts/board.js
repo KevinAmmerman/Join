@@ -524,6 +524,15 @@ function startDragging(column, i) {
         'column': column,
         'position': i
     }
+    const dropZones = document.querySelectorAll(".taskContainer");
+    dropZones.forEach(dropZone => {
+        dropZone.addEventListener("dragenter", function (dragEvent) {
+            dragEvent.target.classList.add("drag-over");
+        });
+        dropZone.addEventListener("dragleave", function (dragEvent) {
+            dragEvent.target.classList.remove("drag-over");
+        });
+    });
 }
 
 /**
@@ -535,6 +544,8 @@ async function moveTo(category) {
     let column = currentDraggedTask.column;
     let position = currentDraggedTask.position;
     let toMoveTask = tasks[column].splice(position, 1)[0];
+    const taskColumn = document.getElementById(category);
+    taskColumn.classList.remove('drag-over');
     tasks[category].push(toMoveTask);
     await setItem('tasks', JSON.stringify(tasks));
     renderAllTasks();
